@@ -1,0 +1,92 @@
+baseurl = "https://wixb50.github.io/"
+languageCode = "en-us"
+
+# Site title
+title = "Wixb blog"
+
+# Copyright
+copyright = "(c) 2015 wixb.All rights reserved."
+
+# Metadata format
+# "yaml", "toml", "json"
+metaDataFormat = "toml"
+
+# Theme to use (located in /themes/THEMENAME/)
+theme = "hyde-x"
+
+# Pagination
+paginate = 10
+paginatePath = "page"
+
+# Enable Disqus integration
+#disqusShortname = "Wixb"
+
+[permalinks]
+    post = "/:year/:month/:day/:title/"
+
+[taxonomies]
+    # Optional. Use if you want tags and lists.
+    category = "categories"
+    tag = "tags"
+
+[author]
+    name = "Wixb"
+    email = "wixb50@gmail.com"
+
+#
+# All parameters below here are optional and can be mixed and matched.
+#
+[params]
+    # If false display full article contents in blog index.
+    # Otherwise show description and 'read on' link to individual blog post page.
+    # Default (if omitted) is true.
+    truncate = true
+
+    # You can use markdown here.
+    theme = "theme-base-0c"
+
+    # Sidebar position
+    # false, true, "left", "right"
+    sidebar = "left"
+
+    # Text for the top menu link, which goes the root URL for the site.
+    # Default (if omitted) is "Home".
+    home = "Home"
+
+    # Select a syntax highight.
+    # Check the static/css/highlight directory for options.
+    highlight = "sunburst"
+
+    # Metadata used to drive integrations.
+    googleAuthorship = "wixb50"
+    googleAnalytics = "Your Google Analytics tracking code"
+    gravatarHash = "MD5 hash of your Gravatar email address"
+
+    # Sidebar social links, these must be full URLs.
+    github = "https://github.com/wixb50"
+    bitbucket = ""
+    stackOverflow = ""
+    linkedin = ""
+    googleplus = ""
+    facebook = ""
+    twitter = ""
+    youtube = ""
+
+    # Other social-like sidebar links
+    rss = false  # switch to true to enable RSS icon link
+    flattr = ""  # populate with your flattr uid
+
+# menu list
+[[menu.main]]
+    name = "Cloud"
+    pre = "<i class='fa fa-cloud'></i>"
+    url = "/categories/cloud/"
+
+[blackfriday]
+    angledQuotes = true
+    fractions = false
+    hrefTargetBlank = false
+    latexDashes = true
+    plainIdAnchors = true
+    extensions = []
+    extensionmask = []
