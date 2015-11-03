@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Wixb blog &middot; Wixb</title>
+  <title>docker安装与配置 &middot; Wixb</title>
 
   
   <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
@@ -26,10 +26,10 @@
   
   
   
-  <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="Wixb blog &middot; Wixb" />
+  
 
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="简述docker的安装与配置">
+  <meta name="keywords" content="docker">
   <link rel="author" href="http://plus.google.com/wixb50">
 </head>
 <body class="theme-base-0c">
@@ -87,58 +87,33 @@
 
 
 <div class="content container">
-  <div class="posts">
+  <div class="post">
+    <h1>docker安装与配置</h1>
+    <span class="post-date">Nov 2, 2015 &middot; 1 minute read
     
+    <br/>
+    <a class="label" href="http://localhost:1313/categories/docker">docker</a><a class="label" href="http://localhost:1313/categories/cloud">cloud</a>
+    </span>
     
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://localhost:1313/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/">sublime插件集合</a>
-      </h1>
-      <span class="post-date">Nov 3, 2015 &middot; 1 minute read
-      
-      <br/>
-      <a class="label" href="http://localhost:1313/categories/editor">editor</a>
-      </span>
-      
-      <p>收集一些自己常用的sublime插件集合</p>
-      <a href="http://localhost:1313/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://localhost:1313/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">docker安装与配置</a>
-      </h1>
-      <span class="post-date">Nov 2, 2015 &middot; 1 minute read
-      
-      <br/>
-      <a class="label" href="http://localhost:1313/categories/docker">docker</a><a class="label" href="http://localhost:1313/categories/cloud">cloud</a>
-      </span>
-      
-      <p>简述docker的安装与配置</p>
-      <a href="http://localhost:1313/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://localhost:1313/2015/10/31/welcome/">welcome</a>
-      </h1>
-      <span class="post-date">Oct 31, 2015 &middot; 1 minute read
-      
-      <br/>
-      <a class="label" href="http://localhost:1313/categories/development">Development</a><a class="label" href="http://localhost:1313/categories/golang">GoLang</a>
-      </span>
-      
-      <p>welcome to visite wixb&#39;s blog.</p>
-      <a href="http://localhost:1313/2015/10/31/welcome/">Read On &rarr;</a>
-      
-    </div>
-    
-    
-    
+
+<h3 id="安装命令-运行即可">安装命令，运行即可</h3>
+
+<pre><code>sudo apt-get install apt-transport-https
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo bash -c &quot;echo deb https://get.docker.io/ubuntu docker main &gt; /etc/apt/sources.list.d/docker.list&quot;
+sudo apt-get update
+sudo apt-get install lxc-docker
+</code></pre>
+
+<hr />
+
+<p>完</p>
+
   </div>
+  
 </div>
+
+
 
 
 <script src="http://localhost:1313/js/highlight.pack.js"></script>
