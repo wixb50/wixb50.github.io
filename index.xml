@@ -2,22 +2,507 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wixb blog</title>
-    <link>http://localhost:1313/</link>
+    <link>http://wixb50.github.io:37775/</link>
     <description>Recent content on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Tue, 03 Nov 2015 11:21:17 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Nov 2015 16:38:38 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io:37775/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>etcd安装</title>
+      <link>http://wixb50.github.io:37775/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io:37775/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;etcd 基于 Go 语言实现，因此，用户可以从 项目主页 下载源代码自行编译，也可以下载编译好的二进制文件，甚至直接使用制作好的 Docker 镜像文件来体验。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;二进制文件方式下载&#34;&gt;二进制文件方式下载&lt;/h3&gt;
+
+&lt;p&gt;编译好的二进制文件都在 github.com/coreos/etcd/releases 页面，用户可以选择需要的版本，或通过下载工具下载。&lt;/p&gt;
+
+&lt;p&gt;例如，下面的命令使用 curl 工具下载压缩包，并解压。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -L  https://github.com/coreos/etcd/releases/download/v2.0.0-rc.1/etcd-v2.0.0-rc.1-linux-amd64.tar.gz -o etcd-v2.0.0-rc.1-linux-amd64.tar.gz
+tar xzvf etcd-v2.0.0-rc.1-linux-amd64.tar.gz
+cd etcd-v2.0.0-rc.1-linux-amd64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解压后，可以看到文件包括&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls
+etcd  etcdctl  etcd-migrate  README-etcdctl.md  README.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中 etcd 是服务主文件，etcdctl 是提供给用户的命令客户端，etcd-migrate 负责进行迁移。&lt;/p&gt;
+
+&lt;p&gt;推荐通过下面的命令将三个文件都放到系统可执行目录 /usr/local/bin/ 或 /usr/bin/。&lt;br /&gt;
+&lt;code&gt;$ sudo cp etcd* /usr/local/bin/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;运行 etcd，将默认组建一个两个节点的集群。数据库服务端默认监听在 2379 和 4001 端口，etcd 实例监听在 2380 和 7001 端口。显示类似如下的信息：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./etcd
+2014/12/31 14:52:09 no data-dir provided, using default data-dir ./default.etcd
+2014/12/31 14:52:09 etcd: listening for peers on http://localhost:2380
+2014/12/31 14:52:09 etcd: listening for peers on http://localhost:7001
+2014/12/31 14:52:09 etcd: listening for client requests on http://localhost:2379
+2014/12/31 14:52:09 etcd: listening for client requests on http://localhost:4001
+2014/12/31 14:52:09 etcdserver: name = default
+2014/12/31 14:52:09 etcdserver: data dir = default.etcd
+2014/12/31 14:52:09 etcdserver: snapshot count = 10000
+2014/12/31 14:52:09 etcdserver: advertise client URLs = http://localhost:2379,http://localhost:4001
+2014/12/31 14:52:09 etcdserver: initial advertise peer URLs = http://localhost:2380,http://localhost:7001
+2014/12/31 14:52:09 etcdserver: initial cluster = default=http://localhost:2380,default=http://localhost:7001
+2014/12/31 14:52:10 etcdserver: start member ce2a822cea30bfca in cluster 7e27652122e8b2ae
+2014/12/31 14:52:10 raft: ce2a822cea30bfca became follower at term 0
+2014/12/31 14:52:10 raft: newRaft ce2a822cea30bfca [peers: [], term: 0, commit: 0, lastindex: 0, lastterm: 0]
+2014/12/31 14:52:10 raft: ce2a822cea30bfca became follower at term 1
+2014/12/31 14:52:10 etcdserver: added local member ce2a822cea30bfca [http://localhost:2380 http://localhost:7001] to cluster 7e27652122e8b2ae
+2014/12/31 14:52:11 raft: ce2a822cea30bfca is starting a new election at term 1
+2014/12/31 14:52:11 raft: ce2a822cea30bfca became candidate at term 2
+2014/12/31 14:52:11 raft: ce2a822cea30bfca received vote from ce2a822cea30bfca at term 2
+2014/12/31 14:52:11 raft: ce2a822cea30bfca became leader at term 2
+2014/12/31 14:52:11 raft.node: ce2a822cea30bfca elected leader ce2a822cea30bfca at term 2
+2014/12/31 14:52:11 etcdserver: published {Name:default ClientURLs:[http://localhost:2379 http://localhost:4001]} to cluster 7e27652122e8b2ae
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时，可以使用 etcdctl 命令进行测试，设置和获取键值 testkey: &amp;laquo;hello world&amp;raquo;，检查 etcd 服务是否启动成功：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./etcdctl set testkey &amp;quot;hello world&amp;quot;
+hello world
+$ ./etcdctl get testkey
+hello world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明 etcd 服务已经成功启动了。&lt;/p&gt;
+
+&lt;p&gt;当然，也可以通过 HTTP 访问本地 2379 或 4001 端口的方式来进行操作，例如查看 testkey 的值：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -L http://localhost:4001/v2/keys/testkey
+{&amp;quot;action&amp;quot;:&amp;quot;get&amp;quot;,&amp;quot;node&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;/testkey&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;hello world&amp;quot;,&amp;quot;modifiedIndex&amp;quot;:3,&amp;quot;createdIndex&amp;quot;:3}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;docker-镜像方式下载&#34;&gt;Docker 镜像方式下载&lt;/h3&gt;
+
+&lt;p&gt;镜像名称为 quay.io/coreos/etcd:v2.0.0_rc.1，可以通过下面的命令启动 etcd 服务监听到 4001 端口。&lt;br /&gt;
+&lt;code&gt;$ sudo docker run -p 4001:4001 -v /etc/ssl/certs/:/etc/ssl/certs/ quay.io/coreos/etcd:v2.0.0_rc.1&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ubuntu系统变量配置</title>
+      <link>http://wixb50.github.io:37775/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io:37775/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
+/etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
+
+/etc /environment : 在登录时操作系统使用的第二个文件, 系统在读取你自己的profile前,设置环境文件的环境变量。 
+
+~/.profile :  在登录时用到的第三个文件 是.profile文件,每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。 
+
+/etc/bashrc : 为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取. 
+
+~/.bashrc : 该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时,该该文件被读取。 
+
+
+
+PASH环境变量的设置方法： 
+
+方法一：用户主目录下的.profile或.bashrc文件（推荐） 
+
+登录到你的用户（非root），在终端输入： 
+$ sudo gedit ~/.profile(or .bashrc) 
+可以在此文件末尾加入PATH的设置如下： 
+export PATH=”$PATH:your path1:your path2 ...” 
+保存文件，注销再登录，变量生效。 
+该方式添加的变量只对当前用户有效。 
+
+方法二：系统目录下的profile文件（谨慎） 
+
+在系统的etc目录下，有一个profile文件，编辑该文件： 
+$ sudo gedit /etc/profile 
+在最后加入PATH的设置如下： 
+export PATH=”$PATH:your path1:your path2 ...” 
+该文件编辑保存后，重启系统，变量生效。 
+该方式添加的变量对所有的用户都有效。 
+
+方法三：系统目录下的 environment 文件（谨慎） 
+
+在系统的etc目录下，有一个environment文件，编辑该文件： 
+$ sudo gedit /etc/environment 
+找到以下的 PATH 变量： 
+PATH=&amp;quot;&amp;lt;......&amp;gt;&amp;quot; 
+修改该 PATH 变量，在其中加入自己的path即可，例如： 
+PATH=&amp;quot;&amp;lt;......&amp;gt;:your path1:your path2 …&amp;quot; 
+各个path之间用冒号分割。该文件也是重启生效，影响所有用户。 
+注意这里不是添加export PATH=… 。 
+
+方法四：直接在终端下输入 
+
+$ sudo export PATH=&amp;quot;$PATH:your path1:your path2 …&amp;quot; 
+这种方式变量立即生效，但用户注销或系统重启后设置变成无效，适合临时变量的设置。 
+
+
+注 意：方法二和三的修改需要谨慎，尤其是通过root用户修改，如果修改错误，将可能导致一些严重的系统错误。因此笔者推荐使用第一种方法。另外嵌入式 Linux的开发最好不要在root下进行（除非你对Linux已经非常熟悉了！！），以免因为操作不当导致系统严重错误。 
+
+下面是一个对environment文件错误修改导致的问题以及解决方法示例： 
+
+问题：因为不小心在 etc/environment里设在环境变量导致无法登录 
+提示：不要在 etc/environment里设置 export PATH这样会导致重启后登录不了系统 
+解决方法： 
+在登录界面 alt +ctrl+f1进入命令模式，如果不是root用户需要键入（root用户就不许这么罗嗦，gedit编辑会不可显示） 
+/usr/bin/sudo /usr/bin/vi /etc/environment 
+光标移到export PATH** 行，连续按 d两次删除该行； 
+输入:wq保存退出； 
+然后键入/sbin/reboot重启系统（可能会提示need to boot，此时直接power off）
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vagrant建立快照</title>
+      <link>http://wixb50.github.io:37775/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io:37775/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;安装Vagrant快照插件：&lt;br /&gt;
+&lt;code&gt;vagrant plugin install vagrant-multiprovider-snap&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant snap
+Usage: vagrant snap &amp;lt;command&amp;gt; [&amp;lt;args&amp;gt;]
+
+Available subcommands:
+     back
+     delete
+     go
+     list
+     take
+
+For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt; -h
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用方法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建一个快照&lt;br /&gt;
+&lt;code&gt;vagrant snapshot take &amp;quot;Name&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看快照列表&lt;br /&gt;
+&lt;code&gt;vagrant snapshot list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;从指定快照中恢复&lt;br /&gt;
+&lt;code&gt;vagrant snapshot go &amp;quot;Name&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除一个快照&lt;br /&gt;
+&lt;code&gt;vagrant snapshot delete &amp;quot;Name&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一些参考资料：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://segmentfault.com/a/1190000000264347&#34;&gt;使用 Vagrant 打造跨平台开发环境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.williamsang.com/archives/2401.html&#34;&gt;Vagrant 三种网络配置详解&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vagrant常用命令</title>
+      <link>http://wixb50.github.io:37775/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io:37775/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>
+
+&lt;h2 id=&#34;vagrant常用命令&#34;&gt;Vagrant常用命令&lt;/h2&gt;
+
+&lt;p&gt;前面讲了Vagrant的几个命令：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vagrant box add&lt;/code&gt; 添加box的操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vagrant init&lt;/code&gt; 初始化box的操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vagrant up&lt;/code&gt; 启动虚拟机的操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vagrant ssh&lt;/code&gt; 登录拟机的操作&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vagrant还包括如下一些操作：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant box list&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;显示当前已经添加的box列表&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant box list
+base (virtualbox)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant box remove&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;删除相应的box&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant box remove base virtualbox
+Removing box &#39;base&#39; with provider &#39;virtualbox&#39;...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant destroy&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;停止当前正在运行的虚拟机并销毁所有创建的资源&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant destroy
+Are you sure you want to destroy the &#39;default&#39; VM? [y/N] y
+[default] Destroying VM and associated drives...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant halt&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;关机&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant halt
+[default] Attempting graceful shutdown of VM...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant package&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;打包命令，可以把当前的运行的虚拟机环境进行打包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant package
+[default] Attempting graceful shutdown of VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating temporary directory for export...
+[default] Exporting VM...
+[default] Compressing package to: /Users/astaxie/vagrant/package.box
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant plugin&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;用于安装卸载插件&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant provision&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;通常情况下Box只做最基本的设置，而不是设置好所有的环境，因此Vagrant通常使用Chef或者Puppet来做进一步的环境搭建。那么Chef或者Puppet称为provisioning，而该命令就是指定开启相应的provisioning。按照Vagrant作者的说法，所谓的provisioning就是&amp;raquo;The problem of installing software on a booted system&amp;raquo;的意思。除了Chef和Puppet这些主流的配置管理工具之外，我们还可以使用Shell来编写安装脚本。&lt;/p&gt;
+
+&lt;p&gt;例如： &lt;code&gt;vagrant provision --provision-with chef&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant reload&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;重新启动虚拟机，主要用于重新载入配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant reload
+[default] Attempting graceful shutdown of VM...
+[default] Setting the name of the VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Forwarding ports...
+[default] -- 22 =&amp;gt; 2222 (adapter 1)
+[default] Booting VM...
+[default] Waiting for VM to boot. This can take a few minutes.
+[default] VM booted and ready for use!
+[default] Setting hostname...
+[default] Mounting shared folders...
+[default] -- /vagrant
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant resume&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;恢复前面被挂起的状态&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$vagrant resume
+[default] Resuming suspended VM...
+[default] Booting VM...
+[default] Waiting for VM to boot. This can take a few minutes.
+[default] VM booted and ready for use!
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant ssh-config&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;输出用于ssh连接的一些信息&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$vagrant ssh-config
+Host default
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile &amp;quot;/Users/astaxie/.vagrant.d/insecure_private_key&amp;quot;
+  IdentitiesOnly yes
+  LogLevel FATAL
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant status&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;获取当前虚拟机的状态&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$vagrant status
+Current machine states:
+
+
+default                   running (virtualbox)
+
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant suspend&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;挂起当前的虚拟机&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant suspend
+[default] Saving VM state and suspending execution...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;模拟打造多机器的分布式系统&#34;&gt;模拟打造多机器的分布式系统&lt;/h2&gt;
+
+&lt;p&gt;前面这些单主机单虚拟机主要是用来自己做开发机，从这部分开始的内容主要将向大家介绍如何在单机上通过虚拟机来打造分布式造集群系统。这种多机器模式特别适合以下几种人：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;快速建立产品网络的多机器环境，例如web服务器、db服务器&lt;/li&gt;
+&lt;li&gt;建立一个分布式系统，学习他们是如何交互的&lt;/li&gt;
+&lt;li&gt;测试API和其他组件的通信&lt;/li&gt;
+&lt;li&gt;容灾模拟，网络断网、机器死机、连接超时等情况&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Vagrant支持单机模拟多台机器，而且支持一个配置文件Vagrntfile就可以跑分布式系统。&lt;/p&gt;
+
+&lt;p&gt;现在我们来建立多台VM跑起來，並且让他们之间能够相通信，假设一台是应用服务器、一台是DB服务器，那么这个结构在Vagrant中非常简单，其实和单台的配置差不多，你只需要通过&lt;code&gt;config.vm.define&lt;/code&gt;来定义不同的角色就可以了，现在我们打开配置文件进行如下设置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Vagrant.configure(&amp;quot;2&amp;quot;) do |config|
+  config.vm.define :web do |web|
+    web.vm.provider &amp;quot;virtualbox&amp;quot; do |v|
+          v.customize [&amp;quot;modifyvm&amp;quot;, :id, &amp;quot;--name&amp;quot;, &amp;quot;web&amp;quot;, &amp;quot;--memory&amp;quot;, &amp;quot;512&amp;quot;]
+    end
+    web.vm.box = &amp;quot;base&amp;quot;
+    web.vm.hostname = &amp;quot;web&amp;quot;
+    web.vm.network :private_network, ip: &amp;quot;11.11.1.1&amp;quot;
+  end
+
+  config.vm.define :db do |db|
+    db.vm.provider &amp;quot;virtualbox&amp;quot; do |v|
+          v.customize [&amp;quot;modifyvm&amp;quot;, :id, &amp;quot;--name&amp;quot;, &amp;quot;db&amp;quot;, &amp;quot;--memory&amp;quot;, &amp;quot;512&amp;quot;]
+    end
+    db.vm.box = &amp;quot;base&amp;quot;
+    db.vm.hostname = &amp;quot;db&amp;quot;
+    db.vm.network :private_network, ip: &amp;quot;11.11.1.2&amp;quot;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里的设置和前面我们单机设置配置类似，只是我们使用了&lt;code&gt;:web&lt;/code&gt;以及&lt;code&gt;:db&lt;/code&gt;分別做了两个VM的设置，并且给每个VM设置了不同的&lt;code&gt;hostname&lt;/code&gt;和IP，设置好之后再使用&lt;code&gt;vagrant up&lt;/code&gt;将虚拟机跑起来：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant up
+Bringing machine &#39;web&#39; up with &#39;virtualbox&#39; provider...
+Bringing machine &#39;db&#39; up with &#39;virtualbox&#39; provider...
+[web] Setting the name of the VM...
+[web] Clearing any previously set forwarded ports...
+[web] Creating shared folders metadata...
+[web] Clearing any previously set network interfaces...
+[web] Preparing network interfaces based on configuration...
+[web] Forwarding ports...
+[web] -- 22 =&amp;gt; 2222 (adapter 1)
+[web] Running any VM customizations...
+[web] Booting VM...
+[web] Waiting for VM to boot. This can take a few minutes.
+[web] VM booted and ready for use!
+[web] Setting hostname...
+[web] Configuring and enabling network interfaces...
+[web] Mounting shared folders...
+[web] -- /vagrant
+[db] Setting the name of the VM...
+[db] Clearing any previously set forwarded ports...
+[db] Fixed port collision for 22 =&amp;gt; 2222. Now on port 2200.
+[db] Creating shared folders metadata...
+[db] Clearing any previously set network interfaces...
+[db] Preparing network interfaces based on configuration...
+[db] Forwarding ports...
+[db] -- 22 =&amp;gt; 2200 (adapter 1)
+[db] Running any VM customizations...
+[db] Booting VM...
+[db] Waiting for VM to boot. This can take a few minutes.
+[db] VM booted and ready for use!
+[db] Setting hostname...
+[db] Configuring and enabling network interfaces...
+[db] Mounting shared folders...
+[db] -- /vagrant
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;看到上面的信息输出后，我们就可以通过&lt;code&gt;vagrant ssh&lt;/code&gt;登录虚拟机了，但是这次和上次使用的不一样了，这次我们需要指定相应的角色，用来告诉ssh你期望连接的是哪一台：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant ssh web
+vagrant@web:~$
+
+$ vagrant ssh db
+vagrant@db:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;是不是很酷！现在接下来我们再来验证一下虚拟机之间的通信，让我们先使用ssh登录web虚拟机，然后在web虚拟机上使用ssh登录db虚拟机(默认密码是&lt;code&gt;vagrant&lt;/code&gt;)：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant ssh web
+Linux web 2.6.32-38-server #83-Ubuntu SMP Wed Jan 4 11:26:59 UTC 2012 x86_64 GNU/Linux
+Ubuntu 10.04.4 LTS
+
+Welcome to the Ubuntu Server!
+ * Documentation:  http://www.ubuntu.com/server/doc
+New release &#39;precise&#39; available.
+Run &#39;do-release-upgrade&#39; to upgrade to it.
+
+Welcome to your Vagrant-built virtual machine.
+Last login: Thu Aug  8 18:55:44 2013 from 10.0.2.2
+vagrant@web:~$ ssh 11.11.1.2
+The authenticity of host &#39;11.11.1.2 (11.11.1.2)&#39; can&#39;t be established.
+RSA key fingerprint is e7:8f:07:57:69:08:6e:fa:82:bc:1c:f6:53:3f:12:9e.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &#39;11.11.1.2&#39; (RSA) to the list of known hosts.
+vagrant@11.11.1.2&#39;s password:
+Linux db 2.6.32-38-server #83-Ubuntu SMP Wed Jan 4 11:26:59 UTC 2012 x86_64 GNU/Linux
+Ubuntu 10.04.4 LTS
+
+Welcome to the Ubuntu Server!
+ * Documentation:  http://www.ubuntu.com/server/doc
+New release &#39;precise&#39; available.
+Run &#39;do-release-upgrade&#39; to upgrade to it.
+
+Welcome to your Vagrant-built virtual machine.
+Last login: Thu Aug  8 18:58:50 2013 from 10.0.2.2
+vagrant@db:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过上面的信息我们可以看到虚拟机之间通信是畅通的，所以现在开始你伟大的架构设计吧，你想设计怎么样的架构都可以，唯一限制你的就是你主机的硬件配置了。&lt;/p&gt;
+
+&lt;h2 id=&#34;links&#34;&gt;links&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;preface.md&#34;&gt;目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;上一节: &lt;a href=&#34;01.2.md&#34;&gt;Vagrant安装配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下一节: &lt;a href=&#34;01.4.md&#34;&gt;Go环境安装配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>sublime插件集合</title>
-      <link>http://localhost:1313/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io:37775/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Tue, 03 Nov 2015 11:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://localhost:1313/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io:37775/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;sublime编辑器插件&#34;&gt;sublime编辑器插件&lt;/h2&gt;
@@ -43,10 +528,10 @@
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://localhost:1313/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io:37775/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://localhost:1313/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io:37775/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;安装命令-运行即可&#34;&gt;安装命令，运行即可&lt;/h3&gt;
@@ -66,11 +551,17 @@ sudo apt-get install lxc-docker
     
     <item>
       <title>welcome</title>
-      <link>http://localhost:1313/2015/10/31/welcome/</link>
+      <link>http://wixb50.github.io:37775/2015/10/31/welcome/</link>
       <pubDate>Sat, 31 Oct 2015 16:14:34 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://localhost:1313/2015/10/31/welcome/</guid>
-      <description>&lt;p&gt;Stay hungury,Stay foolish.&lt;/p&gt;
+      <guid>http://wixb50.github.io:37775/2015/10/31/welcome/</guid>
+      <description>
+
+&lt;h2 id=&#34;stay-hungury-stay-foolish&#34;&gt;Stay hungury,Stay foolish.&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tonybai.com/2015/09/23/intro-of-gohugo/&#34;&gt;使用Hugo搭建静态站点&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

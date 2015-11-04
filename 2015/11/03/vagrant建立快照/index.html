@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Editor &middot; Wixb</title>
+  <title>Vagrant建立快照 &middot; Wixb</title>
 
   
   <link rel="stylesheet" href="http://wixb50.github.io:37775/css/poole.css">
@@ -26,10 +26,10 @@
   
   
   
-  <link href="http://wixb50.github.io:37775/categories/editor/index.xml" rel="alternate" type="application/rss+xml" title="Wixb blog &middot; Wixb" />
+  
 
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Vagrant建立快照">
+  <meta name="keywords" content="vagrant">
   <link rel="author" href="http://plus.google.com/wixb50">
 </head>
 <body class="theme-base-0c">
@@ -87,17 +87,62 @@
 
 
 <div class="content container">
-  <ul class="posts">
-  
-    <li><a href="http://wixb50.github.io:37775/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/">sublime插件集合</a>
+  <div class="post">
+    <h1>Vagrant建立快照</h1>
+    <span class="post-date">Nov 3, 2015 &middot; 1 minute read
     
-    &middot;
-    <a class="label" href="http://wixb50.github.io:37775/categories/editor">editor</a>
+    <br/>
+    <a class="label" href="http://wixb50.github.io:37775/categories/cloud">cloud</a><a class="label" href="http://wixb50.github.io:37775/categories/vagrant">vagrant</a>
     </span>
-    &middot; <time>Nov 3, 2015</time></li>
+    <blockquote>
+<p>使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。</p>
+</blockquote>
+
+<p>安装Vagrant快照插件：<br />
+<code>vagrant plugin install vagrant-multiprovider-snap</code></p>
+
+<pre><code>$ vagrant snap
+Usage: vagrant snap &lt;command&gt; [&lt;args&gt;]
+
+Available subcommands:
+     back
+     delete
+     go
+     list
+     take
+
+For help on any individual command run `vagrant snapshot &lt;command&gt; -h
+</code></pre>
+
+<p>使用方法：</p>
+
+<ul>
+<li>创建一个快照<br />
+<code>vagrant snapshot take &quot;Name&quot;</code></li>
+<li>查看快照列表<br />
+<code>vagrant snapshot list</code></li>
+<li>从指定快照中恢复<br />
+<code>vagrant snapshot go &quot;Name&quot;</code></li>
+<li>删除一个快照<br />
+<code>vagrant snapshot delete &quot;Name&quot;</code></li>
+</ul>
+
+<hr />
+
+<p>一些参考资料：</p>
+
+<ul>
+<li><a href="http://segmentfault.com/a/1190000000264347">使用 Vagrant 打造跨平台开发环境</a></li>
+<li><a href="http://www.williamsang.com/archives/2401.html">Vagrant 三种网络配置详解</a></li>
+</ul>
+
+  </div>
   
-  </ul>
 </div>
+
+
+
+
 <script src="http://wixb50.github.io:37775/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
