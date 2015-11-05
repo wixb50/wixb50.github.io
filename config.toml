@@ -19,7 +19,7 @@ paginate = 10
 paginatePath = "page"
 
 # Enable Disqus integration
-#disqusShortname = "Wixb"
+disqusShortname = "wixb"
 
 [permalinks]
     post = "/:year/:month/:day/:title/"
