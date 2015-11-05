@@ -6,7 +6,7 @@
 ./hugo server -b "http://wixb50.gitcafe.io/" --appendPort=false
 
 #2.then submit the source file to develop branch.
-git add .
+git add content
 git commit -m "submit message"
 git push origin develop
 
