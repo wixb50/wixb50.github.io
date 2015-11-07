@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gitlab on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/gitlab/</link>
+    <description>Recent content in Gitlab on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Thu, 05 Nov 2015 13:26:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/gitlab/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>gitlab搭建教程</title>
+      <link>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <description>
+
+&lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;测试搭建环境:ubuntu14.04/trustry&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参考教程&lt;br /&gt;
+&amp;gt; 1.&lt;a href=&#34;https://about.gitlab.com/downloads/&#34;&gt;官方教程&lt;/a&gt;&lt;br /&gt;
+&amp;gt; 2.&lt;a href=&#34;http://www.cnblogs.com/restran/p/4063880.html&#34;&gt;在自己的服务器上部署 GitLab 社区版&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

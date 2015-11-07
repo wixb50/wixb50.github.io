@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Jenkins教程-简单ssh构建 &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="简单ssh构建">
+  <meta name="keywords" content="git,jenkins">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/MD5%20hash%20of%20your%20Gravatar%20email%20address?s=200"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Jenkins教程-简单ssh构建</h1>
+    <span class="post-date">Nov 5, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/git">git</a><a class="label" href="http://wixb50.github.io/categories/jenkins">jenkins</a>
+    </span>
+    
+
+<h1 id="jenkins教程之-简单远程执行ssh构建">Jenkins教程之——简单远程执行ssh构建</h1>
+
+<hr />
+
+<p>Jenkins CI is the leading open-source continuous integration server.</p>
+
+<h2 id="说明">说明</h2>
+
+<hr />
+
+<p>此教程中jenkins只充当于一个中间件的作用，并且所有的构建和部署都在<strong>远端服务器</strong>完成。</p>
+
+<h2 id="安装">安装</h2>
+
+<hr />
+
+<h3 id="jenkins安装">jenkins安装</h3>
+
+<p>这个自行google去，教程很简单，只要把war包下载执行即可，本文是基于dokcer的jenkins镜像安装的。</p>
+
+<h3 id="gitlab安装">gitlab安装</h3>
+
+<p>见<a href="https://gitlab.com/">gitlab官网</a>，或者可以直接使用gitlab托管源码。</p>
+
+<h2 id="jenkins配置">jenkins配置</h2>
+
+<hr />
+
+<p>1.配置安全设置：<code>系统管理-&gt;Configure Global Security</code>中启用安全，然后根据自己需要，可配置用户权限等。</p>
+
+<p>2.插件安装：<code>系统管理-&gt;管理插件</code>中安装可选插件，本教程中需要的插件有：GIT client plugin、GIT plugin、Gitlab Hook Plugin、<strong>Publish Over SSH</strong>。</p>
+
+<p>3.新建一个<code>构建一个自由风格的软件项目</code>，输入名称(不要带大写)。</p>
+
+<p>4.然后在<code>源码管理</code>地方选择<code>Git</code>输入<code>Repository URL</code>，以及配置好<code>Credentials</code>(可选择username或者ssh配置)，完成后选择要构建的分支<code>e.g.,*/develop</code>。</p>
+
+<p>5.<strong>构建触发器</strong>选择<code>触发远程构建</code>，并根据提示填好身份令牌，<strong>并且在</strong>你的<code>gitlab项目</code>中设置好<code>web hook(e.g.,JENKINS_URL/job/zeu_frontend/build?token=TOKEN_NAME)</code>。</p>
+
+<p>6.<strong>构建</strong><code>增加构建步骤</code>选择<code>send files or execute commands over ssh</code>，然后配置好组要在远端执行脚本的ssh server测试能连接上，然后在<code>Exec command</code>中输入脚本，或者<code>Transfer Set Source files</code>可以执行jenkins中的脚本在远端执行，这里简单起见，就直接输入命令。</p>
+
+<p>7.这样就差不多了，还有想加的步骤，自己加把，提交一下，是不是自己开始构建了呢。</p>
+
+<p><strong>提示：</strong>输入的脚本要自己在远端跑一下，能完整跑通才行，注意为远程服务器git配置号user和name，以及sshKey，这样就不要输入密码pull了。</p>
+
+<h2 id="auth">Auth</h2>
+
+<hr />
+
+<p>Support by <a href="http://elegencetse.com">elegancetse</a>.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+

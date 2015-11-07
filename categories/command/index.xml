@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Command on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/command/</link>
+    <description>Recent content in Command on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Sat, 07 Nov 2015 22:07:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/command/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ubuntu常用命令集合</title>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;shutdown –help  #可以查看shutdown命令如何使用，当然也可以使用man shutdown命令。
+shutdown -h now #现在立即关机
+shutdown -r now #现在立即重启
+shutdown -r +3 #三分钟后重启
+shutdown -h +3 “The System will shutdown after 3 minutes” #提示使用者将在三分钟后关机
+shutdown -r 20:23 #在20：23时将重启计算机
+shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

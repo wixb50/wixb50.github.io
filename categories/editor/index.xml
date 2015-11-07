@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Editor on Wixb blog</title>
-    <link>http://wixb50.github.io:37775/categories/editor/</link>
+    <link>http://wixb50.github.io/categories/editor/</link>
     <description>Recent content in Editor on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Tue, 03 Nov 2015 11:21:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io:37775/categories/editor/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/editor/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>sublime插件集合</title>
-      <link>http://wixb50.github.io:37775/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Tue, 03 Nov 2015 11:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io:37775/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/sublime%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;sublime编辑器插件&#34;&gt;sublime编辑器插件&lt;/h2&gt;

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Markdown简明语法教程 &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Markdown简明语法教程">
+  <meta name="keywords" content="markdown">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/MD5%20hash%20of%20your%20Gravatar%20email%20address?s=200"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Markdown简明语法教程</h1>
+    <span class="post-date">Nov 5, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/markdown">markdown</a><a class="label" href="http://wixb50.github.io/categories/develop">develop</a>
+    </span>
+    
+
+<h1 id="markdown简明语法教程">Markdown简明语法教程</h1>
+
+<p><strong>说明：</strong></p>
+
+<ul>
+<li>本教程基于Markdown语言编写，项目地址位于<a href="https://github.com/Melo618/Simple-Markdown-Guide">Simple-Markdown-Guide</a>。</li>
+<li>本教程定位为基础教程，更加详细的用法可参考其他资料。</li>
+<li>本教程中代码块内的代码为Markdown的语法。</li>
+<li>本教程中部分语法使用的是<a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a>，GFM语法与标准语法在不同环境中存在解析差异，本教程在使用时会加以说明。</li>
+<li>推荐使用Haroopad(Win)、MarkdownPad(Win)和Mou(OS X)编辑器，部分编辑器中文效果欠佳，可通过自定义CSS字体解决。</li>
+</ul>
+
+<h2 id="基本">基本</h2>
+
+<ul>
+<li>Markdown是一种用来写作的轻量级标记语言。</li>
+<li>用标记语法，来代替常见的排版格式。</li>
+<li>兼容 HTML代码。</li>
+<li>特殊字符自动转换，例如<code>&lt;</code>和<code>&amp;</code>。</li>
+</ul>
+
+<h2 id="字体">字体</h2>
+
+<ul>
+<li>使用星号<code>*</code>和底号<code>_</code>表示<code>&lt;em&gt;</code>标签。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  *斜体*
+  _斜体_
+</code></pre>
+
+<p>效果：</p>
+
+<p><em>斜体</em></p>
+
+<ul>
+<li>使用双星号<code>**</code>和双底号<code>__</code>表示<code>&lt;strong&gt;</code>标签。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  **强调**
+  __强调__
+</code></pre>
+
+<p>效果：</p>
+
+<p><strong>强调</strong></p>
+
+<h2 id="换行">换行</h2>
+
+<ul>
+<li>单一段落用空白行。</li>
+</ul>
+
+<h2 id="标题">标题</h2>
+
+<ul>
+<li>生成<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>标签，是通过在文字前面加上同等个数<code>#</code>符号来实现。</li>
+<li>出于美观，也可以使用对称的闭合式标题符号。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  ### 这是标题
+  ### 这是标题 ###
+</code></pre>
+
+<p>效果：</p>
+
+<p>### 这是标题</p>
+
+<h2 id="列表">列表</h2>
+
+<ul>
+<li><code>*</code>，<code>-</code>，<code>+</code>这三个符号效果都一样，这3个符号被称为Markdown列表符号。而有序列表则使用数字接着一个英文句点（数字大小并不会影响输出序列）。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  * 第一行
+  * 第二行
+  * 第三行
+  6. 第四行
+  5. 第五行
+  4. 第六行
+</code></pre>
+
+<p>效果：</p>
+
+<ul>
+<li>第一行</li>
+<li>第二行</li>
+<li>第三行</li>
+<li>第一行</li>
+<li>第二行</li>
+<li>第三行</li>
+</ul>
+
+<h2 id="引用">引用</h2>
+
+<ul>
+<li><code>&gt;</code>符号表示引用，可简写于第一行，也可以每一行都添加。</li>
+<li>区块的引用可以嵌套，只需要在层次数上加上同等数量的<code>&gt;</code>符号。</li>
+<li>引用内可以使用其他Markdown语法，包括标题、列表、代码区块等。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  &gt;    引用
+  &gt;    &gt;    引用中的引用
+</code></pre>
+
+<p>效果：</p>
+
+<blockquote>
+<p>引用
+   &gt;    引用中的引用</p>
+</blockquote>
+
+<h2 id="代码区块">代码区块</h2>
+
+<ul>
+<li><code>`</code>是表示inline代码，4个<code> </code>（空格）来表示缩进式代码段，分别对应HTML的<code>&lt;code&gt;</code>，<code>&lt;pre&gt;</code>标签。也可以使用<code>```</code>来表达围栏式代码块（<strong>GFM语法</strong>，部分编辑器不支持），并指定他的语言类型，实现语法高亮。围栏式代码块可以大量减少缩进的使用，大规模的代码块使用非常方便。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  `sort()` 函数按升序对给定数组的值排序。
+</code></pre>
+
+<p>普通的缩进式代码块。</p>
+
+<pre><code>      &lt;?php
+          $my_array = array('a' =&gt; 'Dog', 'b' =&gt; 'Cat');
+          sort($my_array);
+          print_r($my_array);
+      ?&gt;
+</code></pre>
+
+<p>带语法高亮的围栏式代码块（<strong>GFM语法</strong>，部分编辑器不支持）。</p>
+
+<pre><code>  ```php
+  &lt;?php
+      $my_array = array('a' =&gt; 'Dog', 'b' =&gt; 'Cat');
+      sort($my_array);
+      print_r($my_array);
+  ?&gt;
+  ```
+</code></pre>
+
+<p>效果：</p>
+
+<p><code>sort()</code> 函数按升序对给定数组的值排序。</p>
+
+<p>普通的缩进式代码块。</p>
+
+<pre><code>  &lt;?php
+      $my_array = array('a' =&gt; 'Dog', 'b' =&gt; 'Cat');
+      sort($my_array);
+      print_r($my_array);
+  ?&gt;
+</code></pre>
+
+<p>带语法高亮的围栏式代码块（<strong>GFM语法</strong>，部分编辑器不支持）。</p>
+
+<pre><code class="language-php">  &lt;?php
+      $my_array = array('a' =&gt; 'Dog', 'b' =&gt; 'Cat');
+      sort($my_array);
+      print_r($my_array);
+  ?&gt;
+</code></pre>
+
+<h2 id="链接">链接</h2>
+
+<ul>
+<li>Markdown支持两种形式的链接语法：行内式和参考式两种形式。</li>
+</ul>
+
+<p>行内式链接，是在方括号后面接圆括号即可。
+  例如：</p>
+
+<pre><code>  [Melo618](http://melo618.com &quot;Melo618的博客&quot;)
+</code></pre>
+
+<p>效果：</p>
+
+<p><a href="http://melo618.com" title="Melo618的博客">Melo618</a></p>
+
+<p>参考式链接，是在链接文字的括号后面加上另一个方括号，在第二个方括号里面要填入用以辨识链接的标记。
+  例如：</p>
+
+<pre><code>  [Melo618][blog]
+
+</code></pre>
+
+<p>效果：</p>
+
+<p><a href="http://melo618.com" title="Melo618的博客">Melo618</a></p>
+
+<h2 id="图片">图片</h2>
+
+<ul>
+<li>Markdown使用一种和链接很相似的语法来标记图片，只是多了一个<code>!</code>在最前面，同样也允许两种样式：行内式和参考式。</li>
+<li>目前为止，Markdown还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的<code>&lt;img&gt;</code>标签。</li>
+</ul>
+
+<p>行内式链接，是在方括号后面接圆括号即可。
+  例如：</p>
+
+<pre><code>  ![微信](http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png &quot;微信&quot;)
+</code></pre>
+
+<p>效果：</p>
+
+<p><img src="http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png" alt="微信" title="微信" />
+</p>
+
+<p>参考式链接，是在链接文字的括号后面加上另一个方括号，在第二个方括号里面要填入用以辨识链接的标记。
+  例如：</p>
+
+<pre><code>  ![微信][QR]
+
+</code></pre>
+
+<p>效果：</p>
+
+<p><img src="http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png" alt="微信" title="微信" />
+</p>
+
+<h2 id="分隔线">分隔线</h2>
+
+<ul>
+<li>使用三个以上的<code>*</code>、<code>-</code>来建立一个分隔线，行内不能有其他字符。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  * * *
+  ***
+  - - -
+  ---
+</code></pre>
+
+<p>效果：</p>
+
+<p>上文</p>
+
+<hr />
+
+<p>下文</p>
+
+<h2 id="表格">表格</h2>
+
+<ul>
+<li>Markdown使用<code>|</code>和<code>-</code>来绘制表格，<code>:</code>可控制左对齐、右对齐及居中。</li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>  | Title   | Description                        |
+  | :------ | :--------------------------------: |
+  | Version | 0.0.1                              |
+  | Editor  | [Melo618](mailto:Editor@Email.com) |
+</code></pre>
+
+<p>效果：</p>
+
+<p>| Title   | Description                        |
+  | :&mdash;&mdash; | :&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;: |
+  | Version | 0.0.1                              |
+  | Editor  | <a href="mailto:Editor@Email.com">Melo618</a> |</p>
+
+<h2 id="特殊符号">特殊符号</h2>
+
+<ul>
+<li>Markdown利用<code>\</code>字符来转义一些在语法中有特殊意义的符号。</li>
+</ul>
+
+<h2 id="推荐阅读">推荐阅读</h2>
+
+<ul>
+<li><a href="http://wowubuntu.com/markdown/index.html">Markdown语法说明（简体中文版）</a></li>
+<li><a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax Documentation</a></li>
+<li><a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a></li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>Copyright © 2014-2015, Melo Chan. <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+
