@@ -12,7 +12,7 @@ git push origin develop
 
 #3.then submit the static web to master branch.
 cd public
-git add .
+git add -A
 git commit -m "submit message"
 git push origin master
 

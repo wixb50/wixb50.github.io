@@ -8,5 +8,11 @@
 
 **master**:保存hugo生成的静态网站(develop的public文件夹)，用于展示在[http://wixb50.github.io/](http://wixb50.github.io/)主页上。
 
+**运行提交**
+
+1.直接使用运行脚本`./github-submit.sh`，将develop、master分支推送到github上面。  
+
+2.直接使用运行脚本`./gitcafe-submit.sh`，将master分支强制推送到gitcafe的`gitcafe-pages`分支上面。
+
 ---
 #### Support by Wixb.

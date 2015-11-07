@@ -6,7 +6,8 @@ sleep 2
 pkill hugo
 
 #2.then submit the source file to develop branch.
-git add content
+git add -A
+git reset HEAD public
 git commit -m "submit message"
 git push origin develop
 
