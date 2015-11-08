@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>docker安装与配置 &middot; Wixb</title>
+  <title>sublime-text-3配置 &middot; Wixb</title>
 
   
   <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
@@ -28,8 +28,8 @@
   
   
 
-  <meta name="description" content="简述docker的安装与配置">
-  <meta name="keywords" content="docker">
+  <meta name="description" content="收集一些自己常用的sublime插件集合和平常配置">
+  <meta name="keywords" content="sublime">
   <link rel="author" href="http://plus.google.com/wixb50">
 </head>
 <body class="theme-base-0c">
@@ -88,26 +88,96 @@
 
 <div class="content container">
   <div class="post">
-    <h1>docker安装与配置</h1>
-    <span class="post-date">Nov 2, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/#disqus_thread">Comments</a>
+    <h1>sublime-text-3配置</h1>
+    <span class="post-date">Nov 3, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.github.io/categories/docker">docker</a><a class="label" href="http://wixb50.github.io/categories/cloud">cloud</a>
+    <a class="label" href="http://wixb50.github.io/categories/editor">editor</a>
     </span>
     
 
-<h3 id="安装命令-运行即可">安装命令，运行即可</h3>
+<h2 id="sublime-text-3编辑器插件">sublime text 3编辑器插件</h2>
 
-<pre><code>sudo apt-get install apt-transport-https
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-sudo bash -c &quot;echo deb https://get.docker.io/ubuntu docker main &gt; /etc/apt/sources.list.d/docker.list&quot;
-sudo apt-get update
-sudo apt-get install lxc-docker
+<p>1.HTML代码格式化插件<code>Tag</code>;</p>
+
+<p>2.右键菜单增强插件<code>SideBarEnhancements</code>;</p>
+
+<p>3.JS代码格式化插件<code>JSformat</code>;</p>
+
+<p>4.Json格式化插件<code>Pretty Json</code>;</p>
+
+<p>5.Go语言sublime编辑器<code>Gosublime</code>;</p>
+
+<p>6.markdown编辑和预览器：</p>
+
+<ul>
+<li><code>MarkDown Edting</code>,markdown编辑插件;<br /></li>
+<li><code>omniMarkupPreview</code>,浏览器markdown预览导出.</li>
+</ul>
+
+<h2 id="sublime-text-3安装package-control">sublime text 3安装Package Control</h2>
+
+<h3 id="简单安装方法">简单安装方法</h3>
+
+<p>The simplest method of installation is through the Sublime Text console. The console is accessed via the<code>ctrl+</code> shortcut or the<code>View &gt; Show Console</code>menu. Once open, paste the appropriate Python code for your version of Sublime Text into the console.</p>
+
+<pre><code>import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 </code></pre>
 
-<hr />
+<h3 id="常规安装方法">常规安装方法</h3>
 
-<p>完</p>
+<p>If for some reason the console installation instructions do not work for you (such as having a proxy on your network), perform the following steps to manually install <a href="https://packagecontrol.io/Package%20Control.sublime-package">Package Control</a>:</p>
+
+<pre><code>1.Click the Preferences &gt; Browse Packages… menu
+2.Browse up a folder and then into the Installed Packages/ folder
+3.Download ‘Package Control.sublime-package’ and copy it into the ‘Installed Packages/’ directory
+4.Restart Sublime Text
+</code></pre>
+
+<p>结束</p>
+
+<h2 id="sublime-text-2-3-输入法修复-ubuntu-debian">Sublime Text 2/3 输入法修复[Ubuntu(Debian)]</h2>
+
+<p>主要目的:</p>
+
+<ul>
+<li>安装 Sublime Text 3</li>
+<li>安装 Fcitx 输入法 + 皮肤</li>
+<li>修复 Sublime Text 2/3&rsquo;s 在 Ubuntu(Debian) 系统下的无法输入中文输入法的问题</li>
+</ul>
+
+<h3 id="注意"><strong>注意</strong></h3>
+
+<ul>
+<li><strong>这个修复仅当在终端中使用 <code>subl .</code> 调用 Sublime Text 的时有效, 具体原因请看源代码<a href="https://github.com/lyfeyaj/sublime-text-imfix/blob/master/src/subl">src/subl</a></strong></li>
+</ul>
+
+<h3 id="使用方法">使用方法</h3>
+
+<ul>
+<li>更新并升级系统为最新(较新的系统会解决很多可能出现的问题)</li>
+</ul>
+
+<pre><code class="language-bash">sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre>
+
+<ul>
+<li>克隆项目到本地 :</li>
+</ul>
+
+<pre><code class="language-bash">git clone https://github.com/lyfeyaj/sublime-text-imfix.git
+</code></pre>
+
+<ul>
+<li>运行脚本 :</li>
+</ul>
+
+<pre><code class="language-bash">cd sublime-text-imfix &amp;&amp; ./sublime-imfix
+</code></pre>
+
+<ul>
+<li>完成! 重新启动后就可以在Sublime Text 2/3 中 使用Fcitx了! 注意: 皮肤可能需要自己选择 ^_^</li>
+</ul>
 
   </div>
   <div id="disqus_thread"></div>
