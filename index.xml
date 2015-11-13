@@ -2,22 +2,259 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/</link>
+    <link>http://wixb50.github.io/</link>
     <description>Recent content on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Sat, 07 Nov 2015 22:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Nov 2015 21:35:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mysql数据字典生成工具</title>
+      <link>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
+      <description>
+
+&lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
+
+&lt;p&gt;一个php的在线词典生成器，便于将数据库导出成表格，一般论文里面可能有需要哦。&lt;/p&gt;
+
+&lt;p&gt;下载地址 &lt;a href=&#34;http://vdisk.weibo.com/s/yThjZrryTIxQl&#34;&gt;http://vdisk.weibo.com/s/yThjZrryTIxQl&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;效果图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.funboxpower.com/wp-content/uploads/2015/04/QQ%E6%88%AA%E5%9B%BE20150401141354.png&#34; alt=&#34;result&#34; /&gt;
+&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;如果不能下载的话，附上源码：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+/**
+ * 生成mysql数据字典
+ */
+header(&amp;quot;Content-type: text/html; charset=utf-8&amp;quot;);
+//配置数据库
+$dbserver   = &amp;quot;127.0.0.1&amp;quot;;
+$dbusername = &amp;quot;root&amp;quot;;
+$dbpassword = &amp;quot;root&amp;quot;;
+$database   = &amp;quot;wsx&amp;quot;;
+
+//其他配置
+$mysql_conn = @mysql_connect(&amp;quot;$dbserver&amp;quot;, &amp;quot;$dbusername&amp;quot;, &amp;quot;$dbpassword&amp;quot;) or die(&amp;quot;Mysql connect is error.&amp;quot;);
+mysql_select_db($database, $mysql_conn);
+mysql_query(&#39;SET NAMES utf8&#39;, $mysql_conn);
+$table_result = mysql_query(&#39;show tables&#39;, $mysql_conn);
+
+$no_show_table = array();    //不需要显示的表
+$no_show_field = array();   //不需要显示的字段
+
+//取得所有的表名
+while($row = mysql_fetch_array($table_result)){
+    if(!in_array($row[0],$no_show_table)){
+        $tables[][&#39;TABLE_NAME&#39;] = $row[0];
+    }
+}
+//替换所以表的表前缀
+if(@$_GET[&#39;prefix&#39;]){
+    $prefix = &#39;czzj&#39;;
+    foreach($tables as $key =&amp;gt; $val){
+        $tableName = $val[&#39;TABLE_NAME&#39;];
+        $string = explode(&#39;_&#39;,$tableName);
+        if($string[0] != $prefix){  
+            $string[0] = $prefix;  
+            $newTableName = implode(&#39;_&#39;, $string);  
+            mysql_query(&#39;rename table &#39;.$tableName.&#39; TO &#39;.$newTableName);  
+        }
+    }
+    echo &amp;quot;替换成功！&amp;quot;;exit();
+}
+
+//循环取得所有表的备注及表中列消息
+foreach ($tables as $k=&amp;gt;$v) {
+    $sql  = &#39;SELECT * FROM &#39;;
+    $sql .= &#39;INFORMATION_SCHEMA.TABLES &#39;;
+    $sql .= &#39;WHERE &#39;;
+    $sql .= &amp;quot;table_name = &#39;{$v[&#39;TABLE_NAME&#39;]}&#39;  AND table_schema = &#39;{$database}&#39;&amp;quot;;
+    $table_result = mysql_query($sql, $mysql_conn);
+    while ($t = mysql_fetch_array($table_result) ) {
+        $tables[$k][&#39;TABLE_COMMENT&#39;] = $t[&#39;TABLE_COMMENT&#39;];
+    }
+
+    $sql  = &#39;SELECT * FROM &#39;;
+    $sql .= &#39;INFORMATION_SCHEMA.COLUMNS &#39;;
+    $sql .= &#39;WHERE &#39;;
+    $sql .= &amp;quot;table_name = &#39;{$v[&#39;TABLE_NAME&#39;]}&#39; AND table_schema = &#39;{$database}&#39;&amp;quot;;
+
+    $fields = array();
+    $field_result = mysql_query($sql, $mysql_conn);
+    while ($t = mysql_fetch_array($field_result) ) {
+        $fields[] = $t;
+    }
+    $tables[$k][&#39;COLUMN&#39;] = $fields;
+}
+mysql_close($mysql_conn);
+
+
+$html = &#39;&#39;;
+//循环所有表
+foreach ($tables as $k=&amp;gt;$v) {
+    $html .= &#39;  &amp;lt;h3&amp;gt;&#39; . ($k + 1) . &#39;、&#39; . $v[&#39;TABLE_COMMENT&#39;] .&#39;  （&#39;. $v[&#39;TABLE_NAME&#39;]. &#39;）&amp;lt;/h3&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;  &amp;lt;table border=&amp;quot;1&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;0&amp;quot; width=&amp;quot;100%&amp;quot;&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;      &amp;lt;tbody&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;          &amp;lt;tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;字段名&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;数据类型&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;默认值&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;允许非空&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;自动递增&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;备注&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;          &amp;lt;/tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+
+    foreach ($v[&#39;COLUMN&#39;] as $f) {
+        if(@!is_array($no_show_field[$v[&#39;TABLE_NAME&#39;]])){
+            $no_show_field[$v[&#39;TABLE_NAME&#39;]] = array();
+        }
+        if(!in_array($f[&#39;COLUMN_NAME&#39;],$no_show_field[$v[&#39;TABLE_NAME&#39;]])){
+            $html .= &#39;          &amp;lt;tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c1&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_NAME&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c2&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_TYPE&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c3&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_DEFAULT&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c4&amp;quot;&amp;gt;&#39; . $f[&#39;IS_NULLABLE&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c5&amp;quot;&amp;gt;&#39; . ($f[&#39;EXTRA&#39;]==&#39;auto_increment&#39;?&#39;是&#39;:&#39;&amp;amp;nbsp;&#39;) . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c6&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_COMMENT&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;          &amp;lt;/tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+        }
+    }
+    $html .= &#39;      &amp;lt;/tbody&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;  &amp;lt;/table&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+}
+?&amp;gt;
+&amp;lt;!doctype html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;WIXB数据库数据字典生成代码&amp;lt;/title&amp;gt;
+&amp;lt;meta name=&amp;quot;generator&amp;quot; content=&amp;quot;ThinkDb V1.0&amp;quot; /&amp;gt;
+&amp;lt;meta name=&amp;quot;author&amp;quot; content=&amp;quot;WIXB数据库数据字典生成代码&amp;quot; /&amp;gt;
+&amp;lt;meta name=&amp;quot;copyright&amp;quot; content=&amp;quot;2008-2014 Tensent Inc.&amp;quot; /&amp;gt;
+&amp;lt;style&amp;gt;
+body, td, th { font-family: &amp;quot;微软雅黑&amp;quot;; font-size: 14px; }
+.warp{margin:auto; width:900px;}
+.warp h3{margin:0px; padding:0px; line-height:30px; margin-top:10px;}
+table { border-collapse: collapse; border: 1px solid #CCC; background: #efefef; }
+table th { text-align: left; font-weight: bold; height: 26px; line-height: 26px; font-size: 14px; text-align:center; border: 1px solid #CCC; padding:5px;}
+table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-color: #fff; padding:5px;}
+.c1 { width: 120px; }
+.c2 { width: 120px; }
+.c3 { width: 150px; }
+.c4 { width: 80px; text-align:center;}
+.c5 { width: 80px; text-align:center;}
+.c6 { width: 270px; }
+&amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div class=&amp;quot;warp&amp;quot;&amp;gt;
+    &amp;lt;h1 style=&amp;quot;text-align:center;&amp;quot;&amp;gt;WIXB数据库数据字典生成代码&amp;lt;/h1&amp;gt;
+&amp;lt;?php echo $html; ?&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ubuntu常用软件集合</title>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;editor&#34;&gt;Editor&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
+1.安装配置好JDK环境,下载tar.gz文件,解压到&lt;code&gt;tar -zxvf ideaIU-14.tar.gz -C /usr/local/intellijIDEA(自己命名)&lt;/code&gt;;&lt;br /&gt;
+2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;几个license：
+(1)
+key:IDEA
+value:61156-YRN2M-5MNCN-NZ8D2-7B4EW-U12L4
+(2)
+key:huangwei
+value:97493-G3A41-0SO24-W57LI-Y2UGI-JGTU2
+(3)
+key:itey
+value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.sublimetext.com/3&#34;&gt;Sublime Text 3&lt;/a&gt; 下载deb包安装&lt;/li&gt;
+&lt;li&gt;神一样的&lt;a href=&#34;http://www.vim.org/&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt; How to &lt;a href=&#34;http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/&#34;&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;简单的MD编辑器&lt;a href=&#34;http://sourceforge.net/projects/retext/&#34;&gt;Retext&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git客户端&lt;a href=&#34;http://www.syntevo.com/smartgit/&#34;&gt;SmartGit&lt;/a&gt; 建议直接命令行&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;删除&lt;code&gt;.smartgit&lt;/code&gt;下面的&lt;code&gt;settings.xml&lt;/code&gt;即可重新使用1个月。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;美化&#34;&gt;美化&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;默认使用Unity桌面&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;unity-tweak-tool&lt;br /&gt;
+安装&lt;code&gt;sudo apt-get install unity-tweak-tool&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:tualatrix/ppa
+sudo apt-get update
+sudo apt-get install ubuntu-tweak
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;主题网址&lt;a href=&#34;http://gnome-look.org/&#34;&gt;http://gnome-look.org/&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;&lt;/li&gt;
+&lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
@@ -30,15 +267,30 @@ shutdown -h +3 “The System will shutdown after 3 minutes” #提示使用者�
 shutdown -r 20:23 #在20：23时将重启计算机
 shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h3&gt;
+
+&lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
+
+&lt;p&gt;这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。
+&amp;gt;这个命令最常用的参数是-s，具体用法是(软链接)：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo ln -s 源文件 目标文件&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;删除链接&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -113,10 +365,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>Markdown简明语法教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h1 id=&#34;markdown简明语法教程&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
@@ -415,35 +667,11 @@ nameserver 114.114.114.114
     </item>
     
     <item>
-      <title>gitlab搭建教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
-      <description>
-
-&lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;测试搭建环境:ubuntu14.04/trustry&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;参考教程&lt;br /&gt;
-&amp;gt; 1.&lt;a href=&#34;https://about.gitlab.com/downloads/&#34;&gt;官方教程&lt;/a&gt;&lt;br /&gt;
-&amp;gt; 2.&lt;a href=&#34;http://www.cnblogs.com/restran/p/4063880.html&#34;&gt;在自己的服务器上部署 GitLab 社区版&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Jenkins教程-简单ssh构建</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
+      <link>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
       <description>
 
 &lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;
@@ -499,11 +727,35 @@ nameserver 114.114.114.114
     </item>
     
     <item>
+      <title>gitlab搭建教程</title>
+      <link>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <description>
+
+&lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;测试搭建环境:ubuntu14.04/trustry&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参考教程&lt;br /&gt;
+&amp;gt; 1.&lt;a href=&#34;https://about.gitlab.com/downloads/&#34;&gt;官方教程&lt;/a&gt;&lt;br /&gt;
+&amp;gt; 2.&lt;a href=&#34;http://www.cnblogs.com/restran/p/4063880.html&#34;&gt;在自己的服务器上部署 GitLab 社区版&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
 git config --global user.name &amp;quot;xxx&amp;quot;                       # 配置用户名
 git config --global user.email &amp;quot;xxx@xxx.com&amp;quot;              # 配置邮件
@@ -596,10 +848,10 @@ git fsck
     
     <item>
       <title>restful架构设计</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
+      <link>http://wixb50.github.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Thu, 05 Nov 2015 13:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
       <description>&lt;p&gt;三、资源（Resources）&lt;/p&gt;
 
 &lt;p&gt;REST的名称&amp;raquo;表现层状态转化&amp;raquo;中，省略了主语。&amp;raquo;表现层&amp;raquo;其实指的是&amp;raquo;资源&amp;raquo;（Resources）的&amp;raquo;表现层&amp;raquo;。
@@ -620,10 +872,10 @@ URI只代表资源的实体，不代表它的形式。严格地说，有些网�
     
     <item>
       <title>etcd安装</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
+      <link>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -704,10 +956,10 @@ hello world
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 
@@ -776,10 +1028,10 @@ $ sudo export PATH=&amp;quot;$PATH:your path1:your path2 …&amp;quot;
     
     <item>
       <title>Vagrant建立快照</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
       <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -826,10 +1078,10 @@ For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt;
     
     <item>
       <title>Vagrant常用命令</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant常用命令&#34;&gt;Vagrant常用命令&lt;/h2&gt;
@@ -1105,10 +1357,10 @@ vagrant@db:~$
     
     <item>
       <title>sublime-text-3配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 11:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h2 id=&#34;sublime-text-3编辑器插件&#34;&gt;sublime text 3编辑器插件&lt;/h2&gt;
@@ -1198,10 +1450,10 @@ vagrant@db:~$
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;安装命令-运行即可&#34;&gt;安装命令，运行即可&lt;/h3&gt;
@@ -1216,22 +1468,6 @@ sudo apt-get install lxc-docker
 &lt;hr /&gt;
 
 &lt;p&gt;完&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>welcome</title>
-      <link>http://wixb50.gitcafe.io/2015/10/31/welcome/</link>
-      <pubDate>Sat, 31 Oct 2015 16:14:34 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/10/31/welcome/</guid>
-      <description>
-
-&lt;h2 id=&#34;stay-hungury-stay-foolish&#34;&gt;Stay hungury,Stay foolish.&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tonybai.com/2015/09/23/intro-of-gohugo/&#34;&gt;使用Hugo搭建静态站点&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

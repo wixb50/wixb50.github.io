@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/os/</link>
+    <link>http://wixb50.github.io/categories/os/</link>
     <description>Recent content in Os on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 07 Nov 2015 22:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
@@ -30,15 +30,30 @@ shutdown -h +3 “The System will shutdown after 3 minutes” #提示使用者�
 shutdown -r 20:23 #在20：23时将重启计算机
 shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h3&gt;
+
+&lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
+
+&lt;p&gt;这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。
+&amp;gt;这个命令最常用的参数是-s，具体用法是(软链接)：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo ln -s 源文件 目标文件&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;删除链接&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

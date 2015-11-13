@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubutnu on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/ubutnu/</link>
+    <description>Recent content in Ubutnu on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Thu, 12 Nov 2015 10:23:25 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/ubutnu/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ubuntu常用软件集合</title>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;editor&#34;&gt;Editor&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
+1.安装配置好JDK环境,下载tar.gz文件,解压到&lt;code&gt;tar -zxvf ideaIU-14.tar.gz -C /usr/local/intellijIDEA(自己命名)&lt;/code&gt;;&lt;br /&gt;
+2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;几个license：
+(1)
+key:IDEA
+value:61156-YRN2M-5MNCN-NZ8D2-7B4EW-U12L4
+(2)
+key:huangwei
+value:97493-G3A41-0SO24-W57LI-Y2UGI-JGTU2
+(3)
+key:itey
+value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.sublimetext.com/3&#34;&gt;Sublime Text 3&lt;/a&gt; 下载deb包安装&lt;/li&gt;
+&lt;li&gt;神一样的&lt;a href=&#34;http://www.vim.org/&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt; How to &lt;a href=&#34;http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/&#34;&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;简单的MD编辑器&lt;a href=&#34;http://sourceforge.net/projects/retext/&#34;&gt;Retext&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git客户端&lt;a href=&#34;http://www.syntevo.com/smartgit/&#34;&gt;SmartGit&lt;/a&gt; 建议直接命令行&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;删除&lt;code&gt;.smartgit&lt;/code&gt;下面的&lt;code&gt;settings.xml&lt;/code&gt;即可重新使用1个月。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;美化&#34;&gt;美化&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;默认使用Unity桌面&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;unity-tweak-tool&lt;br /&gt;
+安装&lt;code&gt;sudo apt-get install unity-tweak-tool&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:tualatrix/ppa
+sudo apt-get update
+sudo apt-get install ubuntu-tweak
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;主题网址&lt;a href=&#34;http://gnome-look.org/&#34;&gt;http://gnome-look.org/&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;&lt;/li&gt;
+&lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

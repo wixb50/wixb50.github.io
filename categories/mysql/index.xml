@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/mysql/</link>
+    <description>Recent content in Mysql on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Fri, 13 Nov 2015 21:35:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mysql数据字典生成工具</title>
+      <link>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
+      <description>
+
+&lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
+
+&lt;p&gt;一个php的在线词典生成器，便于将数据库导出成表格，一般论文里面可能有需要哦。&lt;/p&gt;
+
+&lt;p&gt;下载地址 &lt;a href=&#34;http://vdisk.weibo.com/s/yThjZrryTIxQl&#34;&gt;http://vdisk.weibo.com/s/yThjZrryTIxQl&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;效果图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.funboxpower.com/wp-content/uploads/2015/04/QQ%E6%88%AA%E5%9B%BE20150401141354.png&#34; alt=&#34;result&#34; /&gt;
+&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;如果不能下载的话，附上源码：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+/**
+ * 生成mysql数据字典
+ */
+header(&amp;quot;Content-type: text/html; charset=utf-8&amp;quot;);
+//配置数据库
+$dbserver   = &amp;quot;127.0.0.1&amp;quot;;
+$dbusername = &amp;quot;root&amp;quot;;
+$dbpassword = &amp;quot;root&amp;quot;;
+$database   = &amp;quot;wsx&amp;quot;;
+
+//其他配置
+$mysql_conn = @mysql_connect(&amp;quot;$dbserver&amp;quot;, &amp;quot;$dbusername&amp;quot;, &amp;quot;$dbpassword&amp;quot;) or die(&amp;quot;Mysql connect is error.&amp;quot;);
+mysql_select_db($database, $mysql_conn);
+mysql_query(&#39;SET NAMES utf8&#39;, $mysql_conn);
+$table_result = mysql_query(&#39;show tables&#39;, $mysql_conn);
+
+$no_show_table = array();    //不需要显示的表
+$no_show_field = array();   //不需要显示的字段
+
+//取得所有的表名
+while($row = mysql_fetch_array($table_result)){
+    if(!in_array($row[0],$no_show_table)){
+        $tables[][&#39;TABLE_NAME&#39;] = $row[0];
+    }
+}
+//替换所以表的表前缀
+if(@$_GET[&#39;prefix&#39;]){
+    $prefix = &#39;czzj&#39;;
+    foreach($tables as $key =&amp;gt; $val){
+        $tableName = $val[&#39;TABLE_NAME&#39;];
+        $string = explode(&#39;_&#39;,$tableName);
+        if($string[0] != $prefix){  
+            $string[0] = $prefix;  
+            $newTableName = implode(&#39;_&#39;, $string);  
+            mysql_query(&#39;rename table &#39;.$tableName.&#39; TO &#39;.$newTableName);  
+        }
+    }
+    echo &amp;quot;替换成功！&amp;quot;;exit();
+}
+
+//循环取得所有表的备注及表中列消息
+foreach ($tables as $k=&amp;gt;$v) {
+    $sql  = &#39;SELECT * FROM &#39;;
+    $sql .= &#39;INFORMATION_SCHEMA.TABLES &#39;;
+    $sql .= &#39;WHERE &#39;;
+    $sql .= &amp;quot;table_name = &#39;{$v[&#39;TABLE_NAME&#39;]}&#39;  AND table_schema = &#39;{$database}&#39;&amp;quot;;
+    $table_result = mysql_query($sql, $mysql_conn);
+    while ($t = mysql_fetch_array($table_result) ) {
+        $tables[$k][&#39;TABLE_COMMENT&#39;] = $t[&#39;TABLE_COMMENT&#39;];
+    }
+
+    $sql  = &#39;SELECT * FROM &#39;;
+    $sql .= &#39;INFORMATION_SCHEMA.COLUMNS &#39;;
+    $sql .= &#39;WHERE &#39;;
+    $sql .= &amp;quot;table_name = &#39;{$v[&#39;TABLE_NAME&#39;]}&#39; AND table_schema = &#39;{$database}&#39;&amp;quot;;
+
+    $fields = array();
+    $field_result = mysql_query($sql, $mysql_conn);
+    while ($t = mysql_fetch_array($field_result) ) {
+        $fields[] = $t;
+    }
+    $tables[$k][&#39;COLUMN&#39;] = $fields;
+}
+mysql_close($mysql_conn);
+
+
+$html = &#39;&#39;;
+//循环所有表
+foreach ($tables as $k=&amp;gt;$v) {
+    $html .= &#39;  &amp;lt;h3&amp;gt;&#39; . ($k + 1) . &#39;、&#39; . $v[&#39;TABLE_COMMENT&#39;] .&#39;  （&#39;. $v[&#39;TABLE_NAME&#39;]. &#39;）&amp;lt;/h3&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;  &amp;lt;table border=&amp;quot;1&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;0&amp;quot; width=&amp;quot;100%&amp;quot;&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;      &amp;lt;tbody&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;          &amp;lt;tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;字段名&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;数据类型&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;默认值&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;允许非空&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;自动递增&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;              &amp;lt;th&amp;gt;备注&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;          &amp;lt;/tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+
+    foreach ($v[&#39;COLUMN&#39;] as $f) {
+        if(@!is_array($no_show_field[$v[&#39;TABLE_NAME&#39;]])){
+            $no_show_field[$v[&#39;TABLE_NAME&#39;]] = array();
+        }
+        if(!in_array($f[&#39;COLUMN_NAME&#39;],$no_show_field[$v[&#39;TABLE_NAME&#39;]])){
+            $html .= &#39;          &amp;lt;tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c1&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_NAME&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c2&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_TYPE&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c3&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_DEFAULT&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c4&amp;quot;&amp;gt;&#39; . $f[&#39;IS_NULLABLE&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c5&amp;quot;&amp;gt;&#39; . ($f[&#39;EXTRA&#39;]==&#39;auto_increment&#39;?&#39;是&#39;:&#39;&amp;amp;nbsp;&#39;) . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;              &amp;lt;td class=&amp;quot;c6&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_COMMENT&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+            $html .= &#39;          &amp;lt;/tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+        }
+    }
+    $html .= &#39;      &amp;lt;/tbody&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+    $html .= &#39;  &amp;lt;/table&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+}
+?&amp;gt;
+&amp;lt;!doctype html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;WIXB数据库数据字典生成代码&amp;lt;/title&amp;gt;
+&amp;lt;meta name=&amp;quot;generator&amp;quot; content=&amp;quot;ThinkDb V1.0&amp;quot; /&amp;gt;
+&amp;lt;meta name=&amp;quot;author&amp;quot; content=&amp;quot;WIXB数据库数据字典生成代码&amp;quot; /&amp;gt;
+&amp;lt;meta name=&amp;quot;copyright&amp;quot; content=&amp;quot;2008-2014 Tensent Inc.&amp;quot; /&amp;gt;
+&amp;lt;style&amp;gt;
+body, td, th { font-family: &amp;quot;微软雅黑&amp;quot;; font-size: 14px; }
+.warp{margin:auto; width:900px;}
+.warp h3{margin:0px; padding:0px; line-height:30px; margin-top:10px;}
+table { border-collapse: collapse; border: 1px solid #CCC; background: #efefef; }
+table th { text-align: left; font-weight: bold; height: 26px; line-height: 26px; font-size: 14px; text-align:center; border: 1px solid #CCC; padding:5px;}
+table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-color: #fff; padding:5px;}
+.c1 { width: 120px; }
+.c2 { width: 120px; }
+.c3 { width: 150px; }
+.c4 { width: 80px; text-align:center;}
+.c5 { width: 80px; text-align:center;}
+.c6 { width: 270px; }
+&amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div class=&amp;quot;warp&amp;quot;&amp;gt;
+    &amp;lt;h1 style=&amp;quot;text-align:center;&amp;quot;&amp;gt;WIXB数据库数据字典生成代码&amp;lt;/h1&amp;gt;
+&amp;lt;?php echo $html; ?&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

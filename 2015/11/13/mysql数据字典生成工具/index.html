@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>mysql数据字典生成工具 &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="mysql数据字典生成工具php版">
+  <meta name="keywords" content="data-dictionary">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/MD5%20hash%20of%20your%20Gravatar%20email%20address?s=200"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>mysql数据字典生成工具</h1>
+    <span class="post-date">Nov 13, 2015 &middot; 3 minute read &middot; <a href="http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/mysql">mysql</a><a class="label" href="http://wixb50.github.io/categories/data-dictionary">data-dictionary</a>
+    </span>
+    
+
+<h2 id="mysql数据词典生成器">mysql数据词典生成器</h2>
+
+<p>一个php的在线词典生成器，便于将数据库导出成表格，一般论文里面可能有需要哦。</p>
+
+<p>下载地址 <a href="http://vdisk.weibo.com/s/yThjZrryTIxQl">http://vdisk.weibo.com/s/yThjZrryTIxQl</a></p>
+
+<p>效果图</p>
+
+<p><img src="http://www.funboxpower.com/wp-content/uploads/2015/04/QQ%E6%88%AA%E5%9B%BE20150401141354.png" alt="result" />
+</p>
+
+<blockquote>
+<p>如果不能下载的话，附上源码：</p>
+</blockquote>
+
+<pre><code>&lt;?php
+/**
+ * 生成mysql数据字典
+ */
+header(&quot;Content-type: text/html; charset=utf-8&quot;);
+//配置数据库
+$dbserver   = &quot;127.0.0.1&quot;;
+$dbusername = &quot;root&quot;;
+$dbpassword = &quot;root&quot;;
+$database   = &quot;wsx&quot;;
+
+//其他配置
+$mysql_conn = @mysql_connect(&quot;$dbserver&quot;, &quot;$dbusername&quot;, &quot;$dbpassword&quot;) or die(&quot;Mysql connect is error.&quot;);
+mysql_select_db($database, $mysql_conn);
+mysql_query('SET NAMES utf8', $mysql_conn);
+$table_result = mysql_query('show tables', $mysql_conn);
+
+$no_show_table = array();    //不需要显示的表
+$no_show_field = array();   //不需要显示的字段
+
+//取得所有的表名
+while($row = mysql_fetch_array($table_result)){
+    if(!in_array($row[0],$no_show_table)){
+        $tables[]['TABLE_NAME'] = $row[0];
+    }
+}
+//替换所以表的表前缀
+if(@$_GET['prefix']){
+    $prefix = 'czzj';
+    foreach($tables as $key =&gt; $val){
+        $tableName = $val['TABLE_NAME'];
+        $string = explode('_',$tableName);
+        if($string[0] != $prefix){  
+            $string[0] = $prefix;  
+            $newTableName = implode('_', $string);  
+            mysql_query('rename table '.$tableName.' TO '.$newTableName);  
+        }
+    }
+    echo &quot;替换成功！&quot;;exit();
+}
+
+//循环取得所有表的备注及表中列消息
+foreach ($tables as $k=&gt;$v) {
+    $sql  = 'SELECT * FROM ';
+    $sql .= 'INFORMATION_SCHEMA.TABLES ';
+    $sql .= 'WHERE ';
+    $sql .= &quot;table_name = '{$v['TABLE_NAME']}'  AND table_schema = '{$database}'&quot;;
+    $table_result = mysql_query($sql, $mysql_conn);
+    while ($t = mysql_fetch_array($table_result) ) {
+        $tables[$k]['TABLE_COMMENT'] = $t['TABLE_COMMENT'];
+    }
+
+    $sql  = 'SELECT * FROM ';
+    $sql .= 'INFORMATION_SCHEMA.COLUMNS ';
+    $sql .= 'WHERE ';
+    $sql .= &quot;table_name = '{$v['TABLE_NAME']}' AND table_schema = '{$database}'&quot;;
+
+    $fields = array();
+    $field_result = mysql_query($sql, $mysql_conn);
+    while ($t = mysql_fetch_array($field_result) ) {
+        $fields[] = $t;
+    }
+    $tables[$k]['COLUMN'] = $fields;
+}
+mysql_close($mysql_conn);
+
+
+$html = '';
+//循环所有表
+foreach ($tables as $k=&gt;$v) {
+    $html .= '  &lt;h3&gt;' . ($k + 1) . '、' . $v['TABLE_COMMENT'] .'  （'. $v['TABLE_NAME']. '）&lt;/h3&gt;'.&quot;\n&quot;;
+    $html .= '  &lt;table border=&quot;1&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; width=&quot;100%&quot;&gt;'.&quot;\n&quot;;
+    $html .= '      &lt;tbody&gt;'.&quot;\n&quot;;
+    $html .= '          &lt;tr&gt;'.&quot;\n&quot;;
+    $html .= '              &lt;th&gt;字段名&lt;/th&gt;'.&quot;\n&quot;;
+    $html .= '              &lt;th&gt;数据类型&lt;/th&gt;'.&quot;\n&quot;;
+    $html .= '              &lt;th&gt;默认值&lt;/th&gt;'.&quot;\n&quot;;
+    $html .= '              &lt;th&gt;允许非空&lt;/th&gt;'.&quot;\n&quot;;
+    $html .= '              &lt;th&gt;自动递增&lt;/th&gt;'.&quot;\n&quot;;
+    $html .= '              &lt;th&gt;备注&lt;/th&gt;'.&quot;\n&quot;;
+    $html .= '          &lt;/tr&gt;'.&quot;\n&quot;;
+
+    foreach ($v['COLUMN'] as $f) {
+        if(@!is_array($no_show_field[$v['TABLE_NAME']])){
+            $no_show_field[$v['TABLE_NAME']] = array();
+        }
+        if(!in_array($f['COLUMN_NAME'],$no_show_field[$v['TABLE_NAME']])){
+            $html .= '          &lt;tr&gt;'.&quot;\n&quot;;
+            $html .= '              &lt;td class=&quot;c1&quot;&gt;' . $f['COLUMN_NAME'] . '&lt;/td&gt;'.&quot;\n&quot;;
+            $html .= '              &lt;td class=&quot;c2&quot;&gt;' . $f['COLUMN_TYPE'] . '&lt;/td&gt;'.&quot;\n&quot;;
+            $html .= '              &lt;td class=&quot;c3&quot;&gt;' . $f['COLUMN_DEFAULT'] . '&lt;/td&gt;'.&quot;\n&quot;;
+            $html .= '              &lt;td class=&quot;c4&quot;&gt;' . $f['IS_NULLABLE'] . '&lt;/td&gt;'.&quot;\n&quot;;
+            $html .= '              &lt;td class=&quot;c5&quot;&gt;' . ($f['EXTRA']=='auto_increment'?'是':'&amp;nbsp;') . '&lt;/td&gt;'.&quot;\n&quot;;
+            $html .= '              &lt;td class=&quot;c6&quot;&gt;' . $f['COLUMN_COMMENT'] . '&lt;/td&gt;'.&quot;\n&quot;;
+            $html .= '          &lt;/tr&gt;'.&quot;\n&quot;;
+        }
+    }
+    $html .= '      &lt;/tbody&gt;'.&quot;\n&quot;;
+    $html .= '  &lt;/table&gt;'.&quot;\n&quot;;
+}
+?&gt;
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;WIXB数据库数据字典生成代码&lt;/title&gt;
+&lt;meta name=&quot;generator&quot; content=&quot;ThinkDb V1.0&quot; /&gt;
+&lt;meta name=&quot;author&quot; content=&quot;WIXB数据库数据字典生成代码&quot; /&gt;
+&lt;meta name=&quot;copyright&quot; content=&quot;2008-2014 Tensent Inc.&quot; /&gt;
+&lt;style&gt;
+body, td, th { font-family: &quot;微软雅黑&quot;; font-size: 14px; }
+.warp{margin:auto; width:900px;}
+.warp h3{margin:0px; padding:0px; line-height:30px; margin-top:10px;}
+table { border-collapse: collapse; border: 1px solid #CCC; background: #efefef; }
+table th { text-align: left; font-weight: bold; height: 26px; line-height: 26px; font-size: 14px; text-align:center; border: 1px solid #CCC; padding:5px;}
+table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-color: #fff; padding:5px;}
+.c1 { width: 120px; }
+.c2 { width: 120px; }
+.c3 { width: 150px; }
+.c4 { width: 80px; text-align:center;}
+.c5 { width: 80px; text-align:center;}
+.c6 { width: 270px; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;warp&quot;&gt;
+    &lt;h1 style=&quot;text-align:center;&quot;&gt;WIXB数据库数据字典生成代码&lt;/h1&gt;
+&lt;?php echo $html; ?&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>完</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+
