@@ -41,6 +41,7 @@ disqusShortname = "wixb"
     # Otherwise show description and 'read on' link to individual blog post page.
     # Default (if omitted) is true.
     truncate = true
+    gravatar = "avatar.jpg"
 
     # You can use markdown here.
     theme = "theme-base-0c"
