@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.github.io/post/</link>
+    <link>http://wixb50.gitcafe.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Mon, 16 Nov 2015 13:25:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.gitcafe.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.github.io/2015/11/16/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/16/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Mon, 16 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/16/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/16/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -29,10 +29,10 @@
     
     <item>
       <title>mysql数据字典生成工具</title>
-      <link>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
       <description>
 
 &lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
@@ -189,10 +189,10 @@ table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-col
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
@@ -332,10 +332,10 @@ sudo apt-get install ubuntu-tweak
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
@@ -368,10 +368,10 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -446,10 +446,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>Markdown简明语法教程</title>
-      <link>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h1 id=&#34;markdown简明语法教程&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
@@ -749,10 +749,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>Jenkins教程-简单ssh构建</title>
-      <link>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
       <description>
 
 &lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;
@@ -809,10 +809,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>gitlab搭建教程</title>
-      <link>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
@@ -833,10 +833,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
 git config --global user.name &amp;quot;xxx&amp;quot;                       # 配置用户名
 git config --global user.email &amp;quot;xxx@xxx.com&amp;quot;              # 配置邮件
@@ -929,10 +929,10 @@ git fsck
     
     <item>
       <title>restful架构设计</title>
-      <link>http://wixb50.github.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Thu, 05 Nov 2015 13:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
       <description>&lt;p&gt;三、资源（Resources）&lt;/p&gt;
 
 &lt;p&gt;REST的名称&amp;raquo;表现层状态转化&amp;raquo;中，省略了主语。&amp;raquo;表现层&amp;raquo;其实指的是&amp;raquo;资源&amp;raquo;（Resources）的&amp;raquo;表现层&amp;raquo;。
@@ -953,10 +953,10 @@ URI只代表资源的实体，不代表它的形式。严格地说，有些网�
     
     <item>
       <title>etcd安装</title>
-      <link>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -1037,10 +1037,10 @@ hello world
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 
@@ -1109,10 +1109,10 @@ $ sudo export PATH=&amp;quot;$PATH:your path1:your path2 …&amp;quot;
     
     <item>
       <title>Vagrant建立快照</title>
-      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
       <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1159,10 +1159,10 @@ For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt;
     
     <item>
       <title>Vagrant常用命令</title>
-      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant常用命令&#34;&gt;Vagrant常用命令&lt;/h2&gt;
@@ -1438,10 +1438,10 @@ vagrant@db:~$
     
     <item>
       <title>sublime-text-3配置</title>
-      <link>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 11:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h2 id=&#34;sublime-text-3编辑器插件&#34;&gt;sublime text 3编辑器插件&lt;/h2&gt;
