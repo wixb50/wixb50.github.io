@@ -86,6 +86,72 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;主题网址&lt;a href=&#34;http://gnome-look.org/&#34;&gt;http://gnome-look.org/&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;&lt;/li&gt;
 &lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mysql客户端 &lt;a href=&#34;http://dev.mysql.com/downloads/workbench/&#34;&gt;Workbench&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;li&gt;Redis客户端 &lt;a href=&#34;http://redisdesktop.com/&#34;&gt;Redis Desktop Manager&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;li&gt;Mongo客户端 &lt;a href=&#34;http://robomongo.org/&#34;&gt;Robomongo&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;思维导图&#34;&gt;思维导图&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最流行的思维导图 &lt;a href=&#34;http://www.xmind.net/cn/&#34;&gt;XMind&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;li&gt;百度在线脑图 &lt;a href=&#34;http://naotu.baidu.com/&#34;&gt;百度脑图&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;影音&#34;&gt;影音&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;VLC Media Player&lt;/code&gt; 软件商店安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;fq&#34;&gt;FQ&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;开放网络客户端 &lt;a href=&#34;https://getlantern.org/&#34;&gt;Lantern&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;开源&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
+
+&lt;p&gt;Frontend：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node&lt;/a&gt; 最好编译安装 &lt;a href=&#34;https://linux.cn/article-5766-1.html&#34;&gt;install-tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;npm&lt;/a&gt; node包管理器&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;bower&lt;/a&gt; 前端开发包管理器&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;gulp&lt;/a&gt; 构建工具&lt;/li&gt;
+&lt;li&gt;[grunt-cli]() 比较老的构建工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Backend：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[Go]() 解压存放&lt;code&gt;/usr/local/go&lt;/code&gt;,配置好&lt;code&gt;GOROOT、GOPATH&lt;/code&gt;和path环境。&lt;code&gt;GOPATH&lt;/code&gt;最好一个就够了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;gocode&lt;/code&gt;代码自动化提示工具。&lt;code&gt;godep&lt;/code&gt;go包管理器。&lt;code&gt;goconvey&lt;/code&gt;go测试工具。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[gradle]() java包管理器,构建工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Server：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[Docker]() 容器化服务器&lt;/li&gt;
+&lt;li&gt;[vagrant]() 虚拟机管理工具&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
