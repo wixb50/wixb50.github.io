@@ -7,7 +7,7 @@ pkill hugo
 #input the submit message
 echo "please input the submit message:"
 read msg
-if [ ! $msg ];then
+if [  "$msg" = "" ];then
 	msg="submit message"
 fi
 echo $msg
