@@ -1,5 +1,5 @@
 +++
-categories = [node"]
+categories = ["node"]
 date = "2015-12-06T12:51:33+08:00"
 description = "nodejs linux安装与卸载"
 keywords = [""]
