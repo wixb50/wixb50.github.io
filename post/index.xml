@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.github.io/post/</link>
+    <link>http://wixb50.gitcafe.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sun, 06 Dec 2015 17:27:25 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.gitcafe.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -53,10 +53,10 @@ sudo service xrdp restart
     
     <item>
       <title>nodejs linux安装与卸载</title>
-      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <link>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
       <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
       <description>
 
 &lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
@@ -108,10 +108,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang使用http client发起get和post请求</title>
-      <link>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Mon, 23 Nov 2015 22:00:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
       <description>
 
 &lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
@@ -219,10 +219,10 @@ sudo service xrdp restart
     
     <item>
       <title>mysql 安装配置</title>
-      <link>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 20 Nov 2015 19:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;p&gt;1.更新源&lt;br /&gt;
 &lt;code&gt;source /etc/apt/source.list&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;br /&gt;
@@ -253,10 +253,10 @@ sudo service xrdp restart
     
     <item>
       <title>gulp 资源教程集合</title>
-      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
       <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;
@@ -279,10 +279,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang排序实现 sort接口实现</title>
-      <link>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 20 Nov 2015 18:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
       <description>&lt;p&gt;sort.Interface接口有三个方法,给自己的struct实现这三个方法,然后用将自己的结构体传给sort.Sort方法就排序完成.&lt;/p&gt;
 
 &lt;p&gt;sort包也有几个常用的方法sort.Float64Slice sort.IntSlise sort.StringSlise&lt;/p&gt;
@@ -351,10 +351,10 @@ func main(){
     
     <item>
       <title>http安全</title>
-      <link>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
       <pubDate>Thu, 19 Nov 2015 15:12:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
       <description>
 
 &lt;h2 id=&#34;https&#34;&gt;https&lt;/h2&gt;
@@ -369,10 +369,10 @@ func main(){
     
     <item>
       <title>http知识点</title>
-      <link>http://wixb50.github.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
       <pubDate>Thu, 19 Nov 2015 11:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
       <description>
 
 &lt;h2 id=&#34;http网络知识收集&#34;&gt;http网络知识收集&lt;/h2&gt;
@@ -394,10 +394,10 @@ func main(){
     
     <item>
       <title>git travis-ci</title>
-      <link>http://wixb50.github.io/2015/11/16/git-travis-ci/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/16/git-travis-ci/</link>
       <pubDate>Mon, 16 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/16/git-travis-ci/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/16/git-travis-ci/</guid>
       <description>&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -409,10 +409,10 @@ func main(){
     
     <item>
       <title>mysql数据字典生成工具</title>
-      <link>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
       <description>
 
 &lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
@@ -569,10 +569,10 @@ table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-col
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
@@ -712,10 +712,10 @@ sudo apt-get install ubuntu-tweak
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
@@ -748,10 +748,10 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -826,10 +826,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>Markdown简明语法教程</title>
-      <link>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h1 id=&#34;markdown简明语法教程&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
@@ -1129,10 +1129,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>Jenkins教程-简单ssh构建</title>
-      <link>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
       <description>
 
 &lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;
