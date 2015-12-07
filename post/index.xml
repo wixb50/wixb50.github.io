@@ -2,22 +2,402 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/post/</link>
+    <link>http://wixb50.github.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Mon, 16 Nov 2015 13:25:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Dec 2015 17:27:25 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>git常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/16/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <title>ubuntu搭建远程桌面服务器</title>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
+sudo apt-get install vnc4server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;tightvncserver在ubuntu14.04下面是不用装的，如果连接的是ubuntu12.04的话。是需要安装的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install tightvncserver
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、安装xfce4的桌面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install xubuntu-desktop
+echo &amp;quot;xfce4-session&amp;quot; &amp;gt;~/.xsession  #在需要远程登录的用户下执行一遍即可
+sudo service xrdp restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果无法远程连接成功，记得在终端下执行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重新启动系统。&lt;/p&gt;
+
+&lt;p&gt;Windows下的操作：&lt;br /&gt;
+使用&amp;raquo;窗口键+R&amp;raquo;打开&amp;raquo;运行对话框&amp;raquo;&amp;ndash;&amp;gt;输入&amp;raquo;mstsc&amp;raquo;&amp;ndash;&amp;gt;回车&amp;ndash;&amp;gt;输入Ubuntu主机的IP地址&amp;ndash;&amp;gt;&amp;laquo;连接&amp;raquo;。在Ubuntu下可以通过“ifconfig”获得本机网络连接的概况，其中包括IP地址。
+填上正确的IP地址，按回车，会出现一个登陆框，我们选择“sesman-Xvnc”这个，然后输入你的Ubuntu的用户名和密码，OK！&lt;/p&gt;
+
+&lt;p&gt;后记：使用这种方法连上Ubuntu还有个问题，就是键盘的快捷键会有点小混乱。此时断开远程桌面，在Ubuntu的实体机器上，打开管理键盘快捷键，将带有“windows”键，ubunntu显示是“mod5”键（好像是类似的，记不清了）的快捷键组合删掉即可。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>nodejs linux安装与卸载</title>
+      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <description>
+
+&lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
+
+&lt;h3 id=&#34;安装-源码下载&#34;&gt;安装、源码下载&lt;/h3&gt;
+
+&lt;p&gt;下载最新版本node的源代码：&lt;a href=&#34;https://nodejs.org/en/download/&#34;&gt;下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;解压下载文件：&lt;br /&gt;
+&lt;code&gt;tar -xzvf node-v4.2.1.tar.gz&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;切换工作目录至源代码目录：&lt;br /&gt;
+&lt;code&gt;cd node-v4.2.1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;configure&lt;/code&gt;配置安装文件：&lt;br /&gt;
+&lt;code&gt;./configure&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;make编译码代码：  &lt;em&gt;(编译Node源码时间较长，我编译用了大约40分左右。)&lt;/em&gt;&lt;br /&gt;
+&lt;code&gt;make&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;make install安装：&lt;br /&gt;
+&lt;code&gt;sudo make install&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查看安装：&lt;em&gt;(显示版本号)&lt;/em&gt;&lt;br /&gt;
+&lt;code&gt;node -v&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;卸载&#34;&gt;卸载&lt;/h3&gt;
+
+&lt;p&gt;保留编译完成的源码包，或者自己再重新编译生成个&lt;/p&gt;
+
+&lt;p&gt;干掉make install命令时装进去的文件,需要管理员身份&lt;br /&gt;
+&lt;code&gt;sudo make uninstall&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;只删除make时产生的临时文件：&lt;br /&gt;
+&lt;code&gt;make clean&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;同时删除configure和make产生的临时文件&lt;br /&gt;
+&lt;code&gt;make distclean&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;升级node版本&#34;&gt;升级Node版本&lt;/h3&gt;
+
+&lt;p&gt;直接下载源码重新编译，安装。（覆盖了旧的版本）&lt;/p&gt;
+
+&lt;h2 id=&#34;ps&#34;&gt;Ps&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;也同样适用与其他linux平台编译安装软件。&lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golang使用http client发起get和post请求</title>
+      <link>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Mon, 23 Nov 2015 22:00:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
+      <description>
+
+&lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;get请求&#34;&gt;get请求&lt;/h3&gt;
+
+&lt;p&gt;get请求可以直接http.Get方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpGet() {
+    resp, err := http.Get(&amp;quot;http://www.01happy.com/demo/accept.php?id=1&amp;quot;)
+    if err != nil {
+        // handle error
+    }
+
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;post请求&#34;&gt;post请求&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;使用http.Post方式&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpPost() {
+    resp, err := http.Post(&amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;,
+        &amp;quot;application/x-www-form-urlencoded&amp;quot;,
+        strings.NewReader(&amp;quot;name=cjb&amp;quot;))
+    if err != nil {
+        fmt.Println(err)
+    }
+
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tips：使用这个方法的话，第二个参数要设置成”application/x-www-form-urlencoded”，否则post参数无法传递。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;使用http.PostForm方法&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpPostForm() {
+    resp, err := http.PostForm(&amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;,
+        url.Values{&amp;quot;key&amp;quot;: {&amp;quot;Value&amp;quot;}, &amp;quot;id&amp;quot;: {&amp;quot;123&amp;quot;}})
+
+    if err != nil {
+        // handle error
+    }
+
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂的请求&#34;&gt;复杂的请求&lt;/h3&gt;
+
+&lt;p&gt;有时需要在请求的时候设置头参数、cookie之类的数据，就可以使用http.Do方法。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpDo() {
+    client := &amp;amp;http.Client{}
+
+    req, err := http.NewRequest(&amp;quot;POST&amp;quot;, &amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;, strings.NewReader(&amp;quot;name=cjb&amp;quot;))
+    if err != nil {
+        // handle error
+    }
+
+    req.Header.Set(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/x-www-form-urlencoded&amp;quot;)
+    req.Header.Set(&amp;quot;Cookie&amp;quot;, &amp;quot;name=anny&amp;quot;)
+
+    resp, err := client.Do(req)
+
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同上面的post请求，必须要设定Content-Type为application/x-www-form-urlencoded，post参数才可正常传递.&lt;/p&gt;
+
+&lt;h3 id=&#34;head请求&#34;&gt;Head请求&lt;/h3&gt;
+
+&lt;p&gt;发起head请求可以直接使用http client的head方法。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mysql 安装配置</title>
+      <link>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 20 Nov 2015 19:32:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;1.更新源&lt;br /&gt;
+&lt;code&gt;source /etc/apt/source.list&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;br /&gt;
+2.在Ubuntu14.04下安装mysql：(还是从mysql官网下载安装包安装吧)&lt;br /&gt;
+&lt;code&gt;sudo apt-get install mysql-server&lt;/code&gt;&lt;br /&gt;
+3.在目录/etc/mysql下打开my.cnf，用vim编辑，找到&lt;br /&gt;
+&lt;code&gt;bind-address   =127.0.0.1&lt;/code&gt;&lt;br /&gt;
+改为：&lt;br /&gt;
+&lt;code&gt;bind-address   =0.0.0.0&lt;/code&gt;或者直接将上句注释掉&lt;br /&gt;
+4.使用root账户登录到Mysql数据库：&lt;br /&gt;
+&lt;code&gt;mysql -u root -p&lt;/code&gt;&lt;br /&gt;
+使用命令：&lt;br /&gt;
+&lt;code&gt;use mysql;&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;select host, user, password from user&lt;/code&gt;可以查看到当前可以连接到该服务器的用户&lt;br /&gt;
+在mysql&amp;gt;输入：&lt;br /&gt;
+&lt;code&gt;grant all on *.* to root@&#39;%&#39; identified by &#39;123&#39;&lt;/code&gt;&lt;br /&gt;
+注：&lt;br /&gt;
+* root是用户名
+* passwd是连接密码&lt;br /&gt;
+&lt;code&gt;flush privileges;&lt;/code&gt;  # 刷新权限表&lt;br /&gt;
+5.最后在远端可以进行远程登录：&lt;br /&gt;
+* 用户名：root
+* 密码：123
+* 端口：3306&lt;br /&gt;
+完成！&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>gulp 资源教程集合</title>
+      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;1.&lt;a href=&#34;http://www.w3ctech.com/topic/134&#34;&gt;Gulp开发教程（翻译）&lt;/a&gt;&lt;br /&gt;
+2.&lt;a href=&#34;http://gulpjs.com/plugins/&#34;&gt;Gulp插件搜索地址&lt;/a&gt;&lt;br /&gt;
+3.&lt;a href=&#34;http://www.gulpjs.com.cn/&#34;&gt;gulp中文网&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;####项目例子&lt;br /&gt;
+- &lt;a href=&#34;https://github.com/Swiip/generator-gulp-angular&#34;&gt;generator-gulp-angular&lt;/a&gt;&lt;br /&gt;
+- &lt;a href=&#34;https://github.com/yeoman/generator-angular#app&#34;&gt;generator-angular&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golang排序实现 sort接口实现</title>
+      <link>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Fri, 20 Nov 2015 18:32:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;p&gt;sort.Interface接口有三个方法,给自己的struct实现这三个方法,然后用将自己的结构体传给sort.Sort方法就排序完成.&lt;/p&gt;
+
+&lt;p&gt;sort包也有几个常用的方法sort.Float64Slice sort.IntSlise sort.StringSlise&lt;/p&gt;
+
+&lt;p&gt;源码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import (
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;sort&amp;quot;
+)
+
+type MapSorter []Item
+
+type Item struct {
+    Key string
+    Val int64
+}
+
+func NewMapSorter(m map[string]int64) MapSorter {
+    ms := make(MapSorter, 0, len(m))
+
+    for k, v := range m {
+        ms = append(ms, Item{k, v})
+    }
+
+    return ms
+}
+
+func (ms MapSorter) Len() int {
+    return len(ms)
+}
+
+func (ms MapSorter) Less(i, j int) bool {
+    return ms[i].Val &amp;lt; ms[j].Val // 按值排序
+    //return ms[i].Key &amp;lt; ms[j].Key // 按键排序
+}
+
+func (ms MapSorter) Swap(i, j int) {
+    ms[i], ms[j] = ms[j], ms[i]
+}
+
+func main(){
+    m  := map[string]int64 {
+        &amp;quot;e&amp;quot;: 10,
+        &amp;quot;a&amp;quot;: 2,
+        &amp;quot;d&amp;quot;: 15,
+        &amp;quot;c&amp;quot;: 8,
+        &amp;quot;f&amp;quot;: 1,
+        &amp;quot;b&amp;quot;: 12,
+    }
+
+    ms := NewMapSorter(m)
+    sort.Sort(ms)
+
+    for _, item := range ms {
+        fmt.Printf(&amp;quot;%s:%d\n&amp;quot;, item.Key, item.Val)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完成.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>http安全</title>
+      <link>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
+      <pubDate>Thu, 19 Nov 2015 15:12:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
+      <description>
+
+&lt;h2 id=&#34;https&#34;&gt;https&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.liaoxuefeng.com/article/0014189023237367e8d42829de24b6eaf893ca47df4fb5e000&#34;&gt;给Nginx配置一个自签名的SSL证书&lt;/a&gt; 2014.12.18&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ttt.tt/9/&#34;&gt;Apache + WordPress + SSL 完全指南&lt;/a&gt; 2012.07.14&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.jjonline.cn/linux/92.html&#34;&gt;https安全链接的配置教程&lt;/a&gt; 2012.12.01&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>http知识点</title>
+      <link>http://wixb50.github.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <pubDate>Thu, 19 Nov 2015 11:35:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <description>
+
+&lt;h2 id=&#34;http网络知识收集&#34;&gt;http网络知识收集&lt;/h2&gt;
+
+&lt;p&gt;content&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;参考资料&#34;&gt;参考资料&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jianshu.com/p/2ecd288d27ad&#34;&gt;http知识点总结&lt;/a&gt; 2015.10.24&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jianshu.com/p/0a47fc776314&#34;&gt;http持久连接&lt;/a&gt; 2014.05.03&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linux178.com/web/httprequest.html/comment-page-1&#34;&gt;一次完整的HTTP事务&lt;/a&gt; January 11, 2014&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tshare365.com/archives/1295.html&#34;&gt;tcpdump、wireshark、tshark的简单介绍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git travis-ci</title>
+      <link>http://wixb50.github.io/2015/11/16/git-travis-ci/</link>
       <pubDate>Mon, 16 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/16/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/16/git-travis-ci/</guid>
       <description>&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -29,10 +409,10 @@
     
     <item>
       <title>mysql数据字典生成工具</title>
-      <link>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
+      <link>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
       <description>
 
 &lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
@@ -189,10 +569,10 @@ table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-col
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
@@ -332,10 +712,10 @@ sudo apt-get install ubuntu-tweak
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
@@ -368,10 +748,10 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -446,10 +826,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>Markdown简明语法教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h1 id=&#34;markdown简明语法教程&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
@@ -749,10 +1129,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>Jenkins教程-简单ssh构建</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
+      <link>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
       <description>
 
 &lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;
@@ -804,728 +1184,6 @@ nameserver 114.114.114.114
 &lt;hr /&gt;
 
 &lt;p&gt;Support by &lt;a href=&#34;http://elegencetse.com&#34;&gt;elegancetse&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>gitlab搭建教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
-      <description>
-
-&lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;测试搭建环境:ubuntu14.04/trustry&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;参考教程&lt;br /&gt;
-&amp;gt; 1.&lt;a href=&#34;https://about.gitlab.com/downloads/&#34;&gt;官方教程&lt;/a&gt;&lt;br /&gt;
-&amp;gt; 2.&lt;a href=&#34;http://www.cnblogs.com/restran/p/4063880.html&#34;&gt;在自己的服务器上部署 GitLab 社区版&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>git常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
-      <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
-      <description>&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
-git config --global user.name &amp;quot;xxx&amp;quot;                       # 配置用户名
-git config --global user.email &amp;quot;xxx@xxx.com&amp;quot;              # 配置邮件
-git config --global color.ui true                         # git status等命令自动着色
-git config --global color.status auto
-git config --global color.diff auto
-git config --global color.branch auto
-git config --global color.interactive auto
-git config --global --unset http.proxy                    # remove  proxy configuration on git
-git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库
-git status                                                # 查看当前版本状态（是否修改）
-git add xyz                                               # 添加xyz文件至index
-git add .                                                 # 增加当前子目录下所有更改过的文件至index
-git commit -m &#39;xxx&#39;                                       # 提交
-git commit --amend -m &#39;xxx&#39;                               # 合并上一次提交（用于反复修改）
-git commit -am &#39;xxx&#39;                                      # 将add和commit合为一步
-git rm xxx                                                # 删除index中的文件
-git rm -r *                                               # 递归删除
-git log                                                   # 显示提交日志
-git log -1                                                # 显示1行日志 -n为n行
-git log -5
-git log --stat                                            # 显示提交日志及相关变动文件
-git log -p -m
-git show dfb02e6e4f2f7b573337763e5c0013802e392818         # 显示某个提交的详细内容
-git show dfb02                                            # 可只用commitid的前几位
-git show HEAD                                             # 显示HEAD提交日志
-git show HEAD^                                            # 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本
-git tag                                                   # 显示已存在的tag
-git tag -a v2.0 -m &#39;xxx&#39;                                  # 增加v2.0的tag
-git show v2.0                                             # 显示v2.0的日志及详细内容
-git log v2.0                                              # 显示v2.0的日志
-git diff                                                  # 显示所有未添加至index的变更
-git diff --cached                                         # 显示所有已添加index但还未commit的变更
-git diff HEAD^                                            # 比较与上一个版本的差异
-git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异
-git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的
-git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容
-git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）
-git branch                                                # 显示本地分支
-git branch --contains 50089                               # 显示包含提交50089的分支
-git branch -a                                             # 显示所有分支
-git branch -r                                             # 显示所有原创分支
-git branch --merged                                       # 显示所有已合并到当前分支的分支
-git branch --no-merged                                    # 显示所有未合并到当前分支的分支
-git branch -m master master_copy                          # 本地分支改名
-git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出
-git checkout -b master master_copy                        # 上面的完整版
-git checkout features/performance                         # 检出已存在的features/performance分支
-git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支
-git checkout v2.0                                         # 检出版本v2.0
-git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出
-git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）
-git merge origin/master                                   # 合并远程master分支至当前分支
-git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改
-git push origin master                                    # 将当前分支push到远程master分支
-git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支
-git push --tags                                           # 把所有tag推送到远程仓库
-git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）
-git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支
-git pull origin master                                    # 获取远程分支master并merge到当前分支
-git mv README README2                                     # 重命名文件README为README2
-git reset --hard HEAD                                     # 将当前版本重置为HEAD（通常用于merge失败回退）
-git rebase
-git branch -d hotfixes/BJVEP933                           # 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）
-git branch -D hotfixes/BJVEP933                           # 强制删除分支hotfixes/BJVEP933
-git ls-files                                              # 列出git index包含的文件
-git show-branch                                           # 图示当前分支历史
-git show-branch --all                                     # 图示所有分支历史
-git whatchanged                                           # 显示提交历史对应的文件修改
-git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818
-git ls-tree HEAD                                          # 内部命令：显示某个git对象
-git rev-parse v2.0                                        # 内部命令：显示某个ref对于的SHA1 HASH
-git reflog                                                # 显示所有提交，包括孤立节点
-git show HEAD@{5}
-git show master@{yesterday}                               # 显示master分支昨天的状态
-git log --pretty=format:&#39;%h %s&#39; --graph                   # 图示提交日志
-git show HEAD~3
-git show -s --pretty=raw 2be7fcb476
-git stash                                                 # 暂存当前修改，将所有至为HEAD状态
-git stash list                                            # 查看所有暂存
-git stash show -p stash@{0}                               # 参考第一次暂存
-git stash apply stash@{0}                                 # 应用第一次暂存
-git grep &amp;quot;delete from&amp;quot;                                    # 文件中搜索文本“delete from”
-git grep -e &#39;#define&#39; --and -e SORT_DIRENT
-git gc
-git fsck
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>restful架构设计</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
-      <pubDate>Thu, 05 Nov 2015 13:21:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
-      <description>&lt;p&gt;三、资源（Resources）&lt;/p&gt;
-
-&lt;p&gt;REST的名称&amp;raquo;表现层状态转化&amp;raquo;中，省略了主语。&amp;raquo;表现层&amp;raquo;其实指的是&amp;raquo;资源&amp;raquo;（Resources）的&amp;raquo;表现层&amp;raquo;。
-所谓&amp;raquo;资源&amp;raquo;，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。你可以用一个URI（统一资源定位符）指向它，每种资源对应一个特定的URI。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或独一无二的识别符。
-所谓&amp;raquo;上网&amp;raquo;，就是与互联网上一系列的&amp;raquo;资源&amp;raquo;互动，调用它的URI。&lt;br /&gt;
-四、表现层（Representation）&lt;/p&gt;
-
-&lt;p&gt;&amp;laquo;资源&amp;raquo;是一种信息实体，它可以有多种外在表现形式。我们把&amp;raquo;资源&amp;raquo;具体呈现出来的形式，叫做它的&amp;raquo;表现层&amp;raquo;（Representation）。
-比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。
-URI只代表资源的实体，不代表它的形式。严格地说，有些网址最后的&amp;raquo;.html&amp;raquo;后缀名是不必要的，因为这个后缀名表示格式，属于&amp;raquo;表现层&amp;raquo;范畴，而URI应该只代表&amp;raquo;资源&amp;raquo;的位置。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&amp;raquo;表现层&amp;raquo;的描述。&lt;br /&gt;
-五、状态转化（State Transfer）&lt;/p&gt;
-
-&lt;p&gt;访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。
-互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&amp;raquo;状态转化&amp;raquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&amp;raquo;表现层状态转化&amp;raquo;。
-客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的动词：GET、POST、PUT、DELETE。它们分别对应四种基本操作：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>etcd安装</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;etcd 基于 Go 语言实现，因此，用户可以从 项目主页 下载源代码自行编译，也可以下载编译好的二进制文件，甚至直接使用制作好的 Docker 镜像文件来体验。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;二进制文件方式下载&#34;&gt;二进制文件方式下载&lt;/h3&gt;
-
-&lt;p&gt;编译好的二进制文件都在 github.com/coreos/etcd/releases 页面，用户可以选择需要的版本，或通过下载工具下载。&lt;/p&gt;
-
-&lt;p&gt;例如，下面的命令使用 curl 工具下载压缩包，并解压。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl -L  https://github.com/coreos/etcd/releases/download/v2.0.0-rc.1/etcd-v2.0.0-rc.1-linux-amd64.tar.gz -o etcd-v2.0.0-rc.1-linux-amd64.tar.gz
-tar xzvf etcd-v2.0.0-rc.1-linux-amd64.tar.gz
-cd etcd-v2.0.0-rc.1-linux-amd64
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;解压后，可以看到文件包括&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls
-etcd  etcdctl  etcd-migrate  README-etcdctl.md  README.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;其中 etcd 是服务主文件，etcdctl 是提供给用户的命令客户端，etcd-migrate 负责进行迁移。&lt;/p&gt;
-
-&lt;p&gt;推荐通过下面的命令将三个文件都放到系统可执行目录 /usr/local/bin/ 或 /usr/bin/。&lt;br /&gt;
-&lt;code&gt;$ sudo cp etcd* /usr/local/bin/&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;运行 etcd，将默认组建一个两个节点的集群。数据库服务端默认监听在 2379 和 4001 端口，etcd 实例监听在 2380 和 7001 端口。显示类似如下的信息：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ./etcd
-2014/12/31 14:52:09 no data-dir provided, using default data-dir ./default.etcd
-2014/12/31 14:52:09 etcd: listening for peers on http://localhost:2380
-2014/12/31 14:52:09 etcd: listening for peers on http://localhost:7001
-2014/12/31 14:52:09 etcd: listening for client requests on http://localhost:2379
-2014/12/31 14:52:09 etcd: listening for client requests on http://localhost:4001
-2014/12/31 14:52:09 etcdserver: name = default
-2014/12/31 14:52:09 etcdserver: data dir = default.etcd
-2014/12/31 14:52:09 etcdserver: snapshot count = 10000
-2014/12/31 14:52:09 etcdserver: advertise client URLs = http://localhost:2379,http://localhost:4001
-2014/12/31 14:52:09 etcdserver: initial advertise peer URLs = http://localhost:2380,http://localhost:7001
-2014/12/31 14:52:09 etcdserver: initial cluster = default=http://localhost:2380,default=http://localhost:7001
-2014/12/31 14:52:10 etcdserver: start member ce2a822cea30bfca in cluster 7e27652122e8b2ae
-2014/12/31 14:52:10 raft: ce2a822cea30bfca became follower at term 0
-2014/12/31 14:52:10 raft: newRaft ce2a822cea30bfca [peers: [], term: 0, commit: 0, lastindex: 0, lastterm: 0]
-2014/12/31 14:52:10 raft: ce2a822cea30bfca became follower at term 1
-2014/12/31 14:52:10 etcdserver: added local member ce2a822cea30bfca [http://localhost:2380 http://localhost:7001] to cluster 7e27652122e8b2ae
-2014/12/31 14:52:11 raft: ce2a822cea30bfca is starting a new election at term 1
-2014/12/31 14:52:11 raft: ce2a822cea30bfca became candidate at term 2
-2014/12/31 14:52:11 raft: ce2a822cea30bfca received vote from ce2a822cea30bfca at term 2
-2014/12/31 14:52:11 raft: ce2a822cea30bfca became leader at term 2
-2014/12/31 14:52:11 raft.node: ce2a822cea30bfca elected leader ce2a822cea30bfca at term 2
-2014/12/31 14:52:11 etcdserver: published {Name:default ClientURLs:[http://localhost:2379 http://localhost:4001]} to cluster 7e27652122e8b2ae
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;此时，可以使用 etcdctl 命令进行测试，设置和获取键值 testkey: &amp;laquo;hello world&amp;raquo;，检查 etcd 服务是否启动成功：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ./etcdctl set testkey &amp;quot;hello world&amp;quot;
-hello world
-$ ./etcdctl get testkey
-hello world
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明 etcd 服务已经成功启动了。&lt;/p&gt;
-
-&lt;p&gt;当然，也可以通过 HTTP 访问本地 2379 或 4001 端口的方式来进行操作，例如查看 testkey 的值：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ curl -L http://localhost:4001/v2/keys/testkey
-{&amp;quot;action&amp;quot;:&amp;quot;get&amp;quot;,&amp;quot;node&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;/testkey&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;hello world&amp;quot;,&amp;quot;modifiedIndex&amp;quot;:3,&amp;quot;createdIndex&amp;quot;:3}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;docker-镜像方式下载&#34;&gt;Docker 镜像方式下载&lt;/h3&gt;
-
-&lt;p&gt;镜像名称为 quay.io/coreos/etcd:v2.0.0_rc.1，可以通过下面的命令启动 etcd 服务监听到 4001 端口。&lt;br /&gt;
-&lt;code&gt;$ sudo docker run -p 4001:4001 -v /etc/ssl/certs/:/etc/ssl/certs/ quay.io/coreos/etcd:v2.0.0_rc.1&lt;/code&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
-      <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
-/etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
-
-/etc /environment : 在登录时操作系统使用的第二个文件, 系统在读取你自己的profile前,设置环境文件的环境变量。 
-
-~/.profile :  在登录时用到的第三个文件 是.profile文件,每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。 
-
-/etc/bashrc : 为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取. 
-
-~/.bashrc : 该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时,该该文件被读取。 
-
-
-
-PASH环境变量的设置方法： 
-
-方法一：用户主目录下的.profile或.bashrc文件（推荐） 
-
-登录到你的用户（非root），在终端输入： 
-$ sudo gedit ~/.profile(or .bashrc) 
-可以在此文件末尾加入PATH的设置如下： 
-export PATH=”$PATH:your path1:your path2 ...” 
-保存文件，注销再登录，变量生效。 
-该方式添加的变量只对当前用户有效。 
-
-方法二：系统目录下的profile文件（谨慎） 
-
-在系统的etc目录下，有一个profile文件，编辑该文件： 
-$ sudo gedit /etc/profile 
-在最后加入PATH的设置如下： 
-export PATH=”$PATH:your path1:your path2 ...” 
-该文件编辑保存后，重启系统，变量生效。 
-该方式添加的变量对所有的用户都有效。 
-
-方法三：系统目录下的 environment 文件（谨慎） 
-
-在系统的etc目录下，有一个environment文件，编辑该文件： 
-$ sudo gedit /etc/environment 
-找到以下的 PATH 变量： 
-PATH=&amp;quot;&amp;lt;......&amp;gt;&amp;quot; 
-修改该 PATH 变量，在其中加入自己的path即可，例如： 
-PATH=&amp;quot;&amp;lt;......&amp;gt;:your path1:your path2 …&amp;quot; 
-各个path之间用冒号分割。该文件也是重启生效，影响所有用户。 
-注意这里不是添加export PATH=… 。 
-
-方法四：直接在终端下输入 
-
-$ sudo export PATH=&amp;quot;$PATH:your path1:your path2 …&amp;quot; 
-这种方式变量立即生效，但用户注销或系统重启后设置变成无效，适合临时变量的设置。 
-
-
-注 意：方法二和三的修改需要谨慎，尤其是通过root用户修改，如果修改错误，将可能导致一些严重的系统错误。因此笔者推荐使用第一种方法。另外嵌入式 Linux的开发最好不要在root下进行（除非你对Linux已经非常熟悉了！！），以免因为操作不当导致系统严重错误。 
-
-下面是一个对environment文件错误修改导致的问题以及解决方法示例： 
-
-问题：因为不小心在 etc/environment里设在环境变量导致无法登录 
-提示：不要在 etc/environment里设置 export PATH这样会导致重启后登录不了系统 
-解决方法： 
-在登录界面 alt +ctrl+f1进入命令模式，如果不是root用户需要键入（root用户就不许这么罗嗦，gedit编辑会不可显示） 
-/usr/bin/sudo /usr/bin/vi /etc/environment 
-光标移到export PATH** 行，连续按 d两次删除该行； 
-输入:wq保存退出； 
-然后键入/sbin/reboot重启系统（可能会提示need to boot，此时直接power off）
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Vagrant建立快照</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
-      <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;安装Vagrant快照插件：&lt;br /&gt;
-&lt;code&gt;vagrant plugin install vagrant-multiprovider-snap&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant snap
-Usage: vagrant snap &amp;lt;command&amp;gt; [&amp;lt;args&amp;gt;]
-
-Available subcommands:
-     back
-     delete
-     go
-     list
-     take
-
-For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt; -h
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用方法：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;创建一个快照&lt;br /&gt;
-&lt;code&gt;vagrant snapshot take &amp;quot;Name&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看快照列表&lt;br /&gt;
-&lt;code&gt;vagrant snapshot list&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;从指定快照中恢复&lt;br /&gt;
-&lt;code&gt;vagrant snapshot go &amp;quot;Name&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;删除一个快照&lt;br /&gt;
-&lt;code&gt;vagrant snapshot delete &amp;quot;Name&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;一些参考资料：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://segmentfault.com/a/1190000000264347&#34;&gt;使用 Vagrant 打造跨平台开发环境&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.williamsang.com/archives/2401.html&#34;&gt;Vagrant 三种网络配置详解&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Vagrant常用命令</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>
-
-&lt;h2 id=&#34;vagrant常用命令&#34;&gt;Vagrant常用命令&lt;/h2&gt;
-
-&lt;p&gt;前面讲了Vagrant的几个命令：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;vagrant box add&lt;/code&gt; 添加box的操作&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vagrant init&lt;/code&gt; 初始化box的操作&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vagrant up&lt;/code&gt; 启动虚拟机的操作&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vagrant ssh&lt;/code&gt; 登录拟机的操作&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Vagrant还包括如下一些操作：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant box list&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;显示当前已经添加的box列表&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant box list
-base (virtualbox)
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant box remove&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;删除相应的box&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant box remove base virtualbox
-Removing box &#39;base&#39; with provider &#39;virtualbox&#39;...
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant destroy&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;停止当前正在运行的虚拟机并销毁所有创建的资源&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant destroy
-Are you sure you want to destroy the &#39;default&#39; VM? [y/N] y
-[default] Destroying VM and associated drives...
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant halt&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;关机&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant halt
-[default] Attempting graceful shutdown of VM...
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant package&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;打包命令，可以把当前的运行的虚拟机环境进行打包&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant package
-[default] Attempting graceful shutdown of VM...
-[default] Clearing any previously set forwarded ports...
-[default] Creating temporary directory for export...
-[default] Exporting VM...
-[default] Compressing package to: /Users/astaxie/vagrant/package.box
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant plugin&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;用于安装卸载插件&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant provision&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;通常情况下Box只做最基本的设置，而不是设置好所有的环境，因此Vagrant通常使用Chef或者Puppet来做进一步的环境搭建。那么Chef或者Puppet称为provisioning，而该命令就是指定开启相应的provisioning。按照Vagrant作者的说法，所谓的provisioning就是&amp;raquo;The problem of installing software on a booted system&amp;raquo;的意思。除了Chef和Puppet这些主流的配置管理工具之外，我们还可以使用Shell来编写安装脚本。&lt;/p&gt;
-
-&lt;p&gt;例如： &lt;code&gt;vagrant provision --provision-with chef&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant reload&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;重新启动虚拟机，主要用于重新载入配置文件&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant reload
-[default] Attempting graceful shutdown of VM...
-[default] Setting the name of the VM...
-[default] Clearing any previously set forwarded ports...
-[default] Creating shared folders metadata...
-[default] Clearing any previously set network interfaces...
-[default] Preparing network interfaces based on configuration...
-[default] Forwarding ports...
-[default] -- 22 =&amp;gt; 2222 (adapter 1)
-[default] Booting VM...
-[default] Waiting for VM to boot. This can take a few minutes.
-[default] VM booted and ready for use!
-[default] Setting hostname...
-[default] Mounting shared folders...
-[default] -- /vagrant
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant resume&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;恢复前面被挂起的状态&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$vagrant resume
-[default] Resuming suspended VM...
-[default] Booting VM...
-[default] Waiting for VM to boot. This can take a few minutes.
-[default] VM booted and ready for use!
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant ssh-config&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;输出用于ssh连接的一些信息&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$vagrant ssh-config
-Host default
-  HostName 127.0.0.1
-  User vagrant
-  Port 2222
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentityFile &amp;quot;/Users/astaxie/.vagrant.d/insecure_private_key&amp;quot;
-  IdentitiesOnly yes
-  LogLevel FATAL
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant status&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;获取当前虚拟机的状态&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$vagrant status
-Current machine states:
-
-
-default                   running (virtualbox)
-
-
-The VM is running. To stop this VM, you can run `vagrant halt` to
-shut it down forcefully, or you can run `vagrant suspend` to simply
-suspend the virtual machine. In either case, to restart it again,
-simply run `vagrant up`.
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant suspend&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;挂起当前的虚拟机&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant suspend
-[default] Saving VM state and suspending execution...
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;模拟打造多机器的分布式系统&#34;&gt;模拟打造多机器的分布式系统&lt;/h2&gt;
-
-&lt;p&gt;前面这些单主机单虚拟机主要是用来自己做开发机，从这部分开始的内容主要将向大家介绍如何在单机上通过虚拟机来打造分布式造集群系统。这种多机器模式特别适合以下几种人：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;快速建立产品网络的多机器环境，例如web服务器、db服务器&lt;/li&gt;
-&lt;li&gt;建立一个分布式系统，学习他们是如何交互的&lt;/li&gt;
-&lt;li&gt;测试API和其他组件的通信&lt;/li&gt;
-&lt;li&gt;容灾模拟，网络断网、机器死机、连接超时等情况&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Vagrant支持单机模拟多台机器，而且支持一个配置文件Vagrntfile就可以跑分布式系统。&lt;/p&gt;
-
-&lt;p&gt;现在我们来建立多台VM跑起來，並且让他们之间能够相通信，假设一台是应用服务器、一台是DB服务器，那么这个结构在Vagrant中非常简单，其实和单台的配置差不多，你只需要通过&lt;code&gt;config.vm.define&lt;/code&gt;来定义不同的角色就可以了，现在我们打开配置文件进行如下设置：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Vagrant.configure(&amp;quot;2&amp;quot;) do |config|
-  config.vm.define :web do |web|
-    web.vm.provider &amp;quot;virtualbox&amp;quot; do |v|
-          v.customize [&amp;quot;modifyvm&amp;quot;, :id, &amp;quot;--name&amp;quot;, &amp;quot;web&amp;quot;, &amp;quot;--memory&amp;quot;, &amp;quot;512&amp;quot;]
-    end
-    web.vm.box = &amp;quot;base&amp;quot;
-    web.vm.hostname = &amp;quot;web&amp;quot;
-    web.vm.network :private_network, ip: &amp;quot;11.11.1.1&amp;quot;
-  end
-
-  config.vm.define :db do |db|
-    db.vm.provider &amp;quot;virtualbox&amp;quot; do |v|
-          v.customize [&amp;quot;modifyvm&amp;quot;, :id, &amp;quot;--name&amp;quot;, &amp;quot;db&amp;quot;, &amp;quot;--memory&amp;quot;, &amp;quot;512&amp;quot;]
-    end
-    db.vm.box = &amp;quot;base&amp;quot;
-    db.vm.hostname = &amp;quot;db&amp;quot;
-    db.vm.network :private_network, ip: &amp;quot;11.11.1.2&amp;quot;
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这里的设置和前面我们单机设置配置类似，只是我们使用了&lt;code&gt;:web&lt;/code&gt;以及&lt;code&gt;:db&lt;/code&gt;分別做了两个VM的设置，并且给每个VM设置了不同的&lt;code&gt;hostname&lt;/code&gt;和IP，设置好之后再使用&lt;code&gt;vagrant up&lt;/code&gt;将虚拟机跑起来：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant up
-Bringing machine &#39;web&#39; up with &#39;virtualbox&#39; provider...
-Bringing machine &#39;db&#39; up with &#39;virtualbox&#39; provider...
-[web] Setting the name of the VM...
-[web] Clearing any previously set forwarded ports...
-[web] Creating shared folders metadata...
-[web] Clearing any previously set network interfaces...
-[web] Preparing network interfaces based on configuration...
-[web] Forwarding ports...
-[web] -- 22 =&amp;gt; 2222 (adapter 1)
-[web] Running any VM customizations...
-[web] Booting VM...
-[web] Waiting for VM to boot. This can take a few minutes.
-[web] VM booted and ready for use!
-[web] Setting hostname...
-[web] Configuring and enabling network interfaces...
-[web] Mounting shared folders...
-[web] -- /vagrant
-[db] Setting the name of the VM...
-[db] Clearing any previously set forwarded ports...
-[db] Fixed port collision for 22 =&amp;gt; 2222. Now on port 2200.
-[db] Creating shared folders metadata...
-[db] Clearing any previously set network interfaces...
-[db] Preparing network interfaces based on configuration...
-[db] Forwarding ports...
-[db] -- 22 =&amp;gt; 2200 (adapter 1)
-[db] Running any VM customizations...
-[db] Booting VM...
-[db] Waiting for VM to boot. This can take a few minutes.
-[db] VM booted and ready for use!
-[db] Setting hostname...
-[db] Configuring and enabling network interfaces...
-[db] Mounting shared folders...
-[db] -- /vagrant
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;看到上面的信息输出后，我们就可以通过&lt;code&gt;vagrant ssh&lt;/code&gt;登录虚拟机了，但是这次和上次使用的不一样了，这次我们需要指定相应的角色，用来告诉ssh你期望连接的是哪一台：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant ssh web
-vagrant@web:~$
-
-$ vagrant ssh db
-vagrant@db:~$
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;是不是很酷！现在接下来我们再来验证一下虚拟机之间的通信，让我们先使用ssh登录web虚拟机，然后在web虚拟机上使用ssh登录db虚拟机(默认密码是&lt;code&gt;vagrant&lt;/code&gt;)：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ vagrant ssh web
-Linux web 2.6.32-38-server #83-Ubuntu SMP Wed Jan 4 11:26:59 UTC 2012 x86_64 GNU/Linux
-Ubuntu 10.04.4 LTS
-
-Welcome to the Ubuntu Server!
- * Documentation:  http://www.ubuntu.com/server/doc
-New release &#39;precise&#39; available.
-Run &#39;do-release-upgrade&#39; to upgrade to it.
-
-Welcome to your Vagrant-built virtual machine.
-Last login: Thu Aug  8 18:55:44 2013 from 10.0.2.2
-vagrant@web:~$ ssh 11.11.1.2
-The authenticity of host &#39;11.11.1.2 (11.11.1.2)&#39; can&#39;t be established.
-RSA key fingerprint is e7:8f:07:57:69:08:6e:fa:82:bc:1c:f6:53:3f:12:9e.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added &#39;11.11.1.2&#39; (RSA) to the list of known hosts.
-vagrant@11.11.1.2&#39;s password:
-Linux db 2.6.32-38-server #83-Ubuntu SMP Wed Jan 4 11:26:59 UTC 2012 x86_64 GNU/Linux
-Ubuntu 10.04.4 LTS
-
-Welcome to the Ubuntu Server!
- * Documentation:  http://www.ubuntu.com/server/doc
-New release &#39;precise&#39; available.
-Run &#39;do-release-upgrade&#39; to upgrade to it.
-
-Welcome to your Vagrant-built virtual machine.
-Last login: Thu Aug  8 18:58:50 2013 from 10.0.2.2
-vagrant@db:~$
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;通过上面的信息我们可以看到虚拟机之间通信是畅通的，所以现在开始你伟大的架构设计吧，你想设计怎么样的架构都可以，唯一限制你的就是你主机的硬件配置了。&lt;/p&gt;
-
-&lt;h2 id=&#34;links&#34;&gt;links&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;preface.md&#34;&gt;目录&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;上一节: &lt;a href=&#34;01.2.md&#34;&gt;Vagrant安装配置&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;下一节: &lt;a href=&#34;01.4.md&#34;&gt;Go环境安装配置&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>sublime-text-3配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 03 Nov 2015 11:21:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
-      <description>
-
-&lt;h2 id=&#34;sublime-text-3编辑器插件&#34;&gt;sublime text 3编辑器插件&lt;/h2&gt;
-
-&lt;p&gt;1.HTML代码格式化插件&lt;code&gt;Tag&lt;/code&gt;;&lt;/p&gt;
-
-&lt;p&gt;2.右键菜单增强插件&lt;code&gt;SideBarEnhancements&lt;/code&gt;;&lt;/p&gt;
-
-&lt;p&gt;3.JS代码格式化插件&lt;code&gt;JSformat&lt;/code&gt;;&lt;/p&gt;
-
-&lt;p&gt;4.Json格式化插件&lt;code&gt;Pretty Json&lt;/code&gt;;&lt;/p&gt;
-
-&lt;p&gt;5.Go语言sublime编辑器&lt;code&gt;Gosublime&lt;/code&gt;;&lt;/p&gt;
-
-&lt;p&gt;6.markdown编辑和预览器：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;MarkDown Edting&lt;/code&gt;,markdown编辑插件;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;omniMarkupPreview&lt;/code&gt;,浏览器markdown预览导出.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;sublime-text-3安装package-control&#34;&gt;sublime text 3安装Package Control&lt;/h2&gt;
-
-&lt;h3 id=&#34;简单安装方法&#34;&gt;简单安装方法&lt;/h3&gt;
-
-&lt;p&gt;The simplest method of installation is through the Sublime Text console. The console is accessed via the&lt;code&gt;ctrl+&lt;/code&gt; shortcut or the&lt;code&gt;View &amp;gt; Show Console&lt;/code&gt;menu. Once open, paste the appropriate Python code for your version of Sublime Text into the console.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import urllib.request,os,hashlib; h = &#39;2915d1851351e5ee549c20394736b442&#39; + &#39;8bc59f460fa1548d1514676163dafc88&#39;; pf = &#39;Package Control.sublime-package&#39;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &#39;http://packagecontrol.io/&#39; + pf.replace(&#39; &#39;, &#39;%20&#39;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&#39;Error validating download (got %s instead of %s), please try manual install&#39; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &#39;wb&#39; ).write(by)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;常规安装方法&#34;&gt;常规安装方法&lt;/h3&gt;
-
-&lt;p&gt;If for some reason the console installation instructions do not work for you (such as having a proxy on your network), perform the following steps to manually install &lt;a href=&#34;https://packagecontrol.io/Package%20Control.sublime-package&#34;&gt;Package Control&lt;/a&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;1.Click the Preferences &amp;gt; Browse Packages… menu
-2.Browse up a folder and then into the Installed Packages/ folder
-3.Download ‘Package Control.sublime-package’ and copy it into the ‘Installed Packages/’ directory
-4.Restart Sublime Text
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;结束&lt;/p&gt;
-
-&lt;h2 id=&#34;sublime-text-2-3-输入法修复-ubuntu-debian&#34;&gt;Sublime Text 2/3 输入法修复[Ubuntu(Debian)]&lt;/h2&gt;
-
-&lt;p&gt;主要目的:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;安装 Sublime Text 3&lt;/li&gt;
-&lt;li&gt;安装 Fcitx 输入法 + 皮肤&lt;/li&gt;
-&lt;li&gt;修复 Sublime Text 2/3&amp;rsquo;s 在 Ubuntu(Debian) 系统下的无法输入中文输入法的问题&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;注意&#34;&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;这个修复仅当在终端中使用 &lt;code&gt;subl .&lt;/code&gt; 调用 Sublime Text 的时有效, 具体原因请看源代码&lt;a href=&#34;https://github.com/lyfeyaj/sublime-text-imfix/blob/master/src/subl&#34;&gt;src/subl&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;使用方法&#34;&gt;使用方法&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;更新并升级系统为最新(较新的系统会解决很多可能出现的问题)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;克隆项目到本地 :&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/lyfeyaj/sublime-text-imfix.git
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;运行脚本 :&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd sublime-text-imfix &amp;amp;&amp;amp; ./sublime-imfix
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;完成! 重新启动后就可以在Sublime Text 2/3 中 使用Fcitx了! 注意: 皮肤可能需要自己选择 ^_^&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/node/</link>
+    <description>Recent content in Node on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Sun, 06 Dec 2015 12:51:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/node/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>nodejs linux安装与卸载</title>
+      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <description>
+
+&lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
+
+&lt;h3 id=&#34;安装-源码下载&#34;&gt;安装、源码下载&lt;/h3&gt;
+
+&lt;p&gt;下载最新版本node的源代码：&lt;a href=&#34;https://nodejs.org/en/download/&#34;&gt;下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;解压下载文件：&lt;br /&gt;
+&lt;code&gt;tar -xzvf node-v4.2.1.tar.gz&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;切换工作目录至源代码目录：&lt;br /&gt;
+&lt;code&gt;cd node-v4.2.1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;configure&lt;/code&gt;配置安装文件：&lt;br /&gt;
+&lt;code&gt;./configure&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;make编译码代码：  &lt;em&gt;(编译Node源码时间较长，我编译用了大约40分左右。)&lt;/em&gt;&lt;br /&gt;
+&lt;code&gt;make&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;make install安装：&lt;br /&gt;
+&lt;code&gt;sudo make install&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查看安装：&lt;em&gt;(显示版本号)&lt;/em&gt;&lt;br /&gt;
+&lt;code&gt;node -v&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;卸载&#34;&gt;卸载&lt;/h3&gt;
+
+&lt;p&gt;保留编译完成的源码包，或者自己再重新编译生成个&lt;/p&gt;
+
+&lt;p&gt;干掉make install命令时装进去的文件,需要管理员身份&lt;br /&gt;
+&lt;code&gt;sudo make uninstall&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;只删除make时产生的临时文件：&lt;br /&gt;
+&lt;code&gt;make clean&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;同时删除configure和make产生的临时文件&lt;br /&gt;
+&lt;code&gt;make distclean&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;升级node版本&#34;&gt;升级Node版本&lt;/h3&gt;
+
+&lt;p&gt;直接下载源码重新编译，安装。（覆盖了旧的版本）&lt;/p&gt;
+
+&lt;h2 id=&#34;ps&#34;&gt;Ps&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;也同样适用与其他linux平台编译安装软件。&lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>gulp 资源教程集合</title>
+      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;1.&lt;a href=&#34;http://www.w3ctech.com/topic/134&#34;&gt;Gulp开发教程（翻译）&lt;/a&gt;&lt;br /&gt;
+2.&lt;a href=&#34;http://gulpjs.com/plugins/&#34;&gt;Gulp插件搜索地址&lt;/a&gt;&lt;br /&gt;
+3.&lt;a href=&#34;http://www.gulpjs.com.cn/&#34;&gt;gulp中文网&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;####项目例子&lt;br /&gt;
+- &lt;a href=&#34;https://github.com/Swiip/generator-gulp-angular&#34;&gt;generator-gulp-angular&lt;/a&gt;&lt;br /&gt;
+- &lt;a href=&#34;https://github.com/yeoman/generator-angular#app&#34;&gt;generator-angular&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

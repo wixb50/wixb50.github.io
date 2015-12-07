@@ -2,22 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mysql on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/mysql/</link>
+    <link>http://wixb50.github.io/categories/mysql/</link>
     <description>Recent content in Mysql on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Fri, 13 Nov 2015 21:35:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Nov 2015 19:32:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mysql 安装配置</title>
+      <link>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 20 Nov 2015 19:32:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;1.更新源&lt;br /&gt;
+&lt;code&gt;source /etc/apt/source.list&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;br /&gt;
+2.在Ubuntu14.04下安装mysql：(还是从mysql官网下载安装包安装吧)&lt;br /&gt;
+&lt;code&gt;sudo apt-get install mysql-server&lt;/code&gt;&lt;br /&gt;
+3.在目录/etc/mysql下打开my.cnf，用vim编辑，找到&lt;br /&gt;
+&lt;code&gt;bind-address   =127.0.0.1&lt;/code&gt;&lt;br /&gt;
+改为：&lt;br /&gt;
+&lt;code&gt;bind-address   =0.0.0.0&lt;/code&gt;或者直接将上句注释掉&lt;br /&gt;
+4.使用root账户登录到Mysql数据库：&lt;br /&gt;
+&lt;code&gt;mysql -u root -p&lt;/code&gt;&lt;br /&gt;
+使用命令：&lt;br /&gt;
+&lt;code&gt;use mysql;&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;select host, user, password from user&lt;/code&gt;可以查看到当前可以连接到该服务器的用户&lt;br /&gt;
+在mysql&amp;gt;输入：&lt;br /&gt;
+&lt;code&gt;grant all on *.* to root@&#39;%&#39; identified by &#39;123&#39;&lt;/code&gt;&lt;br /&gt;
+注：&lt;br /&gt;
+* root是用户名
+* passwd是连接密码&lt;br /&gt;
+&lt;code&gt;flush privileges;&lt;/code&gt;  # 刷新权限表&lt;br /&gt;
+5.最后在远端可以进行远程登录：&lt;br /&gt;
+* 用户名：root
+* 密码：123
+* 端口：3306&lt;br /&gt;
+完成！&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>mysql数据字典生成工具</title>
-      <link>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
+      <link>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
       <description>
 
 &lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;

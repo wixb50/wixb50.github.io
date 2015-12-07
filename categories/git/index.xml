@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/git/</link>
+    <link>http://wixb50.github.io/categories/git/</link>
     <description>Recent content in Git on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,74 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 05 Nov 2015 13:26:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Jenkins教程-简单ssh构建</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
-      <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
-      <description>
-
-&lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Jenkins CI is the leading open-source continuous integration server.&lt;/p&gt;
-
-&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;此教程中jenkins只充当于一个中间件的作用，并且所有的构建和部署都在&lt;strong&gt;远端服务器&lt;/strong&gt;完成。&lt;/p&gt;
-
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;jenkins安装&#34;&gt;jenkins安装&lt;/h3&gt;
-
-&lt;p&gt;这个自行google去，教程很简单，只要把war包下载执行即可，本文是基于dokcer的jenkins镜像安装的。&lt;/p&gt;
-
-&lt;h3 id=&#34;gitlab安装&#34;&gt;gitlab安装&lt;/h3&gt;
-
-&lt;p&gt;见&lt;a href=&#34;https://gitlab.com/&#34;&gt;gitlab官网&lt;/a&gt;，或者可以直接使用gitlab托管源码。&lt;/p&gt;
-
-&lt;h2 id=&#34;jenkins配置&#34;&gt;jenkins配置&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;1.配置安全设置：&lt;code&gt;系统管理-&amp;gt;Configure Global Security&lt;/code&gt;中启用安全，然后根据自己需要，可配置用户权限等。&lt;/p&gt;
-
-&lt;p&gt;2.插件安装：&lt;code&gt;系统管理-&amp;gt;管理插件&lt;/code&gt;中安装可选插件，本教程中需要的插件有：GIT client plugin、GIT plugin、Gitlab Hook Plugin、&lt;strong&gt;Publish Over SSH&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;3.新建一个&lt;code&gt;构建一个自由风格的软件项目&lt;/code&gt;，输入名称(不要带大写)。&lt;/p&gt;
-
-&lt;p&gt;4.然后在&lt;code&gt;源码管理&lt;/code&gt;地方选择&lt;code&gt;Git&lt;/code&gt;输入&lt;code&gt;Repository URL&lt;/code&gt;，以及配置好&lt;code&gt;Credentials&lt;/code&gt;(可选择username或者ssh配置)，完成后选择要构建的分支&lt;code&gt;e.g.,*/develop&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;5.&lt;strong&gt;构建触发器&lt;/strong&gt;选择&lt;code&gt;触发远程构建&lt;/code&gt;，并根据提示填好身份令牌，&lt;strong&gt;并且在&lt;/strong&gt;你的&lt;code&gt;gitlab项目&lt;/code&gt;中设置好&lt;code&gt;web hook(e.g.,JENKINS_URL/job/zeu_frontend/build?token=TOKEN_NAME)&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;6.&lt;strong&gt;构建&lt;/strong&gt;&lt;code&gt;增加构建步骤&lt;/code&gt;选择&lt;code&gt;send files or execute commands over ssh&lt;/code&gt;，然后配置好组要在远端执行脚本的ssh server测试能连接上，然后在&lt;code&gt;Exec command&lt;/code&gt;中输入脚本，或者&lt;code&gt;Transfer Set Source files&lt;/code&gt;可以执行jenkins中的脚本在远端执行，这里简单起见，就直接输入命令。&lt;/p&gt;
-
-&lt;p&gt;7.这样就差不多了，还有想加的步骤，自己加把，提交一下，是不是自己开始构建了呢。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;提示：&lt;/strong&gt;输入的脚本要自己在远端跑一下，能完整跑通才行，注意为远程服务器git配置号user和name，以及sshKey，这样就不要输入密码pull了。&lt;/p&gt;
-
-&lt;h2 id=&#34;auth&#34;&gt;Auth&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Support by &lt;a href=&#34;http://elegencetse.com&#34;&gt;elegancetse&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
+    <atom:link href="http://wixb50.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>gitlab搭建教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
@@ -98,10 +38,10 @@
     
     <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
 git config --global user.name &amp;quot;xxx&amp;quot;                       # 配置用户名
 git config --global user.email &amp;quot;xxx@xxx.com&amp;quot;              # 配置邮件

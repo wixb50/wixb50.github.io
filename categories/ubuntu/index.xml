@@ -2,22 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/ubuntu/</link>
+    <link>http://wixb50.github.io/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Sat, 07 Nov 2015 22:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Dec 2015 17:27:25 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ubuntu搭建远程桌面服务器</title>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
+sudo apt-get install vnc4server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;tightvncserver在ubuntu14.04下面是不用装的，如果连接的是ubuntu12.04的话。是需要安装的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install tightvncserver
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、安装xfce4的桌面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install xubuntu-desktop
+echo &amp;quot;xfce4-session&amp;quot; &amp;gt;~/.xsession  #在需要远程登录的用户下执行一遍即可
+sudo service xrdp restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果无法远程连接成功，记得在终端下执行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重新启动系统。&lt;/p&gt;
+
+&lt;p&gt;Windows下的操作：&lt;br /&gt;
+使用&amp;raquo;窗口键+R&amp;raquo;打开&amp;raquo;运行对话框&amp;raquo;&amp;ndash;&amp;gt;输入&amp;raquo;mstsc&amp;raquo;&amp;ndash;&amp;gt;回车&amp;ndash;&amp;gt;输入Ubuntu主机的IP地址&amp;ndash;&amp;gt;&amp;laquo;连接&amp;raquo;。在Ubuntu下可以通过“ifconfig”获得本机网络连接的概况，其中包括IP地址。
+填上正确的IP地址，按回车，会出现一个登陆框，我们选择“sesman-Xvnc”这个，然后输入你的Ubuntu的用户名和密码，OK！&lt;/p&gt;
+
+&lt;p&gt;后记：使用这种方法连上Ubuntu还有个问题，就是键盘的快捷键会有点小混乱。此时断开远程桌面，在Ubuntu的实体机器上，打开管理键盘快捷键，将带有“windows”键，ubunntu显示是“mod5”键（好像是类似的，记不清了）的快捷键组合删掉即可。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
@@ -50,10 +89,10 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -128,10 +167,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gulp on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/gulp/</link>
+    <description>Recent content in Gulp on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Nov 2015 18:51:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/gulp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>gulp 资源教程集合</title>
+      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;1.&lt;a href=&#34;http://www.w3ctech.com/topic/134&#34;&gt;Gulp开发教程（翻译）&lt;/a&gt;&lt;br /&gt;
+2.&lt;a href=&#34;http://gulpjs.com/plugins/&#34;&gt;Gulp插件搜索地址&lt;/a&gt;&lt;br /&gt;
+3.&lt;a href=&#34;http://www.gulpjs.com.cn/&#34;&gt;gulp中文网&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;####项目例子&lt;br /&gt;
+- &lt;a href=&#34;https://github.com/Swiip/generator-gulp-angular&#34;&gt;generator-gulp-angular&lt;/a&gt;&lt;br /&gt;
+- &lt;a href=&#34;https://github.com/yeoman/generator-angular#app&#34;&gt;generator-angular&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

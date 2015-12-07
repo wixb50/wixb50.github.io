@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang Map on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/golang-map/</link>
+    <description>Recent content in Golang Map on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Nov 2015 18:32:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/golang-map/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golang排序实现 sort接口实现</title>
+      <link>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Fri, 20 Nov 2015 18:32:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;p&gt;sort.Interface接口有三个方法,给自己的struct实现这三个方法,然后用将自己的结构体传给sort.Sort方法就排序完成.&lt;/p&gt;
+
+&lt;p&gt;sort包也有几个常用的方法sort.Float64Slice sort.IntSlise sort.StringSlise&lt;/p&gt;
+
+&lt;p&gt;源码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import (
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;sort&amp;quot;
+)
+
+type MapSorter []Item
+
+type Item struct {
+    Key string
+    Val int64
+}
+
+func NewMapSorter(m map[string]int64) MapSorter {
+    ms := make(MapSorter, 0, len(m))
+
+    for k, v := range m {
+        ms = append(ms, Item{k, v})
+    }
+
+    return ms
+}
+
+func (ms MapSorter) Len() int {
+    return len(ms)
+}
+
+func (ms MapSorter) Less(i, j int) bool {
+    return ms[i].Val &amp;lt; ms[j].Val // 按值排序
+    //return ms[i].Key &amp;lt; ms[j].Key // 按键排序
+}
+
+func (ms MapSorter) Swap(i, j int) {
+    ms[i], ms[j] = ms[j], ms[i]
+}
+
+func main(){
+    m  := map[string]int64 {
+        &amp;quot;e&amp;quot;: 10,
+        &amp;quot;a&amp;quot;: 2,
+        &amp;quot;d&amp;quot;: 15,
+        &amp;quot;c&amp;quot;: 8,
+        &amp;quot;f&amp;quot;: 1,
+        &amp;quot;b&amp;quot;: 12,
+    }
+
+    ms := NewMapSorter(m)
+    sort.Sort(ms)
+
+    for _, item := range ms {
+        fmt.Printf(&amp;quot;%s:%d\n&amp;quot;, item.Key, item.Val)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完成.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

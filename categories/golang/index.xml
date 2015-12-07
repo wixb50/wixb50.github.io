@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/golang/</link>
+    <description>Recent content in Golang on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Mon, 23 Nov 2015 22:00:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>golang使用http client发起get和post请求</title>
+      <link>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Mon, 23 Nov 2015 22:00:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
+      <description>
+
+&lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;get请求&#34;&gt;get请求&lt;/h3&gt;
+
+&lt;p&gt;get请求可以直接http.Get方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpGet() {
+    resp, err := http.Get(&amp;quot;http://www.01happy.com/demo/accept.php?id=1&amp;quot;)
+    if err != nil {
+        // handle error
+    }
+
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;post请求&#34;&gt;post请求&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;使用http.Post方式&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpPost() {
+    resp, err := http.Post(&amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;,
+        &amp;quot;application/x-www-form-urlencoded&amp;quot;,
+        strings.NewReader(&amp;quot;name=cjb&amp;quot;))
+    if err != nil {
+        fmt.Println(err)
+    }
+
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tips：使用这个方法的话，第二个参数要设置成”application/x-www-form-urlencoded”，否则post参数无法传递。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;使用http.PostForm方法&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpPostForm() {
+    resp, err := http.PostForm(&amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;,
+        url.Values{&amp;quot;key&amp;quot;: {&amp;quot;Value&amp;quot;}, &amp;quot;id&amp;quot;: {&amp;quot;123&amp;quot;}})
+
+    if err != nil {
+        // handle error
+    }
+
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂的请求&#34;&gt;复杂的请求&lt;/h3&gt;
+
+&lt;p&gt;有时需要在请求的时候设置头参数、cookie之类的数据，就可以使用http.Do方法。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func httpDo() {
+    client := &amp;amp;http.Client{}
+
+    req, err := http.NewRequest(&amp;quot;POST&amp;quot;, &amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;, strings.NewReader(&amp;quot;name=cjb&amp;quot;))
+    if err != nil {
+        // handle error
+    }
+
+    req.Header.Set(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/x-www-form-urlencoded&amp;quot;)
+    req.Header.Set(&amp;quot;Cookie&amp;quot;, &amp;quot;name=anny&amp;quot;)
+
+    resp, err := client.Do(req)
+
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+
+    fmt.Println(string(body))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同上面的post请求，必须要设定Content-Type为application/x-www-form-urlencoded，post参数才可正常传递.&lt;/p&gt;
+
+&lt;h3 id=&#34;head请求&#34;&gt;Head请求&lt;/h3&gt;
+
+&lt;p&gt;发起head请求可以直接使用http client的head方法。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>golang排序实现 sort接口实现</title>
+      <link>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Fri, 20 Nov 2015 18:32:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;p&gt;sort.Interface接口有三个方法,给自己的struct实现这三个方法,然后用将自己的结构体传给sort.Sort方法就排序完成.&lt;/p&gt;
+
+&lt;p&gt;sort包也有几个常用的方法sort.Float64Slice sort.IntSlise sort.StringSlise&lt;/p&gt;
+
+&lt;p&gt;源码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import (
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;sort&amp;quot;
+)
+
+type MapSorter []Item
+
+type Item struct {
+    Key string
+    Val int64
+}
+
+func NewMapSorter(m map[string]int64) MapSorter {
+    ms := make(MapSorter, 0, len(m))
+
+    for k, v := range m {
+        ms = append(ms, Item{k, v})
+    }
+
+    return ms
+}
+
+func (ms MapSorter) Len() int {
+    return len(ms)
+}
+
+func (ms MapSorter) Less(i, j int) bool {
+    return ms[i].Val &amp;lt; ms[j].Val // 按值排序
+    //return ms[i].Key &amp;lt; ms[j].Key // 按键排序
+}
+
+func (ms MapSorter) Swap(i, j int) {
+    ms[i], ms[j] = ms[j], ms[i]
+}
+
+func main(){
+    m  := map[string]int64 {
+        &amp;quot;e&amp;quot;: 10,
+        &amp;quot;a&amp;quot;: 2,
+        &amp;quot;d&amp;quot;: 15,
+        &amp;quot;c&amp;quot;: 8,
+        &amp;quot;f&amp;quot;: 1,
+        &amp;quot;b&amp;quot;: 12,
+    }
+
+    ms := NewMapSorter(m)
+    sort.Sort(ms)
+
+    for _, item := range ms {
+        fmt.Printf(&amp;quot;%s:%d\n&amp;quot;, item.Key, item.Val)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完成.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
