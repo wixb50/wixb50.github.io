@@ -76,3 +76,7 @@ cd sublime-text-imfix && ./sublime-imfix
 ```
 
 + 完成! 重新启动后就可以在Sublime Text 2/3 中 使用Fcitx了! 注意: 皮肤可能需要自己选择 ^_^
+
+## 卸载已安装的插件
+
+如果是通过package control安装的, 快捷键Cmd + shift + p打开面板搜索Package Control: Remove Package然后选择需要卸载的插件.

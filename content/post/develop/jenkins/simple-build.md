@@ -1,8 +1,8 @@
 +++
-categories = ["git","jenkins"]
+categories = ["ci","jenkins"]
 date = "2015-11-05T13:26:17+08:00"
 description = "简单ssh构建"
-keywords = ["git","jenkins"]
+keywords = ["ci","jenkins"]
 title = "Jenkins教程-简单ssh构建"
 
 +++

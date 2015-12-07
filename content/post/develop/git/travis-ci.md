@@ -1,9 +1,9 @@
 +++
-categories = ["github","travis-ci"]
+categories = ["github","ci"]
 date = "2015-11-16T13:25:17+08:00"
-description = "git常用命令集合"
+description = "github travis-ci"
 keywords = ["travis"]
-title = "git常用命令集合"
+title = "git travis-ci"
 
 +++
 
