@@ -6,8 +6,21 @@ keywords = ["sublime"]
 title = "sublime-text-3配置"
 
 +++
+## 目录
+<!-- MarkdownTOC -->
 
-## sublime text 3编辑器插件
+- [Sublime Text 3编辑器插件](#sublime-text-3编辑器插件)
+- [sublime text 3安装Package Control](#sublime-text-3安装package-control)
+    - [简单安装方法](#简单安装方法)
+    - [常规安装方法](#常规安装方法)
+- [Sublime Text 2/3 输入法修复](#Ubuntu(Debian))
+    - [**注意**](#注意)
+    - [使用方法](#使用方法)
+- [卸载已安装的插件](#卸载已安装的插件)
+
+<!-- /MarkdownTOC -->
+
+## Sublime Text 3编辑器插件
 
 1.HTML代码格式化插件`Tag`;
 
@@ -23,6 +36,23 @@ title = "sublime-text-3配置"
 
 + `MarkDown Edting`,markdown编辑插件;  
 + `omniMarkupPreview`,浏览器markdown预览导出.
++ `MarkdownTOC`,sublime的markdown目录自动生成器.
+
+        //My配置文件:
+        {
+          "default_autolink": true, //目录添加自动链接
+          "default_depth": 0, //默认无限目录
+          "default_bracket": "round", //圆括号
+          "default_autoanchor": false  //是否添加锚链接
+        }
+
+7.[Git](https://github.com/kemayo/sublime-text-git)插件,`ctrl+shift+p`使用命令
+
+8.[Terminal](https://github.com/wbond/sublime_terminal),打开在当前文件所在的目录的终端,*改快捷键*
+
+9.[Emmet](http://emmet.io/),html/css开发利器
+
+10.[SublimeREPL](https://github.com/wuub/SublimeREPL)
 
 ## sublime text 3安装Package Control
 
@@ -55,7 +85,7 @@ If for some reason the console installation instructions do not work for you (su
 
 + **这个修复仅当在终端中使用 `subl .` 调用 Sublime Text 的时有效, 具体原因请看源代码[src/subl](https://github.com/lyfeyaj/sublime-text-imfix/blob/master/src/subl)**
 
-### 使用方法 ###
+### 使用方法
 
 + 更新并升级系统为最新(较新的系统会解决很多可能出现的问题)
 
