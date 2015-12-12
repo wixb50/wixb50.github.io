@@ -10,18 +10,18 @@
   <title>sublime-text-3配置 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.gitcafe.io/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.gitcafe.io/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.gitcafe.io/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.gitcafe.io/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.gitcafe.io\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
 
-    <p>Copyright &copy; 2015 <a href="http://wixb50.gitcafe.io/license/">License</a><br/>
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -89,14 +89,37 @@
 <div class="content container">
   <div class="post">
     <h1>sublime-text-3配置</h1>
-    <span class="post-date">Nov 3, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/#disqus_thread">Comments</a>
+    <span class="post-date">Nov 3, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.gitcafe.io/categories/editor">editor</a>
+    <a class="label" href="http://wixb50.github.io/categories/editor">editor</a>
     </span>
     
 
-<h2 id="sublime-text-3编辑器插件">sublime text 3编辑器插件</h2>
+<h2 id="目录">目录</h2>
+
+<!-- MarkdownTOC -->
+
+<ul>
+<li><a href="#sublime-text-3编辑器插件">Sublime Text 3编辑器插件</a></li>
+<li><a href="#sublime-text-3安装package-control">sublime text 3安装Package Control</a>
+
+<ul>
+<li><a href="#简单安装方法">简单安装方法</a></li>
+<li><a href="#常规安装方法">常规安装方法</a></li>
+</ul></li>
+<li><a href="#Ubuntu(Debian">Sublime Text 2/3 输入法修复</a>)
+
+<ul>
+<li><a href="#注意"><strong>注意</strong></a></li>
+<li><a href="#使用方法">使用方法</a></li>
+</ul></li>
+<li><a href="#卸载已安装的插件">卸载已安装的插件</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<h2 id="sublime-text-3编辑器插件">Sublime Text 3编辑器插件</h2>
 
 <p>1.HTML代码格式化插件<code>Tag</code>;</p>
 
@@ -113,7 +136,26 @@
 <ul>
 <li><code>MarkDown Edting</code>,markdown编辑插件;<br /></li>
 <li><code>omniMarkupPreview</code>,浏览器markdown预览导出.</li>
+
+<li><p><code>MarkdownTOC</code>,sublime的markdown目录自动生成器.</p>
+
+<pre><code>//My配置文件:
+{
+  &quot;default_autolink&quot;: true, //目录添加自动链接
+  &quot;default_depth&quot;: 0, //默认无限目录
+  &quot;default_bracket&quot;: &quot;round&quot;, //圆括号
+  &quot;default_autoanchor&quot;: false  //是否添加锚链接
+}
+</code></pre></li>
 </ul>
+
+<p>7.<a href="https://github.com/kemayo/sublime-text-git">Git</a>插件,<code>ctrl+shift+p</code>使用命令</p>
+
+<p>8.<a href="https://github.com/wbond/sublime_terminal">Terminal</a>,打开在当前文件所在的目录的终端,<em>改快捷键</em></p>
+
+<p>9.<a href="http://emmet.io/">Emmet</a>,html/css开发利器</p>
+
+<p>10.<a href="https://github.com/wuub/SublimeREPL">SublimeREPL</a></p>
 
 <h2 id="sublime-text-3安装package-control">sublime text 3安装Package Control</h2>
 
@@ -211,7 +253,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.gitcafe.io/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

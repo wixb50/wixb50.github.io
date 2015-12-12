@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Editor on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/editor/</link>
+    <link>http://wixb50.github.io/categories/editor/</link>
     <description>Recent content in Editor on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,40 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Tue, 03 Nov 2015 11:21:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/editor/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/editor/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>sublime-text-3配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 11:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
-&lt;h2 id=&#34;sublime-text-3编辑器插件&#34;&gt;sublime text 3编辑器插件&lt;/h2&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#sublime-text-3编辑器插件&#34;&gt;Sublime Text 3编辑器插件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sublime-text-3安装package-control&#34;&gt;sublime text 3安装Package Control&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#简单安装方法&#34;&gt;简单安装方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#常规安装方法&#34;&gt;常规安装方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#Ubuntu(Debian&#34;&gt;Sublime Text 2/3 输入法修复&lt;/a&gt;)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#注意&#34;&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用方法&#34;&gt;使用方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#卸载已安装的插件&#34;&gt;卸载已安装的插件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;sublime-text-3编辑器插件&#34;&gt;Sublime Text 3编辑器插件&lt;/h2&gt;
 
 &lt;p&gt;1.HTML代码格式化插件&lt;code&gt;Tag&lt;/code&gt;;&lt;/p&gt;
 
@@ -37,7 +60,26 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;MarkDown Edting&lt;/code&gt;,markdown编辑插件;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;omniMarkupPreview&lt;/code&gt;,浏览器markdown预览导出.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;MarkdownTOC&lt;/code&gt;,sublime的markdown目录自动生成器.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//My配置文件:
+{
+  &amp;quot;default_autolink&amp;quot;: true, //目录添加自动链接
+  &amp;quot;default_depth&amp;quot;: 0, //默认无限目录
+  &amp;quot;default_bracket&amp;quot;: &amp;quot;round&amp;quot;, //圆括号
+  &amp;quot;default_autoanchor&amp;quot;: false  //是否添加锚链接
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;7.&lt;a href=&#34;https://github.com/kemayo/sublime-text-git&#34;&gt;Git&lt;/a&gt;插件,&lt;code&gt;ctrl+shift+p&lt;/code&gt;使用命令&lt;/p&gt;
+
+&lt;p&gt;8.&lt;a href=&#34;https://github.com/wbond/sublime_terminal&#34;&gt;Terminal&lt;/a&gt;,打开在当前文件所在的目录的终端,&lt;em&gt;改快捷键&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;9.&lt;a href=&#34;http://emmet.io/&#34;&gt;Emmet&lt;/a&gt;,html/css开发利器&lt;/p&gt;
+
+&lt;p&gt;10.&lt;a href=&#34;https://github.com/wuub/SublimeREPL&#34;&gt;SublimeREPL&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;sublime-text-3安装package-control&#34;&gt;sublime text 3安装Package Control&lt;/h2&gt;
 

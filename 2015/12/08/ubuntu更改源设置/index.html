@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>http安全 &middot; Wixb</title>
+  <title>ubuntu更改源设置 &middot; Wixb</title>
 
   
   <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
@@ -28,8 +28,8 @@
   
   
 
-  <meta name="description" content="http安全知识点收集">
-  <meta name="keywords" content="http">
+  <meta name="description" content="ubuntu更改源设置">
+  <meta name="keywords" content="source">
   <link rel="author" href="http://plus.google.com/wixb50">
 </head>
 <body class="theme-base-0c">
@@ -88,21 +88,80 @@
 
 <div class="content container">
   <div class="post">
-    <h1>http安全</h1>
-    <span class="post-date">Nov 19, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/#disqus_thread">Comments</a>
+    <h1>ubuntu更改源设置</h1>
+    <span class="post-date">Dec 8, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.github.io/categories/https">https</a><a class="label" href="http://wixb50.github.io/categories/http2">http2</a><a class="label" href="http://wixb50.github.io/categories/security">security</a>
+    <a class="label" href="http://wixb50.github.io/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.github.io/categories/os">os</a>
     </span>
-    
+    <ul>
+<li>首先备份源列表：</li>
+</ul>
 
-<h2 id="https">https</h2>
+<pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
+</code></pre>
 
 <ul>
-<li><a href="http://www.liaoxuefeng.com/article/0014189023237367e8d42829de24b6eaf893ca47df4fb5e000">给Nginx配置一个自签名的SSL证书</a> 2014.12.18</li>
-<li><a href="https://ttt.tt/9/">Apache + WordPress + SSL 完全指南</a> 2012.07.14</li>
-<li><a href="http://blog.jjonline.cn/linux/92.html">https安全链接的配置教程</a> 2012.12.01</li>
+<li>而后用vim或其他编辑器打开:</li>
 </ul>
+
+<pre><code>sudo vim /etc/apt/sources.list
+</code></pre>
+
+<ul>
+<li><p>从下面列表中选择合适的源，替换掉文件中所有的内容，保存编辑好的文件:</p>
+
+<p><font color="red">注意：一定要选对版本</font></p></li>
+
+<li><p>最后，刷新列表</p></li>
+</ul>
+
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p><em>附上ubuntu14.04源：</em></p>
+
+<p>网易163源：</p>
+
+<pre><code>deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse
+</code></pre>
+
+<p>搜狐源：</p>
+
+<pre><code>deb http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse
+</code></pre>
+
+<p>oschina源：
+<code>
+deb http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted universe multiverse
+deb http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted universe multiverse
+</code></p>
 
   </div>
   <div id="disqus_thread"></div>
