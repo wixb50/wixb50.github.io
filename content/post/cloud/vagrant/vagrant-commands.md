@@ -10,8 +10,8 @@ title = "Vagrant常用命令"
 ## Vagrant常用命令
 前面讲了Vagrant的几个命令：
 
-* `vagrant box add` 添加box的操作
-* `vagrant init` 初始化box的操作
+* `vagrant box add {title} {url}` 添加box的操作
+* `vagrant init {title}` 初始化box的操作
 * `vagrant up` 启动虚拟机的操作
 * `vagrant ssh` 登录拟机的操作
 
