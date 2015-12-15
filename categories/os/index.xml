@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/os/</link>
+    <link>http://wixb50.github.io/categories/os/</link>
     <description>Recent content in Os on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Tue, 08 Dec 2015 16:43:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -91,10 +91,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -130,13 +130,37 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#shutdown-命令&#34;&gt;shutdown 命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ln-命令&#34;&gt;ln 命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux下怎样设置ssh无密码登录&#34;&gt;linux下怎样设置ssh无密码登录&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2导入公钥到认证文件更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-导入本机&#34;&gt;2.1 导入本机&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3测试&#34;&gt;3.测试&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;shutdown-命令&#34;&gt;shutdown 命令&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;shutdown –help  #可以查看shutdown命令如何使用，当然也可以使用man shutdown命令。
 shutdown -h now #现在立即关机
@@ -147,7 +171,7 @@ shutdown -r 20:23 #在20：23时将重启计算机
 shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h3&gt;
+&lt;h2 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h2&gt;
 
 &lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
 
@@ -161,15 +185,75 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;linux下怎样设置ssh无密码登录&#34;&gt;linux下怎样设置ssh无密码登录&lt;/h2&gt;
+
+&lt;p&gt;原理说明
+&amp;gt;密匙认证需要依靠密匙，&lt;br /&gt;
+1.首先创建一对密匙（包括公匙和密匙，并且用公匙加密的数据只能用密匙解密），并把公匙放到需要远程服务器上。&lt;br /&gt;
+2.这样当登录远程 服务器时，客户端软件就会向服务器发出请求，请求用你的密匙进行认证。&lt;br /&gt;
+3.服务器收到请求之后，先在你在该服务器的宿主目录下寻找你的公匙，然后检查该公匙是 否是合法，如果合法就用公匙加密一随机数（即所谓的challenge）并发送给客户端软件。&lt;br /&gt;
+4.客户端软件收到 “challenge”之后就用私匙解密再把它发送给服务器。因为用公匙加密的数据只能用密匙解密，服务器经过比较就可以知道该客户连接的合法性。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/h3&gt;
+
+&lt;p&gt;Shell代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;默认在 ~/.ssh目录生成两个文件：&lt;br /&gt;
+　id_rsa      ：私钥&lt;br /&gt;
+　id_rsa.pub  ：公钥&lt;/p&gt;
+
+&lt;h3 id=&#34;2-导入公钥到认证文件-更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/h3&gt;
+
+&lt;h4 id=&#34;2-1-导入本机&#34;&gt;2.1 导入本机&lt;/h4&gt;
+
+&lt;p&gt;Shell代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-2-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
+
+&lt;p&gt;首先将公钥复制到服务器，Shell代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;scp ~/.ssh/id_rsa.pub xxx@host:~/id_rsa.pub  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，将公钥导入到认证文件，这一步的操作在服务器上进行，Shell代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat ~/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以执行测试登录，如果无任何错误提示，可以输密码登录，但就是不能无密码登录，则执行下步。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-3-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/h4&gt;
+
+&lt;p&gt;Shell 代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-测试&#34;&gt;3.测试&lt;/h3&gt;
+
+&lt;p&gt;执行Shell&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh xxx@host
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一次登录可能需要yes确认，之后就可以直接登录了。&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/docker/</link>
-    <description>Recent content in Docker on Wixb blog</description>
+    <title>Coreos on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/coreos/</link>
+    <description>Recent content in Coreos on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Tue, 15 Dec 2015 18:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/coreos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
@@ -311,57 +311,153 @@ systemctl -l status docker
     </item>
     
     <item>
-      <title>Docker Batch Operation</title>
-      <link>http://wixb50.github.io/2015/12/11/docker-batch-operation/</link>
-      <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
+      <title>快速搭建CoreOS集群</title>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/11/docker-batch-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
-&lt;p&gt;批量操作docker images or container commander.&lt;/p&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 
-&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
+&lt;!-- MarkdownTOC --&gt;
 
-&lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#前言&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#准备工作&#34;&gt;准备工作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#配置工作&#34;&gt;配置工作&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装-vagrant-and-virtualbox&#34;&gt;安装 Vagrant and VirtualBox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#从coreos官方代码库获取基本配置，并进行修改&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#启动集群&#34;&gt;启动集群&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#测试集群&#34;&gt;测试集群&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;前言-null&#34;&gt;&lt;a href=&#34;null&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;第一次接触CoreOS这样的分布式平台，运行一个集群看起来好像一个很复杂的任务，这里我们给你展示在本地快速搭建一个CoreOS集群环境是多么的容易。&lt;/p&gt;
+
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+
+&lt;p&gt;本地的机器上已经安装了最新版本的Virtualbox, Vagrant 和 git。&lt;/p&gt;
+
+&lt;h2 id=&#34;配置工作&#34;&gt;配置工作&lt;/h2&gt;
+
+&lt;h3 id=&#34;安装-vagrant-and-virtualbox&#34;&gt;安装 Vagrant and VirtualBox&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;vagrant&lt;/a&gt; 和 &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;virtualbox&lt;/a&gt;都是直接下载双击安装的，具体安装教程看官网。&lt;/p&gt;
+
+&lt;h3 id=&#34;从coreos官方代码库获取基本配置-并进行修改&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/h3&gt;
+
+&lt;p&gt;首先，获取模板配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/coreos/coreos-vagrant
+cd coreos-vagrant
+cp user-data.sample user-data
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-containers&#34;&gt;Remove all containers.&lt;/h4&gt;
+&lt;p&gt;获取新的token&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
+&lt;pre&gt;&lt;code&gt;curl https://discovery.etcd.io/new
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/h4&gt;
+&lt;p&gt;使用新的token配置到user-data文件如下，&lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vagrant.html&#34;&gt;官网示例&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep &amp;quot;^&amp;lt;none&amp;gt;&amp;quot; | awk &amp;quot;{print $3}&amp;quot;)
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+coreos:
+  etcd2:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+    # specify the initial size of your cluster with ?size=X
+    # WARNING: replace each time you &#39;vagrant destroy&#39;
+    discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;
+    # multi-region and multi-cloud deployments need to use $public_ipv4
+    advertise-client-urls: http://$private_ipv4:2379,http://$private_ipv4:4001
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    # listen on both the official ports and the legacy ports
+    # legacy ports can be omitted if your application doesn&#39;t depend on them
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380
+  fleet:
+    public-ip: $public_ipv4
+  flannel:
+    interface: $public_ipv4
+  units:
+    - name: etcd2.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: flanneld.service
+      drop-ins:
+      - name: 50-network-config.conf
+        content: |
+          [Service]
+          ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config &#39;{ &amp;quot;Network&amp;quot;: &amp;quot;10.1.0.0/16&amp;quot; }&#39;
+      # Uncomment line above if you want to use flannel in your installation.
+      # command: start
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-images&#34;&gt;Remove all images&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;提示：编辑完毕后，请到[&lt;a href=&#34;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&#34;&gt;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep \ | awk &#39;{print $3}&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>docker安装与配置</title>
-      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
-      <description>
+&lt;h2 id=&#34;启动集群&#34;&gt;启动集群&lt;/h2&gt;
 
-&lt;h3 id=&#34;安装命令-运行即可&#34;&gt;安装命令，运行即可&lt;/h3&gt;
+&lt;p&gt;默认情况下，CoreOS Vagrantfile 将会启动单机。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install apt-transport-https
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-sudo bash -c &amp;quot;echo deb https://get.docker.io/ubuntu docker main &amp;gt; /etc/apt/sources.list.d/docker.list&amp;quot;
-sudo apt-get update
-sudo apt-get install lxc-docker
+&lt;p&gt;我们需要复制并修改config.rb.sample文件.&lt;/p&gt;
+
+&lt;p&gt;复制文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp config.rb.sample config.rb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;hr /&gt;
+&lt;p&gt;修改 config.rb 文件，配置 $num_instances 和 $update_channel 这两个参数。比如：&lt;/p&gt;
 
-&lt;p&gt;完&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Official CoreOS channel from which updates should be downloade
+$num_instances=3  ## 表示我们要创建3台主机
+# Official CoreOS channel from which updates should be downloade
+$update_channel=&#39;stable&#39;  ## 表示使用的coreos版本，有：&#39;stable&#39;、&#39;beta&#39;、&#39;alpha&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;提示：如果国内下载比较慢，可以先事先下载好&lt;code&gt;coreos_production_vagrant.box&lt;/code&gt;，添加到vagrant的box里面。注意更改名字为&amp;raquo;coreos-stable|coreos-beta|coreos-alpha&amp;raquo;，和你上面填写的对应。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;启动集群&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;添加ssh的公匙&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-add ~/.vagrant.d/insecure_private_key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;连接集群中的第一台机器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant ssh core-01 -- -A
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;测试集群&#34;&gt;测试集群&lt;/h2&gt;
+
+&lt;p&gt;使用fleet来查看机器运行状况&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fleetctl list-machines
+=&amp;gt;
+MACHINE   IP            METADATA
+517d1c7d... 172.17.8.101  -
+cb35b356... 172.17.8.103  -
+17040743... 172.17.8.102  -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如上类似的信息，恭喜，本地基于三台机器的集群已经成功启动，可能需要等个几秒才会完全启动。&lt;/p&gt;
+
+&lt;p&gt;那么之后你就可以基于CoreOS的三大工具做任务分发，分布式存储等很多功能了。&lt;/p&gt;
 </description>
     </item>
     

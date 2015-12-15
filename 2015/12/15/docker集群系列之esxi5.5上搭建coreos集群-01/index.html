@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01 &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="在ESXi5上搭建CoreOS集群，用于构建docker集群">
+  <meta name="keywords" content="coreos">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="/avatar.jpg"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</h1>
+    <span class="post-date">Dec 15, 2015 &middot; 5 minute read &middot; <a href="http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/coreos">coreos</a><a class="label" href="http://wixb50.github.io/categories/docker">docker</a>
+    </span>
+    
+
+<h2 id="目录">目录</h2>
+
+<!-- MarkdownTOC -->
+
+<ul>
+<li><a href="#null-link">前言</a></li>
+<li><a href="#前置条件">前置条件</a></li>
+<li><a href="#安装coreos虚拟机">安装CoreOS虚拟机</a>
+
+<ul>
+<li><a href="#choosing-a-channel">Choosing a Channel</a></li>
+<li><a href="#deploying-with-vmware-vsphere-client-55">Deploying with VMware vSphere Client 5.5</a></li>
+</ul></li>
+<li><a href="#cloud-config">Cloud-Config</a>
+
+<ul>
+<li><a href="#需要说明的discovery">需要说明的<code>discovery</code></a></li>
+</ul></li>
+<li><a href="#logging-in">Logging in</a></li>
+<li><a href="#adding-new-machines">Adding New Machines</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#一些有用的coreos命令">一些有用的CoreOS命令</a></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<h2 id="前言-null-link"><a href="chrome://not-a-link">前言</a></h2>
+
+<p>因为大多数环境都是适配于大公司的云平台，但是也是有折中办法的。CoreOS是一个基于Linux 内核的轻量级操作系统，为了计算机集群的基础设施建设而生，专注于自动化，轻松部署，安全，可靠，规模化。作为一个操作系统，CoreOS 提供了在应用容器内部署应用所需要的基础功能环境以及一系列用于服务发现和配置共享的内建工具。而ESXi专为运行虚拟机、最大限度降低配置要求和简化部署而设计。所以我觉得使用ESXi当作IaaS架构，运行CoreOS集群，这样是可行的。话不多少，开始把。</p>
+
+<h2 id="前置条件">前置条件</h2>
+
+<ul>
+<li>安装ESXi机器一台：怎么装自己应该知道把，如果因为驱动原因还需要自己定制安装ISO，见Google。</li>
+</ul>
+
+<h2 id="安装coreos虚拟机">安装CoreOS虚拟机</h2>
+
+<h3 id="choosing-a-channel">Choosing a Channel</h3>
+
+<p>CoreOS is released into alpha, beta, and stable channels. Releases to each channel serve as a release-candidate for the next channel. For example, a bug-free alpha release is promoted bit-for-bit to the beta channel.</p>
+
+<p>The channel is selected based on the URLs below. Simply replace <code>stable</code> with <code>alpha</code> or <code>beta</code> in the URL. Select 1 of these to download the appropriate image. Read the release notes for specific features and bug fixes in each channel.</p>
+
+<pre><code>curl -LO http://stable.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+</code></pre>
+
+<pre><code>curl -LO http://beta.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+</code></pre>
+
+<pre><code>curl -LO http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+</code></pre>
+
+<h3 id="deploying-with-vmware-vsphere-client-5-5">Deploying with VMware vSphere Client 5.5</h3>
+
+<p>Use the vSphere Client to deploy the VM as follows:</p>
+
+<ol>
+<li>in the menu, click “File &gt; Deploy OVF Template…”</li>
+<li>in the wizard, specify the location of the OVA downloaded earlier</li>
+<li>name your VM</li>
+<li>choose “thin provision” for the disk format if you want the disk to grow dynamically</li>
+<li>choose your network settings</li>
+<li>confirm the settings then click “Finish”</li>
+</ol>
+
+<p>NOTE: Unselect “Power on after deployment” so you have a chance to edit VM settings before powering it up for the first time.</p>
+
+<p>The last step uploads the files to your ESXi datastore and registers your VM. You can now tweak the VM settings, like memory and virtual cores. These instructions were tested to deploy to an ESXi 5.1 host.</p>
+
+<p>Before powering it on, you will have to create a cloud-config.</p>
+
+<h2 id="cloud-config">Cloud-Config</h2>
+
+<p><a href="https://coreos.com/os/docs/latest/cloud-config.html">Cloud-Config</a>是CoreOS内比较重要的概念，可以理解为一种配置CoreOS的方式：</p>
+
+<p><strong>Providing Cloud-Config with Config-Drive</strong><br />
+Cloud-config can be specified by via <a href="https://github.com/coreos/coreos-cloudinit/blob/master/Documentation/config-drive.md">config-drive</a> with the filesystem label <code>config-2</code>. This is commonly done through whatever interface allows for attaching CD-ROMs or new drives.</p>
+
+<p>First create a user_data file using the the <a href="https://coreos.com/os/docs/latest/cloud-config.html">cloud-config guide</a>.</p>
+
+<pre><code>#cloud-config
+hostname: core-01  #替换成你的命名的主机名
+write_files:
+    - path: /etc/systemd/network/static.network
+      permissions: 0644  #文件权限,无需改
+      content: |
+        [Match]
+        Name=ens192  #网卡名称,如果你的是别的名称,请改回来
+
+        [Network]
+        Address=192.1.1.150/24  #网络配置,同时把下面的IP改掉
+        Gateway=192.1.1.1
+        DNS=10.11.248.114
+        DNS=8.8.4.4
+coreos:
+    etcd2:
+        # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+        discovery: https://discovery.etcd.io/&lt;token&gt;  #这里在后面详细讲
+        # multi-region and multi-cloud deployments need to use 192.1.1.150
+        advertise-client-urls: http://192.1.1.150:2379
+        initial-advertise-peer-urls: http://192.1.1.150:2380
+        # listen on both the official ports and the legacy ports
+        # legacy ports can be omitted if your application doesn't depend on them
+        listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+        listen-peer-urls: http://192.1.1.150:2380,http://192.1.1.150:7001
+    fleet:
+        public-ip: 192.1.1.150
+        metadata: region=europe #metadata,可自定义
+    flannel:
+        etcd_prefix: /coreos.com/network2
+    locksmith:
+        endpoint: 192.1.1.150:4001
+    update:
+        reboot-strategy: etcd-lock
+        group: stable
+    units:
+        - name: etcd2.service #注意是etcd2,第二版哟
+          command: start
+        - name: fleet.service
+          command: start
+users:
+  - name: &quot;core&quot;  #改成你的用户名,可不是core
+    groups:
+      - &quot;sudo&quot;
+      - &quot;docker&quot;
+    ssh-authorized-keys:   
+      - ssh-rsa 替换成你的公钥... 
+manage_etc_hosts: localhost
+</code></pre>
+
+<p>Cloud-Config配置信息验证地址<a href="https://coreos.com/validate/">https://coreos.com/validate/</a>.</p>
+
+<h3 id="需要说明的-discovery">需要说明的<code>discovery</code></h3>
+
+<p>　　因为要搭建集群，需要用到服务发现，配置集群的服务发现有两种方式：一种是Static方式，第二种就是Discovery方式了。其中个人不推荐第一种方式，因为每加入一台主机就需要手动配置etcd节点，非常不方便。<br />
+　　第二种Discovery方式是使用远程的服务器辅助服务发现，只需要配置好Discovery的URl就可以自动把新加入的服务器加入集群。其中iscovery服务器可以使用官网提供的，也可以自己搭建(我还没搭建过，这里不介绍了)。</p>
+
+<pre><code>curl https://discovery.etcd.io/new?size=3  #控制台或者浏览器执行即可,推荐使用size=1,见下面说明
+</code></pre>
+
+<p>其中有一个<code>size</code>参数，讲一下我遇到的问题：</p>
+
+<ul>
+<li>没有使用size参数结果老是启动不了;<br /></li>
+<li>使用了<code>size=3</code>，结果启动主节点，主节点的etcd2就一直等待从节点加入，结果等我去加入它的时候，已经超时了;</li>
+<li>使用<code>size=1</code>，没有什么要等待了，过一会就自动启动成功了<code>fleetctl list-machines</code>也能正常显示。</li>
+</ul>
+
+<p>所以，我可能不知道网上哪些一下子启动3个节点是怎么做到的，还是有待学习。但是这里我也有自己的解决方法，就是使用<code>size=1</code>先运行出来一个只有一台主机的集群，果然可以运行。然后使用主节点的<code>&lt;Token&gt;</code>再去构建其他节点的<code>Cloud-config</code>，然后运行，结果果然它自己就能加入到第一个节点里面。</p>
+
+<p>这里我可能投机取巧了点，但是能运行，也能达到效果就行，哈哈，希望不会有什么bug。</p>
+
+<p>Finally, to create a cloud-config ISO, use the following commands using the user_data file we just created:</p>
+
+<pre><code>#wrap up a config named user_data in a config drive image:
+mkdir -p /tmp/new-drive/openstack/latest
+cp user_data /tmp/new-drive/openstack/latest/user_data
+mkisofs -R -V config-2 -o configdrive-01.iso /tmp/new-drive
+rm -r /tmp/new-drive
+
+#transform iso file to datastore
+#scp configdrive-01.iso root@192.1.1.132:/vmfs/volumes/datastore1/ISO
+</code></pre>
+
+<p>Note that the config-drive standard was originally an OpenStack feature, which is why you’ll see strings containing openstack. This filepath needs to be retained, although CoreOS supports config-drive on all platforms.</p>
+
+<p>Note: The $private_ipv4 and $public_ipv4 substitution variables referenced in other documents are not supported on VMware. You can replace all these variables by the (static) IP of the CoreOS server you’re setting up. For example:</p>
+
+<pre><code>coreos:
+  etcd2:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+    discovery: https://discovery.etcd.io/&lt;token&gt;
+    # multi-region and multi-cloud deployments need to use $public_ipv4
+    advertise-client-urls: http://$public_ipv4:2379
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    # listen on both the official ports and the legacy ports
+    # legacy ports can be omitted if your application doesn't depend on them
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
+</code></pre>
+
+<p>becomes</p>
+
+<pre><code>coreos:
+  etcd2:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+    discovery: https://discovery.etcd.io/&lt;token&gt;
+    # multi-region and multi-cloud deployments need to use $public_ipv4
+    advertise-client-urls: http://192.168.0.100:2379
+    initial-advertise-peer-urls: http://192.168.0.100:2380
+    # listen on both the official ports and the legacy ports
+    # legacy ports can be omitted if your application doesn't depend on them
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://192.168.0.100:2380,http://192.168.0.100:7001
+</code></pre>
+
+<p>Attach the ISO to the VM as follows:</p>
+
+<ol>
+<li>edit the settings of the CoreOS VM</li>
+<li>in the dialog, select “CD/DVD drive 1” in the device list</li>
+<li>select “connect at power on”</li>
+<li>choose “datastore ISO file” as the device type</li>
+<li>browse the datastore and select your config drive ISO</li>
+<li>confirm the changes and click “OK”</li>
+</ol>
+
+<p>NOTE:如果发现ip不对，可查看配置文件，Maybe重启一下也可以解决哟。</p>
+
+<h2 id="logging-in">Logging in</h2>
+
+<p>可以查看ESXi控制台CoreOS的IP，但是静态的自己已经知道了。</p>
+
+<p>Now you can login using your SSH key or password set in your cloud-config，可以登录就没必要折腾下步了。</p>
+
+<pre><code>ssh core@192.1.1.150
+</code></pre>
+
+<p>Alternatively, if the cloud-config fails to apply you can append coreos.autologin to the kernel parameters on boot, the console won’t prompt for a password. This is handy for debugging.</p>
+
+<p>When GNU GRUB appears at boot, make sure CoreOS default is selected and press e, then add coreos.autologin after <code>$linux_append</code></p>
+
+<p>Before</p>
+
+<p><img src="http://www.holysh1t.net/vgwtest/coreosstuff/grubautologin1.png" alt="之前的启动界面" />
+</p>
+
+<p>After</p>
+
+<p><img src="http://www.holysh1t.net/vgwtest/coreosstuff/grubautologin2.png" alt="之前的启动界面" />
+</p>
+
+<p>When coreos.autologin is added, press <code>CTRL+X</code> to boot CoreOS with these parameters. Note that the next time autologin will be disabled again as these kernel parameters aren’t persistent.</p>
+
+<p>You can now manually apply the cloud-config by using the following command in the console of CoreOS:</p>
+
+<pre><code>sudo /usr/bin/coreos-cloudinit --from-file /media/configdrive/openstack/latest/user_data
+</code></pre>
+
+<h2 id="adding-new-machines">Adding New Machines</h2>
+
+<p>按照前面所说的，如果需要把其他CoreOS加入集群，只需要把Discovery URL改成原来集群地址即可自动加入了，是不是很方便呀。</p>
+
+<p>If you forgot which discovery URL you used, you may look it up on one of the members of the cluster. Use the following grep command on one of your existing machines:</p>
+
+<pre><code>grep DISCOVERY /run/systemd/system/etcd2.service.d/20-cloudinit.conf
+</code></pre>
+
+<p>You will see a line the contains the original discovery URL, like the following:</p>
+
+<pre><code>Environment=&quot;ETCD_DISCOVERY=https://discovery.etcd.io/575302f03f4fb2db82e81ea2abca55e9&quot;
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Your basic CoreOS cluster is set up, and now you can move on to testing with it!</p>
+
+<h2 id="一些有用的coreos命令">一些有用的CoreOS命令</h2>
+
+<p>查看当前集群所有machines</p>
+
+<pre><code>fleetctl list-machines
+</code></pre>
+
+<p>查看服务运行状态</p>
+
+<pre><code>systemctl -l status etcd2  #其中-l参数可选
+systemctl -l status fleet
+systemctl -l status docker
+</code></pre>
+
+<p>查看服务的运行日志</p>
+
+<pre><code>journalctl -u etcd2
+</code></pre>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ul>
+<li><a href="https://coreos.com/">CoreOS官网</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/cloud/library/1505_gutb_coreos/">在 ESXi5 上部署 CoreOS 集群解决方案</a></li>
+<li><a href="http://www.tuicool.com/m/articles/zyaAbyJ">平台云基石-CoreOS之集群篇</a></li>
+<li><a href="http://stable.release.core-os.net/">Download</a></li>
+<li><a href="http://www.holysh1t.net/vgwtest/coreosstuff/coreos-vmware-esxi-setup.html">Running CoreOS on VMware ESXi 5.1</a></li>
+</ul>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+

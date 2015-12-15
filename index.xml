@@ -2,22 +2,471 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/</link>
+    <link>http://wixb50.github.io/</link>
     <description>Recent content on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Fri, 11 Dec 2015 18:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Dec 2015 18:10:38 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#null-link&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#前置条件&#34;&gt;前置条件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装coreos虚拟机&#34;&gt;安装CoreOS虚拟机&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#choosing-a-channel&#34;&gt;Choosing a Channel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#deploying-with-vmware-vsphere-client-55&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cloud-config&#34;&gt;Cloud-Config&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#需要说明的discovery&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#logging-in&#34;&gt;Logging in&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#adding-new-machines&#34;&gt;Adding New Machines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#一些有用的coreos命令&#34;&gt;一些有用的CoreOS命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#参考资料&#34;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;前言-null-link&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;因为大多数环境都是适配于大公司的云平台，但是也是有折中办法的。CoreOS是一个基于Linux 内核的轻量级操作系统，为了计算机集群的基础设施建设而生，专注于自动化，轻松部署，安全，可靠，规模化。作为一个操作系统，CoreOS 提供了在应用容器内部署应用所需要的基础功能环境以及一系列用于服务发现和配置共享的内建工具。而ESXi专为运行虚拟机、最大限度降低配置要求和简化部署而设计。所以我觉得使用ESXi当作IaaS架构，运行CoreOS集群，这样是可行的。话不多少，开始把。&lt;/p&gt;
+
+&lt;h2 id=&#34;前置条件&#34;&gt;前置条件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装ESXi机器一台：怎么装自己应该知道把，如果因为驱动原因还需要自己定制安装ISO，见Google。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;安装coreos虚拟机&#34;&gt;安装CoreOS虚拟机&lt;/h2&gt;
+
+&lt;h3 id=&#34;choosing-a-channel&#34;&gt;Choosing a Channel&lt;/h3&gt;
+
+&lt;p&gt;CoreOS is released into alpha, beta, and stable channels. Releases to each channel serve as a release-candidate for the next channel. For example, a bug-free alpha release is promoted bit-for-bit to the beta channel.&lt;/p&gt;
+
+&lt;p&gt;The channel is selected based on the URLs below. Simply replace &lt;code&gt;stable&lt;/code&gt; with &lt;code&gt;alpha&lt;/code&gt; or &lt;code&gt;beta&lt;/code&gt; in the URL. Select 1 of these to download the appropriate image. Read the release notes for specific features and bug fixes in each channel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -LO http://stable.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -LO http://beta.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -LO http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;deploying-with-vmware-vsphere-client-5-5&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/h3&gt;
+
+&lt;p&gt;Use the vSphere Client to deploy the VM as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;in the menu, click “File &amp;gt; Deploy OVF Template…”&lt;/li&gt;
+&lt;li&gt;in the wizard, specify the location of the OVA downloaded earlier&lt;/li&gt;
+&lt;li&gt;name your VM&lt;/li&gt;
+&lt;li&gt;choose “thin provision” for the disk format if you want the disk to grow dynamically&lt;/li&gt;
+&lt;li&gt;choose your network settings&lt;/li&gt;
+&lt;li&gt;confirm the settings then click “Finish”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;NOTE: Unselect “Power on after deployment” so you have a chance to edit VM settings before powering it up for the first time.&lt;/p&gt;
+
+&lt;p&gt;The last step uploads the files to your ESXi datastore and registers your VM. You can now tweak the VM settings, like memory and virtual cores. These instructions were tested to deploy to an ESXi 5.1 host.&lt;/p&gt;
+
+&lt;p&gt;Before powering it on, you will have to create a cloud-config.&lt;/p&gt;
+
+&lt;h2 id=&#34;cloud-config&#34;&gt;Cloud-Config&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;是CoreOS内比较重要的概念，可以理解为一种配置CoreOS的方式：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Providing Cloud-Config with Config-Drive&lt;/strong&gt;&lt;br /&gt;
+Cloud-config can be specified by via &lt;a href=&#34;https://github.com/coreos/coreos-cloudinit/blob/master/Documentation/config-drive.md&#34;&gt;config-drive&lt;/a&gt; with the filesystem label &lt;code&gt;config-2&lt;/code&gt;. This is commonly done through whatever interface allows for attaching CD-ROMs or new drives.&lt;/p&gt;
+
+&lt;p&gt;First create a user_data file using the the &lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;cloud-config guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+hostname: core-01  #替换成你的命名的主机名
+write_files:
+    - path: /etc/systemd/network/static.network
+      permissions: 0644  #文件权限,无需改
+      content: |
+        [Match]
+        Name=ens192  #网卡名称,如果你的是别的名称,请改回来
+
+        [Network]
+        Address=192.1.1.150/24  #网络配置,同时把下面的IP改掉
+        Gateway=192.1.1.1
+        DNS=10.11.248.114
+        DNS=8.8.4.4
+coreos:
+    etcd2:
+        # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+        discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;  #这里在后面详细讲
+        # multi-region and multi-cloud deployments need to use 192.1.1.150
+        advertise-client-urls: http://192.1.1.150:2379
+        initial-advertise-peer-urls: http://192.1.1.150:2380
+        # listen on both the official ports and the legacy ports
+        # legacy ports can be omitted if your application doesn&#39;t depend on them
+        listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+        listen-peer-urls: http://192.1.1.150:2380,http://192.1.1.150:7001
+    fleet:
+        public-ip: 192.1.1.150
+        metadata: region=europe #metadata,可自定义
+    flannel:
+        etcd_prefix: /coreos.com/network2
+    locksmith:
+        endpoint: 192.1.1.150:4001
+    update:
+        reboot-strategy: etcd-lock
+        group: stable
+    units:
+        - name: etcd2.service #注意是etcd2,第二版哟
+          command: start
+        - name: fleet.service
+          command: start
+users:
+  - name: &amp;quot;core&amp;quot;  #改成你的用户名,可不是core
+    groups:
+      - &amp;quot;sudo&amp;quot;
+      - &amp;quot;docker&amp;quot;
+    ssh-authorized-keys:   
+      - ssh-rsa 替换成你的公钥... 
+manage_etc_hosts: localhost
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cloud-Config配置信息验证地址&lt;a href=&#34;https://coreos.com/validate/&#34;&gt;https://coreos.com/validate/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;需要说明的-discovery&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;　　因为要搭建集群，需要用到服务发现，配置集群的服务发现有两种方式：一种是Static方式，第二种就是Discovery方式了。其中个人不推荐第一种方式，因为每加入一台主机就需要手动配置etcd节点，非常不方便。&lt;br /&gt;
+　　第二种Discovery方式是使用远程的服务器辅助服务发现，只需要配置好Discovery的URl就可以自动把新加入的服务器加入集群。其中iscovery服务器可以使用官网提供的，也可以自己搭建(我还没搭建过，这里不介绍了)。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://discovery.etcd.io/new?size=3  #控制台或者浏览器执行即可,推荐使用size=1,见下面说明
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中有一个&lt;code&gt;size&lt;/code&gt;参数，讲一下我遇到的问题：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;没有使用size参数结果老是启动不了;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;使用了&lt;code&gt;size=3&lt;/code&gt;，结果启动主节点，主节点的etcd2就一直等待从节点加入，结果等我去加入它的时候，已经超时了;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;size=1&lt;/code&gt;，没有什么要等待了，过一会就自动启动成功了&lt;code&gt;fleetctl list-machines&lt;/code&gt;也能正常显示。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所以，我可能不知道网上哪些一下子启动3个节点是怎么做到的，还是有待学习。但是这里我也有自己的解决方法，就是使用&lt;code&gt;size=1&lt;/code&gt;先运行出来一个只有一台主机的集群，果然可以运行。然后使用主节点的&lt;code&gt;&amp;lt;Token&amp;gt;&lt;/code&gt;再去构建其他节点的&lt;code&gt;Cloud-config&lt;/code&gt;，然后运行，结果果然它自己就能加入到第一个节点里面。&lt;/p&gt;
+
+&lt;p&gt;这里我可能投机取巧了点，但是能运行，也能达到效果就行，哈哈，希望不会有什么bug。&lt;/p&gt;
+
+&lt;p&gt;Finally, to create a cloud-config ISO, use the following commands using the user_data file we just created:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#wrap up a config named user_data in a config drive image:
+mkdir -p /tmp/new-drive/openstack/latest
+cp user_data /tmp/new-drive/openstack/latest/user_data
+mkisofs -R -V config-2 -o configdrive-01.iso /tmp/new-drive
+rm -r /tmp/new-drive
+
+#transform iso file to datastore
+#scp configdrive-01.iso root@192.1.1.132:/vmfs/volumes/datastore1/ISO
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that the config-drive standard was originally an OpenStack feature, which is why you’ll see strings containing openstack. This filepath needs to be retained, although CoreOS supports config-drive on all platforms.&lt;/p&gt;
+
+&lt;p&gt;Note: The $private_ipv4 and $public_ipv4 substitution variables referenced in other documents are not supported on VMware. You can replace all these variables by the (static) IP of the CoreOS server you’re setting up. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;coreos:
+  etcd2:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+    discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;
+    # multi-region and multi-cloud deployments need to use $public_ipv4
+    advertise-client-urls: http://$public_ipv4:2379
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    # listen on both the official ports and the legacy ports
+    # legacy ports can be omitted if your application doesn&#39;t depend on them
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;becomes&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;coreos:
+  etcd2:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+    discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;
+    # multi-region and multi-cloud deployments need to use $public_ipv4
+    advertise-client-urls: http://192.168.0.100:2379
+    initial-advertise-peer-urls: http://192.168.0.100:2380
+    # listen on both the official ports and the legacy ports
+    # legacy ports can be omitted if your application doesn&#39;t depend on them
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://192.168.0.100:2380,http://192.168.0.100:7001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Attach the ISO to the VM as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;edit the settings of the CoreOS VM&lt;/li&gt;
+&lt;li&gt;in the dialog, select “CD/DVD drive 1” in the device list&lt;/li&gt;
+&lt;li&gt;select “connect at power on”&lt;/li&gt;
+&lt;li&gt;choose “datastore ISO file” as the device type&lt;/li&gt;
+&lt;li&gt;browse the datastore and select your config drive ISO&lt;/li&gt;
+&lt;li&gt;confirm the changes and click “OK”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;NOTE:如果发现ip不对，可查看配置文件，Maybe重启一下也可以解决哟。&lt;/p&gt;
+
+&lt;h2 id=&#34;logging-in&#34;&gt;Logging in&lt;/h2&gt;
+
+&lt;p&gt;可以查看ESXi控制台CoreOS的IP，但是静态的自己已经知道了。&lt;/p&gt;
+
+&lt;p&gt;Now you can login using your SSH key or password set in your cloud-config，可以登录就没必要折腾下步了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh core@192.1.1.150
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alternatively, if the cloud-config fails to apply you can append coreos.autologin to the kernel parameters on boot, the console won’t prompt for a password. This is handy for debugging.&lt;/p&gt;
+
+&lt;p&gt;When GNU GRUB appears at boot, make sure CoreOS default is selected and press e, then add coreos.autologin after &lt;code&gt;$linux_append&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Before&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.holysh1t.net/vgwtest/coreosstuff/grubautologin1.png&#34; alt=&#34;之前的启动界面&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;After&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.holysh1t.net/vgwtest/coreosstuff/grubautologin2.png&#34; alt=&#34;之前的启动界面&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;When coreos.autologin is added, press &lt;code&gt;CTRL+X&lt;/code&gt; to boot CoreOS with these parameters. Note that the next time autologin will be disabled again as these kernel parameters aren’t persistent.&lt;/p&gt;
+
+&lt;p&gt;You can now manually apply the cloud-config by using the following command in the console of CoreOS:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo /usr/bin/coreos-cloudinit --from-file /media/configdrive/openstack/latest/user_data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;adding-new-machines&#34;&gt;Adding New Machines&lt;/h2&gt;
+
+&lt;p&gt;按照前面所说的，如果需要把其他CoreOS加入集群，只需要把Discovery URL改成原来集群地址即可自动加入了，是不是很方便呀。&lt;/p&gt;
+
+&lt;p&gt;If you forgot which discovery URL you used, you may look it up on one of the members of the cluster. Use the following grep command on one of your existing machines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;grep DISCOVERY /run/systemd/system/etcd2.service.d/20-cloudinit.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will see a line the contains the original discovery URL, like the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Environment=&amp;quot;ETCD_DISCOVERY=https://discovery.etcd.io/575302f03f4fb2db82e81ea2abca55e9&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Your basic CoreOS cluster is set up, and now you can move on to testing with it!&lt;/p&gt;
+
+&lt;h2 id=&#34;一些有用的coreos命令&#34;&gt;一些有用的CoreOS命令&lt;/h2&gt;
+
+&lt;p&gt;查看当前集群所有machines&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fleetctl list-machines
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看服务运行状态&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl -l status etcd2  #其中-l参数可选
+systemctl -l status fleet
+systemctl -l status docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看服务的运行日志&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;journalctl -u etcd2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ibm.com/developerworks/cn/cloud/library/1505_gutb_coreos/&#34;&gt;在 ESXi5 上部署 CoreOS 集群解决方案&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tuicool.com/m/articles/zyaAbyJ&#34;&gt;平台云基石-CoreOS之集群篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stable.release.core-os.net/&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.holysh1t.net/vgwtest/coreosstuff/coreos-vmware-esxi-setup.html&#34;&gt;Running CoreOS on VMware ESXi 5.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>快速搭建CoreOS集群</title>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#前言&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#准备工作&#34;&gt;准备工作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#配置工作&#34;&gt;配置工作&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装-vagrant-and-virtualbox&#34;&gt;安装 Vagrant and VirtualBox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#从coreos官方代码库获取基本配置，并进行修改&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#启动集群&#34;&gt;启动集群&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#测试集群&#34;&gt;测试集群&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;前言-null&#34;&gt;&lt;a href=&#34;null&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;第一次接触CoreOS这样的分布式平台，运行一个集群看起来好像一个很复杂的任务，这里我们给你展示在本地快速搭建一个CoreOS集群环境是多么的容易。&lt;/p&gt;
+
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+
+&lt;p&gt;本地的机器上已经安装了最新版本的Virtualbox, Vagrant 和 git。&lt;/p&gt;
+
+&lt;h2 id=&#34;配置工作&#34;&gt;配置工作&lt;/h2&gt;
+
+&lt;h3 id=&#34;安装-vagrant-and-virtualbox&#34;&gt;安装 Vagrant and VirtualBox&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;vagrant&lt;/a&gt; 和 &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;virtualbox&lt;/a&gt;都是直接下载双击安装的，具体安装教程看官网。&lt;/p&gt;
+
+&lt;h3 id=&#34;从coreos官方代码库获取基本配置-并进行修改&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/h3&gt;
+
+&lt;p&gt;首先，获取模板配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/coreos/coreos-vagrant
+cd coreos-vagrant
+cp user-data.sample user-data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;获取新的token&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://discovery.etcd.io/new
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用新的token配置到user-data文件如下，&lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vagrant.html&#34;&gt;官网示例&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+coreos:
+  etcd2:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+    # specify the initial size of your cluster with ?size=X
+    # WARNING: replace each time you &#39;vagrant destroy&#39;
+    discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;
+    # multi-region and multi-cloud deployments need to use $public_ipv4
+    advertise-client-urls: http://$private_ipv4:2379,http://$private_ipv4:4001
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    # listen on both the official ports and the legacy ports
+    # legacy ports can be omitted if your application doesn&#39;t depend on them
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380
+  fleet:
+    public-ip: $public_ipv4
+  flannel:
+    interface: $public_ipv4
+  units:
+    - name: etcd2.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: flanneld.service
+      drop-ins:
+      - name: 50-network-config.conf
+        content: |
+          [Service]
+          ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config &#39;{ &amp;quot;Network&amp;quot;: &amp;quot;10.1.0.0/16&amp;quot; }&#39;
+      # Uncomment line above if you want to use flannel in your installation.
+      # command: start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;提示：编辑完毕后，请到[&lt;a href=&#34;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&#34;&gt;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;启动集群&#34;&gt;启动集群&lt;/h2&gt;
+
+&lt;p&gt;默认情况下，CoreOS Vagrantfile 将会启动单机。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我们需要复制并修改config.rb.sample文件.&lt;/p&gt;
+
+&lt;p&gt;复制文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp config.rb.sample config.rb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改 config.rb 文件，配置 $num_instances 和 $update_channel 这两个参数。比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Official CoreOS channel from which updates should be downloade
+$num_instances=3  ## 表示我们要创建3台主机
+# Official CoreOS channel from which updates should be downloade
+$update_channel=&#39;stable&#39;  ## 表示使用的coreos版本，有：&#39;stable&#39;、&#39;beta&#39;、&#39;alpha&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;提示：如果国内下载比较慢，可以先事先下载好&lt;code&gt;coreos_production_vagrant.box&lt;/code&gt;，添加到vagrant的box里面。注意更改名字为&amp;raquo;coreos-stable|coreos-beta|coreos-alpha&amp;raquo;，和你上面填写的对应。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;启动集群&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;添加ssh的公匙&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-add ~/.vagrant.d/insecure_private_key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;连接集群中的第一台机器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant ssh core-01 -- -A
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;测试集群&#34;&gt;测试集群&lt;/h2&gt;
+
+&lt;p&gt;使用fleet来查看机器运行状况&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fleetctl list-machines
+=&amp;gt;
+MACHINE   IP            METADATA
+517d1c7d... 172.17.8.101  -
+cb35b356... 172.17.8.103  -
+17040743... 172.17.8.102  -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如上类似的信息，恭喜，本地基于三台机器的集群已经成功启动，可能需要等个几秒才会完全启动。&lt;/p&gt;
+
+&lt;p&gt;那么之后你就可以基于CoreOS的三大工具做任务分发，分布式存储等很多功能了。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Docker Batch Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-batch-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-batch-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-batch-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-batch-operation/</guid>
       <description>
 
 &lt;p&gt;批量操作docker images or container commander.&lt;/p&gt;
@@ -46,10 +495,10 @@
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -123,10 +572,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -162,10 +611,10 @@ sudo service xrdp restart
     
     <item>
       <title>nodejs linux安装与卸载</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
       <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
       <description>
 
 &lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
@@ -217,10 +666,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang使用http client发起get和post请求</title>
-      <link>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
+      <link>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Mon, 23 Nov 2015 22:00:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
+      <guid>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
       <description>
 
 &lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
@@ -328,10 +777,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang资料</title>
-      <link>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</link>
+      <link>http://wixb50.github.io/2015/11/22/golang%E8%B5%84%E6%96%99/</link>
       <pubDate>Sun, 22 Nov 2015 22:00:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</guid>
+      <guid>http://wixb50.github.io/2015/11/22/golang%E8%B5%84%E6%96%99/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;WindowsCrossCompiling:&lt;a href=&#34;https://github.com/golang/go/wiki/WindowsCrossCompiling&#34;&gt;Building windows go programs on linux&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -340,10 +789,10 @@ sudo service xrdp restart
     
     <item>
       <title>mysql 安装配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 20 Nov 2015 19:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;p&gt;1.更新源&lt;br /&gt;
 &lt;code&gt;source /etc/apt/source.list&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;br /&gt;
@@ -374,10 +823,10 @@ sudo service xrdp restart
     
     <item>
       <title>gulp 资源教程集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
       <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;
@@ -400,10 +849,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang排序实现 sort接口实现</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 20 Nov 2015 18:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
       <description>&lt;p&gt;sort.Interface接口有三个方法,给自己的struct实现这三个方法,然后用将自己的结构体传给sort.Sort方法就排序完成.&lt;/p&gt;
 
 &lt;p&gt;sort包也有几个常用的方法sort.Float64Slice sort.IntSlise sort.StringSlise&lt;/p&gt;
@@ -472,10 +921,10 @@ func main(){
     
     <item>
       <title>http安全</title>
-      <link>http://wixb50.gitcafe.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
+      <link>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
       <pubDate>Thu, 19 Nov 2015 15:12:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
+      <guid>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
       <description>
 
 &lt;h2 id=&#34;https&#34;&gt;https&lt;/h2&gt;
@@ -490,10 +939,10 @@ func main(){
     
     <item>
       <title>http知识点</title>
-      <link>http://wixb50.gitcafe.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <link>http://wixb50.github.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
       <pubDate>Thu, 19 Nov 2015 11:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <guid>http://wixb50.github.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
       <description>
 
 &lt;h2 id=&#34;http网络知识收集&#34;&gt;http网络知识收集&lt;/h2&gt;
@@ -515,10 +964,10 @@ func main(){
     
     <item>
       <title>git travis-ci</title>
-      <link>http://wixb50.gitcafe.io/2015/11/16/git-travis-ci/</link>
+      <link>http://wixb50.github.io/2015/11/16/git-travis-ci/</link>
       <pubDate>Mon, 16 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/16/git-travis-ci/</guid>
+      <guid>http://wixb50.github.io/2015/11/16/git-travis-ci/</guid>
       <description>&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -530,10 +979,10 @@ func main(){
     
     <item>
       <title>mysql数据字典生成工具</title>
-      <link>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
+      <link>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
       <description>
 
 &lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
@@ -685,186 +1134,6 @@ table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-col
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;完&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
-      <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
-      <description>
-
-&lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;editor&#34;&gt;Editor&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
-1.安装配置好JDK环境,下载tar.gz文件,解压到&lt;code&gt;tar -zxvf ideaIU-14.tar.gz -C /usr/local/intellijIDEA(自己命名)&lt;/code&gt;;&lt;br /&gt;
-2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;几个license：
-(1)
-key:IDEA
-value:61156-YRN2M-5MNCN-NZ8D2-7B4EW-U12L4
-(2)
-key:huangwei
-value:97493-G3A41-0SO24-W57LI-Y2UGI-JGTU2
-(3)
-key:itey
-value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.sublimetext.com/3&#34;&gt;Sublime Text 3&lt;/a&gt; 下载deb包安装&lt;/li&gt;
-&lt;li&gt;神一样的&lt;a href=&#34;http://www.vim.org/&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt; How to &lt;a href=&#34;http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/&#34;&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;简单的MD编辑器&lt;a href=&#34;http://sourceforge.net/projects/retext/&#34;&gt;Retext&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
-
-&lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;git客户端&lt;a href=&#34;http://www.syntevo.com/smartgit/&#34;&gt;SmartGit&lt;/a&gt; 建议直接命令行&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;删除&lt;code&gt;.smartgit&lt;/code&gt;下面的&lt;code&gt;settings.xml&lt;/code&gt;即可重新使用1个月。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;美化&#34;&gt;美化&lt;/h3&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;默认使用Unity桌面&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;unity-tweak-tool&lt;br /&gt;
-安装&lt;code&gt;sudo apt-get install unity-tweak-tool&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:tualatrix/ppa
-sudo apt-get update
-sudo apt-get install ubuntu-tweak
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;主题网址&lt;a href=&#34;http://gnome-look.org/&#34;&gt;http://gnome-look.org/&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;&lt;/li&gt;
-&lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mysql客户端 &lt;a href=&#34;http://dev.mysql.com/downloads/workbench/&#34;&gt;Workbench&lt;/a&gt; 下载deb安装&lt;/li&gt;
-&lt;li&gt;Redis客户端 &lt;a href=&#34;http://redisdesktop.com/&#34;&gt;Redis Desktop Manager&lt;/a&gt; 下载deb安装&lt;/li&gt;
-&lt;li&gt;Mongo客户端 &lt;a href=&#34;http://robomongo.org/&#34;&gt;Robomongo&lt;/a&gt; 下载deb安装&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;思维导图&#34;&gt;思维导图&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;最流行的思维导图 &lt;a href=&#34;http://www.xmind.net/cn/&#34;&gt;XMind&lt;/a&gt; 下载deb安装&lt;/li&gt;
-&lt;li&gt;百度在线脑图 &lt;a href=&#34;http://naotu.baidu.com/&#34;&gt;百度脑图&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;影音&#34;&gt;影音&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;VLC Media Player&lt;/code&gt; 软件商店安装&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;fq&#34;&gt;FQ&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;开放网络客户端 &lt;a href=&#34;https://getlantern.org/&#34;&gt;Lantern&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;开源&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt; 下载deb安装&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
-
-&lt;p&gt;Frontend：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node&lt;/a&gt; 最好编译安装 &lt;a href=&#34;https://linux.cn/article-5766-1.html&#34;&gt;install-tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;npm&lt;/a&gt; node包管理器&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;bower&lt;/a&gt; 前端开发包管理器&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;gulp&lt;/a&gt; 构建工具&lt;/li&gt;
-&lt;li&gt;[grunt-cli]() 比较老的构建工具&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Backend：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;[Go]() 解压存放&lt;code&gt;/usr/local/go&lt;/code&gt;,配置好&lt;code&gt;GOROOT、GOPATH&lt;/code&gt;和path环境。&lt;code&gt;GOPATH&lt;/code&gt;最好一个就够了。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;GoTools：&lt;code&gt;gocode&lt;/code&gt;代码自动化提示工具。&lt;code&gt;godep&lt;/code&gt;go包管理器。&lt;code&gt;goconvey&lt;/code&gt;go测试工具。&lt;br /&gt;
-Tips：如需sudo也支持go命令,执行链接命令：&lt;code&gt;sudo ln -s /usr/local/go/bin/go /usr/bin/go&lt;/code&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;[gradle]() java包管理器,构建工具&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Server：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;[Docker]() 容器化服务器&lt;/li&gt;
-&lt;li&gt;[vagrant]() 虚拟机管理工具&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
-      <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
-      <description>
-
-&lt;h3 id=&#34;关机-重启命令&#34;&gt;关机、重启命令&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;shutdown –help  #可以查看shutdown命令如何使用，当然也可以使用man shutdown命令。
-shutdown -h now #现在立即关机
-shutdown -r now #现在立即重启
-shutdown -r +3 #三分钟后重启
-shutdown -h +3 “The System will shutdown after 3 minutes” #提示使用者将在三分钟后关机
-shutdown -r 20:23 #在20：23时将重启计算机
-shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h3&gt;
-
-&lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
-
-&lt;p&gt;这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。
-&amp;gt;这个命令最常用的参数是-s，具体用法是(软链接)：&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;sudo ln -s 源文件 目标文件&lt;/code&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;删除链接&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
