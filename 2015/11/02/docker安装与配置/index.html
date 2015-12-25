@@ -10,18 +10,18 @@
   <title>docker安装与配置 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.gitcafe.io/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.gitcafe.io/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.gitcafe.io/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.gitcafe.io/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.gitcafe.io\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
 
-    <p>Copyright &copy; 2015 <a href="http://wixb50.gitcafe.io/license/">License</a><br/>
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -89,14 +89,14 @@
 <div class="content container">
   <div class="post">
     <h1>docker安装与配置</h1>
-    <span class="post-date">Nov 2, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/#disqus_thread">Comments</a>
+    <span class="post-date">Nov 2, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.gitcafe.io/categories/docker">docker</a><a class="label" href="http://wixb50.gitcafe.io/categories/cloud">cloud</a>
+    <a class="label" href="http://wixb50.github.io/categories/docker">docker</a><a class="label" href="http://wixb50.github.io/categories/cloud">cloud</a>
     </span>
     
 
-<h3 id="安装命令-运行即可">安装命令，运行即可</h3>
+<h3 id="方法一-安装命令">方法一：安装命令</h3>
 
 <pre><code>sudo apt-get install apt-transport-https
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
@@ -105,9 +105,21 @@ sudo apt-get update
 sudo apt-get install lxc-docker
 </code></pre>
 
-<hr />
+<h3 id="方法二-安装命令-推荐">方法二：安装命令(推荐)</h3>
+
+<pre><code>curl -sSL https://get.docker.com/ | sh
+</code></pre>
 
 <p>完</p>
+
+<h3 id="docker资料收集">Docker资料收集</h3>
+
+<ul>
+<li><a href="https://medium.com/@gargar454/deploy-a-mesos-cluster-with-7-commands-using-docker-57951e020586#.74cyoyjp5">Deploy a Mesos Cluster with 7 Commands Using Docker</a></li>
+<li><a href="http://technologyconversations.com/2015/11/04/docker-clustering-tools-compared-kubernetes-vs-docker-swarm/">Docker Clustering Tools Compared: Kubernetes vs Docker Swarm</a></li>
+<li><a href="https://mesosphere.com/blog/2014/11/10/docker-on-mesos-with-marathon/">DOCKER CLUSTERING ON MESOS WITH MARATHON</a></li>
+<li><a href="http://www.tuicool.com/articles/nyyENrY">Swarm、Fleet、Kubernetes和Mesos的比较</a></li>
+</ul>
 
   </div>
   <div id="disqus_thread"></div>
@@ -137,7 +149,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.gitcafe.io/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

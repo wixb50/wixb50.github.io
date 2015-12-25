@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>aria2 rpc &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="linux aria2下载工具，远程下载">
+  <meta name="keywords" content="linux">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="/avatar.jpg"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>aria2 rpc</h1>
+    <span class="post-date">Dec 23, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/12/23/aria2-rpc/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/linux">linux</a><a class="label" href="http://wixb50.github.io/categories/software">software</a>
+    </span>
+    
+
+<p>##目录
+&lt;!&ndash; MarkdownTOC &ndash;&gt;</p>
+
+<ul>
+<li><a href="#null-link">前言</a></li>
+<li><a href="#初步部署-aria2-简易版">初步部署 Aria2 简易版</a></li>
+<li><a href="#进阶-aria2">进阶 Aria2</a></li>
+<li><a href="#end">End</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<h2 id="前言-null-link"><a href="chrome://not-a-link">前言</a></h2>
+
+<p><a href="http://aria2.sourceforge.net/">Aria2</a> 是一个轻量级多协议和多源命令行下载实用工具。它支持 HTTP / HTTPS, FTP, SFTP, bt 和 Metalink。通过内置 Aria2 可以操作 json - rpc 和 xml - rpc。对，Aria2 没有 GUI 图形界面，只有粗糙的命令行界面！但这也正是 Aria2 之轻快好省所在。</p>
+
+<ul>
+<li>官方下载链接：<a href="http://sourceforge.net/projects/aria2/files/stable/">http://sourceforge.net/projects/aria2/files/stable/</a></li>
+</ul>
+
+<h2 id="初步部署-aria2-简易版">初步部署 Aria2 简易版</h2>
+
+<p><strong>1. 新建几个有关文件</strong></p>
+
+<p>上面已经提供了下载链接，根据平台/系统位数（32bit/64bit）下载相应文件即可。（存放路径最好是英文/数字）然后在目录下以新建文本文档的方式新建几个文件，方便之后的使用。</p>
+
+<ul>
+<li>Aria2.log（运行日志）</li>
+<li>aria2.session（下载历史）</li>
+<li>aria2.conf（配置文件）</li>
+<li>HideRun.vbs （用来隐藏命令行窗口,仅限windows下）</li>
+</ul>
+
+<p>而后用记事本修改配置文件 aria2.conf，<strong>根据实际情况修改：</strong></p>
+
+<pre><code>dir=默认下载目录（例：D:\Inbox）
+log=日志文件存放目录（例：D:\Aria2\Aria2.log）
+input-file=记录下载历史文件目录（例：D:\Aria2\aria2.session）
+save-session=存放下载历史文件目录（例：同上）
+save-session-interval=60
+force-save=true
+log-level=error
+  
+  
+# see --split option
+max-concurrent-downloads=5
+continue=true
+max-overall-download-limit=0
+max-overall-upload-limit=50K
+max-upload-limit=20
+  
+# Http/FTP options
+connect-timeout=120
+lowest-speed-limit=10K
+max-connection-per-server=10
+max-file-not-found=2
+min-split-size=1M
+split=5
+check-certificate=false
+http-no-cache=true
+  
+# FTP Specific Options
+  
+# BT/PT Setting
+bt-enable-lpd=true
+#bt-max-peers=55
+follow-torrent=true
+enable-dht6=false
+bt-seed-unverified
+rpc-save-upload-metadata=true
+bt-hash-check-seed
+bt-remove-unselected-file
+bt-request-peer-speed-limit=100K
+seed-ratio=0.0
+  
+  
+# Metalink Specific Options
+  
+# RPC Options
+enable-rpc=true
+pause=false
+rpc-allow-origin-all=true
+rpc-listen-all=true
+rpc-save-upload-metadata=true
+rpc-secure=false
+  
+# Advanced Options
+daemon=true
+disable-ipv6=true
+enable-mmap=true
+file-allocation=falloc
+max-download-result=120
+#no-file-allocation-limit=32M
+force-sequential=true
+parameterized-uri=true
+</code></pre>
+
+<p><strong>Windows NOTE :</strong> 而后修改 HideRun.vbs，将 Aria2c.exe 与配置文件 Aria2.conf 链接，并实现无命令行启动。那么日后打开 Aria2 就双击 HideRun.vbs 这个文件而不是双击 aria2c.exe。</p>
+
+<pre><code>CreateObject(&quot;WScript.Shell&quot;).Run &quot;（程序所在目录 例：D:\Aria2\aria2c.exe） --conf-path=aria2.conf&quot;,0
+</code></pre>
+
+<p><strong>Linux NOTE :</strong> 可使用配置文件直接运行，转到后台即可。</p>
+
+<pre><code>aria2c --conf-path=aria2.conf &amp;  #其中&amp;(后台运行)是可选项
+</code></pre>
+
+<p><strong>2. Web 前端控制</strong></p>
+
+<p>如此这般，Aria2 就配置好了，如果要添加开机自启动将 HideRun.vbs 的快捷方式拖入启动文件夹建立计划任务就 OK 了。那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 <a href="https://github.com/ziahamza/webui-aria2">Aria2 Web UI</a> 和 <a href="https://github.com/binux/yaaw">YAAW</a>。</p>
+
+<ul>
+<li>Aria2 Web UI（推荐！）: <a href="http://ziahamza.github.io/webui-aria2/">英文原版</a></li>
+<li>YAAW: <a href="http://binux.github.io/yaaw/demo/">英文原版</a><br />
+<strong>Tips：其他控制界面/扩展/脚本可能会需要填写 JSON-RPC Path，默认为: <a href="http://localhost:6800/jsonrpc">http://localhost:6800/jsonrpc</a></strong></li>
+</ul>
+
+<p>简易版的 Aria2 至此就部署完毕，你可以在 Web 控制前段方便地添加下载链接/bt种子了。</p>
+
+<h2 id="进阶-aria2">进阶 Aria2</h2>
+
+<p><strong>1. 配置文件 aria2.conf 详解</strong></p>
+
+<p>更多参数请参考官方说明文档：<a href="http://aria2.sourceforge.net/manual/en/html/aria2c.html">http://aria2.sourceforge.net/manual/en/html/aria2c.html</a></p>
+
+<p>网友翻译的部分内容：  <a href="http://sydi.org/posts/linux/aria2c-usage-sample-cns.html#fn.1">http://sydi.org/posts/linux/aria2c-usage-sample-cns.html#fn.1</a></p>
+
+<p><strong>2. 结合Docker使用</strong></p>
+
+<p>可查看ziahamza大神配置好的：<a href="https://github.com/ziahamza/webui-aria2">Aria2 Web UI</a></p>
+
+<p><strong>3. 搭配脚本/扩展</strong></p>
+
+<p>迅雷离线（需会员账号）</p>
+
+<ul>
+<li>Chrome Extension: <a href="https://chrome.google.com/webstore/detail/thunderlixianassistant/eehlmkfpnagoieibahhcghphdbjcdmen">ThunderLixianAssistant</a></li>
+<li>UserScript: <a href="https://github.com/binux/ThunderLixianExporter">ThunderLixianExporter</a></li>
+</ul>
+
+<p>旋风离线</p>
+
+<ul>
+<li>UserScript: <a href="https://greasyfork.org/zh-CN/scripts/354-xuanfengex">XuanFengEx</a></li>
+<li>UserScript: <a href="https://greasyfork.org/zh-CN/scripts/2398-lixianexporter">LixianExporter</a></li>
+</ul>
+
+<p>百度网盘</p>
+
+<ul>
+<li>Chrome Extension: <a href="https://chrome.google.com/webstore/detail/baiduexporter/mjaenbjdjmgolhoafkohbhhbaiedbkno">BaiduExporter</a></li>
+<li>Firefox Addons: <a href="https://github.com/acgotaku/BaiduExporter">BaiduExporter</a></li>
+<li>UserScript: <a href="https://greasyfork.org/scripts/294-baidupandownloadhelper">BaiduPanDownloadHelper</a></li>
+</ul>
+
+<p>其他脚本</p>
+
+<ul>
+<li>Chrome Extension: <a href="https://chrome.google.com/webstore/detail/%E6%B7%BB%E5%8A%A0%E5%88%B0aria2/nimeojfecmndgolmlmjghjmbpdkhhogl">添加到 aria2</a> <a href="http://git.oschina.net/yky/CDHelper">Chrome Download Helper</a></li>
+</ul>
+
+<h2 id="end">End</h2>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+

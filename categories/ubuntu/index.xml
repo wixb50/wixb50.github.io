@@ -2,22 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/ubuntu/</link>
+    <link>http://wixb50.github.io/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Tue, 08 Dec 2015 16:43:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Dec 2015 13:50:50 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ubuntu常见故障</title>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;登录远程主机，将/etc/ssh/sshd_config文件中的&lt;code&gt;PasswordAuthentication no&lt;/code&gt; 改为&lt;code&gt;PasswordAuthentication yes&lt;/code&gt;。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;重启sshd服务：&lt;code&gt;/etc/init.d/sshd restart&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;问题解决。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -91,10 +121,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -130,10 +160,10 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -155,6 +185,17 @@ sudo service xrdp restart
 &lt;li&gt;&lt;a href=&#34;#23-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#3测试&#34;&gt;3.测试&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dpkg命令&#34;&gt;dpkg命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#apt命令&#34;&gt;apt命令&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#软件安装后相关文件位置&#34;&gt;软件安装后相关文件位置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置su密码的命令&#34;&gt;设置su密码的命令&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#使用sudo&#34;&gt;使用sudo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -217,7 +258,8 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 
 &lt;h4 id=&#34;2-2-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
 
-&lt;p&gt;首先将公钥复制到服务器，Shell代码&lt;/p&gt;
+&lt;p&gt;方法一：
+首先将公钥复制到服务器，Shell代码&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;scp ~/.ssh/id_rsa.pub xxx@host:~/id_rsa.pub  
 &lt;/code&gt;&lt;/pre&gt;
@@ -225,6 +267,12 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 &lt;p&gt;然后，将公钥导入到认证文件，这一步的操作在服务器上进行，Shell代码&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;cat ~/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;方法二：
+直接用命令将公钥添加到远程服务器上去&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat ~/.ssh/id_rsa.pub | ssh root@[your.ip.address.here] &amp;quot;cat &amp;gt;&amp;gt; ~/.ssh/authorized_keys&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;可以执行测试登录，如果无任何错误提示，可以输密码登录，但就是不能无密码登录，则执行下步。&lt;/p&gt;
@@ -245,15 +293,98 @@ chmod 600 ~/.ssh/authorized_keys
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;第一次登录可能需要yes确认，之后就可以直接登录了。&lt;/p&gt;
+
+&lt;h2 id=&#34;dpkg命令&#34;&gt;dpkg命令&lt;/h2&gt;
+
+&lt;p&gt;deb是debian linus的安装格式，跟red hat的rpm非常相似，最基本的安装命令是：dpkg -i file.deb或者直接双击此文件。&lt;br /&gt;
+dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自Debian的Linux发行版都使用dpkg，例如Ubuntu、Knoppix 等。
+以下是一些 Dpkg 的普通用法：&lt;br /&gt;
+1. dpkg -i&lt;br /&gt;
+        安装一个 Debian 软件包，如你手动下载的文件。&lt;br /&gt;
+2. dpkg -c&lt;br /&gt;
+        列出包的内容。&lt;br /&gt;
+3. dpkg -I&lt;br /&gt;
+       从 中提取包裹信息。&lt;br /&gt;
+4. dpkg -r&lt;br /&gt;
+        移除一个已安装的包裹。&lt;br /&gt;
+5. dpkg -P&lt;br /&gt;
+      完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。&lt;br /&gt;
+6. dpkg -L&lt;br /&gt;
+      列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。&lt;br /&gt;
+7. dpkg -s&lt;br /&gt;
+      显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。&lt;br /&gt;
+8. dpkg-reconfigure&lt;br /&gt;
+      重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。&lt;/p&gt;
+
+&lt;h2 id=&#34;apt命令&#34;&gt;apt命令&lt;/h2&gt;
+
+&lt;h3 id=&#34;软件安装后相关文件位置&#34;&gt;软件安装后相关文件位置&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载的软件存放位置&lt;/p&gt;
+
+&lt;p&gt;/var/cache/apt/archives&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装后软件默认位置&lt;/p&gt;
+
+&lt;p&gt;/usr/share&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可执行文件位置&lt;/p&gt;
+
+&lt;p&gt;/usr/bin&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配置文件位置&lt;/p&gt;
+
+&lt;p&gt;/etc&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;lib文件位置&lt;/p&gt;
+
+&lt;p&gt;/usr/lib&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;**其他几个和apt-get相关的目录:  **&lt;/p&gt;
+
+&lt;p&gt;/var/lib/dpkg/available&lt;br /&gt;
+文件的内容是软件包的描述信息, 该软件包括当前系统所使用的 Debian 安装源中的所有软件包,其中包括当前系统中已安装的和未安装的软件包.&lt;/p&gt;
+
+&lt;p&gt;/var/cache/apt/archives&lt;br /&gt;
+目录是在用 apt-get install 安装软件时，软件包的临时存放路径&lt;/p&gt;
+
+&lt;p&gt;/etc/apt/sources.list&lt;br /&gt;
+存放的是软件源站点, 当你执行 sudo apt-get install xxx 时，Ubuntu 就去这些站点下载软件包到本地并执行安装&lt;/p&gt;
+
+&lt;p&gt;/var/lib/apt/lists&lt;br /&gt;
+使用apt-get update命令会从/etc/apt/sources.list中下载软件列表，并保存到该目录&lt;/p&gt;
+
+&lt;h2 id=&#34;设置su密码的命令&#34;&gt;设置su密码的命令&lt;/h2&gt;
+
+&lt;p&gt;Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。&lt;/p&gt;
+
+&lt;h3 id=&#34;使用sudo&#34;&gt;使用sudo&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo passwd  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;系统提示输入密码，即安装时的用户密码，然后，系统提示输入两次新密码，输入完毕后，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;su  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;即可进入su，具备了相应的权限了.&lt;/p&gt;
+
+&lt;p&gt;[NOTICE] : 在terminal中利用su命令就可以切换到root用户了。&lt;br /&gt;
+注：su和sudo的区别是：&lt;br /&gt;
+1). su的密码是root的密码，而sudo的密码是用户的密码；&lt;br /&gt;
+2). su直接将身份变成root，而sudo是以用户登录后以root的身份运行命令，不需要知道root密码；&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -328,10 +459,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubutnu on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/ubutnu/</link>
+    <link>http://wixb50.github.io/categories/ubutnu/</link>
     <description>Recent content in Ubutnu on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,20 +10,44 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 12 Nov 2015 10:23:25 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/ubutnu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/ubutnu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#broswer&#34;&gt;Broswer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#editor&#34;&gt;Editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git&#34;&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#美化&#34;&gt;美化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#添加字体&#34;&gt;添加字体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sql&#34;&gt;SQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#思维导图&#34;&gt;思维导图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#影音&#34;&gt;影音&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#fq&#34;&gt;FQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#虚拟机&#34;&gt;虚拟机&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux-wps&#34;&gt;Linux WPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#develop&#34;&gt;Develop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#latex&#34;&gt;LaTex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#aria2下载工具&#34;&gt;Aria2下载工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#终端工具terminator&#34;&gt;终端工具Terminator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
 
 &lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装，同步自己的chrome配置&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;editor&#34;&gt;Editor&lt;/h3&gt;
@@ -87,6 +111,12 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&#34;添加字体&#34;&gt;添加字体&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ubuntu添加字体非常简单，只需要在～目录下新建&lt;code&gt;.fonts&lt;/code&gt;文件夹，然后把后缀为&lt;code&gt;.ttf&lt;/code&gt;字体文件复制其中，就自动加入了。可以使用软件查看。&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -112,13 +142,45 @@ sudo apt-get install ubuntu-tweak
 
 &lt;ul&gt;
 &lt;li&gt;开放网络客户端 &lt;a href=&#34;https://getlantern.org/&#34;&gt;Lantern&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://shadowsocks.org/en/index.html&#34;&gt;Shadowsocks&lt;/a&gt; 装好之后还要设置浏览器代理&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;安装PPA is for Ubuntu &amp;gt;= 14.04.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置&lt;strong&gt;火狐浏览器&lt;/strong&gt;，代理设置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;选择Manual Proxy Configuration，在Socks Host写入127.0.0.1，Port 1080。下面选Socks v5。点OK确认。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以代理模式启动&lt;strong&gt;Chrome&lt;/strong&gt;命令如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;google-chrome --proxy-server=socks5://127.0.0.1:1080
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;[NOTICE] : Chrome推荐使用&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/releases&#34;&gt;SwitchyOmega&lt;/a&gt;插件进行设置。自动规则：&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&#34;&gt;wiki-GEWList&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;开源&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt; 下载deb安装&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;linux-wps&#34;&gt;Linux WPS&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;#安装wps
+sudo dpkg -i wps-office_9.1.0.4975-a19p1_amd64.deb
+#安装symbol字体包
+sudo dpkg -i symbol-fonts_1.2_all.deb
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
 
@@ -152,6 +214,166 @@ Tips：如需sudo也支持go命令,执行链接命令：&lt;code&gt;sudo ln -s /
 &lt;ul&gt;
 &lt;li&gt;[Docker]() 容器化服务器&lt;/li&gt;
 &lt;li&gt;[vagrant]() 虚拟机管理工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;latex&#34;&gt;LaTex&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TexLive2015安装&lt;/p&gt;
+
+&lt;p&gt;下载地址：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://mirrors.ctan.org/systems/texlive/Images/texlive2015.iso&#34;&gt;官方镜像&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2015.iso&#34;&gt;USTC镜像&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;挂载ISO镜像&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mount -o loop texlive2015.iso  /mnt/
+cd /mnt
+sudo ./install-tl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;出现选项后，输入 I 直接安装（也可以更改选项）。不出意外的话，5分钟应该就OK了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;环境变量&lt;/strong&gt;&lt;br /&gt;
+在当前用户的 ~/.bashrc 中加入如下语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# TeX Live 2015
+export MANPATH=${MANPATH}:/usr/local/texlive/2015/texmf-dist/doc/man
+export INFOPATH=${INFOPATH}:/usr/local/texlive/2015/texmf-dist/doc/info
+export PATH=${PATH}:/usr/local/texlive/2015/bin/x86_64-linux  #建议还是把这个配置到/etc/profile里面去，这样texstudio打开能够识别
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的建议如果出现找不到tex环境时候可以用一下。&lt;br /&gt;
+&lt;strong&gt;卸载ISO镜像&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd
+$ sudo umount /mnt/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://seisman.info/install-texlive-under-linux.html&#34;&gt;参考文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TexStudio&lt;br /&gt;
+&lt;a href=&#34;http://texstudio.sourceforge.net/&#34;&gt;官网&lt;/a&gt;下载deb安装包安装即可&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;aria2下载工具&#34;&gt;Aria2下载工具&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://aria2.sourceforge.net/&#34;&gt;官网介绍&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install aria2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;终端工具terminator&#34;&gt;终端工具Terminator&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install terminator
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;然后利用 Debian 的重新配置命令选择默认终端：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo update-alternatives --config x-terminal-emulator
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;terminator配置文件在~/.config/terminator/config 可以通过这个配置文件配置terminator的字体和颜色.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;font = Monaco 10  #设置体字
+background_color = &amp;quot;#204070&amp;quot; # 背景颜色
+foreground_color = &amp;quot;#F0F0F0&amp;quot; # 字体颜色
+cursor_blink = True          # 设置光标
+scrollbar_position = disabled # 禁用滚动条
+titlebars = no # 禁用标题栏
+background_darkness = 0.4
+background_type = transparent # 背景类型可以设置为图片
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;更多配置见：&lt;code&gt;man terminator_config&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;快捷键&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;F11 #Toggle fullscreen
+Ctrl + Shift+ O #Split terminals horizontally
+Ctrl + Shift+ E #Split terminals vertically
+Ctrl + Shift+ W #Close current Panel
+Ctrl + Shift+ T #Open new tab
+
+Ctrl+Shift+C 复制
+Ctrl+Shift+V 粘贴
+Ctrl+Shift+N 或者 Ctrl+Tab 在分割的各窗口之间切换
+Ctrl+Shift+X 将分割的某一个窗口放大至全屏使用
+Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
+
+Alt + ↑ #Move to the terminal above the current one
+Alt + ↓ #Move to the terminal below the current one
+Alt + ← #Move to the terminal left of the current one
+Alt + → #Move to the terminal right of the current one
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个不错的配置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;[global_config]
+  title_transmit_bg_color = &amp;quot;#d30102&amp;quot;
+  focus = system
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    copy_on_selection = True
+    background_image = None
+    background_darkness = 0.85
+    background_type = transparent
+    use_system_font = False
+    cursor_color = &amp;quot;#eee8d5&amp;quot;
+    foreground_color = &amp;quot;#839496&amp;quot;
+    show_titlebar = False
+    font = Ubuntu Mono 14
+    background_color = &amp;quot;#002b36&amp;quot;
+  [[solarized-dark]]
+    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    background_color = &amp;quot;#002b36&amp;quot;
+    background_image = None
+    cursor_color = &amp;quot;#eee8d5&amp;quot;
+    foreground_color = &amp;quot;#839496&amp;quot;
+  [[solarized-light]]
+    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    background_color = &amp;quot;#fdf6e3&amp;quot;
+    background_image = None
+    cursor_color = &amp;quot;#002b36&amp;quot;
+    foreground_color = &amp;quot;#657b83&amp;quot;
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = &amp;quot;&amp;quot;
+[plugins]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;透明高亮很Geek.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考资料&lt;br /&gt;
+&lt;a href=&#34;http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html&#34;&gt;开始使用Ubuntu作为工作环境&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

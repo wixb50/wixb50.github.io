@@ -2,22 +2,729 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/post/</link>
+    <link>http://wixb50.github.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Tue, 15 Dec 2015 18:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Dec 2015 16:21:30 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>aria2 rpc</title>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
+      <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
+      <description>
+
+&lt;p&gt;##目录
+&amp;lt;!&amp;ndash; MarkdownTOC &amp;ndash;&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#null-link&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#进阶-aria2&#34;&gt;进阶 Aria2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#end&#34;&gt;End&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;前言-null-link&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://aria2.sourceforge.net/&#34;&gt;Aria2&lt;/a&gt; 是一个轻量级多协议和多源命令行下载实用工具。它支持 HTTP / HTTPS, FTP, SFTP, bt 和 Metalink。通过内置 Aria2 可以操作 json - rpc 和 xml - rpc。对，Aria2 没有 GUI 图形界面，只有粗糙的命令行界面！但这也正是 Aria2 之轻快好省所在。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;官方下载链接：&lt;a href=&#34;http://sourceforge.net/projects/aria2/files/stable/&#34;&gt;http://sourceforge.net/projects/aria2/files/stable/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 新建几个有关文件&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;上面已经提供了下载链接，根据平台/系统位数（32bit/64bit）下载相应文件即可。（存放路径最好是英文/数字）然后在目录下以新建文本文档的方式新建几个文件，方便之后的使用。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Aria2.log（运行日志）&lt;/li&gt;
+&lt;li&gt;aria2.session（下载历史）&lt;/li&gt;
+&lt;li&gt;aria2.conf（配置文件）&lt;/li&gt;
+&lt;li&gt;HideRun.vbs （用来隐藏命令行窗口,仅限windows下）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;而后用记事本修改配置文件 aria2.conf，&lt;strong&gt;根据实际情况修改：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dir=默认下载目录（例：D:\Inbox）
+log=日志文件存放目录（例：D:\Aria2\Aria2.log）
+input-file=记录下载历史文件目录（例：D:\Aria2\aria2.session）
+save-session=存放下载历史文件目录（例：同上）
+save-session-interval=60
+force-save=true
+log-level=error
+  
+  
+# see --split option
+max-concurrent-downloads=5
+continue=true
+max-overall-download-limit=0
+max-overall-upload-limit=50K
+max-upload-limit=20
+  
+# Http/FTP options
+connect-timeout=120
+lowest-speed-limit=10K
+max-connection-per-server=10
+max-file-not-found=2
+min-split-size=1M
+split=5
+check-certificate=false
+http-no-cache=true
+  
+# FTP Specific Options
+  
+# BT/PT Setting
+bt-enable-lpd=true
+#bt-max-peers=55
+follow-torrent=true
+enable-dht6=false
+bt-seed-unverified
+rpc-save-upload-metadata=true
+bt-hash-check-seed
+bt-remove-unselected-file
+bt-request-peer-speed-limit=100K
+seed-ratio=0.0
+  
+  
+# Metalink Specific Options
+  
+# RPC Options
+enable-rpc=true
+pause=false
+rpc-allow-origin-all=true
+rpc-listen-all=true
+rpc-save-upload-metadata=true
+rpc-secure=false
+  
+# Advanced Options
+daemon=true
+disable-ipv6=true
+enable-mmap=true
+file-allocation=falloc
+max-download-result=120
+#no-file-allocation-limit=32M
+force-sequential=true
+parameterized-uri=true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Windows NOTE :&lt;/strong&gt; 而后修改 HideRun.vbs，将 Aria2c.exe 与配置文件 Aria2.conf 链接，并实现无命令行启动。那么日后打开 Aria2 就双击 HideRun.vbs 这个文件而不是双击 aria2c.exe。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CreateObject(&amp;quot;WScript.Shell&amp;quot;).Run &amp;quot;（程序所在目录 例：D:\Aria2\aria2c.exe） --conf-path=aria2.conf&amp;quot;,0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Linux NOTE :&lt;/strong&gt; 可使用配置文件直接运行，转到后台即可。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --conf-path=aria2.conf &amp;amp;  #其中&amp;amp;(后台运行)是可选项
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Web 前端控制&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如此这般，Aria2 就配置好了，如果要添加开机自启动将 HideRun.vbs 的快捷方式拖入启动文件夹建立计划任务就 OK 了。那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 &lt;a href=&#34;https://github.com/ziahamza/webui-aria2&#34;&gt;Aria2 Web UI&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/binux/yaaw&#34;&gt;YAAW&lt;/a&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Aria2 Web UI（推荐！）: &lt;a href=&#34;http://ziahamza.github.io/webui-aria2/&#34;&gt;英文原版&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;YAAW: &lt;a href=&#34;http://binux.github.io/yaaw/demo/&#34;&gt;英文原版&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;Tips：其他控制界面/扩展/脚本可能会需要填写 JSON-RPC Path，默认为: &lt;a href=&#34;http://localhost:6800/jsonrpc&#34;&gt;http://localhost:6800/jsonrpc&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;简易版的 Aria2 至此就部署完毕，你可以在 Web 控制前段方便地添加下载链接/bt种子了。&lt;/p&gt;
+
+&lt;h2 id=&#34;进阶-aria2&#34;&gt;进阶 Aria2&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 配置文件 aria2.conf 详解&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;更多参数请参考官方说明文档：&lt;a href=&#34;http://aria2.sourceforge.net/manual/en/html/aria2c.html&#34;&gt;http://aria2.sourceforge.net/manual/en/html/aria2c.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;网友翻译的部分内容：  &lt;a href=&#34;http://sydi.org/posts/linux/aria2c-usage-sample-cns.html#fn.1&#34;&gt;http://sydi.org/posts/linux/aria2c-usage-sample-cns.html#fn.1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 结合Docker使用&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;可查看ziahamza大神配置好的：&lt;a href=&#34;https://github.com/ziahamza/webui-aria2&#34;&gt;Aria2 Web UI&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 搭配脚本/扩展&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;迅雷离线（需会员账号）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chrome Extension: &lt;a href=&#34;https://chrome.google.com/webstore/detail/thunderlixianassistant/eehlmkfpnagoieibahhcghphdbjcdmen&#34;&gt;ThunderLixianAssistant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;UserScript: &lt;a href=&#34;https://github.com/binux/ThunderLixianExporter&#34;&gt;ThunderLixianExporter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;旋风离线&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;UserScript: &lt;a href=&#34;https://greasyfork.org/zh-CN/scripts/354-xuanfengex&#34;&gt;XuanFengEx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;UserScript: &lt;a href=&#34;https://greasyfork.org/zh-CN/scripts/2398-lixianexporter&#34;&gt;LixianExporter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;百度网盘&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chrome Extension: &lt;a href=&#34;https://chrome.google.com/webstore/detail/baiduexporter/mjaenbjdjmgolhoafkohbhhbaiedbkno&#34;&gt;BaiduExporter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Firefox Addons: &lt;a href=&#34;https://github.com/acgotaku/BaiduExporter&#34;&gt;BaiduExporter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;UserScript: &lt;a href=&#34;https://greasyfork.org/scripts/294-baidupandownloadhelper&#34;&gt;BaiduPanDownloadHelper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其他脚本&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chrome Extension: &lt;a href=&#34;https://chrome.google.com/webstore/detail/%E6%B7%BB%E5%8A%A0%E5%88%B0aria2/nimeojfecmndgolmlmjghjmbpdkhhogl&#34;&gt;添加到 aria2&lt;/a&gt; &lt;a href=&#34;http://git.oschina.net/yky/CDHelper&#34;&gt;Chrome Download Helper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;end&#34;&gt;End&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>aria2命令</title>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ria2&#34;&gt;ria2&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#基本使用&#34;&gt;基本使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#基本用法&#34;&gt;基本用法&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#下载一个文件&#34;&gt;下载一个文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用两个连接从一个源下载文件&#34;&gt;使用两个连接从一个源下载文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用两个连接下载文件：&#34;&gt;使用两个连接下载文件：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#从http或ftp服务器下载：&#34;&gt;从http或ftp服务器下载：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#从任意源进行并行下载：&#34;&gt;从任意源进行并行下载：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如果仅仅指定本地磁盘上的torrent文件或者metalink，是不需要-z选项的，如：&#34;&gt;如果仅仅指定本地磁盘上的torrent文件或者metalink，是不需要-Z选项的，如：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#从文件中读取目的文件，并行下载&#34;&gt;从文件中读取目的文件，并行下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#退出时保存出错未完成的下载-使用session&#34;&gt;退出时保存出错/未完成的下载, 使用&lt;code&gt;session&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#后续可以使用该文件继续未完成的下载：&#34;&gt;后续可以使用该文件继续未完成的下载：&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#metalink相关下载示例&#34;&gt;Metalink相关下载示例&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#从远程metalink下载文件：&#34;&gt;从远程metalink下载文件：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#从远程metalink下载文件但在内存中处理metalink：&#34;&gt;从远程metalink下载文件,但在内存中处理metalink：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过本地metalink下载：&#34;&gt;通过本地metalink下载：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用5个server下载&#34;&gt;使用5个server下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过多个本地metalink文件进行下载：&#34;&gt;通过多个本地metalink文件进行下载：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#打印metalink的内容&#34;&gt;打印metalink的内容&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过序号下载指定文件&#34;&gt;通过序号下载指定文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#指定用户偏好从本地metalink下载文件&#34;&gt;指定用户偏好从本地metalink下载文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bittorrent相关下载&#34;&gt;BitTorrent相关下载&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#通过远程bittorrent文件下载&#34;&gt;通过远程BitTorrent文件下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过远程bittorrent文件下载但在内存中处理&#34;&gt;通过远程BitTorrent文件下载,但在内存中处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过本地torrent文件下载&#34;&gt;通过本地torrent文件下载:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#可以同时处理多个torrent文件&#34;&gt;可以同时处理多个torrent文件:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过bittorrent-magnet-uri下载：&#34;&gt;通过BitTorrent Magnet URI下载：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#自动调整peer节点数量&#34;&gt;自动调整peer节点数量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#开启dht&#34;&gt;开启DHT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#开启ipv6的dht&#34;&gt;开启ipv6的DHT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#增加和删除tracker-uri：&#34;&gt;增加和删除tracker URI：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#加密&#34;&gt;加密&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#打印torrent文件内容&#34;&gt;打印torrent文件内容&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过序号选择指定文件下载：&#34;&gt;通过序号选择指定文件下载：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改监听端口&#34;&gt;修改监听端口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#指定aria2完成下载后的停止条件&#34;&gt;指定aria2完成下载后的停止条件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置上传速度&#34;&gt;设置上传速度&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#seeding已经下载完成的文件&#34;&gt;Seeding已经下载完成的文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#还可以同时播种多个torrent文件&#34;&gt;还可以同时播种多个torrent文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#通过index指定文件名&#34;&gt;通过index指定文件名&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#为进行文件预览进行分片优先下载&#34;&gt;为进行文件预览进行分片优先下载&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#用代理服务器&#34;&gt;用代理服务器&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#为所有协议httpsftp设定代理服务器&#34;&gt;为所有协议(HTTP(S)/FTP)设定代理服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置http代理&#34;&gt;设置http代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用需要认证的代理&#34;&gt;使用需要认证的代理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#高级的http特性：&#34;&gt;高级的http特性：&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#导入cookie&#34;&gt;导入cookie&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#其他高级特性&#34;&gt;其他高级特性&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#下载速度限制&#34;&gt;下载速度限制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用-v修复受损的下载&#34;&gt;使用-V修复受损的下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#当下载速度下于某个特定值时放弃下载&#34;&gt;当下载速度下于某个特定值时放弃下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#uri的参数化支持&#34;&gt;URI的参数化支持&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#时间戳&#34;&gt;时间戳&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#输入文件&#34;&gt;输入文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;p&gt;#aria2
+&lt;strong&gt;title:&lt;/strong&gt; aria2 使用说明&lt;br /&gt;
+&lt;strong&gt;title:&lt;/strong&gt; aria2,aria2c,wget,linux,下载&lt;br /&gt;
+&lt;strong&gt;info:&lt;/strong&gt; &lt;strong&gt;aria2&lt;/strong&gt;是一款轻量型命令行下载工具，它提供了对多协议和多源地址的支持，目前支持的协议包括&lt;strong&gt;HTTP(S), FTP, BitTorrent (DHT, PEX, MSE/PE), and Metalink&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;aria2可以从多个源地址，并使用多种协议进行下载，并尝试将下载带宽利用率最大化。它可以同时从HTTP(S)/FTP 和 BitTorrent下载一份数据，并且将其上传到bt集群中。通过Metalink的分块检查，aria2可以在下载过程中自动的进行数据校验。&lt;/p&gt;
+
+&lt;p&gt;虽然现在有诸如&lt;strong&gt;wget&lt;/strong&gt;和&lt;strong&gt;curl&lt;/strong&gt;等其他类似产品，但aria2具有两个独特的功能：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;aria2可以从多个源下载文件(HTTP(S)/FTP/BitTorrent)，&lt;/li&gt;
+&lt;li&gt;aria2可以并发的进行多个源地址的下载。这样用户将不必等待单个文件的下载完成，而且aria2会尽可能快的下载。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;除aria2外，也有一些其他可以进行分片下载的工具，它们往往按照线程数分割文件，并行下载，换言之，它们不会对未完成的部分进行自适应性重新分片，当整个流程工作正常时，这个策略是可以的，但一旦存在一个线程运行非常慢，这样整个进程就需要等待该线程的执行。而aria2可以很好的处理这个情况，它可以将文件分割成1M大小的分片，当某个线程运行特别缓慢时，aria2可以使用更快的线程来替换。总之，根据作者的说法，aria2是非常智能和可靠的。&lt;/p&gt;
+
+&lt;p&gt;和最初的aria工具具有一个GTK+界面不同，aria2只提供了命令行接口，从而使得对资源的要求更小。通常它的物理内存消耗为4M(HTTP/FTP)到9M(BitTorrent),当进行bt下载且速度为2.8M/s时的cpu消耗约为6%。&lt;/p&gt;
+
+&lt;h2 id=&#34;基本使用&#34;&gt;基本使用&lt;/h2&gt;
+
+&lt;p&gt;当源地址存在诸如&lt;code&gt;&amp;amp;&lt;/code&gt;或&lt;code&gt;*&lt;/code&gt;等其他shell特殊字符时，请使用单引号或者双引号将uri包含起来。&lt;/p&gt;
+
+&lt;p&gt;在aria2的1.10.0版中，aria2对每台主机默认使用1个连接和20MB的分块大小，所以不论在-s参数中指定任何值，他都对一台主机只会建立一个连接，需要注意的一点是这个限制是针对单个主机的，当指定了多台主机时，它会对每台主机建立一个连接。如果要使用1.9.x版中的行为，则要使用-x16 -k1M。另见man页面的 &lt;code&gt;–max-connection-per-server&lt;/code&gt; 和 &lt;code&gt;–min-split-size&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;_aria2默认会在开始下载前预先分配文件空间以避免可能的文件碎片_，但这会在部分PC上带来50%-90%的cpu消耗。当使用环境为比较新的文件系统，例如ext4，btrfs，xfs或者NTFS时，作者推荐使用&lt;strong&gt;&lt;code&gt;–file-allocation=falloc&lt;/code&gt;&lt;/strong&gt;，这种方式会在瞬间完成大文件（数G）的空间分配并且不会带来额外的性能下降。&lt;/p&gt;
+
+&lt;p&gt;如果你既没有使用cutting-edge文件系统，也没有使用linux，并且很在意系统性能，那么可以使用–file-allocation=none来关闭文件的预分配。&lt;/p&gt;
+
+&lt;p&gt;如果你忘记了这些参数的全名或者含义，把-h放在选项或者词的前面，比如aria2c -hcrypt，这样aria2就会搜索crypt相关的选项并把他的帮助打印出来，如果aria2发现使用了-h，它会在打印出帮助信息后停止运行。&lt;/p&gt;
+
+&lt;h2 id=&#34;基本用法&#34;&gt;基本用法&lt;/h2&gt;
+
+&lt;h3 id=&#34;下载一个文件&#34;&gt;下载一个文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c http://host/image.iso
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在1.10.0版中，aria2对每个host使用一个连接，你可以使用&lt;code&gt;–max-connection-per-server&lt;/code&gt; 或 &lt;code&gt;-x&lt;/code&gt;来修改&lt;/p&gt;
+
+&lt;h3 id=&#34;使用两个连接从一个源下载文件&#34;&gt;使用两个连接从一个源下载文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -x2 http://host/image.iso
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Ctrl+c&lt;/code&gt;可以中止当前的下载，在同样的目录运行同样的命令可以继续原来的下载，你设置可以修改&lt;code&gt;uri&lt;/code&gt;，如果他们指向的是同一个文件的话。&lt;/p&gt;
+
+&lt;h3 id=&#34;使用两个连接下载文件&#34;&gt;使用两个连接下载文件：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -s2 http://host/image.iso http://mirror1/image.iso http://mirror2/image.iso
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：如果命令中uri的数量多于-s的值，如本例所示，aria2将会首先使用前两个uri，将第3个uri作为候补，如果前两个有一个下载失败，就会启用第3个&lt;/p&gt;
+
+&lt;h3 id=&#34;从http或ftp服务器下载&#34;&gt;从http或ftp服务器下载：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c http://host1/file.zip ftp://host2/file.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;从任意源进行并行下载&#34;&gt;从任意源进行并行下载：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -Z http://host/file1 file2.torrent file3.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;如果仅仅指定本地磁盘上的torrent文件或者metalink-是不需要-z选项的-如&#34;&gt;如果仅仅指定本地磁盘上的torrent文件或者metalink，是不需要-Z选项的，如：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c file1.torrent file2.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;从文件中读取目的文件-并行下载&#34;&gt;从文件中读取目的文件，并行下载&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -ifiles.txt -j5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：-j参数指定了并发下载的数量，在输入文件中可以包含torrent文件和metelink&lt;br /&gt;
+注：输入文件中支持添加参数，详见后续的“输入文件”章节&lt;/p&gt;
+
+&lt;h3 id=&#34;退出时保存出错-未完成的下载-使用-session&#34;&gt;退出时保存出错/未完成的下载, 使用&lt;code&gt;session&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -ifiles.txt --save-session=out.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当ctrl+c或者aria2自己退出时，所有的错误，未完成的下载信息会保存到out.txt中，但通过aria2.addTorrent 和 aria2.addMetalink XML-RPC方式增加的下载不会保存。&lt;/p&gt;
+
+&lt;h3 id=&#34;后续可以使用该文件继续未完成的下载&#34;&gt;后续可以使用该文件继续未完成的下载：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -i out.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;metalink相关下载示例&#34;&gt;Metalink相关下载示例&lt;/h2&gt;
+
+&lt;h3 id=&#34;从远程metalink下载文件&#34;&gt;从远程metalink下载文件：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c http://host/file.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;从远程metalink下载文件-但在内存中处理metalink&#34;&gt;从远程metalink下载文件,但在内存中处理metalink：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --follow-metalink=mem http://host/file.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;通过本地metalink下载&#34;&gt;通过本地metalink下载：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -t10 --lowest-speed-limit=4000 file.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用5个server下载&#34;&gt;使用5个server下载&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -C5 file.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：当使用metalink时，-s参数不再起作用，需要使用-C选项&lt;/p&gt;
+
+&lt;h3 id=&#34;通过多个本地metalink文件进行下载&#34;&gt;通过多个本地metalink文件进行下载：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c file1.metalink file2.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;打印metalink的内容&#34;&gt;打印metalink的内容&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -S file.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;通过序号下载指定文件&#34;&gt;通过序号下载指定文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --select-file=1-4,8 -Mfile.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：可以通过-S选择来打印metalink文件的内容&lt;/p&gt;
+
+&lt;h3 id=&#34;指定用户偏好从本地metalink下载文件&#34;&gt;指定用户偏好从本地metalink下载文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --metalink-location=JP,US --metalink-version=1.1 --metalink-language=en-US file.metali
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;bittorrent相关下载&#34;&gt;BitTorrent相关下载&lt;/h2&gt;
+
+&lt;h3 id=&#34;通过远程bittorrent文件下载&#34;&gt;通过远程BitTorrent文件下载&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c http://site/file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;通过远程bittorrent文件下载-但在内存中处理&#34;&gt;通过远程BitTorrent文件下载,但在内存中处理&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --follow-torrent=mem http://site/file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;通过本地torrent文件下载&#34;&gt;通过本地torrent文件下载:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -u40K /path/to/file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：-u, –max-upload-limit用来指定最大上传速度&lt;/p&gt;
+
+&lt;h3 id=&#34;可以同时处理多个torrent文件&#34;&gt;可以同时处理多个torrent文件:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c /path/to/file1.torrent /path/to/file2.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;通过bittorrent-magnet-uri下载&#34;&gt;通过BitTorrent Magnet URI下载：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c &amp;quot;magnet:?xt=urn:btih:248D0A1CD08284299DE78D5C1ED359BB46717D8C&amp;amp;dn=aria2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：需要将magnet的地址用单引号或者双引号引起来，因为里面包含’&amp;amp;&amp;lsquo;字符。当使用magnet时，强烈建议打开dht选项，–enable-dht
+将metadata保存成.torrent文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-save-metadata &amp;quot;magnet:?xt=urn:btih:248D0A1CD08284299DE78D5C1ED359BB46717D8C&amp;amp;dn=aria2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个命令会将metadata信息保存在248d0a1cd08284299de78d5c1ed359bb46717d8c.torrent文件中&lt;/p&gt;
+
+&lt;h3 id=&#34;自动调整peer节点数量&#34;&gt;自动调整peer节点数量&lt;/h3&gt;
+
+&lt;p&gt;当所有节点的整体下载速度低于某个值时，aria2可以临时增加节点数量来获取更快的下载速率&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-request-peer-speed-limit=200K file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;开启dht&#34;&gt;开启DHT&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --enable-dht http://site/file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：在1.7.2版本后，dht选项是被默认打开的。当aria2只处理http/ftp下载时，不会打开dht选项。当第一个torrent开始下载时，aria2进行DHT功能的初始化，然后一直运行到aria2退出。&lt;/p&gt;
+
+&lt;h3 id=&#34;开启ipv6的dht&#34;&gt;开启ipv6的DHT&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --enable-dht6 --dht-listen-port=6881 --dht-listen-addr6=YOUR_GLOBAL_UNICAST_IPV6_ADDR --enable-async-dns6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：如果aria2在build时没有使用c-ares，则不需要–enable-async-dns6。aria2在ipv4和ipv6的dht中共享一些端口&lt;/p&gt;
+
+&lt;h3 id=&#34;增加和删除tracker-uri&#34;&gt;增加和删除tracker URI：&lt;/h3&gt;
+
+&lt;p&gt;下面这个例子将从file.torrent中移除所有的tracker的uri，然后使用”&lt;a href=&#34;http://tracker1/announce”&#34;&gt;http://tracker1/announce”&lt;/a&gt; 和 “&lt;a href=&#34;http://tracker2/announce”&#34;&gt;http://tracker2/announce”&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-exclude-tracker=&amp;quot;*&amp;quot; --bt-tracker=&amp;quot;http://tracker1/announce,http://tracker2/announce&amp;quot; file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;加密&#34;&gt;加密&lt;/h3&gt;
+
+&lt;p&gt;在默认情况下，aria2可以接收加密/非加密的连接，并且会首先尝试加密握手，如果失败才会去使用传统的BitTorrent握手
+下面这个例子中，aria2将只通过加密的握手接受与建立连接。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-require-crypto=true http://site/file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;存在两种加密方式，头加密和全连接加密。如果两种都可以被peer提供，aria2将默认使用头加密方式。如果要使用全连接加密，可以使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-min-crypto-level=arc4 http://site/file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;打印torrent文件内容&#34;&gt;打印torrent文件内容&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -S file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;通过序号选择指定文件下载&#34;&gt;通过序号选择指定文件下载：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --select-file=1-4,8 -Tfile.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：index信息可以通过-S来获得&lt;/p&gt;
+
+&lt;h3 id=&#34;修改监听端口&#34;&gt;修改监听端口&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --listen-port=6881-6883 file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：请确保指定端口可以进行tcp的上行和下行通信&lt;/p&gt;
+
+&lt;h3 id=&#34;指定aria2完成下载后的停止条件&#34;&gt;指定aria2完成下载后的停止条件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --seed-time=120 --seed-ratio=1.0 file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：本例中，aria2会在下载完成后120分钟，或seed ratio达到1.0时退出程序&lt;/p&gt;
+
+&lt;h3 id=&#34;设置上传速度&#34;&gt;设置上传速度&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --max-upload-limit=100K file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;seeding已经下载完成的文件&#34;&gt;Seeding已经下载完成的文件&lt;/h3&gt;
+
+&lt;p&gt;可以使用-V选择来播种下载完成的文件，它会首先对文件进行分片的hash校验&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Seeding already downloaded file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果可以确定下载文件的正确性，可以使用–bt-seed-unverified选项来跳过文件的校验环节&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-seed-unverified -d/path/to/dir file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;还可以同时播种多个torrent文件&#34;&gt;还可以同时播种多个torrent文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-seed-unverified -d/path/to/dir file1.torrent file2.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;通过index指定文件名&#34;&gt;通过index指定文件名&lt;/h3&gt;
+
+&lt;p&gt;为了指定bt下载的文件名称，需要使用-S选线来查看torrent文件中的index信息，例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;idx|path/length
+===+======================
+  1|dist/base-2.6.18.iso
+   |99.9MiB
+---+----------------------
+  2|dist/driver-2.6.18.iso
+   |169.0MiB
+---+----------------------
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面的命令可以将dist/base-2.6.18.iso 保存为 /tmp/mydir/base.iso，同时将dist/driver-2.6.18.iso 保存成 /tmp/dir/driver.iso&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --dir=/tmp --index-out=1=mydir/base.iso --index-out=2=dir/driver.iso file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：当对http uri中的torrent文件使用–index-out是不成功，它只对本地的torrent文件有效。aria2也不会去记忆–index-out选项内容，在每次的继续下载或播种时都需要手工指明，而且如果没有该选项，它也不会给用户任何提醒，所以需要注意。&lt;/p&gt;
+
+&lt;h3 id=&#34;为进行文件预览进行分片优先下载&#34;&gt;为进行文件预览进行分片优先下载&lt;/h3&gt;
+
+&lt;p&gt;优先下载torrent中所有文件的前1MB&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --bt-prioritize-piece=head file.torrent
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;##使用代理服务器&lt;/p&gt;
+
+&lt;h3 id=&#34;为所有协议-http-s-ftp-设定代理服务器&#34;&gt;为所有协议(HTTP(S)/FTP)设定代理服务器&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --all-proxy=&#39;http://proxy:8080&#39; http://host/file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：–all-proxy选项可以被特定的协议选项覆盖，如–http-proxy, –https-proxy 和 –ftp-proxy&lt;/p&gt;
+
+&lt;h3 id=&#34;设置http代理&#34;&gt;设置http代理&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --http-proxy=&#39;http://proxy:8080&#39; http://host/file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用需要认证的代理&#34;&gt;使用需要认证的代理&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --http-proxy=&#39;http://proxy:8080&#39; --http-proxy-user=&#39;username&#39; --http-proxy-passwd=&#39;password&#39; http://host/file
+aria2c --http-proxy=&#39;http://username:password@proxy:8080&#39; http://host/file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：username and password 需要进行%转码，如过username是’myid@domain’，则转码后的结果为：’myid%40domain’。&lt;/p&gt;
+
+&lt;h2 id=&#34;高级的http特性&#34;&gt;高级的http特性：&lt;/h2&gt;
+
+&lt;h3 id=&#34;导入cookie&#34;&gt;导入cookie&lt;/h3&gt;
+
+&lt;p&gt;导入Mozilla/Firefox(1.x/2.x) 和 Netscape格式的cookie&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --load-cookies=cookies.txt http://host/file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;导入Firefox3格式的cookie&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --load-cookies=cookies.sqlite http://host/file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;被浏览器或其他程序继续下载&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -c -s2 http://host/partiallydownloadedfile.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;其他高级特性&#34;&gt;其他高级特性&lt;/h2&gt;
+
+&lt;h3 id=&#34;下载速度限制&#34;&gt;下载速度限制&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --max-download-limit=100K http://host/file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用-v修复受损的下载&#34;&gt;使用-V修复受损的下载&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -V file.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：这个选项只适用于BitTorrent或者带有校验的metalink&lt;/p&gt;
+
+&lt;h3 id=&#34;当下载速度下于某个特定值时放弃下载&#34;&gt;当下载速度下于某个特定值时放弃下载&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --lowest-speed-limit=10K file.metalink
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;uri的参数化支持&#34;&gt;URI的参数化支持&lt;/h3&gt;
+
+&lt;p&gt;可以使用大括号来表达一组列表&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -P http://{host1,host2,host3}/file.iso
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以使用[]来表示一个数字序列&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -Z -P http://host/image[000-100].png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：当所有的URI指向不同的文件时，需要使用-Z选项&lt;/p&gt;
+
+&lt;p&gt;甚至可以指定步长&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -Z -P http://host/image[A-Z:2].png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;时间戳&#34;&gt;时间戳&lt;/h3&gt;
+
+&lt;p&gt;保留源文件时间戳&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -R http://host/file.iso
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下载完成后执行特定命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c --on-download-complete=COMMAND http://example.org/file.iso
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;另见：&lt;code&gt;–on-download-error&lt;/code&gt;, &lt;code&gt;–on-download-start&lt;/code&gt; 和 &lt;code&gt;–on-download-stop&lt;/code&gt;，或者执行&lt;code&gt;aria2c -h#hook&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;写入/dev/null&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aria2c -d /dev -o null --allow-overwrite=true http://example.org/file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;–allow-overwrite=true&lt;/code&gt;是为了避免aria2重命名已有的/dev/null&lt;/p&gt;
+
+&lt;h3 id=&#34;输入文件&#34;&gt;输入文件&lt;/h3&gt;
+
+&lt;p&gt;输入文件中可以包括一系列的URI地址，也可以针对同一个资源设置多个URI：不同的URI写在一行并使用tab分割。&lt;br /&gt;
+输入文件的每一行都被当作aria2的命令行参数，因此可以受到-Z和-P选项影响&lt;br /&gt;
+另外，选项也可以在每行URI的后面设置，更详尽的描述可以在man page的输入文件部分得到。这种选择的含义与命令行选项的含义一致，不过只适用在他们跟随的那个URI上。&lt;/p&gt;
+
+&lt;p&gt;如下，一个uri文件名为uri.txt，其内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://server/file.iso http://mirror/file.iso
+  dir=/iso_images
+  out=file.img
+
+http://foo/bar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果aria2使用 &lt;code&gt;-i uri.txt -d /tmp&lt;/code&gt;,&lt;br /&gt;
+那么file.iso就会被保存为/iso_images/file.img，
+它的下载源为&lt;a href=&#34;http://server/file.iso&#34;&gt;http://server/file.iso&lt;/a&gt; 和 &lt;a href=&#34;http://mirror/file.iso&#34;&gt;http://mirror/file.iso&lt;/a&gt; ；
+而bar文件则是从&lt;a href=&#34;http://foo/bar&#34;&gt;http://foo/bar&lt;/a&gt; 下载并且保存为 /tmp/bar&lt;/p&gt;
+
+&lt;p&gt;*[uri]: 远程或者本地文件地址&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ubuntu常见故障</title>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;登录远程主机，将/etc/ssh/sshd_config文件中的&lt;code&gt;PasswordAuthentication no&lt;/code&gt; 改为&lt;code&gt;PasswordAuthentication yes&lt;/code&gt;。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;重启sshd服务：&lt;code&gt;/etc/init.d/sshd restart&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;问题解决。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -312,10 +1019,10 @@ systemctl -l status docker
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -463,10 +1170,10 @@ cb35b356... 172.17.8.103  -
     
     <item>
       <title>Docker Batch Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-batch-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-batch-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-batch-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-batch-operation/</guid>
       <description>
 
 &lt;p&gt;批量操作docker images or container commander.&lt;/p&gt;
@@ -495,10 +1202,10 @@ cb35b356... 172.17.8.103  -
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -572,10 +1279,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -611,10 +1318,10 @@ sudo service xrdp restart
     
     <item>
       <title>nodejs linux安装与卸载</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
       <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
       <description>
 
 &lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
@@ -666,10 +1373,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang使用http client发起get和post请求</title>
-      <link>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
+      <link>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Mon, 23 Nov 2015 22:00:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
+      <guid>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
       <description>
 
 &lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
@@ -777,10 +1484,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang资料</title>
-      <link>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</link>
+      <link>http://wixb50.github.io/2015/11/22/golang%E8%B5%84%E6%96%99/</link>
       <pubDate>Sun, 22 Nov 2015 22:00:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</guid>
+      <guid>http://wixb50.github.io/2015/11/22/golang%E8%B5%84%E6%96%99/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;WindowsCrossCompiling:&lt;a href=&#34;https://github.com/golang/go/wiki/WindowsCrossCompiling&#34;&gt;Building windows go programs on linux&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -789,10 +1496,10 @@ sudo service xrdp restart
     
     <item>
       <title>mysql 安装配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 20 Nov 2015 19:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;p&gt;1.更新源&lt;br /&gt;
 &lt;code&gt;source /etc/apt/source.list&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;br /&gt;
@@ -823,10 +1530,10 @@ sudo service xrdp restart
     
     <item>
       <title>gulp 资源教程集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
       <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;
@@ -849,10 +1556,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang排序实现 sort接口实现</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 20 Nov 2015 18:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
       <description>&lt;p&gt;sort.Interface接口有三个方法,给自己的struct实现这三个方法,然后用将自己的结构体传给sort.Sort方法就排序完成.&lt;/p&gt;
 
 &lt;p&gt;sort包也有几个常用的方法sort.Float64Slice sort.IntSlise sort.StringSlise&lt;/p&gt;
@@ -921,10 +1628,10 @@ func main(){
     
     <item>
       <title>http安全</title>
-      <link>http://wixb50.gitcafe.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
+      <link>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
       <pubDate>Thu, 19 Nov 2015 15:12:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
+      <guid>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
       <description>
 
 &lt;h2 id=&#34;https&#34;&gt;https&lt;/h2&gt;
@@ -934,206 +1641,6 @@ func main(){
 &lt;li&gt;&lt;a href=&#34;https://ttt.tt/9/&#34;&gt;Apache + WordPress + SSL 完全指南&lt;/a&gt; 2012.07.14&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.jjonline.cn/linux/92.html&#34;&gt;https安全链接的配置教程&lt;/a&gt; 2012.12.01&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>http知识点</title>
-      <link>http://wixb50.gitcafe.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
-      <pubDate>Thu, 19 Nov 2015 11:35:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/19/http%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
-      <description>
-
-&lt;h2 id=&#34;http网络知识收集&#34;&gt;http网络知识收集&lt;/h2&gt;
-
-&lt;p&gt;content&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&#34;参考资料&#34;&gt;参考资料&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.jianshu.com/p/2ecd288d27ad&#34;&gt;http知识点总结&lt;/a&gt; 2015.10.24&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.jianshu.com/p/0a47fc776314&#34;&gt;http持久连接&lt;/a&gt; 2014.05.03&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.linux178.com/web/httprequest.html/comment-page-1&#34;&gt;一次完整的HTTP事务&lt;/a&gt; January 11, 2014&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tshare365.com/archives/1295.html&#34;&gt;tcpdump、wireshark、tshark的简单介绍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>git travis-ci</title>
-      <link>http://wixb50.gitcafe.io/2015/11/16/git-travis-ci/</link>
-      <pubDate>Mon, 16 Nov 2015 13:25:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/16/git-travis-ci/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.kankanews.com/ICkengine/archives/134261.shtml&#34;&gt;持续集成服务托管Travis CI入门&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://travis-ci.org/&#34;&gt;官网&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>mysql数据字典生成工具</title>
-      <link>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Fri, 13 Nov 2015 21:35:17 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
-      <description>
-
-&lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
-
-&lt;p&gt;一个php的在线词典生成器，便于将数据库导出成表格，一般论文里面可能有需要哦。&lt;/p&gt;
-
-&lt;p&gt;下载地址 &lt;a href=&#34;http://vdisk.weibo.com/s/yThjZrryTIxQl&#34;&gt;http://vdisk.weibo.com/s/yThjZrryTIxQl&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;效果图&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.funboxpower.com/wp-content/uploads/2015/04/QQ%E6%88%AA%E5%9B%BE20150401141354.png&#34; alt=&#34;result&#34; /&gt;
-&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;如果不能下载的话，附上源码：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-/**
- * 生成mysql数据字典
- */
-header(&amp;quot;Content-type: text/html; charset=utf-8&amp;quot;);
-//配置数据库
-$dbserver   = &amp;quot;127.0.0.1&amp;quot;;
-$dbusername = &amp;quot;root&amp;quot;;
-$dbpassword = &amp;quot;root&amp;quot;;
-$database   = &amp;quot;wsx&amp;quot;;
-
-//其他配置
-$mysql_conn = @mysql_connect(&amp;quot;$dbserver&amp;quot;, &amp;quot;$dbusername&amp;quot;, &amp;quot;$dbpassword&amp;quot;) or die(&amp;quot;Mysql connect is error.&amp;quot;);
-mysql_select_db($database, $mysql_conn);
-mysql_query(&#39;SET NAMES utf8&#39;, $mysql_conn);
-$table_result = mysql_query(&#39;show tables&#39;, $mysql_conn);
-
-$no_show_table = array();    //不需要显示的表
-$no_show_field = array();   //不需要显示的字段
-
-//取得所有的表名
-while($row = mysql_fetch_array($table_result)){
-    if(!in_array($row[0],$no_show_table)){
-        $tables[][&#39;TABLE_NAME&#39;] = $row[0];
-    }
-}
-//替换所以表的表前缀
-if(@$_GET[&#39;prefix&#39;]){
-    $prefix = &#39;czzj&#39;;
-    foreach($tables as $key =&amp;gt; $val){
-        $tableName = $val[&#39;TABLE_NAME&#39;];
-        $string = explode(&#39;_&#39;,$tableName);
-        if($string[0] != $prefix){  
-            $string[0] = $prefix;  
-            $newTableName = implode(&#39;_&#39;, $string);  
-            mysql_query(&#39;rename table &#39;.$tableName.&#39; TO &#39;.$newTableName);  
-        }
-    }
-    echo &amp;quot;替换成功！&amp;quot;;exit();
-}
-
-//循环取得所有表的备注及表中列消息
-foreach ($tables as $k=&amp;gt;$v) {
-    $sql  = &#39;SELECT * FROM &#39;;
-    $sql .= &#39;INFORMATION_SCHEMA.TABLES &#39;;
-    $sql .= &#39;WHERE &#39;;
-    $sql .= &amp;quot;table_name = &#39;{$v[&#39;TABLE_NAME&#39;]}&#39;  AND table_schema = &#39;{$database}&#39;&amp;quot;;
-    $table_result = mysql_query($sql, $mysql_conn);
-    while ($t = mysql_fetch_array($table_result) ) {
-        $tables[$k][&#39;TABLE_COMMENT&#39;] = $t[&#39;TABLE_COMMENT&#39;];
-    }
-
-    $sql  = &#39;SELECT * FROM &#39;;
-    $sql .= &#39;INFORMATION_SCHEMA.COLUMNS &#39;;
-    $sql .= &#39;WHERE &#39;;
-    $sql .= &amp;quot;table_name = &#39;{$v[&#39;TABLE_NAME&#39;]}&#39; AND table_schema = &#39;{$database}&#39;&amp;quot;;
-
-    $fields = array();
-    $field_result = mysql_query($sql, $mysql_conn);
-    while ($t = mysql_fetch_array($field_result) ) {
-        $fields[] = $t;
-    }
-    $tables[$k][&#39;COLUMN&#39;] = $fields;
-}
-mysql_close($mysql_conn);
-
-
-$html = &#39;&#39;;
-//循环所有表
-foreach ($tables as $k=&amp;gt;$v) {
-    $html .= &#39;  &amp;lt;h3&amp;gt;&#39; . ($k + 1) . &#39;、&#39; . $v[&#39;TABLE_COMMENT&#39;] .&#39;  （&#39;. $v[&#39;TABLE_NAME&#39;]. &#39;）&amp;lt;/h3&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;  &amp;lt;table border=&amp;quot;1&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;0&amp;quot; width=&amp;quot;100%&amp;quot;&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;      &amp;lt;tbody&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;          &amp;lt;tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;              &amp;lt;th&amp;gt;字段名&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;              &amp;lt;th&amp;gt;数据类型&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;              &amp;lt;th&amp;gt;默认值&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;              &amp;lt;th&amp;gt;允许非空&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;              &amp;lt;th&amp;gt;自动递增&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;              &amp;lt;th&amp;gt;备注&amp;lt;/th&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;          &amp;lt;/tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-
-    foreach ($v[&#39;COLUMN&#39;] as $f) {
-        if(@!is_array($no_show_field[$v[&#39;TABLE_NAME&#39;]])){
-            $no_show_field[$v[&#39;TABLE_NAME&#39;]] = array();
-        }
-        if(!in_array($f[&#39;COLUMN_NAME&#39;],$no_show_field[$v[&#39;TABLE_NAME&#39;]])){
-            $html .= &#39;          &amp;lt;tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-            $html .= &#39;              &amp;lt;td class=&amp;quot;c1&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_NAME&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-            $html .= &#39;              &amp;lt;td class=&amp;quot;c2&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_TYPE&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-            $html .= &#39;              &amp;lt;td class=&amp;quot;c3&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_DEFAULT&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-            $html .= &#39;              &amp;lt;td class=&amp;quot;c4&amp;quot;&amp;gt;&#39; . $f[&#39;IS_NULLABLE&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-            $html .= &#39;              &amp;lt;td class=&amp;quot;c5&amp;quot;&amp;gt;&#39; . ($f[&#39;EXTRA&#39;]==&#39;auto_increment&#39;?&#39;是&#39;:&#39;&amp;amp;nbsp;&#39;) . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-            $html .= &#39;              &amp;lt;td class=&amp;quot;c6&amp;quot;&amp;gt;&#39; . $f[&#39;COLUMN_COMMENT&#39;] . &#39;&amp;lt;/td&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-            $html .= &#39;          &amp;lt;/tr&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-        }
-    }
-    $html .= &#39;      &amp;lt;/tbody&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-    $html .= &#39;  &amp;lt;/table&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
-}
-?&amp;gt;
-&amp;lt;!doctype html&amp;gt;
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;title&amp;gt;WIXB数据库数据字典生成代码&amp;lt;/title&amp;gt;
-&amp;lt;meta name=&amp;quot;generator&amp;quot; content=&amp;quot;ThinkDb V1.0&amp;quot; /&amp;gt;
-&amp;lt;meta name=&amp;quot;author&amp;quot; content=&amp;quot;WIXB数据库数据字典生成代码&amp;quot; /&amp;gt;
-&amp;lt;meta name=&amp;quot;copyright&amp;quot; content=&amp;quot;2008-2014 Tensent Inc.&amp;quot; /&amp;gt;
-&amp;lt;style&amp;gt;
-body, td, th { font-family: &amp;quot;微软雅黑&amp;quot;; font-size: 14px; }
-.warp{margin:auto; width:900px;}
-.warp h3{margin:0px; padding:0px; line-height:30px; margin-top:10px;}
-table { border-collapse: collapse; border: 1px solid #CCC; background: #efefef; }
-table th { text-align: left; font-weight: bold; height: 26px; line-height: 26px; font-size: 14px; text-align:center; border: 1px solid #CCC; padding:5px;}
-table td { height: 20px; font-size: 14px; border: 1px solid #CCC; background-color: #fff; padding:5px;}
-.c1 { width: 120px; }
-.c2 { width: 120px; }
-.c3 { width: 150px; }
-.c4 { width: 80px; text-align:center;}
-.c5 { width: 80px; text-align:center;}
-.c6 { width: 270px; }
-&amp;lt;/style&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-&amp;lt;div class=&amp;quot;warp&amp;quot;&amp;gt;
-    &amp;lt;h1 style=&amp;quot;text-align:center;&amp;quot;&amp;gt;WIXB数据库数据字典生成代码&amp;lt;/h1&amp;gt;
-&amp;lt;?php echo $html; ?&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;完&lt;/p&gt;
 </description>
     </item>
     

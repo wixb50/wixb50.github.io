@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>aria2命令 &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="linux aria2下载工具">
+  <meta name="keywords" content="linux">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="/avatar.jpg"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+
+    <p>Copyright &copy; 2015 <a href="http://wixb50.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>aria2命令</h1>
+    <span class="post-date">Dec 23, 2015 &middot; 3 minute read &middot; <a href="http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/linux">linux</a><a class="label" href="http://wixb50.github.io/categories/software">software</a>
+    </span>
+    
+
+<h2 id="目录">目录</h2>
+
+<!-- MarkdownTOC -->
+
+<ul>
+<li><a href="#ria2">ria2</a>
+
+<ul>
+<li><a href="#基本使用">基本使用</a></li>
+<li><a href="#基本用法">基本用法</a>
+
+<ul>
+<li><a href="#下载一个文件">下载一个文件</a></li>
+<li><a href="#使用两个连接从一个源下载文件">使用两个连接从一个源下载文件</a></li>
+<li><a href="#使用两个连接下载文件：">使用两个连接下载文件：</a></li>
+<li><a href="#从http或ftp服务器下载：">从http或ftp服务器下载：</a></li>
+<li><a href="#从任意源进行并行下载：">从任意源进行并行下载：</a></li>
+<li><a href="#如果仅仅指定本地磁盘上的torrent文件或者metalink，是不需要-z选项的，如：">如果仅仅指定本地磁盘上的torrent文件或者metalink，是不需要-Z选项的，如：</a></li>
+<li><a href="#从文件中读取目的文件，并行下载">从文件中读取目的文件，并行下载</a></li>
+<li><a href="#退出时保存出错未完成的下载-使用session">退出时保存出错/未完成的下载, 使用<code>session</code></a></li>
+<li><a href="#后续可以使用该文件继续未完成的下载：">后续可以使用该文件继续未完成的下载：</a></li>
+</ul></li>
+<li><a href="#metalink相关下载示例">Metalink相关下载示例</a>
+
+<ul>
+<li><a href="#从远程metalink下载文件：">从远程metalink下载文件：</a></li>
+<li><a href="#从远程metalink下载文件但在内存中处理metalink：">从远程metalink下载文件,但在内存中处理metalink：</a></li>
+<li><a href="#通过本地metalink下载：">通过本地metalink下载：</a></li>
+<li><a href="#使用5个server下载">使用5个server下载</a></li>
+<li><a href="#通过多个本地metalink文件进行下载：">通过多个本地metalink文件进行下载：</a></li>
+<li><a href="#打印metalink的内容">打印metalink的内容</a></li>
+<li><a href="#通过序号下载指定文件">通过序号下载指定文件</a></li>
+<li><a href="#指定用户偏好从本地metalink下载文件">指定用户偏好从本地metalink下载文件</a></li>
+</ul></li>
+<li><a href="#bittorrent相关下载">BitTorrent相关下载</a>
+
+<ul>
+<li><a href="#通过远程bittorrent文件下载">通过远程BitTorrent文件下载</a></li>
+<li><a href="#通过远程bittorrent文件下载但在内存中处理">通过远程BitTorrent文件下载,但在内存中处理</a></li>
+<li><a href="#通过本地torrent文件下载">通过本地torrent文件下载:</a></li>
+<li><a href="#可以同时处理多个torrent文件">可以同时处理多个torrent文件:</a></li>
+<li><a href="#通过bittorrent-magnet-uri下载：">通过BitTorrent Magnet URI下载：</a></li>
+<li><a href="#自动调整peer节点数量">自动调整peer节点数量</a></li>
+<li><a href="#开启dht">开启DHT</a></li>
+<li><a href="#开启ipv6的dht">开启ipv6的DHT</a></li>
+<li><a href="#增加和删除tracker-uri：">增加和删除tracker URI：</a></li>
+<li><a href="#加密">加密</a></li>
+<li><a href="#打印torrent文件内容">打印torrent文件内容</a></li>
+<li><a href="#通过序号选择指定文件下载：">通过序号选择指定文件下载：</a></li>
+<li><a href="#修改监听端口">修改监听端口</a></li>
+<li><a href="#指定aria2完成下载后的停止条件">指定aria2完成下载后的停止条件</a></li>
+<li><a href="#设置上传速度">设置上传速度</a></li>
+<li><a href="#seeding已经下载完成的文件">Seeding已经下载完成的文件</a></li>
+<li><a href="#还可以同时播种多个torrent文件">还可以同时播种多个torrent文件</a></li>
+<li><a href="#通过index指定文件名">通过index指定文件名</a></li>
+<li><a href="#为进行文件预览进行分片优先下载">为进行文件预览进行分片优先下载</a></li>
+</ul></li>
+<li><a href="#用代理服务器">用代理服务器</a>
+
+<ul>
+<li><a href="#为所有协议httpsftp设定代理服务器">为所有协议(HTTP(S)/FTP)设定代理服务器</a></li>
+<li><a href="#设置http代理">设置http代理</a></li>
+<li><a href="#使用需要认证的代理">使用需要认证的代理</a></li>
+</ul></li>
+<li><a href="#高级的http特性：">高级的http特性：</a>
+
+<ul>
+<li><a href="#导入cookie">导入cookie</a></li>
+</ul></li>
+<li><a href="#其他高级特性">其他高级特性</a>
+
+<ul>
+<li><a href="#下载速度限制">下载速度限制</a></li>
+<li><a href="#使用-v修复受损的下载">使用-V修复受损的下载</a></li>
+<li><a href="#当下载速度下于某个特定值时放弃下载">当下载速度下于某个特定值时放弃下载</a></li>
+<li><a href="#uri的参数化支持">URI的参数化支持</a></li>
+<li><a href="#时间戳">时间戳</a></li>
+<li><a href="#输入文件">输入文件</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p>#aria2
+<strong>title:</strong> aria2 使用说明<br />
+<strong>title:</strong> aria2,aria2c,wget,linux,下载<br />
+<strong>info:</strong> <strong>aria2</strong>是一款轻量型命令行下载工具，它提供了对多协议和多源地址的支持，目前支持的协议包括<strong>HTTP(S), FTP, BitTorrent (DHT, PEX, MSE/PE), and Metalink</strong>。</p>
+
+<p>aria2可以从多个源地址，并使用多种协议进行下载，并尝试将下载带宽利用率最大化。它可以同时从HTTP(S)/FTP 和 BitTorrent下载一份数据，并且将其上传到bt集群中。通过Metalink的分块检查，aria2可以在下载过程中自动的进行数据校验。</p>
+
+<p>虽然现在有诸如<strong>wget</strong>和<strong>curl</strong>等其他类似产品，但aria2具有两个独特的功能：</p>
+
+<ol>
+<li>aria2可以从多个源下载文件(HTTP(S)/FTP/BitTorrent)，</li>
+<li>aria2可以并发的进行多个源地址的下载。这样用户将不必等待单个文件的下载完成，而且aria2会尽可能快的下载。</li>
+</ol>
+
+<p>除aria2外，也有一些其他可以进行分片下载的工具，它们往往按照线程数分割文件，并行下载，换言之，它们不会对未完成的部分进行自适应性重新分片，当整个流程工作正常时，这个策略是可以的，但一旦存在一个线程运行非常慢，这样整个进程就需要等待该线程的执行。而aria2可以很好的处理这个情况，它可以将文件分割成1M大小的分片，当某个线程运行特别缓慢时，aria2可以使用更快的线程来替换。总之，根据作者的说法，aria2是非常智能和可靠的。</p>
+
+<p>和最初的aria工具具有一个GTK+界面不同，aria2只提供了命令行接口，从而使得对资源的要求更小。通常它的物理内存消耗为4M(HTTP/FTP)到9M(BitTorrent),当进行bt下载且速度为2.8M/s时的cpu消耗约为6%。</p>
+
+<h2 id="基本使用">基本使用</h2>
+
+<p>当源地址存在诸如<code>&amp;</code>或<code>*</code>等其他shell特殊字符时，请使用单引号或者双引号将uri包含起来。</p>
+
+<p>在aria2的1.10.0版中，aria2对每台主机默认使用1个连接和20MB的分块大小，所以不论在-s参数中指定任何值，他都对一台主机只会建立一个连接，需要注意的一点是这个限制是针对单个主机的，当指定了多台主机时，它会对每台主机建立一个连接。如果要使用1.9.x版中的行为，则要使用-x16 -k1M。另见man页面的 <code>–max-connection-per-server</code> 和 <code>–min-split-size</code>。</p>
+
+<p>_aria2默认会在开始下载前预先分配文件空间以避免可能的文件碎片_，但这会在部分PC上带来50%-90%的cpu消耗。当使用环境为比较新的文件系统，例如ext4，btrfs，xfs或者NTFS时，作者推荐使用<strong><code>–file-allocation=falloc</code></strong>，这种方式会在瞬间完成大文件（数G）的空间分配并且不会带来额外的性能下降。</p>
+
+<p>如果你既没有使用cutting-edge文件系统，也没有使用linux，并且很在意系统性能，那么可以使用–file-allocation=none来关闭文件的预分配。</p>
+
+<p>如果你忘记了这些参数的全名或者含义，把-h放在选项或者词的前面，比如aria2c -hcrypt，这样aria2就会搜索crypt相关的选项并把他的帮助打印出来，如果aria2发现使用了-h，它会在打印出帮助信息后停止运行。</p>
+
+<h2 id="基本用法">基本用法</h2>
+
+<h3 id="下载一个文件">下载一个文件</h3>
+
+<pre><code>aria2c http://host/image.iso
+</code></pre>
+
+<p>在1.10.0版中，aria2对每个host使用一个连接，你可以使用<code>–max-connection-per-server</code> 或 <code>-x</code>来修改</p>
+
+<h3 id="使用两个连接从一个源下载文件">使用两个连接从一个源下载文件</h3>
+
+<pre><code>aria2c -x2 http://host/image.iso
+</code></pre>
+
+<p><code>Ctrl+c</code>可以中止当前的下载，在同样的目录运行同样的命令可以继续原来的下载，你设置可以修改<code>uri</code>，如果他们指向的是同一个文件的话。</p>
+
+<h3 id="使用两个连接下载文件">使用两个连接下载文件：</h3>
+
+<pre><code>aria2c -s2 http://host/image.iso http://mirror1/image.iso http://mirror2/image.iso
+</code></pre>
+
+<p>注：如果命令中uri的数量多于-s的值，如本例所示，aria2将会首先使用前两个uri，将第3个uri作为候补，如果前两个有一个下载失败，就会启用第3个</p>
+
+<h3 id="从http或ftp服务器下载">从http或ftp服务器下载：</h3>
+
+<pre><code>aria2c http://host1/file.zip ftp://host2/file.zip
+</code></pre>
+
+<h3 id="从任意源进行并行下载">从任意源进行并行下载：</h3>
+
+<pre><code>aria2c -Z http://host/file1 file2.torrent file3.metalink
+</code></pre>
+
+<h3 id="如果仅仅指定本地磁盘上的torrent文件或者metalink-是不需要-z选项的-如">如果仅仅指定本地磁盘上的torrent文件或者metalink，是不需要-Z选项的，如：</h3>
+
+<pre><code>aria2c file1.torrent file2.torrent
+</code></pre>
+
+<h3 id="从文件中读取目的文件-并行下载">从文件中读取目的文件，并行下载</h3>
+
+<pre><code>aria2c -ifiles.txt -j5
+</code></pre>
+
+<p>注：-j参数指定了并发下载的数量，在输入文件中可以包含torrent文件和metelink<br />
+注：输入文件中支持添加参数，详见后续的“输入文件”章节</p>
+
+<h3 id="退出时保存出错-未完成的下载-使用-session">退出时保存出错/未完成的下载, 使用<code>session</code></h3>
+
+<pre><code>aria2c -ifiles.txt --save-session=out.txt
+</code></pre>
+
+<p>当ctrl+c或者aria2自己退出时，所有的错误，未完成的下载信息会保存到out.txt中，但通过aria2.addTorrent 和 aria2.addMetalink XML-RPC方式增加的下载不会保存。</p>
+
+<h3 id="后续可以使用该文件继续未完成的下载">后续可以使用该文件继续未完成的下载：</h3>
+
+<pre><code>aria2c -i out.txt
+</code></pre>
+
+<h2 id="metalink相关下载示例">Metalink相关下载示例</h2>
+
+<h3 id="从远程metalink下载文件">从远程metalink下载文件：</h3>
+
+<pre><code>aria2c http://host/file.metalink
+</code></pre>
+
+<h3 id="从远程metalink下载文件-但在内存中处理metalink">从远程metalink下载文件,但在内存中处理metalink：</h3>
+
+<pre><code>aria2c --follow-metalink=mem http://host/file.metalink
+</code></pre>
+
+<h3 id="通过本地metalink下载">通过本地metalink下载：</h3>
+
+<pre><code>aria2c -t10 --lowest-speed-limit=4000 file.metalink
+</code></pre>
+
+<h3 id="使用5个server下载">使用5个server下载</h3>
+
+<pre><code>aria2c -C5 file.metalink
+</code></pre>
+
+<p>注：当使用metalink时，-s参数不再起作用，需要使用-C选项</p>
+
+<h3 id="通过多个本地metalink文件进行下载">通过多个本地metalink文件进行下载：</h3>
+
+<pre><code>aria2c file1.metalink file2.metalink
+</code></pre>
+
+<h3 id="打印metalink的内容">打印metalink的内容</h3>
+
+<pre><code>aria2c -S file.metalink
+</code></pre>
+
+<h3 id="通过序号下载指定文件">通过序号下载指定文件</h3>
+
+<pre><code>aria2c --select-file=1-4,8 -Mfile.metalink
+</code></pre>
+
+<p>注：可以通过-S选择来打印metalink文件的内容</p>
+
+<h3 id="指定用户偏好从本地metalink下载文件">指定用户偏好从本地metalink下载文件</h3>
+
+<pre><code>aria2c --metalink-location=JP,US --metalink-version=1.1 --metalink-language=en-US file.metali
+</code></pre>
+
+<h2 id="bittorrent相关下载">BitTorrent相关下载</h2>
+
+<h3 id="通过远程bittorrent文件下载">通过远程BitTorrent文件下载</h3>
+
+<pre><code>aria2c http://site/file.torrent
+</code></pre>
+
+<h3 id="通过远程bittorrent文件下载-但在内存中处理">通过远程BitTorrent文件下载,但在内存中处理</h3>
+
+<pre><code>aria2c --follow-torrent=mem http://site/file.torrent
+</code></pre>
+
+<h3 id="通过本地torrent文件下载">通过本地torrent文件下载:</h3>
+
+<pre><code>aria2c -u40K /path/to/file.torrent
+</code></pre>
+
+<p>注：-u, –max-upload-limit用来指定最大上传速度</p>
+
+<h3 id="可以同时处理多个torrent文件">可以同时处理多个torrent文件:</h3>
+
+<pre><code>aria2c /path/to/file1.torrent /path/to/file2.torrent
+</code></pre>
+
+<h3 id="通过bittorrent-magnet-uri下载">通过BitTorrent Magnet URI下载：</h3>
+
+<pre><code>aria2c &quot;magnet:?xt=urn:btih:248D0A1CD08284299DE78D5C1ED359BB46717D8C&amp;dn=aria2&quot;
+</code></pre>
+
+<p>注：需要将magnet的地址用单引号或者双引号引起来，因为里面包含’&amp;&lsquo;字符。当使用magnet时，强烈建议打开dht选项，–enable-dht
+将metadata保存成.torrent文件</p>
+
+<pre><code>aria2c --bt-save-metadata &quot;magnet:?xt=urn:btih:248D0A1CD08284299DE78D5C1ED359BB46717D8C&amp;dn=aria2&quot;
+</code></pre>
+
+<p>这个命令会将metadata信息保存在248d0a1cd08284299de78d5c1ed359bb46717d8c.torrent文件中</p>
+
+<h3 id="自动调整peer节点数量">自动调整peer节点数量</h3>
+
+<p>当所有节点的整体下载速度低于某个值时，aria2可以临时增加节点数量来获取更快的下载速率</p>
+
+<pre><code>aria2c --bt-request-peer-speed-limit=200K file.torrent
+</code></pre>
+
+<h3 id="开启dht">开启DHT</h3>
+
+<pre><code>aria2c --enable-dht http://site/file.torrent
+</code></pre>
+
+<p>注：在1.7.2版本后，dht选项是被默认打开的。当aria2只处理http/ftp下载时，不会打开dht选项。当第一个torrent开始下载时，aria2进行DHT功能的初始化，然后一直运行到aria2退出。</p>
+
+<h3 id="开启ipv6的dht">开启ipv6的DHT</h3>
+
+<pre><code>aria2c --enable-dht6 --dht-listen-port=6881 --dht-listen-addr6=YOUR_GLOBAL_UNICAST_IPV6_ADDR --enable-async-dns6
+</code></pre>
+
+<p>注：如果aria2在build时没有使用c-ares，则不需要–enable-async-dns6。aria2在ipv4和ipv6的dht中共享一些端口</p>
+
+<h3 id="增加和删除tracker-uri">增加和删除tracker URI：</h3>
+
+<p>下面这个例子将从file.torrent中移除所有的tracker的uri，然后使用”<a href="http://tracker1/announce”">http://tracker1/announce”</a> 和 “<a href="http://tracker2/announce”">http://tracker2/announce”</a></p>
+
+<pre><code>aria2c --bt-exclude-tracker=&quot;*&quot; --bt-tracker=&quot;http://tracker1/announce,http://tracker2/announce&quot; file.torrent
+</code></pre>
+
+<h3 id="加密">加密</h3>
+
+<p>在默认情况下，aria2可以接收加密/非加密的连接，并且会首先尝试加密握手，如果失败才会去使用传统的BitTorrent握手
+下面这个例子中，aria2将只通过加密的握手接受与建立连接。</p>
+
+<pre><code>aria2c --bt-require-crypto=true http://site/file.torrent
+</code></pre>
+
+<p>存在两种加密方式，头加密和全连接加密。如果两种都可以被peer提供，aria2将默认使用头加密方式。如果要使用全连接加密，可以使用：</p>
+
+<pre><code>aria2c --bt-min-crypto-level=arc4 http://site/file.torrent
+</code></pre>
+
+<h3 id="打印torrent文件内容">打印torrent文件内容</h3>
+
+<pre><code>aria2c -S file.torrent
+</code></pre>
+
+<h3 id="通过序号选择指定文件下载">通过序号选择指定文件下载：</h3>
+
+<pre><code>aria2c --select-file=1-4,8 -Tfile.torrent
+</code></pre>
+
+<p>注：index信息可以通过-S来获得</p>
+
+<h3 id="修改监听端口">修改监听端口</h3>
+
+<pre><code>aria2c --listen-port=6881-6883 file.torrent
+</code></pre>
+
+<p>注：请确保指定端口可以进行tcp的上行和下行通信</p>
+
+<h3 id="指定aria2完成下载后的停止条件">指定aria2完成下载后的停止条件</h3>
+
+<pre><code>aria2c --seed-time=120 --seed-ratio=1.0 file.torrent
+</code></pre>
+
+<p>注：本例中，aria2会在下载完成后120分钟，或seed ratio达到1.0时退出程序</p>
+
+<h3 id="设置上传速度">设置上传速度</h3>
+
+<pre><code>aria2c --max-upload-limit=100K file.torrent
+</code></pre>
+
+<h3 id="seeding已经下载完成的文件">Seeding已经下载完成的文件</h3>
+
+<p>可以使用-V选择来播种下载完成的文件，它会首先对文件进行分片的hash校验</p>
+
+<pre><code>Seeding already downloaded file
+</code></pre>
+
+<p>如果可以确定下载文件的正确性，可以使用–bt-seed-unverified选项来跳过文件的校验环节</p>
+
+<pre><code>aria2c --bt-seed-unverified -d/path/to/dir file.torrent
+</code></pre>
+
+<h3 id="还可以同时播种多个torrent文件">还可以同时播种多个torrent文件</h3>
+
+<pre><code>aria2c --bt-seed-unverified -d/path/to/dir file1.torrent file2.torrent
+</code></pre>
+
+<h3 id="通过index指定文件名">通过index指定文件名</h3>
+
+<p>为了指定bt下载的文件名称，需要使用-S选线来查看torrent文件中的index信息，例如：</p>
+
+<pre><code>idx|path/length
+===+======================
+  1|dist/base-2.6.18.iso
+   |99.9MiB
+---+----------------------
+  2|dist/driver-2.6.18.iso
+   |169.0MiB
+---+----------------------
+</code></pre>
+
+<p>下面的命令可以将dist/base-2.6.18.iso 保存为 /tmp/mydir/base.iso，同时将dist/driver-2.6.18.iso 保存成 /tmp/dir/driver.iso</p>
+
+<pre><code>aria2c --dir=/tmp --index-out=1=mydir/base.iso --index-out=2=dir/driver.iso file.torrent
+</code></pre>
+
+<p>注：当对http uri中的torrent文件使用–index-out是不成功，它只对本地的torrent文件有效。aria2也不会去记忆–index-out选项内容，在每次的继续下载或播种时都需要手工指明，而且如果没有该选项，它也不会给用户任何提醒，所以需要注意。</p>
+
+<h3 id="为进行文件预览进行分片优先下载">为进行文件预览进行分片优先下载</h3>
+
+<p>优先下载torrent中所有文件的前1MB</p>
+
+<pre><code>aria2c --bt-prioritize-piece=head file.torrent
+</code></pre>
+
+<p>##使用代理服务器</p>
+
+<h3 id="为所有协议-http-s-ftp-设定代理服务器">为所有协议(HTTP(S)/FTP)设定代理服务器</h3>
+
+<pre><code>aria2c --all-proxy='http://proxy:8080' http://host/file
+</code></pre>
+
+<p>注：–all-proxy选项可以被特定的协议选项覆盖，如–http-proxy, –https-proxy 和 –ftp-proxy</p>
+
+<h3 id="设置http代理">设置http代理</h3>
+
+<pre><code>aria2c --http-proxy='http://proxy:8080' http://host/file
+</code></pre>
+
+<h3 id="使用需要认证的代理">使用需要认证的代理</h3>
+
+<pre><code>aria2c --http-proxy='http://proxy:8080' --http-proxy-user='username' --http-proxy-passwd='password' http://host/file
+aria2c --http-proxy='http://username:password@proxy:8080' http://host/file
+</code></pre>
+
+<p>注：username and password 需要进行%转码，如过username是’myid@domain’，则转码后的结果为：’myid%40domain’。</p>
+
+<h2 id="高级的http特性">高级的http特性：</h2>
+
+<h3 id="导入cookie">导入cookie</h3>
+
+<p>导入Mozilla/Firefox(1.x/2.x) 和 Netscape格式的cookie</p>
+
+<pre><code>aria2c --load-cookies=cookies.txt http://host/file
+</code></pre>
+
+<p>导入Firefox3格式的cookie</p>
+
+<pre><code>aria2c --load-cookies=cookies.sqlite http://host/file
+</code></pre>
+
+<p>被浏览器或其他程序继续下载</p>
+
+<pre><code>aria2c -c -s2 http://host/partiallydownloadedfile.zip
+</code></pre>
+
+<h2 id="其他高级特性">其他高级特性</h2>
+
+<h3 id="下载速度限制">下载速度限制</h3>
+
+<pre><code>aria2c --max-download-limit=100K http://host/file
+</code></pre>
+
+<h3 id="使用-v修复受损的下载">使用-V修复受损的下载</h3>
+
+<pre><code>aria2c -V file.metalink
+</code></pre>
+
+<p>注：这个选项只适用于BitTorrent或者带有校验的metalink</p>
+
+<h3 id="当下载速度下于某个特定值时放弃下载">当下载速度下于某个特定值时放弃下载</h3>
+
+<pre><code>aria2c --lowest-speed-limit=10K file.metalink
+</code></pre>
+
+<h3 id="uri的参数化支持">URI的参数化支持</h3>
+
+<p>可以使用大括号来表达一组列表</p>
+
+<pre><code>aria2c -P http://{host1,host2,host3}/file.iso
+</code></pre>
+
+<p>可以使用[]来表示一个数字序列</p>
+
+<pre><code>aria2c -Z -P http://host/image[000-100].png
+</code></pre>
+
+<p>注：当所有的URI指向不同的文件时，需要使用-Z选项</p>
+
+<p>甚至可以指定步长</p>
+
+<pre><code>aria2c -Z -P http://host/image[A-Z:2].png
+</code></pre>
+
+<h3 id="时间戳">时间戳</h3>
+
+<p>保留源文件时间戳</p>
+
+<pre><code>aria2c -R http://host/file.iso
+</code></pre>
+
+<p>下载完成后执行特定命令</p>
+
+<pre><code>aria2c --on-download-complete=COMMAND http://example.org/file.iso
+</code></pre>
+
+<p>另见：<code>–on-download-error</code>, <code>–on-download-start</code> 和 <code>–on-download-stop</code>，或者执行<code>aria2c -h#hook</code></p>
+
+<p>写入/dev/null</p>
+
+<pre><code>aria2c -d /dev -o null --allow-overwrite=true http://example.org/file
+</code></pre>
+
+<p><code>–allow-overwrite=true</code>是为了避免aria2重命名已有的/dev/null</p>
+
+<h3 id="输入文件">输入文件</h3>
+
+<p>输入文件中可以包括一系列的URI地址，也可以针对同一个资源设置多个URI：不同的URI写在一行并使用tab分割。<br />
+输入文件的每一行都被当作aria2的命令行参数，因此可以受到-Z和-P选项影响<br />
+另外，选项也可以在每行URI的后面设置，更详尽的描述可以在man page的输入文件部分得到。这种选择的含义与命令行选项的含义一致，不过只适用在他们跟随的那个URI上。</p>
+
+<p>如下，一个uri文件名为uri.txt，其内容如下：</p>
+
+<pre><code>http://server/file.iso http://mirror/file.iso
+  dir=/iso_images
+  out=file.img
+
+http://foo/bar
+</code></pre>
+
+<p>如果aria2使用 <code>-i uri.txt -d /tmp</code>,<br />
+那么file.iso就会被保存为/iso_images/file.img，
+它的下载源为<a href="http://server/file.iso">http://server/file.iso</a> 和 <a href="http://mirror/file.iso">http://mirror/file.iso</a> ；
+而bar文件则是从<a href="http://foo/bar">http://foo/bar</a> 下载并且保存为 /tmp/bar</p>
+
+<p>*[uri]: 远程或者本地文件地址</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+
