@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/ubuntu/</link>
+    <link>http://wixb50.github.io/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 17 Dec 2015 13:50:50 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -44,10 +44,10 @@
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -121,10 +121,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -159,11 +159,400 @@ sudo service xrdp restart
     </item>
     
     <item>
+      <title>ubuntu常用软件集合</title>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#broswer&#34;&gt;Broswer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#editor&#34;&gt;Editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git&#34;&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#美化&#34;&gt;美化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#添加字体&#34;&gt;添加字体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sql&#34;&gt;SQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#思维导图&#34;&gt;思维导图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#影音&#34;&gt;影音&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#fq&#34;&gt;FQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#虚拟机&#34;&gt;虚拟机&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux-wps&#34;&gt;Linux WPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#develop&#34;&gt;Develop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#latex&#34;&gt;LaTex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#aria2下载工具&#34;&gt;Aria2下载工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tldr命令工具&#34;&gt;tldr命令工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#终端工具terminator&#34;&gt;终端工具Terminator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装，同步自己的chrome配置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;editor&#34;&gt;Editor&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
+1.安装配置好JDK环境,下载tar.gz文件,解压到&lt;code&gt;tar -zxvf ideaIU-14.tar.gz -C /usr/local/intellijIDEA(自己命名)&lt;/code&gt;;&lt;br /&gt;
+2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;几个license：
+(1)
+key:IDEA
+value:61156-YRN2M-5MNCN-NZ8D2-7B4EW-U12L4
+(2)
+key:huangwei
+value:97493-G3A41-0SO24-W57LI-Y2UGI-JGTU2
+(3)
+key:itey
+value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.sublimetext.com/3&#34;&gt;Sublime Text 3&lt;/a&gt; 下载deb包安装&lt;/li&gt;
+&lt;li&gt;神一样的&lt;a href=&#34;http://www.vim.org/&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt; How to &lt;a href=&#34;http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/&#34;&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;简单的MD编辑器&lt;a href=&#34;http://sourceforge.net/projects/retext/&#34;&gt;Retext&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git客户端&lt;a href=&#34;http://www.syntevo.com/smartgit/&#34;&gt;SmartGit&lt;/a&gt; 建议直接命令行&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;删除&lt;code&gt;.smartgit&lt;/code&gt;下面的&lt;code&gt;settings.xml&lt;/code&gt;即可重新使用1个月。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;美化&#34;&gt;美化&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;默认使用Unity桌面&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;unity-tweak-tool&lt;br /&gt;
+安装&lt;code&gt;sudo apt-get install unity-tweak-tool&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:tualatrix/ppa
+sudo apt-get update
+sudo apt-get install ubuntu-tweak
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;主题网址&lt;a href=&#34;http://gnome-look.org/&#34;&gt;http://gnome-look.org/&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;&lt;/li&gt;
+&lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;添加字体&#34;&gt;添加字体&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ubuntu添加字体非常简单，只需要在～目录下新建&lt;code&gt;.fonts&lt;/code&gt;文件夹，然后把后缀为&lt;code&gt;.ttf&lt;/code&gt;字体文件复制其中，就自动加入了。可以使用软件查看。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mysql客户端 &lt;a href=&#34;http://dev.mysql.com/downloads/workbench/&#34;&gt;Workbench&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;li&gt;Redis客户端 &lt;a href=&#34;http://redisdesktop.com/&#34;&gt;Redis Desktop Manager&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;li&gt;Mongo客户端 &lt;a href=&#34;http://robomongo.org/&#34;&gt;Robomongo&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;思维导图&#34;&gt;思维导图&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最流行的思维导图 &lt;a href=&#34;http://www.xmind.net/cn/&#34;&gt;XMind&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;li&gt;百度在线脑图 &lt;a href=&#34;http://naotu.baidu.com/&#34;&gt;百度脑图&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;影音&#34;&gt;影音&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;VLC Media Player&lt;/code&gt; 软件商店安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;fq&#34;&gt;FQ&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;开放网络客户端 &lt;a href=&#34;https://getlantern.org/&#34;&gt;Lantern&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://shadowsocks.org/en/index.html&#34;&gt;Shadowsocks&lt;/a&gt; 装好之后还要设置浏览器代理&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;安装PPA is for Ubuntu &amp;gt;= 14.04.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置&lt;strong&gt;火狐浏览器&lt;/strong&gt;，代理设置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;选择Manual Proxy Configuration，在Socks Host写入127.0.0.1，Port 1080。下面选Socks v5。点OK确认。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以代理模式启动&lt;strong&gt;Chrome&lt;/strong&gt;命令如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;google-chrome --proxy-server=socks5://127.0.0.1:1080
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;[NOTICE] : Chrome推荐使用&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/releases&#34;&gt;SwitchyOmega&lt;/a&gt;插件进行设置。自动规则：&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&#34;&gt;wiki-GEWList&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;开源&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt; 下载deb安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;linux-wps&#34;&gt;Linux WPS&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;#安装wps
+sudo dpkg -i wps-office_9.1.0.4975-a19p1_amd64.deb
+#安装symbol字体包
+sudo dpkg -i symbol-fonts_1.2_all.deb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
+
+&lt;p&gt;Frontend：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node&lt;/a&gt; 最好编译安装 &lt;a href=&#34;https://linux.cn/article-5766-1.html&#34;&gt;install-tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;npm&lt;/a&gt; node包管理器&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;bower&lt;/a&gt; 前端开发包管理器&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;null-link&#34;&gt;gulp&lt;/a&gt; 构建工具&lt;/li&gt;
+&lt;li&gt;[grunt-cli]() 比较老的构建工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Backend：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[Go]() 解压存放&lt;code&gt;/usr/local/go&lt;/code&gt;,配置好&lt;code&gt;GOROOT、GOPATH&lt;/code&gt;和path环境。&lt;code&gt;GOPATH&lt;/code&gt;最好一个就够了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;GoTools：&lt;code&gt;gocode&lt;/code&gt;代码自动化提示工具。&lt;code&gt;godep&lt;/code&gt;go包管理器。&lt;code&gt;goconvey&lt;/code&gt;go测试工具。&lt;br /&gt;
+Tips：如需sudo也支持go命令,执行链接命令：&lt;code&gt;sudo ln -s /usr/local/go/bin/go /usr/bin/go&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[gradle]() java包管理器,构建工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Server：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[Docker]() 容器化服务器&lt;/li&gt;
+&lt;li&gt;[vagrant]() 虚拟机管理工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;latex&#34;&gt;LaTex&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TexLive2015安装&lt;/p&gt;
+
+&lt;p&gt;下载地址：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://mirrors.ctan.org/systems/texlive/Images/texlive2015.iso&#34;&gt;官方镜像&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2015.iso&#34;&gt;USTC镜像&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;挂载ISO镜像&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mount -o loop texlive2015.iso  /mnt/
+cd /mnt
+sudo ./install-tl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;出现选项后，输入 I 直接安装（也可以更改选项）。不出意外的话，5分钟应该就OK了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;环境变量&lt;/strong&gt;&lt;br /&gt;
+在当前用户的 ~/.bashrc 中加入如下语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# TeX Live 2015
+export MANPATH=${MANPATH}:/usr/local/texlive/2015/texmf-dist/doc/man
+export INFOPATH=${INFOPATH}:/usr/local/texlive/2015/texmf-dist/doc/info
+export PATH=${PATH}:/usr/local/texlive/2015/bin/x86_64-linux  #建议还是把这个配置到/etc/profile里面去，这样texstudio打开能够识别
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的建议如果出现找不到tex环境时候可以用一下。&lt;br /&gt;
+&lt;strong&gt;卸载ISO镜像&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd
+$ sudo umount /mnt/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://seisman.info/install-texlive-under-linux.html&#34;&gt;参考文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TexStudio&lt;br /&gt;
+&lt;a href=&#34;http://texstudio.sourceforge.net/&#34;&gt;官网&lt;/a&gt;下载deb安装包安装即可&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;aria2下载工具&#34;&gt;Aria2下载工具&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://aria2.sourceforge.net/&#34;&gt;官网介绍&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install aria2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;tldr命令工具&#34;&gt;tldr命令工具&lt;/h3&gt;
+
+&lt;p&gt;下载go client的&lt;code&gt;platform binaries&lt;/code&gt;的&lt;code&gt;deb&lt;/code&gt;包安装：&lt;a href=&#34;https://github.com/tldr-pages/tldr&#34;&gt;github主页&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dpkg -i tldr_0.1.0_amd64.deb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;终端工具terminator&#34;&gt;终端工具Terminator&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install terminator
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;然后利用 Debian 的重新配置命令选择默认终端：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo update-alternatives --config x-terminal-emulator
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;terminator配置文件在~/.config/terminator/config 可以通过这个配置文件配置terminator的字体和颜色.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;font = Monaco 10  #设置体字
+background_color = &amp;quot;#204070&amp;quot; # 背景颜色
+foreground_color = &amp;quot;#F0F0F0&amp;quot; # 字体颜色
+cursor_blink = True          # 设置光标
+scrollbar_position = disabled # 禁用滚动条
+titlebars = no # 禁用标题栏
+background_darkness = 0.4
+background_type = transparent # 背景类型可以设置为图片
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;更多配置见：&lt;code&gt;man terminator_config&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;快捷键&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;F11 #Toggle fullscreen
+Ctrl + Shift+ O #Split terminals horizontally
+Ctrl + Shift+ E #Split terminals vertically
+Ctrl + Shift+ W #Close current Panel
+Ctrl + Shift+ T #Open new tab
+
+Ctrl+Shift+C 复制
+Ctrl+Shift+V 粘贴
+Ctrl+Shift+N 或者 Ctrl+Tab 在分割的各窗口之间切换
+Ctrl+Shift+X 将分割的某一个窗口放大至全屏使用
+Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
+
+Alt + ↑ #Move to the terminal above the current one
+Alt + ↓ #Move to the terminal below the current one
+Alt + ← #Move to the terminal left of the current one
+Alt + → #Move to the terminal right of the current one
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个不错的配置(可将&lt;code&gt;palette&lt;/code&gt;注释,采用默认的配色方案)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;[global_config]
+  title_transmit_bg_color = &amp;quot;#d30102&amp;quot;
+  focus = system
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    copy_on_selection = True
+    background_image = None
+    background_darkness = 0.85
+    background_type = transparent
+    use_system_font = False
+    cursor_color = &amp;quot;#eee8d5&amp;quot;
+    foreground_color = &amp;quot;#839496&amp;quot;
+    show_titlebar = False
+    font = Ubuntu Mono 14
+    background_color = &amp;quot;#002b36&amp;quot;
+  [[solarized-dark]]
+    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    background_color = &amp;quot;#002b36&amp;quot;
+    background_image = None
+    cursor_color = &amp;quot;#eee8d5&amp;quot;
+    foreground_color = &amp;quot;#839496&amp;quot;
+  [[solarized-light]]
+    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    background_color = &amp;quot;#fdf6e3&amp;quot;
+    background_image = None
+    cursor_color = &amp;quot;#002b36&amp;quot;
+    foreground_color = &amp;quot;#657b83&amp;quot;
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = &amp;quot;&amp;quot;
+[plugins]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;透明高亮很Geek.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;右键目录打开&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;1.安装工具：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install nautilus-actions -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.启动改工具,Unity中输入nautilus-actions-config-tool,&lt;/p&gt;
+
+&lt;p&gt;3.见&lt;a href=&#34;http://www.ikey4u.com/linux-terminator-settings/&#34;&gt;配置教程&lt;/a&gt;  重要的启动参数：&lt;code&gt;--working-directory=%D/%w&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;4.重启生效&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考资料&lt;br /&gt;
+&lt;a href=&#34;http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html&#34;&gt;开始使用Ubuntu作为工作环境&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -177,13 +566,10 @@ sudo service xrdp restart
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#1生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#2导入公钥到认证文件更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/a&gt;
-
-&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#2导入公钥到认证文件更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#21-导入本机&#34;&gt;2.1 导入本机&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#22-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#23-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#3测试&#34;&gt;3.测试&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#dpkg命令&#34;&gt;dpkg命令&lt;/a&gt;&lt;/li&gt;
@@ -197,6 +583,7 @@ sudo service xrdp restart
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#使用sudo&#34;&gt;使用sudo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#新增user&#34;&gt;新增User&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -376,15 +763,44 @@ dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统�
 注：su和sudo的区别是：&lt;br /&gt;
 1). su的密码是root的密码，而sudo的密码是用户的密码；&lt;br /&gt;
 2). su直接将身份变成root，而sudo是以用户登录后以root的身份运行命令，不需要知道root密码；&lt;/p&gt;
+
+&lt;h2 id=&#34;新增user&#34;&gt;新增User&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用有权限的用户，在终端里输入&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo adduser username
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后一直回车即可，新建成功。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;添加sudo用户&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;当你安装Ubuntu的时候，它会自动添加第一个用户到sudo组，允许这个用户通过键入其自身帐户密码来获得超级用户(root)身份。然而，系统不会再自动添加其他的用户到sudo组当中去。如果你想在你的共享系统上授予某人某些超级用户特权，你必须给予他们sudo权利。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;要添加新用户到sudo，最简单的方式就是使用 usermod 命令。运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo usermod -G sudo username
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果用户已经是其他组的成员，你需要添加 -a 这个选项，象这样&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo usermod -a -G sudo username
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -459,10 +875,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

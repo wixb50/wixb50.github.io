@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>restful架构设计 &middot; Wixb</title>
+  <title>Docker Operation &middot; Wixb</title>
 
   
   <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
@@ -28,8 +28,8 @@
   
   
 
-  <meta name="description" content="restful架构设计简述">
-  <meta name="keywords" content="restful">
+  <meta name="description" content="docker images/container operation command">
+  <meta name="keywords" content="docker">
   <link rel="author" href="http://plus.google.com/wixb50">
 </head>
 <body class="theme-base-0c">
@@ -88,27 +88,88 @@
 
 <div class="content container">
   <div class="post">
-    <h1>restful架构设计</h1>
-    <span class="post-date">Nov 5, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/#disqus_thread">Comments</a>
+    <h1>Docker Operation</h1>
+    <span class="post-date">Dec 11, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/12/11/docker-operation/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.github.io/categories/architecture">architecture</a>
+    <a class="label" href="http://wixb50.github.io/categories/docker">docker</a><a class="label" href="http://wixb50.github.io/categories/cloud">cloud</a>
     </span>
-    <p>三、资源（Resources）</p>
+    
 
-<p>REST的名称&raquo;表现层状态转化&raquo;中，省略了主语。&raquo;表现层&raquo;其实指的是&raquo;资源&raquo;（Resources）的&raquo;表现层&raquo;。
-所谓&raquo;资源&raquo;，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。你可以用一个URI（统一资源定位符）指向它，每种资源对应一个特定的URI。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或独一无二的识别符。
-所谓&raquo;上网&raquo;，就是与互联网上一系列的&raquo;资源&raquo;互动，调用它的URI。<br />
-四、表现层（Representation）</p>
+<h2 id="目录">目录</h2>
 
-<p>&laquo;资源&raquo;是一种信息实体，它可以有多种外在表现形式。我们把&raquo;资源&raquo;具体呈现出来的形式，叫做它的&raquo;表现层&raquo;（Representation）。
-比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。
-URI只代表资源的实体，不代表它的形式。严格地说，有些网址最后的&raquo;.html&raquo;后缀名是不必要的，因为这个后缀名表示格式，属于&raquo;表现层&raquo;范畴，而URI应该只代表&raquo;资源&raquo;的位置。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&raquo;表现层&raquo;的描述。<br />
-五、状态转化（State Transfer）</p>
+<!-- MarkdownTOC -->
 
-<p>访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。
-互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&raquo;状态转化&raquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&raquo;表现层状态转化&raquo;。
-客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的动词：GET、POST、PUT、DELETE。它们分别对应四种基本操作：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源。</p>
+<ul>
+<li><a href="#normal-commander">normal commander</a>
+
+<ul>
+<li><a href="#docker-使用代理连接-docker-hub">Docker 使用代理连接 Docker Hub</a></li>
+<li><a href="#存出或者载入镜像">存出或者载入镜像</a></li>
+</ul></li>
+<li><a href="#批量操作docker-commander">批量操作docker commander.</a>
+
+<ul>
+<li><a href="#stop-all-containers">Stop all containers.</a></li>
+<li><a href="#remove-all-stopped-containers">Remove all stopped containers.</a></li>
+<li><a href="#remove-all-untagged-images">Remove all untagged images</a></li>
+<li><a href="#remove-all-images">Remove all images</a></li>
+</ul></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<h2 id="normal-commander">normal commander</h2>
+
+<h3 id="docker-使用代理连接-docker-hub">Docker 使用代理连接 Docker Hub</h3>
+
+<p>如果你的宿主操作系统是 linux 那方法就很简单了，直接通过命令来启动服务即可。</p>
+
+<pre><code>sudo HTTP_PROXY=10.125.156.21:8118 docker -d
+</code></pre>
+
+<p>如果是只是临时使用可以用下面语句</p>
+
+<pre><code>sudo HTTP_PROXY=10.125.156.21:8118 docker pull node
+</code></pre>
+
+<h3 id="存出或者载入镜像">存出或者载入镜像</h3>
+
+<p>存出镜像</p>
+
+<pre><code>sudo docker save -o ubuntu_14.04.tar ubuntu:14.04
+</code></pre>
+
+<p>载入镜像</p>
+
+<pre><code>sudo docker load &lt; ubuntu_14.04.tar
+#or
+sudo docker --input ubuntu_14.04.tar
+</code></pre>
+
+<h2 id="批量操作docker-commander">批量操作docker commander.</h2>
+
+<p>NOTE: <code>sudo</code>maybe.</p>
+
+<h4 id="stop-all-containers">Stop all containers.</h4>
+
+<pre><code>docker stop $(docker ps -a -q)
+</code></pre>
+
+<h4 id="remove-all-stopped-containers">Remove all stopped containers.</h4>
+
+<pre><code>docker rm $(docker ps -a -q)
+</code></pre>
+
+<h4 id="remove-all-untagged-images">Remove all untagged images</h4>
+
+<pre><code>docker rmi $(docker images | grep &quot;^&lt;none&gt;&quot; | awk &quot;{print $3}&quot;)
+</code></pre>
+
+<h4 id="remove-all-images">Remove all images</h4>
+
+<pre><code>docker rmi $(docker images | grep \ | awk '{print $3}')
+</code></pre>
 
   </div>
   <div id="disqus_thread"></div>

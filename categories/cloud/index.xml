@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cloud on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/cloud/</link>
+    <link>http://wixb50.github.io/categories/cloud/</link>
     <description>Recent content in Cloud on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,24 +10,77 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Fri, 11 Dec 2015 18:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Docker Batch Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-batch-operation/</link>
+      <title>Docker Operation</title>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-batch-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
-&lt;p&gt;批量操作docker images or container commander.&lt;/p&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 
-&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
+&lt;!-- MarkdownTOC --&gt;
 
-&lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#normal-commander&#34;&gt;normal commander&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#stop-all-containers&#34;&gt;Stop all containers.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#remove-all-images&#34;&gt;Remove all images&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&#34;normal-commander&#34;&gt;normal commander&lt;/h2&gt;
+
+&lt;h3 id=&#34;docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
+
+&lt;p&gt;如果你的宿主操作系统是 linux 那方法就很简单了，直接通过命令来启动服务即可。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker -d
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-containers&#34;&gt;Remove all containers.&lt;/h4&gt;
+&lt;p&gt;如果是只是临时使用可以用下面语句&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker pull node
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/h3&gt;
+
+&lt;p&gt;存出镜像&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo docker save -o ubuntu_14.04.tar ubuntu:14.04
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;载入镜像&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo docker load &amp;lt; ubuntu_14.04.tar
+#or
+sudo docker --input ubuntu_14.04.tar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/h2&gt;
+
+&lt;p&gt;NOTE: &lt;code&gt;sudo&lt;/code&gt;maybe.&lt;/p&gt;
+
+&lt;h4 id=&#34;stop-all-containers&#34;&gt;Stop all containers.&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;docker stop $(docker ps -a -q)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
@@ -46,10 +99,10 @@
     
     <item>
       <title>etcd安装</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
+      <link>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -140,10 +193,10 @@ hello world
     
     <item>
       <title>Vagrant建立快照</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
       <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -190,10 +243,10 @@ For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt;
     
     <item>
       <title>Vagrant常用命令</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant常用命令&#34;&gt;Vagrant常用命令&lt;/h2&gt;
@@ -469,10 +522,10 @@ vagrant@db:~$
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;方法一-安装命令&#34;&gt;方法一：安装命令&lt;/h3&gt;

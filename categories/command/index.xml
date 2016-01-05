@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Command on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/command/</link>
+    <link>http://wixb50.github.io/categories/command/</link>
     <description>Recent content in Command on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 07 Nov 2015 22:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/command/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/command/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -31,13 +31,10 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#1生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#2导入公钥到认证文件更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/a&gt;
-
-&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#2导入公钥到认证文件更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#21-导入本机&#34;&gt;2.1 导入本机&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#22-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#23-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#3测试&#34;&gt;3.测试&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#dpkg命令&#34;&gt;dpkg命令&lt;/a&gt;&lt;/li&gt;
@@ -51,6 +48,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#使用sudo&#34;&gt;使用sudo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#新增user&#34;&gt;新增User&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -230,6 +228,35 @@ dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统�
 注：su和sudo的区别是：&lt;br /&gt;
 1). su的密码是root的密码，而sudo的密码是用户的密码；&lt;br /&gt;
 2). su直接将身份变成root，而sudo是以用户登录后以root的身份运行命令，不需要知道root密码；&lt;/p&gt;
+
+&lt;h2 id=&#34;新增user&#34;&gt;新增User&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用有权限的用户，在终端里输入&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo adduser username
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后一直回车即可，新建成功。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;添加sudo用户&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;当你安装Ubuntu的时候，它会自动添加第一个用户到sudo组，允许这个用户通过键入其自身帐户密码来获得超级用户(root)身份。然而，系统不会再自动添加其他的用户到sudo组当中去。如果你想在你的共享系统上授予某人某些超级用户特权，你必须给予他们sudo权利。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;要添加新用户到sudo，最简单的方式就是使用 usermod 命令。运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo usermod -G sudo username
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果用户已经是其他组的成员，你需要添加 -a 这个选项，象这样&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo usermod -a -G sudo username
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

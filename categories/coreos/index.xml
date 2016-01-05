@@ -2,22 +2,484 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coreos on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/coreos/</link>
+    <link>http://wixb50.github.io/categories/coreos/</link>
     <description>Recent content in Coreos on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Tue, 15 Dec 2015 18:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/coreos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Dec 2015 19:10:38 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/coreos/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <description>
+
+&lt;p&gt;#目录&lt;/p&gt;
+
+&lt;!-- MarkdownTOC --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#vmware-coreos-multi-nodes-kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prerequisites&#34;&gt;Prerequisites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#coreos-on-vmware&#34;&gt;CoreOS on VMware&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cloud-config-for-master-node&#34;&gt;Cloud-Config for master node&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cloud-config-for-minion-node&#34;&gt;Cloud-Config for minion node&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#start-the-cluster&#34;&gt;Start the cluster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#check&#34;&gt;Check&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#enjoy&#34;&gt;Enjoy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reference&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#appendix&#34;&gt;Appendix&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h1 id=&#34;vmware-coreos-multi-nodes-kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/h1&gt;
+
+&lt;p&gt;Create a Kubernetes Cluster on VMware ESXi with CoreOS.&lt;/p&gt;
+
+&lt;h1 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VMware ESXi
+
+&lt;ul&gt;
+&lt;li&gt;(optional) a DRS cluster with VCenter for high-availability host.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DHCP server&lt;/li&gt;
+&lt;li&gt;A VMware datastore&lt;/li&gt;
+&lt;li&gt;vSphere&lt;/li&gt;
+&lt;li&gt;Attention: This requires at least CoreOS version 695.0.0, which includes etcd2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;coreos-on-vmware&#34;&gt;CoreOS on VMware&lt;/h1&gt;
+
+&lt;p&gt;Based on official documentation : &lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vmware.html&#34;&gt;https://coreos.com/os/docs/latest/booting-on-vmware.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Download the OVA, on your local computer :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -LO http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Import ova on VMware via the vSphere Client :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;in the menu, click &amp;quot;File &amp;gt; Deploy OVF Template...&amp;quot;
+in the wizard, specify the location of the OVA downloaded earlier
+name your VM
+confirm the settings then click &amp;quot;Finish&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a template via vSphere Client :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;right click on the VM and Template &amp;gt; Convert into template
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can create -at least- 2 servers based on this template, do this task but don&amp;rsquo;t start it yet.&lt;/p&gt;
+
+&lt;h1 id=&#34;cloud-config-for-master-node&#34;&gt;Cloud-Config for master node&lt;/h1&gt;
+
+&lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir -p &amp;lt;path to datastore&amp;gt;/cloud-config/master/openstack/latest/ 
+cd &amp;lt;path to datastore&amp;gt;/cloud-config/master/openstack/latest/
+wget https://raw.githubusercontent.com/kubernetes/kubernetes/master/docs/getting-started-guides/coreos/cloud-configs/master.yaml &amp;amp;&amp;amp; mv master.yaml user_data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Don&amp;rsquo;t forget to add your ssh_key :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim user_data
+users:
+  - name: &amp;quot;core&amp;quot;
+    groups:
+      - &amp;quot;sudo&amp;quot;
+      - &amp;quot;docker&amp;quot;
+    ssh-authorized-keys:   
+      - ssh-rsa AAAA...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because the master need a static ip address,so you need to add the ip config to &lt;code&gt;user_data&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim user_data
+write-files:
+  [...]
+  - path: /etc/systemd/network/static.network
+    permissions: 0644
+    content: |
+      [Match]
+      Name=ens192  # The network card
+
+      [Network]
+      Address=192.1.1.150/24
+      Gateway=192.1.1.1
+      DNS=10.11.248.114
+      DNS=8.8.4.4
+  [...]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you can&amp;rsquo;t get the files on VM,you need download files first,and deploy to your &lt;code&gt;File Server&lt;/code&gt;first.And change the url in the &lt;code&gt;user_data&lt;/code&gt; to your own file position.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Replace `https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment` To `&amp;lt;your file url&amp;gt;/setup-network-environment`
+Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-apiserver` To `&amp;lt;your file url&amp;gt;/kube-apiserver`
+Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-controller-manager` To `&amp;lt;your file url&amp;gt;/kube-controller-manager`
+Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-scheduler` To `&amp;lt;your file url&amp;gt;/kube-scheduler`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finaly, replace all &amp;laquo;$private_ipv4&amp;raquo; pattern with the ip of master node. The only way to perform this is to fix a DHCP lease with the MAC address of your master server. This MAC address can be get on vsphere : right click on VM, network adapter. Here, 10.0.0.1 is the master fixed ip address.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sed -i &#39;s|$private_ipv4|10.0.0.1|g&#39; user_data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is the limitation with coreOS and VMware : &lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vmware.html#cloud-config&#34;&gt;https://coreos.com/os/docs/latest/booting-on-vmware.html#cloud-config&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Last step : create an iso :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd &amp;lt;path to datastore&amp;gt;/cloud-config/
+mkisofs -R -V config-2 -o config-master.iso master/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;cloud-config-for-minion-node&#34;&gt;Cloud-Config for minion node&lt;/h1&gt;
+
+&lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir -p &amp;lt;path to datastore&amp;gt;/cloud-config/minion/openstack/latest/
+cd &amp;lt;path to datastore&amp;gt;/cloud-config/minion/openstack/latest/
+wget https://raw.githubusercontent.com/kubernetes/kubernetes/master/docs/getting-started-guides/coreos/cloud-configs/node.yaml &amp;amp;&amp;amp; mv node.yaml user_data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Don&amp;rsquo;t forget to add your ssh_key :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim user_data
+users:
+  - name: &amp;quot;core&amp;quot;
+    groups:
+      - &amp;quot;sudo&amp;quot;
+      - &amp;quot;docker&amp;quot;
+    ssh-authorized-keys:   
+      - ssh-rsa AAAA...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you can&amp;rsquo;t get the files on VM,you need download files first,and deploy to your &lt;code&gt;File Server&lt;/code&gt;first.And change the url in the &lt;code&gt;user_data&lt;/code&gt; to your own file position.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Replace `https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment` To `&amp;lt;your file url&amp;gt;/setup-network-environment`
+Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-proxy` To `&amp;lt;your file url&amp;gt;/kube-proxy`
+Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubelet` To `&amp;lt;your file url&amp;gt;/kubelet`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finaly, replace all &amp;laquo;&lt;master-private-ip&gt;&amp;raquo; pattern with the ip of master node. (here 10.0.0.1)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sed -i &#39;s|&amp;lt;master-private-ip&amp;gt;|10.0.0.1|g&#39; user_data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Last step : create an iso :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd &amp;lt;path to datastore&amp;gt;/cloud-config/
+mkisofs -R -V config-2 -o config-minion.iso minion/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;start-the-cluster&#34;&gt;Start the cluster&lt;/h1&gt;
+
+&lt;p&gt;On firt VM, mount the config-master.iso with VM properties (CD/DVD reader and &amp;laquo;Datastore ISO file&amp;raquo;), browse to &amp;laquo;&lt;path to datastore&gt;/cloud-config/&amp;laquo;. Don&amp;rsquo;t foget to set &amp;laquo;Connect on Start up&amp;raquo;.&lt;/p&gt;
+
+&lt;p&gt;On second, and all other futher nodes  mount the config-minion.iso.&lt;/p&gt;
+
+&lt;p&gt;Start your servers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;&lt;br /&gt;
+In order to build the &lt;code&gt;flanneld&lt;/code&gt;,the VMs need to pull the images called &lt;code&gt;quay.io/coreos/flannel&lt;/code&gt;.And if the VMs can&amp;rsquo;t download it,you should get it first,then use the command to load the image.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker load &amp;lt; flanneld-file.tar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ensure all the &lt;code&gt;service&lt;/code&gt; are running.&lt;br /&gt;
+&lt;strong&gt;Master:&lt;/strong&gt;&lt;code&gt;docker&lt;/code&gt;、&lt;code&gt;etcd2&lt;/code&gt;、&lt;code&gt;fleet&lt;/code&gt;、&lt;code&gt;flanneld&lt;/code&gt;、&lt;code&gt;setup-network-environment&lt;/code&gt;、&lt;code&gt;kube-apiserver&lt;/code&gt;、&lt;code&gt;kube-controller-manager&lt;/code&gt;、&lt;code&gt;kube-scheduler&lt;/code&gt;.&lt;br /&gt;
+&lt;strong&gt;Node:&lt;/strong&gt;&lt;code&gt;docker&lt;/code&gt;、&lt;code&gt;etcd2&lt;/code&gt;、&lt;code&gt;fleet&lt;/code&gt;、&lt;code&gt;flanneld&lt;/code&gt;、&lt;code&gt;setup-network-environment&lt;/code&gt;、&lt;code&gt;kubelet&lt;/code&gt;、&lt;code&gt;kube-proxy&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#you may use these command to start/enable your service:
+sudo systemctl daemon-reload
+sudo systemctl start &amp;lt;service-name&amp;gt;  #start the service
+sudo systemctl enable &amp;lt;service-name&amp;gt;  #Ensure service can boot from the start
+sudo systemctl status &amp;lt;service-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;check&#34;&gt;Check&lt;/h1&gt;
+
+&lt;p&gt;Check your cluster heatlh : &lt;a href=&#34;http://10.0.0.1:8080/static/app/#/dashboard/&#34;&gt;http://10.0.0.1:8080/static/app/#/dashboard/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Check each server :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh core@10.0.0.1
+journalctl -f
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;enjoy&#34;&gt;Enjoy&lt;/h1&gt;
+
+&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xavierbaude/VMware-coreos-multi-nodes-Kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000002886795&#34;&gt;kubernetes 0.18.1 安装 &amp;amp; 部署 &amp;amp; 初试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dockerpool.com/article/1422538730&#34;&gt;如何在 CoreOS 集群上搭建 Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiankunli.github.io/2015/01/29/Kubernetes_installation.html&#34;&gt;在CoreOS集群上搭建Kubernetes&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dockone.io/article/604&#34;&gt;CoreOS集成Kubernetes核心组件Kubelet&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;
+
+&lt;p&gt;The source of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+---
+write-files:
+  - path: /etc/conf.d/nfs
+    permissions: &#39;0644&#39;
+    content: |
+      OPTS_RPC_MOUNTD=&amp;quot;&amp;quot;
+  - path: /opt/bin/wupiao
+    permissions: &#39;0755&#39;
+    content: |
+      #!/bin/bash
+      # [w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen
+      [ -n &amp;quot;$1&amp;quot; ] &amp;amp;&amp;amp; \
+        until curl -o /dev/null -sIf http://${1}; do \
+          sleep 1 &amp;amp;&amp;amp; echo .;
+        done;
+      exit $?
+
+hostname: master
+coreos:
+  etcd2:
+    name: master
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    advertise-client-urls: http://$private_ipv4:2379,http://$private_ipv4:4001
+    initial-cluster-token: k8s_etcd
+    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    initial-cluster: master=http://$private_ipv4:2380
+    initial-cluster-state: new
+  fleet:
+    metadata: &amp;quot;role=master&amp;quot;
+  units:
+    - name: generate-serviceaccount-key.service
+      command: start
+      content: |
+        [Unit]
+        Description=Generate service-account key file
+
+        [Service]
+        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+        ExecStart=/bin/openssl genrsa -out /opt/bin/kube-serviceaccount.key 2048 2&amp;gt;/dev/null
+        RemainAfterExit=yes
+        Type=oneshot
+    - name: setup-network-environment.service
+      command: start
+      content: |
+        [Unit]
+        Description=Setup Network Environment
+        Documentation=https://github.com/kelseyhightower/setup-network-environment
+        Requires=network-online.target
+        After=network-online.target
+
+        [Service]
+        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/curl -L -o /opt/bin/setup-network-environment -z /opt/bin/setup-network-environment https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
+        ExecStart=/opt/bin/setup-network-environment
+        RemainAfterExit=yes
+        Type=oneshot
+    - name: fleet.service
+      command: start
+    - name: flanneld.service
+      command: start
+      drop-ins:
+        - name: 50-network-config.conf
+          content: |
+            [Unit]
+            Requires=etcd2.service
+            [Service]
+            ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config &#39;{&amp;quot;Network&amp;quot;:&amp;quot;10.244.0.0/16&amp;quot;, &amp;quot;Backend&amp;quot;: {&amp;quot;Type&amp;quot;: &amp;quot;vxlan&amp;quot;}}&#39;
+    - name: docker.service
+      command: start
+    - name: kube-apiserver.service
+      command: start
+      content: |
+        [Unit]
+        Description=Kubernetes API Server
+        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+        Requires=setup-network-environment.service etcd2.service generate-serviceaccount-key.service
+        After=setup-network-environment.service etcd2.service generate-serviceaccount-key.service
+
+        [Service]
+        EnvironmentFile=/etc/network-environment
+        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-apiserver -z /opt/bin/kube-apiserver https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-apiserver
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-apiserver
+        ExecStartPre=/opt/bin/wupiao 127.0.0.1:2379/v2/machines
+        ExecStart=/opt/bin/kube-apiserver \
+        --service-account-key-file=/opt/bin/kube-serviceaccount.key \
+        --service-account-lookup=false \
+        --admission-control=NamespaceLifecycle,NamespaceAutoProvision,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota \
+        --runtime-config=api/v1 \
+        --allow-privileged=true \
+        --insecure-bind-address=0.0.0.0 \
+        --insecure-port=8080 \
+        --kubelet-https=true \
+        --secure-port=6443 \
+        --service-cluster-ip-range=10.100.0.0/16 \
+        --etcd-servers=http://127.0.0.1:2379 \
+        --public-address-override=${DEFAULT_IPV4} \
+        --logtostderr=true
+        Restart=always
+        RestartSec=10
+    - name: kube-controller-manager.service
+      command: start
+      content: |
+        [Unit]
+        Description=Kubernetes Controller Manager
+        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+        Requires=kube-apiserver.service
+        After=kube-apiserver.service
+
+        [Service]
+        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-controller-manager -z /opt/bin/kube-controller-manager https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-controller-manager
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-controller-manager
+        ExecStart=/opt/bin/kube-controller-manager \
+        --service-account-private-key-file=/opt/bin/kube-serviceaccount.key \
+        --master=127.0.0.1:8080 \
+        --logtostderr=true
+        Restart=always
+        RestartSec=10
+    - name: kube-scheduler.service
+      command: start
+      content: |
+        [Unit]
+        Description=Kubernetes Scheduler
+        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+        Requires=kube-apiserver.service
+        After=kube-apiserver.service
+
+        [Service]
+        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-scheduler -z /opt/bin/kube-scheduler https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-scheduler
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-scheduler
+        ExecStart=/opt/bin/kube-scheduler --master=127.0.0.1:8080
+        Restart=always
+        RestartSec=10
+  update:
+    group: alpha
+    reboot-strategy: off
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The source of &lt;code&gt;node.yaml&lt;/code&gt;
+```
+#cloud-config
+write-files:
+  - path: /opt/bin/wupiao
+    permissions: &amp;lsquo;0755&amp;rsquo;
+    content: |
+      #!/bin/bash
+      # [w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen
+      [ -n &amp;laquo;$1&amp;raquo; ] &amp;amp;&amp;amp; [ -n &amp;laquo;$2&amp;raquo; ] &amp;amp;&amp;amp; while ! curl &amp;ndash;output /dev/null \
+        &amp;ndash;silent &amp;ndash;head &amp;ndash;fail \
+        http://${1}:${2}; do sleep 1 &amp;amp;&amp;amp; echo -n .; done;
+      exit $?
+coreos:
+  etcd2:
+    listen-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
+    advertise-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
+    initial-cluster: master=http://&lt;master-private-ip&gt;:2380
+    proxy: on
+  fleet:
+    metadata: &amp;laquo;role=node&amp;raquo;
+  units:
+    - name: fleet.service
+      command: start
+    - name: flanneld.service
+      command: start
+    - name: docker.service
+      command: start
+    - name: setup-network-environment.service
+      command: start
+      content: |
+        [Unit]
+        Description=Setup Network Environment
+        Documentation=&lt;a href=&#34;https://github.com/kelseyhightower/setup-network-environment&#34;&gt;https://github.com/kelseyhightower/setup-network-environment&lt;/a&gt;
+        Requires=network-online.target
+        After=network-online.target&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    [Service]
+    ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+    ExecStartPre=/usr/bin/curl -L -o /opt/bin/setup-network-environment -z /opt/bin/setup-network-environment https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment
+    ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
+    ExecStart=/opt/bin/setup-network-environment
+    RemainAfterExit=yes
+    Type=oneshot
+- name: kube-proxy.service
+  command: start
+  content: |
+    [Unit]
+    Description=Kubernetes Proxy
+    Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+    Requires=setup-network-environment.service
+    After=setup-network-environment.service
+
+    [Service]
+    ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-proxy -z /opt/bin/kube-proxy https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-proxy
+    ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-proxy
+    # wait for kubernetes master to be up and ready
+    ExecStartPre=/opt/bin/wupiao &amp;lt;master-private-ip&amp;gt; 8080
+    ExecStart=/opt/bin/kube-proxy \
+    --master=&amp;lt;master-private-ip&amp;gt;:8080 \
+    --logtostderr=true
+    Restart=always
+    RestartSec=10
+- name: kube-kubelet.service
+  command: start
+  content: |
+    [Unit]
+    Description=Kubernetes Kubelet
+    Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+    Requires=setup-network-environment.service
+    After=setup-network-environment.service
+
+    [Service]
+    EnvironmentFile=/etc/network-environment
+    ExecStartPre=/usr/bin/curl -L -o /opt/bin/kubelet -z /opt/bin/kubelet https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubelet
+    ExecStartPre=/usr/bin/chmod +x /opt/bin/kubelet
+    # wait for kubernetes master to be up and ready
+    ExecStartPre=/opt/bin/wupiao &amp;lt;master-private-ip&amp;gt; 8080
+    ExecStart=/opt/bin/kubelet \
+    --address=0.0.0.0 \
+    --port=10250 \
+    --hostname-override=${DEFAULT_IPV4} \
+    --api-servers=&amp;lt;master-private-ip&amp;gt;:8080 \
+    --allow-privileged=true \
+    --logtostderr=true \
+    --cadvisor-port=4194 \
+    --healthz-bind-address=0.0.0.0 \
+    --healthz-port=10248
+    Restart=always
+    RestartSec=10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;update:
+    group: alpha
+    reboot-strategy: off
+```&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -312,10 +774,10 @@ systemctl -l status docker
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
