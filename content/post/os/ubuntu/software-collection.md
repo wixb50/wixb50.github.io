@@ -1,5 +1,5 @@
 +++
-categories = ["ubutnu","software"]
+categories = ["ubuntu","software"]
 date = "2015-11-12T10:23:25+08:00"
 description = "保存自己的常用软件集合,以及安装方法。"
 keywords = []
@@ -24,6 +24,7 @@ title = "ubuntu常用软件集合"
 - [Develop](#develop)
 - [LaTex](#latex)
 - [Aria2下载工具](#aria2下载工具)
+- [tldr命令工具](#tldr命令工具)
 - [终端工具Terminator](#终端工具terminator)
 
 <!-- /MarkdownTOC -->
@@ -197,6 +198,12 @@ $ sudo umount /mnt/
 sudo apt-get install aria2
 ```
 
+### tldr命令工具
+下载go client的`platform binaries`的`deb`包安装：[github主页](https://github.com/tldr-pages/tldr)
+```
+sudo dpkg -i tldr_0.1.0_amd64.deb
+```
+
 ### 终端工具Terminator
 
 + 安装
@@ -242,7 +249,7 @@ Alt + ← #Move to the terminal left of the current one
 Alt + → #Move to the terminal right of the current one
 ```
 
-+ 一个不错的配置
++ 一个不错的配置(可将`palette`注释,采用默认的配色方案)
 ```
 [global_config]
   title_transmit_bg_color = "#d30102"
@@ -286,6 +293,18 @@ Alt + → #Move to the terminal right of the current one
 [plugins]
 ```
 透明高亮很Geek.
+
++ 右键目录打开
+
+1.安装工具：
+```
+apt-get install nautilus-actions -y
+```
+2.启动改工具,Unity中输入nautilus-actions-config-tool,  
+
+3.见[配置教程](http://www.ikey4u.com/linux-terminator-settings/)  重要的启动参数：`--working-directory=%D/%w`  
+
+4.重启生效
 
 + 参考资料   
 [开始使用Ubuntu作为工作环境](http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html)
