@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/docker/</link>
+    <link>http://wixb50.github.io/categories/docker/</link>
     <description>Recent content in Docker on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 30 Dec 2015 19:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
-&lt;p&gt;#目录&lt;/p&gt;
+&lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -218,19 +218,50 @@ journalctl -f
 
 &lt;h1 id=&#34;enjoy&#34;&gt;Enjoy&lt;/h1&gt;
 
+&lt;p&gt;You may download the kubernetes client tool:&lt;code&gt;kubectl&lt;/code&gt;.Use it manage your cluster.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;get all minion node info.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;get all Pods.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get pods
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;get all Replication Controllers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get rc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;get all Replication Services.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get svc
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/xavierbaude/VMware-coreos-multi-nodes-Kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000002886795&#34;&gt;kubernetes 0.18.1 安装 &amp;amp; 部署 &amp;amp; 初试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://severalnines.com/blog/installing-kubernetes-cluster-minions-centos7-manage-pods-services&#34;&gt;Installing Kubernetes Cluster with 3 minions on CentOS 7 to manage pods and services&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://dockerpool.com/article/1422538730&#34;&gt;如何在 CoreOS 集群上搭建 Kubernetes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://qiankunli.github.io/2015/01/29/Kubernetes_installation.html&#34;&gt;在CoreOS集群上搭建Kubernetes&lt;/a&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dockone.io/article/604&#34;&gt;CoreOS集成Kubernetes核心组件Kubelet&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;
+&lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
 
-&lt;p&gt;The source of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The source of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code&gt;#cloud-config
@@ -375,111 +406,126 @@ coreos:
     reboot-strategy: off
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The source of &lt;code&gt;node.yaml&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The source of &lt;code&gt;node.yaml&lt;/code&gt;
 ```
 #cloud-config
-write-files:
-  - path: /opt/bin/wupiao
-    permissions: &amp;lsquo;0755&amp;rsquo;
-    content: |
-      #!/bin/bash
-      # [w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen
-      [ -n &amp;laquo;$1&amp;raquo; ] &amp;amp;&amp;amp; [ -n &amp;laquo;$2&amp;raquo; ] &amp;amp;&amp;amp; while ! curl &amp;ndash;output /dev/null \
-        &amp;ndash;silent &amp;ndash;head &amp;ndash;fail \
-        http://${1}:${2}; do sleep 1 &amp;amp;&amp;amp; echo -n .; done;
-      exit $?
+write-files:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;path: /opt/bin/wupiao
+permissions: &amp;lsquo;0755&amp;rsquo;
+content: |
+#!/bin/bash&lt;/p&gt;
+
+&lt;h1 id=&#34;w-ait-u-ntil-p-ort-i-s-a-ctually-o-pen&#34;&gt;[w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen&lt;/h1&gt;
+
+&lt;p&gt;[ -n &amp;laquo;$1&amp;raquo; ] &amp;amp;&amp;amp; [ -n &amp;laquo;$2&amp;raquo; ] &amp;amp;&amp;amp; while ! curl &amp;ndash;output /dev/null \
+&amp;ndash;silent &amp;ndash;head &amp;ndash;fail \
+http://${1}:${2}; do sleep 1 &amp;amp;&amp;amp; echo -n .; done;
+exit $?
 coreos:
-  etcd2:
-    listen-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
-    advertise-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
-    initial-cluster: master=http://&lt;master-private-ip&gt;:2380
-    proxy: on
-  fleet:
-    metadata: &amp;laquo;role=node&amp;raquo;
-  units:
-    - name: fleet.service
-      command: start
-    - name: flanneld.service
-      command: start
-    - name: docker.service
-      command: start
-    - name: setup-network-environment.service
-      command: start
-      content: |
-        [Unit]
-        Description=Setup Network Environment
-        Documentation=&lt;a href=&#34;https://github.com/kelseyhightower/setup-network-environment&#34;&gt;https://github.com/kelseyhightower/setup-network-environment&lt;/a&gt;
-        Requires=network-online.target
-        After=network-online.target&lt;/p&gt;
+etcd2:
+listen-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
+advertise-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
+initial-cluster: master=http://&lt;master-private-ip&gt;:2380
+proxy: on
+fleet:
+metadata: &amp;laquo;role=node&amp;raquo;
+units:&lt;/p&gt;&lt;/li&gt;
 
-&lt;pre&gt;&lt;code&gt;    [Service]
-    ExecStartPre=-/usr/bin/mkdir -p /opt/bin
-    ExecStartPre=/usr/bin/curl -L -o /opt/bin/setup-network-environment -z /opt/bin/setup-network-environment https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment
-    ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
-    ExecStart=/opt/bin/setup-network-environment
-    RemainAfterExit=yes
-    Type=oneshot
-- name: kube-proxy.service
-  command: start
-  content: |
-    [Unit]
-    Description=Kubernetes Proxy
-    Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-    Requires=setup-network-environment.service
-    After=setup-network-environment.service
+&lt;li&gt;&lt;p&gt;name: fleet.service
+command: start&lt;/p&gt;&lt;/li&gt;
 
-    [Service]
-    ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-proxy -z /opt/bin/kube-proxy https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-proxy
-    ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-proxy
-    # wait for kubernetes master to be up and ready
-    ExecStartPre=/opt/bin/wupiao &amp;lt;master-private-ip&amp;gt; 8080
-    ExecStart=/opt/bin/kube-proxy \
-    --master=&amp;lt;master-private-ip&amp;gt;:8080 \
-    --logtostderr=true
-    Restart=always
-    RestartSec=10
-- name: kube-kubelet.service
-  command: start
-  content: |
-    [Unit]
-    Description=Kubernetes Kubelet
-    Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-    Requires=setup-network-environment.service
-    After=setup-network-environment.service
+&lt;li&gt;&lt;p&gt;name: flanneld.service
+command: start&lt;/p&gt;&lt;/li&gt;
 
-    [Service]
-    EnvironmentFile=/etc/network-environment
-    ExecStartPre=/usr/bin/curl -L -o /opt/bin/kubelet -z /opt/bin/kubelet https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubelet
-    ExecStartPre=/usr/bin/chmod +x /opt/bin/kubelet
-    # wait for kubernetes master to be up and ready
-    ExecStartPre=/opt/bin/wupiao &amp;lt;master-private-ip&amp;gt; 8080
-    ExecStart=/opt/bin/kubelet \
-    --address=0.0.0.0 \
-    --port=10250 \
-    --hostname-override=${DEFAULT_IPV4} \
-    --api-servers=&amp;lt;master-private-ip&amp;gt;:8080 \
-    --allow-privileged=true \
-    --logtostderr=true \
-    --cadvisor-port=4194 \
-    --healthz-bind-address=0.0.0.0 \
-    --healthz-port=10248
-    Restart=always
-    RestartSec=10
-&lt;/code&gt;&lt;/pre&gt;
+&lt;li&gt;&lt;p&gt;name: docker.service
+command: start&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;update:
-    group: alpha
-    reboot-strategy: off
-```&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;name: setup-network-environment.service
+command: start
+content: |
+[Unit]
+Description=Setup Network Environment
+Documentation=&lt;a href=&#34;https://github.com/kelseyhightower/setup-network-environment&#34;&gt;https://github.com/kelseyhightower/setup-network-environment&lt;/a&gt;
+Requires=network-online.target
+After=network-online.target&lt;/p&gt;
+
+&lt;p&gt;[Service]
+ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+ExecStartPre=/usr/bin/curl -L -o /opt/bin/setup-network-environment -z /opt/bin/setup-network-environment &lt;a href=&#34;https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment&#34;&gt;https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment&lt;/a&gt;
+ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
+ExecStart=/opt/bin/setup-network-environment
+RemainAfterExit=yes
+Type=oneshot&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;name: kube-proxy.service
+command: start
+content: |
+[Unit]
+Description=Kubernetes Proxy
+Documentation=&lt;a href=&#34;https://github.com/GoogleCloudPlatform/kubernetes&#34;&gt;https://github.com/GoogleCloudPlatform/kubernetes&lt;/a&gt;
+Requires=setup-network-environment.service
+After=setup-network-environment.service&lt;/p&gt;
+
+&lt;p&gt;[Service]
+ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-proxy -z /opt/bin/kube-proxy &lt;a href=&#34;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-proxy&#34;&gt;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-proxy&lt;/a&gt;
+ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-proxy&lt;/p&gt;
+
+&lt;h1 id=&#34;wait-for-kubernetes-master-to-be-up-and-ready&#34;&gt;wait for kubernetes master to be up and ready&lt;/h1&gt;
+
+&lt;p&gt;ExecStartPre=/opt/bin/wupiao &lt;master-private-ip&gt; 8080
+ExecStart=/opt/bin/kube-proxy \
+&amp;ndash;master=&lt;master-private-ip&gt;:8080 \
+&amp;ndash;logtostderr=true
+Restart=always
+RestartSec=10&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;name: kube-kubelet.service
+command: start
+content: |
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=&lt;a href=&#34;https://github.com/GoogleCloudPlatform/kubernetes&#34;&gt;https://github.com/GoogleCloudPlatform/kubernetes&lt;/a&gt;
+Requires=setup-network-environment.service
+After=setup-network-environment.service&lt;/p&gt;
+
+&lt;p&gt;[Service]
+EnvironmentFile=/etc/network-environment
+ExecStartPre=/usr/bin/curl -L -o /opt/bin/kubelet -z /opt/bin/kubelet &lt;a href=&#34;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubelet&#34;&gt;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubelet&lt;/a&gt;
+ExecStartPre=/usr/bin/chmod +x /opt/bin/kubelet&lt;/p&gt;
+
+&lt;h1 id=&#34;wait-for-kubernetes-master-to-be-up-and-ready-1&#34;&gt;wait for kubernetes master to be up and ready&lt;/h1&gt;
+
+&lt;p&gt;ExecStartPre=/opt/bin/wupiao &lt;master-private-ip&gt; 8080
+ExecStart=/opt/bin/kubelet \
+&amp;ndash;address=0.0.0.0 \
+&amp;ndash;port=10250 \
+&amp;ndash;hostname-override=${DEFAULT_IPV4} \
+&amp;ndash;api-servers=&lt;master-private-ip&gt;:8080 \
+&amp;ndash;allow-privileged=true \
+&amp;ndash;logtostderr=true \
+&amp;ndash;cadvisor-port=4194 \
+&amp;ndash;healthz-bind-address=0.0.0.0 \
+&amp;ndash;healthz-port=10248
+Restart=always
+RestartSec=10
+update:
+group: alpha
+reboot-strategy: off
+```&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -774,10 +820,10 @@ systemctl -l status docker
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -859,10 +905,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;方法一-安装命令&#34;&gt;方法一：安装命令&lt;/h3&gt;

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>kubernetes 安装配置 kube-ui &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="kubernetes 安装配置 kube-ui">
+  <meta name="keywords" content="kubernetes">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="/avatar.jpg"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>kubernetes 安装配置 kube-ui</h1>
+    <span class="post-date">Jan 1, 0001 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/1/01/01/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/kubernetes">kubernetes</a><a class="label" href="http://wixb50.github.io/categories/kube-ui">kube-ui</a>
+    </span>
+    <ol>
+<li><p>下载gcr.io/google_containers/pause镜像并导入</p>
+
+<p>部署kubernetes应用需要一个基础images，谷歌的镜像地址被墙了，无法pull拉取镜像，解决方法：</p>
+
+<pre><code>docker pull docker.io/kubernetes/pause
+docker tag docker.io/kubernetes/pause gcr.io/google_containers/pause:0.8.0
+docker rmi docker.io/kubernetes/pause
+</code></pre></li>
+
+<li><p>下载kube-ui镜像并导入</p>
+
+<p>谷歌的镜像地址被墙了，无法pull拉取镜像，可从第三方国内云拉取：<a href="https://hub.tenxcloud.com/repos/google_containers/kube-ui">时速云(google_containers/kube-ui)</a>,拉取后更改名称：</p>
+
+<pre><code>docker pull index.tenxcloud.com/google_containers/kube-ui:v4
+docker tag index.tenxcloud.com/google_containers/kube-ui:v4 gcr.io/google_containers/kube-ui:v4
+docker rmi index.tenxcloud.com/google_containers/kube-ui:v4
+</code></pre></li>
+
+<li><p>创建kube-system namespace</p>
+
+<p>创建kube-system.yaml，内容如下：</p>
+
+<pre><code>apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-system
+</code></pre>
+
+<p>运行以下命令创建namespace</p>
+
+<pre><code># kubectl create -f kube-system.yaml
+# kubectl get namespace
+NAME          LABELS    STATUS
+default       &lt;none&gt;    Active
+kube-system   &lt;none&gt;    Active
+</code></pre></li>
+
+<li><p>创建rc</p>
+
+<p>创建kube-ui-rc.yaml 文件，并写入一下内容</p>
+
+<pre><code>apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kube-ui-v4
+  namespace: kube-system
+  labels:
+    k8s-app: kube-ui
+    version: v4
+    kubernetes.io/cluster-service: &quot;true&quot;
+spec:
+  replicas: 1
+  selector:
+    k8s-app: kube-ui
+    version: v4
+  template:
+    metadata:
+      labels:
+        k8s-app: kube-ui
+        version: v4
+        kubernetes.io/cluster-service: &quot;true&quot;
+    spec:
+      containers:
+      - name: kube-ui
+        image: gcr.io/google_containers/kube-ui:v4
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+</code></pre>
+
+<p>运行一下命令创建rc,并查看</p>
+
+<pre><code># kubectl create -f kube-ui-rc.yaml
+
+
+#kubectl get rc --all-namespaces
+NAMESPACE     CONTROLLER   CONTAINER(S)   IMAGE(S)                              SELECTOR                     REPLICAS
+kube-system   kube-ui-v3   kube-ui        gcr.io/google_containers/kube-ui:v4   k8s-app=kube-ui,version=v4   1
+</code></pre></li>
+
+<li><p>创建service</p>
+
+<p>创建 kube-ui-svc.yaml 文件，并写入以下内容</p>
+
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: kube-ui
+  namespace: kube-system
+  labels:
+    k8s-app: kube-ui
+    kubernetes.io/cluster-service: &quot;true&quot;
+    kubernetes.io/name: &quot;KubeUI&quot;
+spec:
+  selector:
+    k8s-app: kube-ui
+  ports:
+  - port: 80
+    targetPort: 8080
+</code></pre>
+
+<p>运行以下命令创建service，并查看service 和 pods</p>
+
+<pre><code># kubectl create -f kube-ui-svc.yaml
+# kubectl get rc,pods --all-namespaces
+NAMESPACE     CONTROLLER   CONTAINER(S)   IMAGE(S)                              SELECTOR                     REPLICAS
+kube-system   kube-ui-v3   kube-ui        gcr.io/google_containers/kube-ui:v4   k8s-app=kube-ui,version=v4   1
+NAMESPACE     NAME               READY     STATUS    RESTARTS   AGE
+kube-system   kube-ui-v3-0zyjp   1/1       Running   0          21h
+</code></pre></li>
+
+<li><p>master配置<a href="https://github.com/coreos/flannel">flannel</a>网络，与minion连通</p>
+
+<p>其中需要借助flannel，打通master和minion的网络，要确保自己集群已经配置好flannel。</p></li>
+
+<li><p>访问kube-ui</p>
+
+<p>访问 <a href="http://master_ip:8080/ui/">http://master_ip:8080/ui/</a> 会自动跳转 <a href="http://kube-ui:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/">http://kube-ui:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/</a> 即可访问kube-ui的dashboard 页面，如下图所示：
+<img src="http://www.sunmite.com/wp-content/uploads/2015/11/1.jpg" alt="image" />
+
+可以查看minion的系统信息，pods，RC，services等信息。</p></li>
+
+<li><p>可能遇到的问题</p>
+
+<p>问题1，访问 <a href="http://master_ip:8080/ui/">http://master_ip:8080/ui/</a> ：</p>
+
+<pre><code>Error: 'dial tcp 172.17.0.1:8080: no route to host'
+Trying to reach: 'http://172.17.0.1:8080/'
+</code></pre>
+
+<p>解决：这是docker进程的问题，重启所有的minion，问题解决。</p></li>
+</ol>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+

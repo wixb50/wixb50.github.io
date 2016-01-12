@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kube Ui on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/kube-ui/</link>
+    <description>Recent content in Kube Ui on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <atom:link href="http://wixb50.github.io/categories/kube-ui/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>kubernetes 安装配置 kube-ui</title>
+      <link>http://wixb50.github.io/1/01/01/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/1/01/01/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载gcr.io/google_containers/pause镜像并导入&lt;/p&gt;
+
+&lt;p&gt;部署kubernetes应用需要一个基础images，谷歌的镜像地址被墙了，无法pull拉取镜像，解决方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker pull docker.io/kubernetes/pause
+docker tag docker.io/kubernetes/pause gcr.io/google_containers/pause:0.8.0
+docker rmi docker.io/kubernetes/pause
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;下载kube-ui镜像并导入&lt;/p&gt;
+
+&lt;p&gt;谷歌的镜像地址被墙了，无法pull拉取镜像，可从第三方国内云拉取：&lt;a href=&#34;https://hub.tenxcloud.com/repos/google_containers/kube-ui&#34;&gt;时速云(google_containers/kube-ui)&lt;/a&gt;,拉取后更改名称：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker pull index.tenxcloud.com/google_containers/kube-ui:v4
+docker tag index.tenxcloud.com/google_containers/kube-ui:v4 gcr.io/google_containers/kube-ui:v4
+docker rmi index.tenxcloud.com/google_containers/kube-ui:v4
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;创建kube-system namespace&lt;/p&gt;
+
+&lt;p&gt;创建kube-system.yaml，内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-system
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行以下命令创建namespace&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# kubectl create -f kube-system.yaml
+# kubectl get namespace
+NAME          LABELS    STATUS
+default       &amp;lt;none&amp;gt;    Active
+kube-system   &amp;lt;none&amp;gt;    Active
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;创建rc&lt;/p&gt;
+
+&lt;p&gt;创建kube-ui-rc.yaml 文件，并写入一下内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kube-ui-v4
+  namespace: kube-system
+  labels:
+    k8s-app: kube-ui
+    version: v4
+    kubernetes.io/cluster-service: &amp;quot;true&amp;quot;
+spec:
+  replicas: 1
+  selector:
+    k8s-app: kube-ui
+    version: v4
+  template:
+    metadata:
+      labels:
+        k8s-app: kube-ui
+        version: v4
+        kubernetes.io/cluster-service: &amp;quot;true&amp;quot;
+    spec:
+      containers:
+      - name: kube-ui
+        image: gcr.io/google_containers/kube-ui:v4
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行一下命令创建rc,并查看&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# kubectl create -f kube-ui-rc.yaml
+
+
+#kubectl get rc --all-namespaces
+NAMESPACE     CONTROLLER   CONTAINER(S)   IMAGE(S)                              SELECTOR                     REPLICAS
+kube-system   kube-ui-v3   kube-ui        gcr.io/google_containers/kube-ui:v4   k8s-app=kube-ui,version=v4   1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;创建service&lt;/p&gt;
+
+&lt;p&gt;创建 kube-ui-svc.yaml 文件，并写入以下内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  name: kube-ui
+  namespace: kube-system
+  labels:
+    k8s-app: kube-ui
+    kubernetes.io/cluster-service: &amp;quot;true&amp;quot;
+    kubernetes.io/name: &amp;quot;KubeUI&amp;quot;
+spec:
+  selector:
+    k8s-app: kube-ui
+  ports:
+  - port: 80
+    targetPort: 8080
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行以下命令创建service，并查看service 和 pods&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# kubectl create -f kube-ui-svc.yaml
+# kubectl get rc,pods --all-namespaces
+NAMESPACE     CONTROLLER   CONTAINER(S)   IMAGE(S)                              SELECTOR                     REPLICAS
+kube-system   kube-ui-v3   kube-ui        gcr.io/google_containers/kube-ui:v4   k8s-app=kube-ui,version=v4   1
+NAMESPACE     NAME               READY     STATUS    RESTARTS   AGE
+kube-system   kube-ui-v3-0zyjp   1/1       Running   0          21h
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;master配置&lt;a href=&#34;https://github.com/coreos/flannel&#34;&gt;flannel&lt;/a&gt;网络，与minion连通&lt;/p&gt;
+
+&lt;p&gt;其中需要借助flannel，打通master和minion的网络，要确保自己集群已经配置好flannel。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;访问kube-ui&lt;/p&gt;
+
+&lt;p&gt;访问 &lt;a href=&#34;http://master_ip:8080/ui/&#34;&gt;http://master_ip:8080/ui/&lt;/a&gt; 会自动跳转 &lt;a href=&#34;http://kube-ui:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/&#34;&gt;http://kube-ui:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/&lt;/a&gt; 即可访问kube-ui的dashboard 页面，如下图所示：
+&lt;img src=&#34;http://www.sunmite.com/wp-content/uploads/2015/11/1.jpg&#34; alt=&#34;image&#34; /&gt;
+
+可以查看minion的系统信息，pods，RC，services等信息。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可能遇到的问题&lt;/p&gt;
+
+&lt;p&gt;问题1，访问 &lt;a href=&#34;http://master_ip:8080/ui/&#34;&gt;http://master_ip:8080/ui/&lt;/a&gt; ：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Error: &#39;dial tcp 172.17.0.1:8080: no route to host&#39;
+Trying to reach: &#39;http://172.17.0.1:8080/&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决：这是docker进程的问题，重启所有的minion，问题解决。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

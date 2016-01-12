@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/os/</link>
+    <link>http://wixb50.github.io/categories/os/</link>
     <description>Recent content in Os on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 17 Dec 2015 13:50:50 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -44,10 +44,10 @@
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -121,10 +121,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -160,10 +160,10 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -173,7 +173,7 @@ sudo service xrdp restart
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#shutdown-命令&#34;&gt;shutdown 命令&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#ln-命令&#34;&gt;ln 命令&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#linux下怎样设置ssh无密码登录&#34;&gt;linux下怎样设置ssh无密码登录&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#linux下设置ssh无密码登录&#34;&gt;linux下设置ssh无密码登录&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#1生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/a&gt;&lt;/li&gt;
@@ -189,12 +189,10 @@ sudo service xrdp restart
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#软件安装后相关文件位置&#34;&gt;软件安装后相关文件位置&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#设置su密码的命令&#34;&gt;设置su密码的命令&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#使用sudo&#34;&gt;使用sudo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置su密码的命令&#34;&gt;设置su密码的命令&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#新增user&#34;&gt;新增User&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#fg、bg、jobs、、nohup、ctrlz、ctrlc-、kill命令&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#kill，killall，pkill，xkill-命令&#34;&gt;kill，killall，pkill，xkill 命令&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -214,18 +212,23 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 
 &lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
 
-&lt;p&gt;这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。
-&amp;gt;这个命令最常用的参数是-s，具体用法是(软链接)：&lt;/p&gt;
+&lt;p&gt;这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;sudo ln -s 源文件 目标文件&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这个命令最常用的参数是-s，具体用法是(软链接)：&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;删除链接&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;sudo ln -s 源文件 目标文件
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;删除链接&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&#34;linux下怎样设置ssh无密码登录&#34;&gt;linux下怎样设置ssh无密码登录&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;linux下设置ssh无密码登录&#34;&gt;linux下设置ssh无密码登录&lt;/h2&gt;
 
 &lt;p&gt;原理说明
 &amp;gt;密匙认证需要依靠密匙，&lt;br /&gt;
@@ -294,25 +297,26 @@ chmod 600 ~/.ssh/authorized_keys
 
 &lt;h2 id=&#34;dpkg命令&#34;&gt;dpkg命令&lt;/h2&gt;
 
-&lt;p&gt;deb是debian linus的安装格式，跟red hat的rpm非常相似，最基本的安装命令是：dpkg -i file.deb或者直接双击此文件。&lt;br /&gt;
-dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自Debian的Linux发行版都使用dpkg，例如Ubuntu、Knoppix 等。
-以下是一些 Dpkg 的普通用法：&lt;br /&gt;
-1. dpkg -i&lt;br /&gt;
-        安装一个 Debian 软件包，如你手动下载的文件。&lt;br /&gt;
-2. dpkg -c&lt;br /&gt;
-        列出包的内容。&lt;br /&gt;
-3. dpkg -I&lt;br /&gt;
-       从 中提取包裹信息。&lt;br /&gt;
-4. dpkg -r&lt;br /&gt;
-        移除一个已安装的包裹。&lt;br /&gt;
-5. dpkg -P&lt;br /&gt;
-      完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。&lt;br /&gt;
-6. dpkg -L&lt;br /&gt;
-      列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。&lt;br /&gt;
-7. dpkg -s&lt;br /&gt;
-      显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。&lt;br /&gt;
-8. dpkg-reconfigure&lt;br /&gt;
-      重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。&lt;/p&gt;
+&lt;p&gt;以下是一些 Dpkg 的普通用法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;dpkg -i&lt;br /&gt;
+    安装一个 Debian 软件包，如你手动下载的文件。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dpkg -c&lt;br /&gt;
+    列出包的内容。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dpkg -I&lt;br /&gt;
+   从 中提取包裹信息。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dpkg -r&lt;br /&gt;
+    移除一个已安装的包裹。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dpkg -P&lt;br /&gt;
+  完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dpkg -L&lt;br /&gt;
+  列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dpkg -s&lt;br /&gt;
+  显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dpkg-reconfigure&lt;br /&gt;
+  重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id=&#34;apt命令&#34;&gt;apt命令&lt;/h2&gt;
 
@@ -358,7 +362,7 @@ dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统�
 
 &lt;p&gt;Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。&lt;/p&gt;
 
-&lt;h3 id=&#34;使用sudo&#34;&gt;使用sudo&lt;/h3&gt;
+&lt;p&gt;使用sudo&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo passwd  
 &lt;/code&gt;&lt;/pre&gt;
@@ -403,15 +407,116 @@ dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统�
 
 &lt;pre&gt;&lt;code&gt;sudo usermod -a -G sudo username
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;amp;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;加在一个命令的最后，可以把这个命令放到后台执行，如
+
+watch  -n 10 sh  test.sh  &amp;amp;  #每10s在后台执行一次test.sh脚本
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ctrl + z&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;可以将一个正在前台执行的命令放到后台，并且处于暂停状态。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;jobs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;查看当前有多少在后台运行的命令
+
+jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fg&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bg&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;kill&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
+法子2：通过ps命令查看job的进程号（PID，假设为pid），然后执行kill pid
+前台进程的终止：Ctrl+c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;nohup&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）
+
+ps -aux | grep &amp;quot;test.sh&amp;quot;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;kill-killall-pkill-xkill-命令&#34;&gt;kill，killall，pkill，xkill 命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;kill&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kill ［信号代码］ 进程ID（kill  -pid）
+－s：指定发送的信号。 
+－p：模拟发送信号。 
+－l：指定信号的名称列表。 
+pid：要中止进程的ID号。 
+Signal：表示信号。
+注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;killall&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;killall 通过程序的名字，直接杀死所有进程。
+用法：killall 正在运行的程序名
+killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;pkill&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
+用法：pkill 正在运行的程序名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;xkill&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
+当xkill运行时出来和个人脑骨的图标，哪个图形程序崩溃一点就OK了。如果您想终止xkill ，就按右键取消；
+xkill 调用方法：
+[root@localhost ~]# xkill
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

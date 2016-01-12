@@ -10,18 +10,18 @@
   <title>ubuntu常用命令集合 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.gitcafe.io/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.gitcafe.io/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.gitcafe.io/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.gitcafe.io/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.gitcafe.io\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
 
-    <p>Copyright &copy; 2016 <a href="http://wixb50.gitcafe.io/license/">License</a><br/>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a><br/>
        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -89,10 +89,10 @@
 <div class="content container">
   <div class="post">
     <h1>ubuntu常用命令集合</h1>
-    <span class="post-date">Nov 7, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/#disqus_thread">Comments</a>
+    <span class="post-date">Nov 7, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.gitcafe.io/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.gitcafe.io/categories/os">os</a><a class="label" href="http://wixb50.gitcafe.io/categories/command">command</a>
+    <a class="label" href="http://wixb50.github.io/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.github.io/categories/os">os</a><a class="label" href="http://wixb50.github.io/categories/command">command</a>
     </span>
     
 
@@ -103,7 +103,7 @@
 <ul>
 <li><a href="#shutdown-命令">shutdown 命令</a></li>
 <li><a href="#ln-命令">ln 命令</a></li>
-<li><a href="#linux下怎样设置ssh无密码登录">linux下怎样设置ssh无密码登录</a>
+<li><a href="#linux下设置ssh无密码登录">linux下设置ssh无密码登录</a>
 
 <ul>
 <li><a href="#1生成公钥和私钥">1.生成公钥和私钥</a></li>
@@ -119,12 +119,10 @@
 <ul>
 <li><a href="#软件安装后相关文件位置">软件安装后相关文件位置</a></li>
 </ul></li>
-<li><a href="#设置su密码的命令">设置su密码的命令</a>
-
-<ul>
-<li><a href="#使用sudo">使用sudo</a></li>
-</ul></li>
+<li><a href="#设置su密码的命令">设置su密码的命令</a></li>
 <li><a href="#新增user">新增User</a></li>
+<li><a href="#fg、bg、jobs、、nohup、ctrlz、ctrlc-、kill命令">fg、bg、jobs、&amp;、nohup、ctrl+z、ctrl+c 、kill命令</a></li>
+<li><a href="#kill，killall，pkill，xkill-命令">kill，killall，pkill，xkill 命令</a></li>
 </ul>
 
 <!-- /MarkdownTOC -->
@@ -144,18 +142,23 @@ shutdown -r 20:23 &amp; #可以将在20：23时重启的任务放到后台去，
 
 <p>功能是为某一个文件或目录在另外一个位置建立一个同步的链接：</p>
 
-<p>这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。
-&gt;这个命令最常用的参数是-s，具体用法是(软链接)：</p>
+<p>这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。</p>
 
-<p><code>sudo ln -s 源文件 目标文件</code></p>
+<ul>
+<li>这个命令最常用的参数是-s，具体用法是(软链接)：<br /></li>
+</ul>
 
-<blockquote>
-<p>删除链接</p>
-</blockquote>
+<pre><code>sudo ln -s 源文件 目标文件
+</code></pre>
 
-<p><code>rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/</code></p>
+<ul>
+<li>删除链接<br /></li>
+</ul>
 
-<h2 id="linux下怎样设置ssh无密码登录">linux下怎样设置ssh无密码登录</h2>
+<pre><code>rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/
+</code></pre>
+
+<h2 id="linux下设置ssh无密码登录">linux下设置ssh无密码登录</h2>
 
 <p>原理说明
 &gt;密匙认证需要依靠密匙，<br />
@@ -224,25 +227,26 @@ chmod 600 ~/.ssh/authorized_keys
 
 <h2 id="dpkg命令">dpkg命令</h2>
 
-<p>deb是debian linus的安装格式，跟red hat的rpm非常相似，最基本的安装命令是：dpkg -i file.deb或者直接双击此文件。<br />
-dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自Debian的Linux发行版都使用dpkg，例如Ubuntu、Knoppix 等。
-以下是一些 Dpkg 的普通用法：<br />
-1. dpkg -i<br />
-        安装一个 Debian 软件包，如你手动下载的文件。<br />
-2. dpkg -c<br />
-        列出包的内容。<br />
-3. dpkg -I<br />
-       从 中提取包裹信息。<br />
-4. dpkg -r<br />
-        移除一个已安装的包裹。<br />
-5. dpkg -P<br />
-      完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。<br />
-6. dpkg -L<br />
-      列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。<br />
-7. dpkg -s<br />
-      显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。<br />
-8. dpkg-reconfigure<br />
-      重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。</p>
+<p>以下是一些 Dpkg 的普通用法：</p>
+
+<ol>
+<li>dpkg -i<br />
+    安装一个 Debian 软件包，如你手动下载的文件。<br /></li>
+<li>dpkg -c<br />
+    列出包的内容。<br /></li>
+<li>dpkg -I<br />
+   从 中提取包裹信息。<br /></li>
+<li>dpkg -r<br />
+    移除一个已安装的包裹。<br /></li>
+<li>dpkg -P<br />
+  完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。<br /></li>
+<li>dpkg -L<br />
+  列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。<br /></li>
+<li>dpkg -s<br />
+  显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。<br /></li>
+<li>dpkg-reconfigure<br />
+  重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。</li>
+</ol>
 
 <h2 id="apt命令">apt命令</h2>
 
@@ -288,7 +292,7 @@ dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统�
 
 <p>Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。</p>
 
-<h3 id="使用sudo">使用sudo</h3>
+<p>使用sudo</p>
 
 <pre><code>sudo passwd  
 </code></pre>
@@ -334,6 +338,107 @@ dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统�
 <pre><code>sudo usermod -a -G sudo username
 </code></pre>
 
+<h2 id="fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令">fg、bg、jobs、&amp;、nohup、ctrl+z、ctrl+c 、kill命令</h2>
+
+<ul>
+<li>&amp;</li>
+</ul>
+
+<pre><code>加在一个命令的最后，可以把这个命令放到后台执行，如
+
+watch  -n 10 sh  test.sh  &amp;  #每10s在后台执行一次test.sh脚本
+</code></pre>
+
+<ul>
+<li>ctrl + z</li>
+</ul>
+
+<pre><code>可以将一个正在前台执行的命令放到后台，并且处于暂停状态。
+</code></pre>
+
+<ul>
+<li>jobs</li>
+</ul>
+
+<pre><code>查看当前有多少在后台运行的命令
+
+jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
+</code></pre>
+
+<ul>
+<li>fg</li>
+</ul>
+
+<pre><code>将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。
+</code></pre>
+
+<ul>
+<li>bg</li>
+</ul>
+
+<pre><code>将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。
+</code></pre>
+
+<ul>
+<li>kill</li>
+</ul>
+
+<pre><code>法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
+法子2：通过ps命令查看job的进程号（PID，假设为pid），然后执行kill pid
+前台进程的终止：Ctrl+c
+</code></pre>
+
+<ul>
+<li>nohup</li>
+</ul>
+
+<pre><code>如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）
+
+ps -aux | grep &quot;test.sh&quot;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分
+</code></pre>
+
+<h2 id="kill-killall-pkill-xkill-命令">kill，killall，pkill，xkill 命令</h2>
+
+<ul>
+<li>kill</li>
+</ul>
+
+<pre><code>kill ［信号代码］ 进程ID（kill  -pid）
+－s：指定发送的信号。 
+－p：模拟发送信号。 
+－l：指定信号的名称列表。 
+pid：要中止进程的ID号。 
+Signal：表示信号。
+注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；
+</code></pre>
+
+<ul>
+<li>killall</li>
+</ul>
+
+<pre><code>killall 通过程序的名字，直接杀死所有进程。
+用法：killall 正在运行的程序名
+killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行
+</code></pre>
+
+<ul>
+<li>pkill</li>
+</ul>
+
+<pre><code>pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
+用法：pkill 正在运行的程序名
+</code></pre>
+
+<ul>
+<li>xkill</li>
+</ul>
+
+<pre><code>xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
+当xkill运行时出来和个人脑骨的图标，哪个图形程序崩溃一点就OK了。如果您想终止xkill ，就按右键取消；
+xkill 调用方法：
+[root@localhost ~]# xkill
+</code></pre>
+
   </div>
   <div id="disqus_thread"></div>
 </div>
@@ -362,7 +467,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.gitcafe.io/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
