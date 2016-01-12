@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/linux/</link>
+    <link>http://wixb50.gitcafe.io/categories/linux/</link>
     <description>Recent content in Linux on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 23 Dec 2015 16:21:30 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.gitcafe.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -194,10 +194,10 @@ parameterized-uri=true
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
