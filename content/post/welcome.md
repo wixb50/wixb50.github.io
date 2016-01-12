@@ -8,6 +8,6 @@ title = "welcome"
 
 +++
 
-## Stay hungury,Stay foolish.
+## Stay hungry,Stay foolish.
 
 + [使用Hugo搭建静态站点](http://tonybai.com/2015/09/23/intro-of-gohugo/)

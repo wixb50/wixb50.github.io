@@ -14,6 +14,7 @@ title = "aria2 rpc"
 - [初步部署 Aria2 简易版](#初步部署-aria2-简易版)
 - [进阶 Aria2](#进阶-aria2)
 - [End](#end)
+- [参考](#参考)
 
 <!-- /MarkdownTOC -->
 
@@ -155,3 +156,7 @@ aria2c --conf-path=aria2.conf &  #其中&(后台运行)是可选项
 
 End
 -
+
+参考
+-
++ [https://gist.github.com/aa65535/5e956c4eb4f451ddec29](https://gist.github.com/aa65535/5e956c4eb4f451ddec29)

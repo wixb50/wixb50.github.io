@@ -11,7 +11,7 @@ title = "ubuntu常用命令集合"
 
 - [shutdown 命令](#shutdown-命令)
 - [ln 命令](#ln-命令)
-- [linux下怎样设置ssh无密码登录](#linux下怎样设置ssh无密码登录)
+- [linux下设置ssh无密码登录](#linux下设置ssh无密码登录)
   - [1.生成公钥和私钥](#1生成公钥和私钥)
   - [2.导入公钥到认证文件,更改权限](#2导入公钥到认证文件更改权限)
     - [2.1 导入本机](#21-导入本机)
@@ -22,8 +22,9 @@ title = "ubuntu常用命令集合"
 - [apt命令](#apt命令)
   - [软件安装后相关文件位置](#软件安装后相关文件位置)
 - [设置su密码的命令](#设置su密码的命令)
-  - [使用sudo](#使用sudo)
 - [新增User](#新增user)
+- [fg、bg、jobs、&、nohup、ctrl+z、ctrl+c 、kill命令](#fg、bg、jobs、、nohup、ctrlz、ctrlc-、kill命令)
+- [kill，killall，pkill，xkill 命令](#kill，killall，pkill，xkill-命令)
 
 <!-- /MarkdownTOC -->
 
@@ -44,15 +45,20 @@ shutdown -r 20:23 & #可以将在20：23时重启的任务放到后台去，用�
 功能是为某一个文件或目录在另外一个位置建立一个同步的链接：  
 
 这里有两点要注意：ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件。
->这个命令最常用的参数是-s，具体用法是(软链接)：  
 
-`sudo ln -s 源文件 目标文件 `
++ 这个命令最常用的参数是-s，具体用法是(软链接)：  
 
->删除链接  
+```
+sudo ln -s 源文件 目标文件
+```
 
-`rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/`
++ 删除链接  
 
-## linux下怎样设置ssh无密码登录
+```
+rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/
+```
+
+## linux下设置ssh无密码登录
 原理说明
 >密匙认证需要依靠密匙，  
 1.首先创建一对密匙（包括公匙和密匙，并且用公匙加密的数据只能用密匙解密），并把公匙放到需要远程服务器上。  
@@ -104,9 +110,8 @@ ssh xxx@host
 第一次登录可能需要yes确认，之后就可以直接登录了。
 
 ## dpkg命令
-deb是debian linus的安装格式，跟red hat的rpm非常相似，最基本的安装命令是：dpkg -i file.deb或者直接双击此文件。  
-dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自Debian的Linux发行版都使用dpkg，例如Ubuntu、Knoppix 等。 
 以下是一些 Dpkg 的普通用法：   
+
 1. dpkg -i  
         安装一个 Debian 软件包，如你手动下载的文件。   
 2. dpkg -c    
@@ -161,9 +166,12 @@ dpkg 是Debian Package的简写，是为Debian专门开发的套件管理系统�
 使用apt-get update命令会从/etc/apt/sources.list中下载软件列表，并保存到该目录  
 
 ## 设置su密码的命令  
-Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。    
-### 使用sudo  
-    sudo passwd  
+Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。
+ 
+使用sudo  
+```
+sudo passwd  
+```
 系统提示输入密码，即安装时的用户密码，然后，系统提示输入两次新密码，输入完毕后，  
 ```
 su  
@@ -193,4 +201,74 @@ sudo usermod -G sudo username
 如果用户已经是其他组的成员，你需要添加 -a 这个选项，象这样
 ```
 sudo usermod -a -G sudo username
+```
+
+## fg、bg、jobs、&、nohup、ctrl+z、ctrl+c 、kill命令
+
++ &
+```
+加在一个命令的最后，可以把这个命令放到后台执行，如
+
+watch  -n 10 sh  test.sh  &  #每10s在后台执行一次test.sh脚本
+```
++ ctrl + z
+```
+可以将一个正在前台执行的命令放到后台，并且处于暂停状态。
+```
++ jobs
+```
+查看当前有多少在后台运行的命令
+
+jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
+```
++ fg
+```
+将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。
+```
++ bg
+```
+将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。
+```
++ kill
+```
+法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
+法子2：通过ps命令查看job的进程号（PID，假设为pid），然后执行kill pid
+前台进程的终止：Ctrl+c
+```
++ nohup
+```
+如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）
+
+ps -aux | grep "test.sh"  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分
+```
+
+## kill，killall，pkill，xkill 命令
+
++ kill
+```
+kill ［信号代码］ 进程ID（kill  -pid）
+－s：指定发送的信号。 
+－p：模拟发送信号。 
+－l：指定信号的名称列表。 
+pid：要中止进程的ID号。 
+Signal：表示信号。
+注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；
+```
++ killall
+```
+killall 通过程序的名字，直接杀死所有进程。
+用法：killall 正在运行的程序名
+killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行
+```
++ pkill
+```
+pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
+用法：pkill 正在运行的程序名
+```
++ xkill
+```
+xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
+当xkill运行时出来和个人脑骨的图标，哪个图形程序崩溃一点就OK了。如果您想终止xkill ，就按右键取消；
+xkill 调用方法：
+[root@localhost ~]# xkill
 ```

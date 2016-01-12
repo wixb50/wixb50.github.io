@@ -146,8 +146,9 @@ Backend：
 
 + [Go]() 解压存放`/usr/local/go`,配置好`GOROOT、GOPATH`和path环境。`GOPATH`最好一个就够了。
 
-> GoTools：`gocode`代码自动化提示工具。`godep`go包管理器。`goconvey`go测试工具。  
-> Tips：如需sudo也支持go命令,执行链接命令：`sudo ln -s /usr/local/go/bin/go /usr/bin/go`。
+> GoTools：`gocode`代码自动化提示工具。`godep`go包管理器。`goconvey`go测试工具。
+> Tips：如需sudo也支持go命令,执行链接命令：`sudo ln -s /usr/local/go/bin/go /usr/bin/go`。   
+>Personal：`GOROOT`配置在`/etc/profile`内，`GOPATH`配置在`～/.bashrc`。
 
 + [gradle]() java包管理器,构建工具
 

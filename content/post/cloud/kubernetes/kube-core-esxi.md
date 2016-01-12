@@ -7,7 +7,7 @@ title = "Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群
 
 +++
 
-#目录
+# 目录
 
 <!-- MarkdownTOC -->
 
@@ -183,14 +183,33 @@ Check each server :
     journalctl -f
     
 # Enjoy
+You may download the kubernetes client tool:`kubectl`.Use it manage your cluster.
+
++ get all minion node info.
+```
+kubectl get nodes
+```
++ get all Pods.
+```
+kubectl get pods
+```
++ get all Replication Controllers.
+```
+kubectl get rc
+```
++ get all Replication Services.
+```
+kubectl get svc
+```
 # Reference
 + [VMware-coreos-multi-nodes-Kubernetes](https://github.com/xavierbaude/VMware-coreos-multi-nodes-Kubernetes)
 + [kubernetes 0.18.1 安装 & 部署 & 初试](https://segmentfault.com/a/1190000002886795)
++ [Installing Kubernetes Cluster with 3 minions on CentOS 7 to manage pods and services](http://severalnines.com/blog/installing-kubernetes-cluster-minions-centos7-manage-pods-services)
 + [如何在 CoreOS 集群上搭建 Kubernetes](http://dockerpool.com/article/1422538730)
 + [在CoreOS集群上搭建Kubernetes](http://qiankunli.github.io/2015/01/29/Kubernetes_installation.html)
 + [CoreOS集成Kubernetes核心组件Kubelet](http://dockone.io/article/604)
 # Appendix
-The source of `master.yaml`
++ The source of `master.yaml`
 ```
 #cloud-config
 
@@ -333,7 +352,8 @@ coreos:
     group: alpha
     reboot-strategy: off
 ```
-The source of `node.yaml`
+
++ The source of `node.yaml`
 ```
 #cloud-config
 write-files:

@@ -11,11 +11,11 @@ title = "sublime-text-3配置"
 
 - [Sublime Text 3编辑器插件](#sublime-text-3编辑器插件)
 - [sublime text 3安装Package Control](#sublime-text-3安装package-control)
-    - [简单安装方法](#简单安装方法)
-    - [常规安装方法](#常规安装方法)
+  - [简单安装方法](#简单安装方法)
+  - [常规安装方法](#常规安装方法)
 - [Sublime Text 2/3 输入法修复](#Ubuntu(Debian))
-    - [**注意**](#注意)
-    - [使用方法](#使用方法)
+  - [**注意**](#注意)
+  - [使用方法](#使用方法)
 - [卸载已安装的插件](#卸载已安装的插件)
 
 <!-- /MarkdownTOC -->
@@ -31,6 +31,11 @@ title = "sublime-text-3配置"
 4.Json格式化插件`Pretty Json`;
 
 5.Go语言sublime编辑器`Gosublime`;
+```
+/*配置 Preferences -> Package Settings -> GoSublime -> Settings -> User*/
+//添加
+{"env": {"GOPATH": "/home/int/WorkSpace/Go", "GOROOT": "/usr/local/go"}}
+```
 
 6.markdown编辑和预览器：  
 
@@ -53,6 +58,8 @@ title = "sublime-text-3配置"
 9.[Emmet](http://emmet.io/),html/css开发利器
 
 10.[SublimeREPL](https://github.com/wuub/SublimeREPL)
+
+11.[anaconda](https://github.com/DamnWidget/anaconda),python功能插件
 
 ## sublime text 3安装Package Control
 
