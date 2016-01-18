@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/post/</link>
+    <link>http://wixb50.github.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 30 Dec 2015 19:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
@@ -25,7 +25,7 @@
 &lt;!-- MarkdownTOC --&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#vmware-coreos-multi-nodes-kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#prerequisites&#34;&gt;Prerequisites&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#coreos-on-vmware&#34;&gt;CoreOS on VMware&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#cloud-config-for-master-node&#34;&gt;Cloud-Config for master node&lt;/a&gt;&lt;/li&gt;
@@ -39,7 +39,7 @@
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h1 id=&#34;vmware-coreos-multi-nodes-kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/h1&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Create a Kubernetes Cluster on VMware ESXi with CoreOS.&lt;/p&gt;
 
@@ -261,271 +261,19 @@ journalctl -f
 
 &lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;The source of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;The &lt;a href=&#34;https://gist.github.com/anonymous/553e448c0f8ce9a23120&#34;&gt;source&lt;/a&gt; of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;pre&gt;&lt;code&gt;#cloud-config
-
----
-write-files:
-  - path: /etc/conf.d/nfs
-    permissions: &#39;0644&#39;
-    content: |
-      OPTS_RPC_MOUNTD=&amp;quot;&amp;quot;
-  - path: /opt/bin/wupiao
-    permissions: &#39;0755&#39;
-    content: |
-      #!/bin/bash
-      # [w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen
-      [ -n &amp;quot;$1&amp;quot; ] &amp;amp;&amp;amp; \
-        until curl -o /dev/null -sIf http://${1}; do \
-          sleep 1 &amp;amp;&amp;amp; echo .;
-        done;
-      exit $?
-
-hostname: master
-coreos:
-  etcd2:
-    name: master
-    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
-    advertise-client-urls: http://$private_ipv4:2379,http://$private_ipv4:4001
-    initial-cluster-token: k8s_etcd
-    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
-    initial-advertise-peer-urls: http://$private_ipv4:2380
-    initial-cluster: master=http://$private_ipv4:2380
-    initial-cluster-state: new
-  fleet:
-    metadata: &amp;quot;role=master&amp;quot;
-  units:
-    - name: generate-serviceaccount-key.service
-      command: start
-      content: |
-        [Unit]
-        Description=Generate service-account key file
-
-        [Service]
-        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
-        ExecStart=/bin/openssl genrsa -out /opt/bin/kube-serviceaccount.key 2048 2&amp;gt;/dev/null
-        RemainAfterExit=yes
-        Type=oneshot
-    - name: setup-network-environment.service
-      command: start
-      content: |
-        [Unit]
-        Description=Setup Network Environment
-        Documentation=https://github.com/kelseyhightower/setup-network-environment
-        Requires=network-online.target
-        After=network-online.target
-
-        [Service]
-        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
-        ExecStartPre=/usr/bin/curl -L -o /opt/bin/setup-network-environment -z /opt/bin/setup-network-environment https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment
-        ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
-        ExecStart=/opt/bin/setup-network-environment
-        RemainAfterExit=yes
-        Type=oneshot
-    - name: fleet.service
-      command: start
-    - name: flanneld.service
-      command: start
-      drop-ins:
-        - name: 50-network-config.conf
-          content: |
-            [Unit]
-            Requires=etcd2.service
-            [Service]
-            ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config &#39;{&amp;quot;Network&amp;quot;:&amp;quot;10.244.0.0/16&amp;quot;, &amp;quot;Backend&amp;quot;: {&amp;quot;Type&amp;quot;: &amp;quot;vxlan&amp;quot;}}&#39;
-    - name: docker.service
-      command: start
-    - name: kube-apiserver.service
-      command: start
-      content: |
-        [Unit]
-        Description=Kubernetes API Server
-        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-        Requires=setup-network-environment.service etcd2.service generate-serviceaccount-key.service
-        After=setup-network-environment.service etcd2.service generate-serviceaccount-key.service
-
-        [Service]
-        EnvironmentFile=/etc/network-environment
-        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
-        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-apiserver -z /opt/bin/kube-apiserver https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-apiserver
-        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-apiserver
-        ExecStartPre=/opt/bin/wupiao 127.0.0.1:2379/v2/machines
-        ExecStart=/opt/bin/kube-apiserver \
-        --service-account-key-file=/opt/bin/kube-serviceaccount.key \
-        --service-account-lookup=false \
-        --admission-control=NamespaceLifecycle,NamespaceAutoProvision,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota \
-        --runtime-config=api/v1 \
-        --allow-privileged=true \
-        --insecure-bind-address=0.0.0.0 \
-        --insecure-port=8080 \
-        --kubelet-https=true \
-        --secure-port=6443 \
-        --service-cluster-ip-range=10.100.0.0/16 \
-        --etcd-servers=http://127.0.0.1:2379 \
-        --public-address-override=${DEFAULT_IPV4} \
-        --logtostderr=true
-        Restart=always
-        RestartSec=10
-    - name: kube-controller-manager.service
-      command: start
-      content: |
-        [Unit]
-        Description=Kubernetes Controller Manager
-        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-        Requires=kube-apiserver.service
-        After=kube-apiserver.service
-
-        [Service]
-        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-controller-manager -z /opt/bin/kube-controller-manager https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-controller-manager
-        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-controller-manager
-        ExecStart=/opt/bin/kube-controller-manager \
-        --service-account-private-key-file=/opt/bin/kube-serviceaccount.key \
-        --master=127.0.0.1:8080 \
-        --logtostderr=true
-        Restart=always
-        RestartSec=10
-    - name: kube-scheduler.service
-      command: start
-      content: |
-        [Unit]
-        Description=Kubernetes Scheduler
-        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-        Requires=kube-apiserver.service
-        After=kube-apiserver.service
-
-        [Service]
-        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-scheduler -z /opt/bin/kube-scheduler https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-scheduler
-        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-scheduler
-        ExecStart=/opt/bin/kube-scheduler --master=127.0.0.1:8080
-        Restart=always
-        RestartSec=10
-  update:
-    group: alpha
-    reboot-strategy: off
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;The source of &lt;code&gt;node.yaml&lt;/code&gt;
-```
-#cloud-config
-write-files:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;path: /opt/bin/wupiao
-permissions: &amp;lsquo;0755&amp;rsquo;
-content: |
-#!/bin/bash&lt;/p&gt;
-
-&lt;h1 id=&#34;w-ait-u-ntil-p-ort-i-s-a-ctually-o-pen&#34;&gt;[w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen&lt;/h1&gt;
-
-&lt;p&gt;[ -n &amp;laquo;$1&amp;raquo; ] &amp;amp;&amp;amp; [ -n &amp;laquo;$2&amp;raquo; ] &amp;amp;&amp;amp; while ! curl &amp;ndash;output /dev/null \
-&amp;ndash;silent &amp;ndash;head &amp;ndash;fail \
-http://${1}:${2}; do sleep 1 &amp;amp;&amp;amp; echo -n .; done;
-exit $?
-coreos:
-etcd2:
-listen-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
-advertise-client-urls: &lt;a href=&#34;http://0.0.0.0:2379,http://0.0.0.0:4001&#34;&gt;http://0.0.0.0:2379,http://0.0.0.0:4001&lt;/a&gt;
-initial-cluster: master=http://&lt;master-private-ip&gt;:2380
-proxy: on
-fleet:
-metadata: &amp;laquo;role=node&amp;raquo;
-units:&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;name: fleet.service
-command: start&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;name: flanneld.service
-command: start&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;name: docker.service
-command: start&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;name: setup-network-environment.service
-command: start
-content: |
-[Unit]
-Description=Setup Network Environment
-Documentation=&lt;a href=&#34;https://github.com/kelseyhightower/setup-network-environment&#34;&gt;https://github.com/kelseyhightower/setup-network-environment&lt;/a&gt;
-Requires=network-online.target
-After=network-online.target&lt;/p&gt;
-
-&lt;p&gt;[Service]
-ExecStartPre=-/usr/bin/mkdir -p /opt/bin
-ExecStartPre=/usr/bin/curl -L -o /opt/bin/setup-network-environment -z /opt/bin/setup-network-environment &lt;a href=&#34;https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment&#34;&gt;https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment&lt;/a&gt;
-ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
-ExecStart=/opt/bin/setup-network-environment
-RemainAfterExit=yes
-Type=oneshot&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;name: kube-proxy.service
-command: start
-content: |
-[Unit]
-Description=Kubernetes Proxy
-Documentation=&lt;a href=&#34;https://github.com/GoogleCloudPlatform/kubernetes&#34;&gt;https://github.com/GoogleCloudPlatform/kubernetes&lt;/a&gt;
-Requires=setup-network-environment.service
-After=setup-network-environment.service&lt;/p&gt;
-
-&lt;p&gt;[Service]
-ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-proxy -z /opt/bin/kube-proxy &lt;a href=&#34;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-proxy&#34;&gt;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kube-proxy&lt;/a&gt;
-ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-proxy&lt;/p&gt;
-
-&lt;h1 id=&#34;wait-for-kubernetes-master-to-be-up-and-ready&#34;&gt;wait for kubernetes master to be up and ready&lt;/h1&gt;
-
-&lt;p&gt;ExecStartPre=/opt/bin/wupiao &lt;master-private-ip&gt; 8080
-ExecStart=/opt/bin/kube-proxy \
-&amp;ndash;master=&lt;master-private-ip&gt;:8080 \
-&amp;ndash;logtostderr=true
-Restart=always
-RestartSec=10&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;name: kube-kubelet.service
-command: start
-content: |
-[Unit]
-Description=Kubernetes Kubelet
-Documentation=&lt;a href=&#34;https://github.com/GoogleCloudPlatform/kubernetes&#34;&gt;https://github.com/GoogleCloudPlatform/kubernetes&lt;/a&gt;
-Requires=setup-network-environment.service
-After=setup-network-environment.service&lt;/p&gt;
-
-&lt;p&gt;[Service]
-EnvironmentFile=/etc/network-environment
-ExecStartPre=/usr/bin/curl -L -o /opt/bin/kubelet -z /opt/bin/kubelet &lt;a href=&#34;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubelet&#34;&gt;https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubelet&lt;/a&gt;
-ExecStartPre=/usr/bin/chmod +x /opt/bin/kubelet&lt;/p&gt;
-
-&lt;h1 id=&#34;wait-for-kubernetes-master-to-be-up-and-ready-1&#34;&gt;wait for kubernetes master to be up and ready&lt;/h1&gt;
-
-&lt;p&gt;ExecStartPre=/opt/bin/wupiao &lt;master-private-ip&gt; 8080
-ExecStart=/opt/bin/kubelet \
-&amp;ndash;address=0.0.0.0 \
-&amp;ndash;port=10250 \
-&amp;ndash;hostname-override=${DEFAULT_IPV4} \
-&amp;ndash;api-servers=&lt;master-private-ip&gt;:8080 \
-&amp;ndash;allow-privileged=true \
-&amp;ndash;logtostderr=true \
-&amp;ndash;cadvisor-port=4194 \
-&amp;ndash;healthz-bind-address=0.0.0.0 \
-&amp;ndash;healthz-port=10248
-Restart=always
-RestartSec=10
-update:
-group: alpha
-reboot-strategy: off
-```&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;a href=&#34;https://gist.github.com/anonymous/ce88bdc1f6368c0b1589&#34;&gt;source&lt;/a&gt; of &lt;code&gt;node.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -702,10 +450,10 @@ parameterized-uri=true
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1206,10 +954,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1236,10 +984,10 @@ http://foo/bar
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1534,10 +1282,10 @@ systemctl -l status docker
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1685,10 +1433,10 @@ cb35b356... 172.17.8.103  -
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1770,10 +1518,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -1847,10 +1595,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -1886,10 +1634,10 @@ sudo service xrdp restart
     
     <item>
       <title>nodejs linux安装与卸载</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
       <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
       <description>
 
 &lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
@@ -1941,10 +1689,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang使用http client发起get和post请求</title>
-      <link>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
+      <link>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Mon, 23 Nov 2015 22:00:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
+      <guid>http://wixb50.github.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
       <description>
 
 &lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
@@ -2052,10 +1800,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang资料</title>
-      <link>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</link>
+      <link>http://wixb50.github.io/2015/11/22/golang%E8%B5%84%E6%96%99/</link>
       <pubDate>Sun, 22 Nov 2015 22:00:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</guid>
+      <guid>http://wixb50.github.io/2015/11/22/golang%E8%B5%84%E6%96%99/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;WindowsCrossCompiling:&lt;a href=&#34;https://github.com/golang/go/wiki/WindowsCrossCompiling&#34;&gt;Building windows go programs on linux&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2064,10 +1812,10 @@ sudo service xrdp restart
     
     <item>
       <title>mysql 安装配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 20 Nov 2015 19:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/mysql-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;p&gt;1.更新源&lt;br /&gt;
 &lt;code&gt;source /etc/apt/source.list&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;br /&gt;
@@ -2098,10 +1846,10 @@ sudo service xrdp restart
     
     <item>
       <title>gulp 资源教程集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
       <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;
@@ -2124,10 +1872,10 @@ sudo service xrdp restart
     
     <item>
       <title>golang排序实现 sort接口实现</title>
-      <link>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 20 Nov 2015 18:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/golang%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0-sort%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0/</guid>
       <description>&lt;p&gt;sort.Interface接口有三个方法,给自己的struct实现这三个方法,然后用将自己的结构体传给sort.Sort方法就排序完成.&lt;/p&gt;
 
 &lt;p&gt;sort包也有几个常用的方法sort.Float64Slice sort.IntSlise sort.StringSlise&lt;/p&gt;
