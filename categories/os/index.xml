@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/os/</link>
+    <link>http://wixb50.gitcafe.io/categories/os/</link>
     <description>Recent content in Os on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 17 Dec 2015 13:50:50 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.gitcafe.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -55,10 +55,10 @@
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -132,10 +132,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -171,10 +171,10 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -524,10 +524,10 @@ xkill 调用方法：
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.gitcafe.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 
