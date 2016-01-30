@@ -117,6 +117,7 @@
 <li><a href="#aria2下载工具">Aria2下载工具</a></li>
 <li><a href="#tldr命令工具">tldr命令工具</a></li>
 <li><a href="#终端工具terminator">终端工具Terminator</a></li>
+<li><a href="#wine-18">Wine 1.8</a></li>
 </ul>
 
 <!-- /MarkdownTOC -->
@@ -281,6 +282,16 @@ sudo dpkg -i symbol-fonts_1.2_all.deb
 <p>GoTools：<code>gocode</code>代码自动化提示工具。<code>godep</code>go包管理器。<code>goconvey</code>go测试工具。
 Tips：如需sudo也支持go命令,执行链接命令：<code>sudo ln -s /usr/local/go/bin/go /usr/bin/go</code>。<br />
 Personal：<code>GOROOT</code>配置在<code>/etc/profile</code>内，<code>GOPATH</code>配置在<code>～/.bashrc</code>。</p>
+</blockquote>
+
+<ul>
+<li>[Python]() 包管理器安装python(2.X版本)、python3(3.X版本)</li>
+</ul>
+
+<blockquote>
+<p>python包管理器pip：<code>sudo apt-get install python-pip</code><br />
+python包管理器pip3：<code>sudo apt-get install python3-pip</code><br />
+python虚拟环境：<code>sudo pip install virtualenv</code></p>
 </blockquote>
 
 <ul>
@@ -475,6 +486,33 @@ Alt + → #Move to the terminal right of the current one
 <li>参考资料<br />
 <a href="http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html">开始使用Ubuntu作为工作环境</a></li>
 </ul>
+
+<h3 id="wine-1-8">Wine 1.8</h3>
+
+<p>1、对于 64 位系统，需要开启 32 位架构支持：</p>
+
+<pre><code>sudo dpkg --add-architecture i386 
+</code></pre>
+
+<p>2、添加 Wine 官方 PPA：</p>
+
+<pre><code>sudo add-apt-repository ppa:wine/wine-builds 
+</code></pre>
+
+<p>3、PPA 添加完成后，我们先刷新包缓存再安装 Wine 1.8：</p>
+
+<pre><code>sudo apt-get update 
+sudo apt-get install --install-recommends winehq-devel 
+</code></pre>
+
+<p>如果你安装有老版本 Wine，执行上述命令时会自动被替换更新。</p>
+
+<p>4、安装完成后，可以使用如下命令来初始化 Wine 1.8 配置：</p>
+
+<pre><code>winecfg 
+</code></pre>
+
+<p>NOTE:<a href="https://wiki.winehq.org/Gecko">手动安装Gecko</a></p>
 
   </div>
   <div id="disqus_thread"></div>

@@ -26,6 +26,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -39,6 +40,16 @@
 &lt;/ol&gt;
 
 &lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
+
+&lt;h2 id=&#34;unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;安装&lt;code&gt;ccsm&lt;/code&gt;，终端打开&lt;code&gt;ccsm&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;点击&lt;code&gt;桌面-&amp;gt;ubuntu unity plugin&lt;/code&gt;，启用、忽略错误、重启即可。&lt;/li&gt;
+&lt;li&gt;问题解决。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;原因：compiz设置错误。&lt;/p&gt;
 </description>
     </item>
     
@@ -187,6 +198,7 @@ sudo service xrdp restart
 &lt;li&gt;&lt;a href=&#34;#aria2下载工具&#34;&gt;Aria2下载工具&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#tldr命令工具&#34;&gt;tldr命令工具&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#终端工具terminator&#34;&gt;终端工具Terminator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#wine-18&#34;&gt;Wine 1.8&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -351,6 +363,16 @@ sudo dpkg -i symbol-fonts_1.2_all.deb
 &lt;p&gt;GoTools：&lt;code&gt;gocode&lt;/code&gt;代码自动化提示工具。&lt;code&gt;godep&lt;/code&gt;go包管理器。&lt;code&gt;goconvey&lt;/code&gt;go测试工具。
 Tips：如需sudo也支持go命令,执行链接命令：&lt;code&gt;sudo ln -s /usr/local/go/bin/go /usr/bin/go&lt;/code&gt;。&lt;br /&gt;
 Personal：&lt;code&gt;GOROOT&lt;/code&gt;配置在&lt;code&gt;/etc/profile&lt;/code&gt;内，&lt;code&gt;GOPATH&lt;/code&gt;配置在&lt;code&gt;～/.bashrc&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[Python]() 包管理器安装python(2.X版本)、python3(3.X版本)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;python包管理器pip：&lt;code&gt;sudo apt-get install python-pip&lt;/code&gt;&lt;br /&gt;
+python包管理器pip3：&lt;code&gt;sudo apt-get install python3-pip&lt;/code&gt;&lt;br /&gt;
+python虚拟环境：&lt;code&gt;sudo pip install virtualenv&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;ul&gt;
@@ -545,6 +567,33 @@ Alt + → #Move to the terminal right of the current one
 &lt;li&gt;参考资料&lt;br /&gt;
 &lt;a href=&#34;http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html&#34;&gt;开始使用Ubuntu作为工作环境&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;wine-1-8&#34;&gt;Wine 1.8&lt;/h3&gt;
+
+&lt;p&gt;1、对于 64 位系统，需要开启 32 位架构支持：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dpkg --add-architecture i386 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、添加 Wine 官方 PPA：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:wine/wine-builds 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3、PPA 添加完成后，我们先刷新包缓存再安装 Wine 1.8：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get update 
+sudo apt-get install --install-recommends winehq-devel 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果你安装有老版本 Wine，执行上述命令时会自动被替换更新。&lt;/p&gt;
+
+&lt;p&gt;4、安装完成后，可以使用如下命令来初始化 Wine 1.8 配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;winecfg 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;NOTE:&lt;a href=&#34;https://wiki.winehq.org/Gecko&#34;&gt;手动安装Gecko&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

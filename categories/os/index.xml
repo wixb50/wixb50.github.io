@@ -26,6 +26,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -39,6 +40,16 @@
 &lt;/ol&gt;
 
 &lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
+
+&lt;h2 id=&#34;unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;安装&lt;code&gt;ccsm&lt;/code&gt;，终端打开&lt;code&gt;ccsm&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;点击&lt;code&gt;桌面-&amp;gt;ubuntu unity plugin&lt;/code&gt;，启用、忽略错误、重启即可。&lt;/li&gt;
+&lt;li&gt;问题解决。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;原因：compiz设置错误。&lt;/p&gt;
 </description>
     </item>
     
