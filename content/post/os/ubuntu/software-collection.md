@@ -26,6 +26,7 @@ title = "ubuntu常用软件集合"
 - [Aria2下载工具](#aria2下载工具)
 - [tldr命令工具](#tldr命令工具)
 - [终端工具Terminator](#终端工具terminator)
+- [Wine 1.8](#wine-18)
 
 <!-- /MarkdownTOC -->
 
@@ -149,6 +150,12 @@ Backend：
 > GoTools：`gocode`代码自动化提示工具。`godep`go包管理器。`goconvey`go测试工具。
 > Tips：如需sudo也支持go命令,执行链接命令：`sudo ln -s /usr/local/go/bin/go /usr/bin/go`。   
 >Personal：`GOROOT`配置在`/etc/profile`内，`GOPATH`配置在`～/.bashrc`。
+
++ [Python]() 包管理器安装python(2.X版本)、python3(3.X版本)
+
+>python包管理器pip：`sudo apt-get install python-pip`  
+>python包管理器pip3：`sudo apt-get install python3-pip`  
+>python虚拟环境：`sudo pip install virtualenv`  
 
 + [gradle]() java包管理器,构建工具
 
@@ -309,3 +316,27 @@ apt-get install nautilus-actions -y
 
 + 参考资料   
 [开始使用Ubuntu作为工作环境](http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html)
+
+### Wine 1.8
+
+1、对于 64 位系统，需要开启 32 位架构支持：
+```
+sudo dpkg --add-architecture i386 
+```
+2、添加 Wine 官方 PPA：
+```
+sudo add-apt-repository ppa:wine/wine-builds 
+```
+3、PPA 添加完成后，我们先刷新包缓存再安装 Wine 1.8：
+```
+sudo apt-get update 
+sudo apt-get install --install-recommends winehq-devel 
+```
+如果你安装有老版本 Wine，执行上述命令时会自动被替换更新。
+
+4、安装完成后，可以使用如下命令来初始化 Wine 1.8 配置：
+```
+winecfg 
+```
+
+NOTE:[手动安装Gecko](https://wiki.winehq.org/Gecko)

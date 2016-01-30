@@ -11,6 +11,7 @@ title = "ubuntu常见故障"
 <!-- MarkdownTOC -->
 
 - [ssh错误: permission denied (publickey)](#ssh错误-permission-denied-publickey)
+- [unity菜单栏消失](#unity菜单栏消失)
 
 <!-- /MarkdownTOC -->
 
@@ -20,3 +21,10 @@ title = "ubuntu常见故障"
 3. 问题解决。
 
 原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误
+
+## unity菜单栏消失
+1. 安装`ccsm`，终端打开`ccsm`；
+2. 点击`桌面->ubuntu unity plugin`，启用、忽略错误、重启即可。
+3. 问题解决。
+
+原因：compiz设置错误。
