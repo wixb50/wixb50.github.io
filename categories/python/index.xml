@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Wixb blog</title>
+    <link>http://wixb50.github.io/categories/python/</link>
+    <description>Recent content in Python on Wixb blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
+    <webMaster>wixb50@gmail.com (Wixb)</webMaster>
+    <copyright>(c) 2015 wixb.All rights reserved.</copyright>
+    <lastBuildDate>Sun, 21 Feb 2016 13:32:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>pip常用命令</title>
+      <link>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sun, 21 Feb 2016 13:32:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>
+
+&lt;h3 id=&#34;列出已安装的包&#34;&gt;列出已安装的包&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;pip freeze&lt;/code&gt; or &lt;code&gt;pip list&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;导出requirements-txt&#34;&gt;导出requirements.txt&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;pip freeze &amp;gt; &amp;lt;目录&amp;gt;/requirements.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;安装包&#34;&gt;安装包&lt;/h2&gt;
+
+&lt;h3 id=&#34;在线安装&#34;&gt;在线安装&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install &amp;lt;包名&amp;gt; 或 pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过使用== &amp;gt;= &amp;lt;= &amp;gt; &amp;lt;来指定版本，不写则安装最新版&lt;/p&gt;
+
+&lt;p&gt;requirements.txt内容格式为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Django==1.5.4
+MySQL-Connector-Python==2.0.1
+MySQL-python==1.2.3
+PIL==1.1.7
+South==1.0.2
+django-grappelli==2.6.3
+django-pagination==1.0.7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;安装本地安装包&#34;&gt;安装本地安装包&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install &amp;lt;目录&amp;gt;/&amp;lt;文件名&amp;gt; 或 pip install --use-wheel --no-index --find-links=wheelhouse/ &amp;lt;包名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;&amp;lt;包名&amp;gt;前有空格&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;可简写为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install --no-index -f=&amp;lt;目录&amp;gt;/ &amp;lt;包名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;卸载包&#34;&gt;卸载包&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip uninstall &amp;lt;包名&amp;gt; 或 pip uninstall -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;升级包&#34;&gt;升级包&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install -U &amp;lt;包名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;升级pip&#34;&gt;升级pip&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install -U pip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;显示包所在的目录&#34;&gt;显示包所在的目录&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip show -f &amp;lt;包名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;搜索包&#34;&gt;搜索包&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip search &amp;lt;搜索关键字&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;查询可升级的包&#34;&gt;查询可升级的包&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip list -o
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;下载包而不安装&#34;&gt;下载包而不安装&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install &amp;lt;包名&amp;gt; -d &amp;lt;目录&amp;gt; 或 pip install -d &amp;lt;目录&amp;gt; -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;打包&#34;&gt;打包&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pip wheel &amp;lt;包名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pip.pypa.io/en/latest/&#34;&gt;pip document&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
