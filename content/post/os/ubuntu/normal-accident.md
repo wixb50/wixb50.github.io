@@ -25,6 +25,7 @@ title = "ubuntu常见故障"
 ## unity菜单栏消失
 1. 安装`ccsm`，终端打开`ccsm`；
 2. 点击`桌面->ubuntu unity plugin`，启用、忽略错误、重启即可。
-3. 问题解决。
+3. 点击`桌面->Desktop Wall`，启用，启用桌面快捷键。
+4. 问题解决。
 
 原因：compiz设置错误。

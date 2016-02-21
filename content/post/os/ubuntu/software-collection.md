@@ -155,7 +155,7 @@ Backend：
 
 >python包管理器pip：`sudo apt-get install python-pip`  
 >python包管理器pip3：`sudo apt-get install python3-pip`  
->python虚拟环境：`sudo pip install virtualenv`  
+>python虚拟环境：`sudo pip install virtualenv`，参考[virtualenv 和 virtualenvwrapper 实践](https://segmentfault.com/a/1190000004079979)
 
 + [gradle]() java包管理器,构建工具
 
