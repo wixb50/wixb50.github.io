@@ -2,22 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Develop on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/develop/</link>
+    <link>http://wixb50.github.io/categories/develop/</link>
     <description>Recent content in Develop on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Thu, 05 Nov 2015 13:35:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/develop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Feb 2016 09:25:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/develop/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>文章收藏</title>
+      <link>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
+      <pubDate>Sat, 27 Feb 2016 09:25:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
+      <description>
+
+&lt;h2 id=&#34;opensource&#34;&gt;OpenSource&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;amp;mid=405458525&amp;amp;idx=1&amp;amp;sn=55df62ed6bd01823806a0f1823f3d09c&amp;amp;scene=1&amp;amp;srcid=02264HbqiU0NKglMR5FpYrxr&amp;amp;key=710a5d99946419d952b51286bb476ae852980381752236f35f6efed2d81774806f1a7c345fa76ff83cf2e78cf079c5ea&amp;amp;ascene=0&amp;amp;uin=MTY3MzQ2MzI0MA%3D%3D&amp;amp;devicetype=iMac+MacBookAir6%2C2+OSX+OSX+10.11.1+build(15B42&#34;&gt;科技公司钟爱的50款开源工具&lt;/a&gt;&amp;amp;version=11020201&amp;amp;pass_ticket=e26w4BJlltsElwNSjLt2YR9yfr3wKAjeFSY4jW2GKDL5EoGluXzwcsD2JICeFSTH)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;python&#34;&gt;Python&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codingpy.com/article/the-idiomatic-way-to-merge-dicts-in-python/?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&#34;&gt;怎样合并字典最符合Python语言习惯&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Markdown简明语法教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h1 id=&#34;markdown简明语法教程&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
@@ -317,10 +339,10 @@
     
     <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
 git config --global user.name &amp;quot;xxx&amp;quot;                       # 配置用户名
 git config --global user.email &amp;quot;xxx@xxx.com&amp;quot;              # 配置邮件
