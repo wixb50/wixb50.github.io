@@ -149,13 +149,19 @@ Backend：
 
 > GoTools：`gocode`代码自动化提示工具。`godep`go包管理器。`goconvey`go测试工具。
 > Tips：如需sudo也支持go命令,执行链接命令：`sudo ln -s /usr/local/go/bin/go /usr/bin/go`。   
->Personal：`GOROOT`配置在`/etc/profile`内，`GOPATH`配置在`～/.bashrc`。
+>Personal：`GOROOT`配置在`/etc/profile`内，`GOPATH`配置在`～/.bashrc`，最好$GOPATH/bin添加到PATH去。
 
 + [Python]() 包管理器安装python(2.X版本)、python3(3.X版本)
 
 >python包管理器pip：`sudo apt-get install python-pip`  
 >python包管理器pip3：`sudo apt-get install python3-pip`  
 >python虚拟环境：`sudo pip install virtualenv`，参考[virtualenv 和 virtualenvwrapper 实践](https://segmentfault.com/a/1190000004079979)
+```
+# virtualenvwrapper的配置到./bashrc
+export WORKON_HOME='~/.virtualenvs'
+source /usr/local/bin/virtualenvwrapper.sh
+```
+
 
 + [gradle]() java包管理器,构建工具
 
