@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/git/</link>
+    <link>http://wixb50.github.io/categories/git/</link>
     <description>Recent content in Git on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 05 Nov 2015 13:26:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>gitlab搭建教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
@@ -38,11 +38,13 @@
     
     <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
-      <description>&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
+      <guid>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
 git config --global user.name &amp;quot;xxx&amp;quot;                       # 配置用户名
 git config --global user.email &amp;quot;xxx@xxx.com&amp;quot;              # 配置邮件
 git config --global color.ui true                         # git status等命令自动着色
@@ -129,6 +131,33 @@ git grep -e &#39;#define&#39; --and -e SORT_DIRENT
 git gc
 git fsck
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;gitignore&lt;/strong&gt;&lt;br /&gt;
+忽略不想提交的文件&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;gitflow&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git flow init  #初始化一个分支结构，默认选择
+
+git flow hotfix start 3  #创建一个基于develop的分支hotfix/3，并切换到当前分支，补丁修复
+git flow hotfix finish 3  #修复完成，合并分支到develop，并删除hotfix/3分支
+
+git flow feature start demo  #创建一个功能分支，增加新功能
+git flow feature finish demo  #合并完成一个功能分支
+
+git flow release start v0.7.0  #它会创建一个release/v0.7.0分支，主要用于测试
+git flow release finish v0.7.0  #合并完成一个测试分支
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;学习资料&#34;&gt;学习资料&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://git-scm.com/book/zh/v2/&#34;&gt;GitPro2&lt;/a&gt;
+堪称权威,而且还有中文版&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://rogerdudler.github.io/git-guide/index.zh.html&#34;&gt;git-简明指南&lt;/a&gt;
+简单易懂，适合入门&lt;/p&gt;
 </description>
     </item>
     

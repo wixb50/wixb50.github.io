@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/software/</link>
+    <link>http://wixb50.github.io/categories/software/</link>
     <description>Recent content in Software on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 23 Dec 2015 16:21:30 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -194,10 +194,10 @@ parameterized-uri=true
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -698,10 +698,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -725,6 +725,7 @@ http://foo/bar
 &lt;li&gt;&lt;a href=&#34;#aria2下载工具&#34;&gt;Aria2下载工具&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#tldr命令工具&#34;&gt;tldr命令工具&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#终端工具terminator&#34;&gt;终端工具Terminator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#terminal增强zsh&#34;&gt;terminal增强zsh&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#wine-18&#34;&gt;Wine 1.8&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -765,7 +766,8 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 
 &lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
 
-&lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;br /&gt;
+安装&lt;code&gt;sudo apt-get install git-flow&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;git客户端&lt;a href=&#34;http://www.syntevo.com/smartgit/&#34;&gt;SmartGit&lt;/a&gt; 建议直接命令行&lt;br /&gt;&lt;/li&gt;
@@ -1099,6 +1101,19 @@ Alt + → #Move to the terminal right of the current one
 &lt;li&gt;参考资料&lt;br /&gt;
 &lt;a href=&#34;http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html&#34;&gt;开始使用Ubuntu作为工作环境&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;terminal增强zsh&#34;&gt;terminal增强zsh&lt;/h3&gt;
+
+&lt;p&gt;依次执行以下步骤安装：(&lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh&#34;&gt;oh-my-zsh&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install zsh  #先安装zsh
+$ sh -c &amp;quot;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;quot;  #配置oh-my-zsh,zsh的自动配置
+$ chsh -s /bin/zsh  #替换bash为zsh
+$ sudo reboot  #重启生效
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改&lt;code&gt;～/zshrc&lt;/code&gt;文件，将主题改为&lt;code&gt;ZSH_THEME=&amp;quot;gentoo&amp;quot;&lt;/code&gt;显示完整路径。&lt;br /&gt;
+将以前&lt;code&gt;~/bashrc&lt;/code&gt;中的环境变量复制到&lt;code&gt;～/zshrc&lt;/code&gt;文件最后(如果想用)。&lt;/p&gt;
 
 &lt;h3 id=&#34;wine-1-8&#34;&gt;Wine 1.8&lt;/h3&gt;
 

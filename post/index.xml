@@ -2,28 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/post/</link>
+    <link>http://wixb50.github.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Sat, 27 Feb 2016 09:25:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Mar 2016 10:32:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>nosql介绍</title>
+      <link>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Tue, 08 Mar 2016 10:32:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github Star</title>
+      <link>http://wixb50.github.io/2016/02/27/github-star/</link>
+      <pubDate>Sat, 27 Feb 2016 09:26:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/02/27/github-star/</guid>
+      <description>
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;h3 id=&#34;应用&#34;&gt;应用&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/huichen/zerg&#34;&gt;基于docker的分布式爬虫服务&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;markdown&#34;&gt;MarkDown&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/geekcompany/ResumeSample&#34;&gt;程序员简历MD模板&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tex&#34;&gt;Tex&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/billryan/resume/tree/zh_CN&#34;&gt;一个简洁优雅的 XeLaTeX 简历模板&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>文章收藏</title>
-      <link>http://wixb50.gitcafe.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
+      <link>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
       <pubDate>Sat, 27 Feb 2016 09:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
       <description>
 
 &lt;h2 id=&#34;opensource&#34;&gt;OpenSource&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;amp;mid=405458525&amp;amp;idx=1&amp;amp;sn=55df62ed6bd01823806a0f1823f3d09c&amp;amp;scene=1&amp;amp;srcid=02264HbqiU0NKglMR5FpYrxr&amp;amp;key=710a5d99946419d952b51286bb476ae852980381752236f35f6efed2d81774806f1a7c345fa76ff83cf2e78cf079c5ea&amp;amp;ascene=0&amp;amp;uin=MTY3MzQ2MzI0MA%3D%3D&amp;amp;devicetype=iMac+MacBookAir6%2C2+OSX+OSX+10.11.1+build(15B42&#34;&gt;科技公司钟爱的50款开源工具&lt;/a&gt;&amp;amp;version=11020201&amp;amp;pass_ticket=e26w4BJlltsElwNSjLt2YR9yfr3wKAjeFSY4jW2GKDL5EoGluXzwcsD2JICeFSTH)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;amp;mid=405458525&amp;amp;idx=1&amp;amp;sn=55df62ed6bd01823806a0f1823f3d09c&amp;amp;scene=1&amp;amp;srcid=02264HbqiU0NKglMR5FpYrxr&amp;amp;key=710a5d99946419d952b51286bb476ae852980381752236f35f6efed2d81774806f1a7c345fa76ff83cf2e78cf079c5ea&amp;amp;ascene=0&#34;&gt;科技公司钟爱的50款开源工具&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;python&#34;&gt;Python&lt;/h2&gt;
@@ -31,15 +70,21 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://codingpy.com/article/the-idiomatic-way-to-merge-dicts-in-python/?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&#34;&gt;怎样合并字典最符合Python语言习惯&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;react&#34;&gt;React&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dingyiming/learn-Js-react/issues/1&#34;&gt;【资料汇总】React (中文)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>linux 路由表设置 之 route 指令</title>
-      <link>http://wixb50.gitcafe.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Fri, 26 Feb 2016 22:15:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -185,10 +230,10 @@ default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
     
     <item>
       <title>pip常用命令</title>
-      <link>http://wixb50.gitcafe.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 21 Feb 2016 13:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h3 id=&#34;列出已安装的包&#34;&gt;列出已安装的包&lt;/h3&gt;
@@ -281,10 +326,10 @@ django-pagination==1.0.7
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
@@ -537,10 +582,10 @@ journalctl -f
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -717,10 +762,10 @@ parameterized-uri=true
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1221,10 +1266,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1263,10 +1308,10 @@ http://foo/bar
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1561,10 +1606,10 @@ systemctl -l status docker
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1712,10 +1757,10 @@ cb35b356... 172.17.8.103  -
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1797,10 +1842,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -1874,10 +1919,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -1913,10 +1958,10 @@ sudo service xrdp restart
     
     <item>
       <title>nodejs linux安装与卸载</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
       <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
       <description>
 
 &lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
@@ -1963,129 +2008,6 @@ sudo service xrdp restart
 &lt;h2 id=&#34;ps&#34;&gt;Ps&lt;/h2&gt;
 
 &lt;p&gt;&lt;small&gt;也同样适用与其他linux平台编译安装软件。&lt;/small&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>golang使用http client发起get和post请求</title>
-      <link>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</link>
-      <pubDate>Mon, 23 Nov 2015 22:00:33 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/23/golang%E4%BD%BF%E7%94%A8http-client%E5%8F%91%E8%B5%B7get%E5%92%8Cpost%E8%AF%B7%E6%B1%82/</guid>
-      <description>
-
-&lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;get请求&#34;&gt;get请求&lt;/h3&gt;
-
-&lt;p&gt;get请求可以直接http.Get方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func httpGet() {
-    resp, err := http.Get(&amp;quot;http://www.01happy.com/demo/accept.php?id=1&amp;quot;)
-    if err != nil {
-        // handle error
-    }
-
-    defer resp.Body.Close()
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        // handle error
-    }
-
-    fmt.Println(string(body))
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;post请求&#34;&gt;post请求&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;使用http.Post方式&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func httpPost() {
-    resp, err := http.Post(&amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;,
-        &amp;quot;application/x-www-form-urlencoded&amp;quot;,
-        strings.NewReader(&amp;quot;name=cjb&amp;quot;))
-    if err != nil {
-        fmt.Println(err)
-    }
-
-    defer resp.Body.Close()
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        // handle error
-    }
-
-    fmt.Println(string(body))
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tips：使用这个方法的话，第二个参数要设置成”application/x-www-form-urlencoded”，否则post参数无法传递。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;使用http.PostForm方法&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func httpPostForm() {
-    resp, err := http.PostForm(&amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;,
-        url.Values{&amp;quot;key&amp;quot;: {&amp;quot;Value&amp;quot;}, &amp;quot;id&amp;quot;: {&amp;quot;123&amp;quot;}})
-
-    if err != nil {
-        // handle error
-    }
-
-    defer resp.Body.Close()
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        // handle error
-    }
-
-    fmt.Println(string(body))
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;复杂的请求&#34;&gt;复杂的请求&lt;/h3&gt;
-
-&lt;p&gt;有时需要在请求的时候设置头参数、cookie之类的数据，就可以使用http.Do方法。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func httpDo() {
-    client := &amp;amp;http.Client{}
-
-    req, err := http.NewRequest(&amp;quot;POST&amp;quot;, &amp;quot;http://www.01happy.com/demo/accept.php&amp;quot;, strings.NewReader(&amp;quot;name=cjb&amp;quot;))
-    if err != nil {
-        // handle error
-    }
-
-    req.Header.Set(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/x-www-form-urlencoded&amp;quot;)
-    req.Header.Set(&amp;quot;Cookie&amp;quot;, &amp;quot;name=anny&amp;quot;)
-
-    resp, err := client.Do(req)
-
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        // handle error
-    }
-
-    fmt.Println(string(body))
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;同上面的post请求，必须要设定Content-Type为application/x-www-form-urlencoded，post参数才可正常传递.&lt;/p&gt;
-
-&lt;h3 id=&#34;head请求&#34;&gt;Head请求&lt;/h3&gt;
-
-&lt;p&gt;发起head请求可以直接使用http client的head方法。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>golang资料</title>
-      <link>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</link>
-      <pubDate>Sun, 22 Nov 2015 22:00:33 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/22/golang%E8%B5%84%E6%96%99/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;WindowsCrossCompiling:&lt;a href=&#34;https://github.com/golang/go/wiki/WindowsCrossCompiling&#34;&gt;Building windows go programs on linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

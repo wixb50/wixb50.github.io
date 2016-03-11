@@ -2,28 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Develop on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/develop/</link>
+    <link>http://wixb50.github.io/categories/develop/</link>
     <description>Recent content in Develop on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Sat, 27 Feb 2016 09:25:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/develop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Feb 2016 09:26:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/develop/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Github Star</title>
+      <link>http://wixb50.github.io/2016/02/27/github-star/</link>
+      <pubDate>Sat, 27 Feb 2016 09:26:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/02/27/github-star/</guid>
+      <description>
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;h3 id=&#34;应用&#34;&gt;应用&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/huichen/zerg&#34;&gt;基于docker的分布式爬虫服务&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;markdown&#34;&gt;MarkDown&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/geekcompany/ResumeSample&#34;&gt;程序员简历MD模板&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tex&#34;&gt;Tex&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/billryan/resume/tree/zh_CN&#34;&gt;一个简洁优雅的 XeLaTeX 简历模板&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>文章收藏</title>
-      <link>http://wixb50.gitcafe.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
+      <link>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
       <pubDate>Sat, 27 Feb 2016 09:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
       <description>
 
 &lt;h2 id=&#34;opensource&#34;&gt;OpenSource&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;amp;mid=405458525&amp;amp;idx=1&amp;amp;sn=55df62ed6bd01823806a0f1823f3d09c&amp;amp;scene=1&amp;amp;srcid=02264HbqiU0NKglMR5FpYrxr&amp;amp;key=710a5d99946419d952b51286bb476ae852980381752236f35f6efed2d81774806f1a7c345fa76ff83cf2e78cf079c5ea&amp;amp;ascene=0&amp;amp;uin=MTY3MzQ2MzI0MA%3D%3D&amp;amp;devicetype=iMac+MacBookAir6%2C2+OSX+OSX+10.11.1+build(15B42&#34;&gt;科技公司钟爱的50款开源工具&lt;/a&gt;&amp;amp;version=11020201&amp;amp;pass_ticket=e26w4BJlltsElwNSjLt2YR9yfr3wKAjeFSY4jW2GKDL5EoGluXzwcsD2JICeFSTH)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;amp;mid=405458525&amp;amp;idx=1&amp;amp;sn=55df62ed6bd01823806a0f1823f3d09c&amp;amp;scene=1&amp;amp;srcid=02264HbqiU0NKglMR5FpYrxr&amp;amp;key=710a5d99946419d952b51286bb476ae852980381752236f35f6efed2d81774806f1a7c345fa76ff83cf2e78cf079c5ea&amp;amp;ascene=0&#34;&gt;科技公司钟爱的50款开源工具&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;python&#34;&gt;Python&lt;/h2&gt;
@@ -31,15 +61,21 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://codingpy.com/article/the-idiomatic-way-to-merge-dicts-in-python/?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&#34;&gt;怎样合并字典最符合Python语言习惯&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;react&#34;&gt;React&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dingyiming/learn-Js-react/issues/1&#34;&gt;【资料汇总】React (中文)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>Markdown简明语法教程</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
       <description>
 
 &lt;h1 id=&#34;markdown简明语法教程&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
@@ -339,11 +375,13 @@
     
     <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
-      <description>&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
+      <guid>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
 git config --global user.name &amp;quot;xxx&amp;quot;                       # 配置用户名
 git config --global user.email &amp;quot;xxx@xxx.com&amp;quot;              # 配置邮件
 git config --global color.ui true                         # git status等命令自动着色
@@ -430,6 +468,33 @@ git grep -e &#39;#define&#39; --and -e SORT_DIRENT
 git gc
 git fsck
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;gitignore&lt;/strong&gt;&lt;br /&gt;
+忽略不想提交的文件&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;gitflow&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git flow init  #初始化一个分支结构，默认选择
+
+git flow hotfix start 3  #创建一个基于develop的分支hotfix/3，并切换到当前分支，补丁修复
+git flow hotfix finish 3  #修复完成，合并分支到develop，并删除hotfix/3分支
+
+git flow feature start demo  #创建一个功能分支，增加新功能
+git flow feature finish demo  #合并完成一个功能分支
+
+git flow release start v0.7.0  #它会创建一个release/v0.7.0分支，主要用于测试
+git flow release finish v0.7.0  #合并完成一个测试分支
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;学习资料&#34;&gt;学习资料&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://git-scm.com/book/zh/v2/&#34;&gt;GitPro2&lt;/a&gt;
+堪称权威,而且还有中文版&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://rogerdudler.github.io/git-guide/index.zh.html&#34;&gt;git-简明指南&lt;/a&gt;
+简单易懂，适合入门&lt;/p&gt;
 </description>
     </item>
     
