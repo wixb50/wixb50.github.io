@@ -26,6 +26,7 @@ title = "ubuntu常用软件集合"
 - [Aria2下载工具](#aria2下载工具)
 - [tldr命令工具](#tldr命令工具)
 - [终端工具Terminator](#终端工具terminator)
+- [terminal增强zsh](#terminal增强zsh)
 - [Wine 1.8](#wine-18)
 
 <!-- /MarkdownTOC -->
@@ -58,7 +59,8 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 + 简单的MD编辑器[Retext](http://sourceforge.net/projects/retext/)
 
 ### Git
-安装`sudo apt-get install git`  
+安装`sudo apt-get install git`   
+安装`sudo apt-get install git-flow`  
 
 + git客户端[SmartGit](http://www.syntevo.com/smartgit/) 建议直接命令行  
 
@@ -322,6 +324,17 @@ apt-get install nautilus-actions -y
 
 + 参考资料   
 [开始使用Ubuntu作为工作环境](http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html)
+
+### terminal增强zsh
+依次执行以下步骤安装：([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))
+```
+$ sudo apt-get install zsh  #先安装zsh
+$ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"  #配置oh-my-zsh,zsh的自动配置
+$ chsh -s /bin/zsh  #替换bash为zsh
+$ sudo reboot  #重启生效
+```
+修改`～/zshrc`文件，将主题改为`ZSH_THEME="gentoo"`显示完整路径。    
+将以前`~/bashrc`中的环境变量复制到`～/zshrc`文件最后(如果想用)。
 
 ### Wine 1.8
 

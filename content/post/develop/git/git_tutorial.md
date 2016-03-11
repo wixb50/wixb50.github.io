@@ -95,3 +95,29 @@ git grep -e '#define' --and -e SORT_DIRENT
 git gc
 git fsck
 ```
+
+### 其他
+**gitignore**  
+忽略不想提交的文件
+
+**gitflow**  
+```
+git flow init  #初始化一个分支结构，默认选择
+
+git flow hotfix start 3  #创建一个基于develop的分支hotfix/3，并切换到当前分支，补丁修复
+git flow hotfix finish 3  #修复完成，合并分支到develop，并删除hotfix/3分支
+
+git flow feature start demo  #创建一个功能分支，增加新功能
+git flow feature finish demo  #合并完成一个功能分支
+
+git flow release start v0.7.0  #它会创建一个release/v0.7.0分支，主要用于测试
+git flow release finish v0.7.0  #合并完成一个测试分支
+```
+
+### 学习资料
+
+[GitPro2](http://git-scm.com/book/zh/v2/)
+堪称权威,而且还有中文版
+
+[git-简明指南](http://rogerdudler.github.io/git-guide/index.zh.html)
+简单易懂，适合入门
