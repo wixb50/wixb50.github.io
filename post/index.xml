@@ -2,31 +2,367 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/post/</link>
+    <link>http://wixb50.github.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Tue, 08 Mar 2016 10:32:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Mar 2016 15:10:38 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker集群系列之－Kubernetes对象文件定义</title>
+      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <description>
+
+&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
+
+&lt;p&gt;主要对kubernetes用户需要定义的Pod,RC和Service的配置文件进行详细说明。&lt;/p&gt;
+
+&lt;h2 id=&#34;pod定义文件详解&#34;&gt;Pod定义文件详解&lt;/h2&gt;
+
+&lt;p&gt;Pod定义文件模板(yaml格式)如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1      # required
+kind: Pod           # required
+metadata:           # required
+  name: string      # required
+  namespace: string      # required
+  labels:
+    - name: string
+  annotations:
+    - name: string
+spec:       # required
+  containers:       # required
+    - name: string      # required
+      image: string     # required
+      imagePullPolicy: [Always | Never | IfNotPresent]
+      command: [string]
+      workingDir: string
+      volumeMounts:
+        - name: string
+          mountPath: string
+          readOnly: boolean
+      ports:
+        - name: string
+          containerPort: int
+          hostPort: int
+          protocol: string
+      env:
+        - name: string
+          value: string
+      resources:
+        limits:
+         cpu: string
+         memory: string
+  volumes:
+    - name: string
+      # Either emptyDir for an empty directory
+      emptyDir: {}
+      # Or hostPath for a pre-existing directory on the host
+      hostPath:
+        path: string
+  restartPolicy: [Always | Never | OnFailure]
+  dnsPlicy: [Default | ClusterFirst]        # required
+  nodeSelector: object
+  imagePullSercret: object
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对Pod各属性详细说明表如下：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;属 性 名 称&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 类 型&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;是 否 必 选&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;version&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;v1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;kind&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Pod&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;元数据&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;rc定义文件详解&#34;&gt;RC定义文件详解&lt;/h2&gt;
+
+&lt;p&gt;RC(ReplicationController)定义文件模板(yaml格式)如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1      # required
+kind: ReplicationController           # required
+metadata:           # required
+  name: string      # required
+  namespace: string      # required
+  labels:
+    - name: string
+  annotations:
+    - name: string
+spec:       # required
+  replicas: number      # required
+  selector: []      # required
+  template: object      # required
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;service定义文件详解&#34;&gt;Service定义文件详解&lt;/h2&gt;
+
+&lt;p&gt;Service定义文件模板(yaml格式)如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1      # required
+kind: Service           # required
+metadata:           # required
+  name: string      # required
+  namespace: string      # required
+  labels:
+    - name: string
+  annotations:
+    - name: string
+spec:       # required
+  selector: []      # required
+  type: string      #required
+  clusterIP: string
+  sessionAffinity: string
+  ports:
+    - name: string
+      port: int
+      targetPort: int
+      protocol: string
+  status:
+    loadBalancer:
+      ingress:
+        ip: string
+        hostname: string
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对Service各属性详细说明表如下：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;属 性 名 称&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 类 型&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;是 否 必 选&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;version&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;v1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;kind&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Pod&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;元数据&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.name&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Service名称，符合RFC1035规范&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.namespace&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;命名空间，不指定时系统使用名为&amp;raquo;default&amp;raquo;的命名空间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.labels[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;自定义标签属性列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.annotation[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;自定义注解属性列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;详细描述&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.selector[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Label Selector配置，将选择具有指定label标签的Pod作为管理范围&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.type&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;string&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Service类型，指定Service访问方式，默认为ClusterIP。&lt;br&gt;ClusterIP: 虚拟的服务IP地址，该地址用户kubernetes集群内部Pod访问，在Node上kube-proxy通过设置的iptables规则进行转发;&lt;br&gt;NodePort: 使用宿主机的端口，使能够访问各Node的外部客户端通过Node的IP地址和端口号就能访问服务;&lt;br&gt;LoadBalancer: 使用外接负载均衡器完成到服务的负载分发，需要在spec.status.loadBalancer字段指定外部负载均衡器的IP地址，并同时定义nodePort和clusterIP.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.clusterIP&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;虚拟服务IP地址，当type=ClusterIP时，如果不指定，则系统自动分配;当type=LoadBalancer时，则需要指定。&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.sessionAffinity&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是否支持Session，可选值为ClientIP，默认为空。&lt;br&gt;ClientIP: 表示同一个客户端(根据客户端的IP地址决定)的访问请求都转发到同一个后端Pod。&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Service需要暴露的端口号列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].name&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;端口名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].port&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;int&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;服务监听的端口号&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].targetPort&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;int&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;需要转发到后端Pod的端口号&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].protocol&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;int&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;端口协议，支持TCP和UDP，默认TCP&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;当spec.type=LoadBalancer时，设置外部负载均衡器的地址&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer.ingress&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer.ingress.ip&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;string&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器的IP地址&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer.ingress.hostname&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;string&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器的主机名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;附录&#34;&gt;附录&lt;/h2&gt;
+
+&lt;p&gt;根据yaml创建：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl create -f &amp;lt;filename.yaml&amp;gt; [--validate[=true]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;根据yaml删除：
+&lt;code&gt;
+$ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>nosql介绍</title>
-      <link>http://wixb50.gitcafe.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 08 Mar 2016 10:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github Star</title>
-      <link>http://wixb50.gitcafe.io/2016/02/27/github-star/</link>
+      <link>http://wixb50.github.io/2016/02/27/github-star/</link>
       <pubDate>Sat, 27 Feb 2016 09:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/27/github-star/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/github-star/</guid>
       <description>
 
 &lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
@@ -48,15 +384,21 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/billryan/resume/tree/zh_CN&#34;&gt;一个简洁优雅的 XeLaTeX 简历模板&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;frontend&#34;&gt;Frontend&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/AutumnsWind/Front-end-tutorial&#34;&gt;最全的资源教程-前端涉及的所有知识体系&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>文章收藏</title>
-      <link>http://wixb50.gitcafe.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
+      <link>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
       <pubDate>Sat, 27 Feb 2016 09:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
       <description>
 
 &lt;h2 id=&#34;opensource&#34;&gt;OpenSource&lt;/h2&gt;
@@ -76,15 +418,40 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/dingyiming/learn-Js-react/issues/1&#34;&gt;【资料汇总】React (中文)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;javascript&#34;&gt;JavaScript&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://web.jobbole.com/85265/&#34;&gt;JavaScript 开发最佳实践&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;web&#34;&gt;Web&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.brucefeng.info/post/brower-server-msg&#34;&gt;浏览器与服务器的消息通信&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.dou-bi.com/dbwz-3/&#34;&gt;教你申请.tk/.ml/.cf/.gq/.ga等免费域名&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;sql&#34;&gt;SQL&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000004443840#articleHeader0&#34;&gt;关系型数据库树形结构的设计&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qinghua.github.io/kubernetes-in-mesos-1/&#34;&gt;如果有10000台机器，你想怎么玩?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>linux 路由表设置 之 route 指令</title>
-      <link>http://wixb50.gitcafe.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Fri, 26 Feb 2016 22:15:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -230,10 +597,10 @@ default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
     
     <item>
       <title>pip常用命令</title>
-      <link>http://wixb50.gitcafe.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 21 Feb 2016 13:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h3 id=&#34;列出已安装的包&#34;&gt;列出已安装的包&lt;/h3&gt;
@@ -326,10 +693,10 @@ django-pagination==1.0.7
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
@@ -525,6 +892,8 @@ sudo systemctl status &amp;lt;service-name&amp;gt;
 &lt;p&gt;Check each server :&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;ssh core@10.0.0.1
+fleetctl list-machines
+# and
 journalctl -f
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -582,10 +951,10 @@ journalctl -f
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -762,10 +1131,10 @@ parameterized-uri=true
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1266,10 +1635,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1279,6 +1648,8 @@ http://foo/bar
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#云服务器内存耗尽，打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -1303,15 +1674,47 @@ http://foo/bar
 &lt;/ol&gt;
 
 &lt;p&gt;原因：compiz设置错误。&lt;/p&gt;
+
+&lt;h2 id=&#34;google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/h2&gt;
+
+&lt;p&gt;1.Setup key with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.Setup repository with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo sh -c &#39;echo &amp;quot;deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main&amp;quot; &amp;gt;&amp;gt; /etc/apt/sources.list.d/google-chrome.list&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.Update package with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考方案: &lt;a href=&#34;http://www.ubuntuupdates.org/ppa/google_chrome&#34;&gt;3rd Party Repository: Google Chrome&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
+
+&lt;p&gt;virtual memory exhausted: Cannot allocate memory 问题：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ dd if=/dev/zero of=/swap bs=1024 count=1M 
+Format the swap file: 
+$ mkswap /swap 
+Enable the swap file: 
+$ swapon /swap 
+Enable swap on boot: 
+$ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1606,10 +2009,10 @@ systemctl -l status docker
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1757,10 +2160,10 @@ cb35b356... 172.17.8.103  -
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1842,10 +2245,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -1919,10 +2322,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -1953,61 +2356,6 @@ sudo service xrdp restart
 填上正确的IP地址，按回车，会出现一个登陆框，我们选择“sesman-Xvnc”这个，然后输入你的Ubuntu的用户名和密码，OK！&lt;/p&gt;
 
 &lt;p&gt;后记：使用这种方法连上Ubuntu还有个问题，就是键盘的快捷键会有点小混乱。此时断开远程桌面，在Ubuntu的实体机器上，打开管理键盘快捷键，将带有“windows”键，ubunntu显示是“mod5”键（好像是类似的，记不清了）的快捷键组合删掉即可。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>nodejs linux安装与卸载</title>
-      <link>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
-      <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
-      <description>
-
-&lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
-
-&lt;h3 id=&#34;安装-源码下载&#34;&gt;安装、源码下载&lt;/h3&gt;
-
-&lt;p&gt;下载最新版本node的源代码：&lt;a href=&#34;https://nodejs.org/en/download/&#34;&gt;下载&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;解压下载文件：&lt;br /&gt;
-&lt;code&gt;tar -xzvf node-v4.2.1.tar.gz&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;切换工作目录至源代码目录：&lt;br /&gt;
-&lt;code&gt;cd node-v4.2.1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;configure&lt;/code&gt;配置安装文件：&lt;br /&gt;
-&lt;code&gt;./configure&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;make编译码代码：  &lt;em&gt;(编译Node源码时间较长，我编译用了大约40分左右。)&lt;/em&gt;&lt;br /&gt;
-&lt;code&gt;make&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;make install安装：&lt;br /&gt;
-&lt;code&gt;sudo make install&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;查看安装：&lt;em&gt;(显示版本号)&lt;/em&gt;&lt;br /&gt;
-&lt;code&gt;node -v&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;卸载&#34;&gt;卸载&lt;/h3&gt;
-
-&lt;p&gt;保留编译完成的源码包，或者自己再重新编译生成个&lt;/p&gt;
-
-&lt;p&gt;干掉make install命令时装进去的文件,需要管理员身份&lt;br /&gt;
-&lt;code&gt;sudo make uninstall&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;只删除make时产生的临时文件：&lt;br /&gt;
-&lt;code&gt;make clean&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;同时删除configure和make产生的临时文件&lt;br /&gt;
-&lt;code&gt;make distclean&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;升级node版本&#34;&gt;升级Node版本&lt;/h3&gt;
-
-&lt;p&gt;直接下载源码重新编译，安装。（覆盖了旧的版本）&lt;/p&gt;
-
-&lt;h2 id=&#34;ps&#34;&gt;Ps&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;也同样适用与其他linux平台编译安装软件。&lt;/small&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -2,22 +2,358 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on Wixb blog</title>
-    <link>http://wixb50.gitcafe.io/categories/docker/</link>
+    <link>http://wixb50.github.io/categories/docker/</link>
     <description>Recent content in Docker on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Wed, 30 Dec 2015 19:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.gitcafe.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Mar 2016 15:10:38 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker集群系列之－Kubernetes对象文件定义</title>
+      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <description>
+
+&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
+
+&lt;p&gt;主要对kubernetes用户需要定义的Pod,RC和Service的配置文件进行详细说明。&lt;/p&gt;
+
+&lt;h2 id=&#34;pod定义文件详解&#34;&gt;Pod定义文件详解&lt;/h2&gt;
+
+&lt;p&gt;Pod定义文件模板(yaml格式)如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1      # required
+kind: Pod           # required
+metadata:           # required
+  name: string      # required
+  namespace: string      # required
+  labels:
+    - name: string
+  annotations:
+    - name: string
+spec:       # required
+  containers:       # required
+    - name: string      # required
+      image: string     # required
+      imagePullPolicy: [Always | Never | IfNotPresent]
+      command: [string]
+      workingDir: string
+      volumeMounts:
+        - name: string
+          mountPath: string
+          readOnly: boolean
+      ports:
+        - name: string
+          containerPort: int
+          hostPort: int
+          protocol: string
+      env:
+        - name: string
+          value: string
+      resources:
+        limits:
+         cpu: string
+         memory: string
+  volumes:
+    - name: string
+      # Either emptyDir for an empty directory
+      emptyDir: {}
+      # Or hostPath for a pre-existing directory on the host
+      hostPath:
+        path: string
+  restartPolicy: [Always | Never | OnFailure]
+  dnsPlicy: [Default | ClusterFirst]        # required
+  nodeSelector: object
+  imagePullSercret: object
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对Pod各属性详细说明表如下：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;属 性 名 称&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 类 型&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;是 否 必 选&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;version&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;v1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;kind&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Pod&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;元数据&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;rc定义文件详解&#34;&gt;RC定义文件详解&lt;/h2&gt;
+
+&lt;p&gt;RC(ReplicationController)定义文件模板(yaml格式)如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1      # required
+kind: ReplicationController           # required
+metadata:           # required
+  name: string      # required
+  namespace: string      # required
+  labels:
+    - name: string
+  annotations:
+    - name: string
+spec:       # required
+  replicas: number      # required
+  selector: []      # required
+  template: object      # required
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;service定义文件详解&#34;&gt;Service定义文件详解&lt;/h2&gt;
+
+&lt;p&gt;Service定义文件模板(yaml格式)如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1      # required
+kind: Service           # required
+metadata:           # required
+  name: string      # required
+  namespace: string      # required
+  labels:
+    - name: string
+  annotations:
+    - name: string
+spec:       # required
+  selector: []      # required
+  type: string      #required
+  clusterIP: string
+  sessionAffinity: string
+  ports:
+    - name: string
+      port: int
+      targetPort: int
+      protocol: string
+  status:
+    loadBalancer:
+      ingress:
+        ip: string
+        hostname: string
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对Service各属性详细说明表如下：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;属 性 名 称&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 类 型&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;是 否 必 选&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;取 值 说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;version&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;v1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;kind&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Pod&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;元数据&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.name&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Service名称，符合RFC1035规范&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.namespace&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;命名空间，不指定时系统使用名为&amp;raquo;default&amp;raquo;的命名空间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.labels[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;自定义标签属性列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;metadata.annotation[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;自定义注解属性列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;详细描述&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.selector[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Label Selector配置，将选择具有指定label标签的Pod作为管理范围&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.type&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;string&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Required&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Service类型，指定Service访问方式，默认为ClusterIP。&lt;br&gt;ClusterIP: 虚拟的服务IP地址，该地址用户kubernetes集群内部Pod访问，在Node上kube-proxy通过设置的iptables规则进行转发;&lt;br&gt;NodePort: 使用宿主机的端口，使能够访问各Node的外部客户端通过Node的IP地址和端口号就能访问服务;&lt;br&gt;LoadBalancer: 使用外接负载均衡器完成到服务的负载分发，需要在spec.status.loadBalancer字段指定外部负载均衡器的IP地址，并同时定义nodePort和clusterIP.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.clusterIP&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;虚拟服务IP地址，当type=ClusterIP时，如果不指定，则系统自动分配;当type=LoadBalancer时，则需要指定。&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.sessionAffinity&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;是否支持Session，可选值为ClientIP，默认为空。&lt;br&gt;ClientIP: 表示同一个客户端(根据客户端的IP地址决定)的访问请求都转发到同一个后端Pod。&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[]&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;list&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Service需要暴露的端口号列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].name&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;String&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;端口名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].port&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;int&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;服务监听的端口号&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].targetPort&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;int&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;需要转发到后端Pod的端口号&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;spec.ports[].protocol&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;int&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;端口协议，支持TCP和UDP，默认TCP&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;当spec.type=LoadBalancer时，设置外部负载均衡器的地址&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer.ingress&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;object&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer.ingress.ip&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;string&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器的IP地址&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;status.loadBalancer.ingress.hostname&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;string&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;外部负载均衡器的主机名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;附录&#34;&gt;附录&lt;/h2&gt;
+
+&lt;p&gt;根据yaml创建：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl create -f &amp;lt;filename.yaml&amp;gt; [--validate[=true]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;根据yaml删除：
+&lt;code&gt;
+$ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
@@ -213,6 +549,8 @@ sudo systemctl status &amp;lt;service-name&amp;gt;
 &lt;p&gt;Check each server :&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;ssh core@10.0.0.1
+fleetctl list-machines
+# and
 journalctl -f
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -270,10 +608,10 @@ journalctl -f
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -568,10 +906,10 @@ systemctl -l status docker
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -653,10 +991,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.gitcafe.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;方法一-安装命令&#34;&gt;方法一：安装命令&lt;/h3&gt;

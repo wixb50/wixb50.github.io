@@ -10,18 +10,18 @@
   <title>ubuntu常见故障 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.gitcafe.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.gitcafe.io/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.gitcafe.io/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.gitcafe.io/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.gitcafe.io/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.gitcafe.io\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=1&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.gitcafe.io/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,10 +88,10 @@
 <div class="content container">
   <div class="post">
     <h1>ubuntu常见故障</h1>
-    <span class="post-date">Dec 17, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.gitcafe.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/#disqus_thread">Comments</a>
+    <span class="post-date">Dec 17, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.gitcafe.io/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.gitcafe.io/categories/os">os</a>
+    <a class="label" href="http://wixb50.github.io/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.github.io/categories/os">os</a>
     </span>
     
 
@@ -102,6 +102,8 @@
 <ul>
 <li><a href="#ssh错误-permission-denied-publickey">ssh错误: permission denied (publickey)</a></li>
 <li><a href="#unity菜单栏消失">unity菜单栏消失</a></li>
+<li><a href="#google-chrome更新出错">google chrome更新出错</a></li>
+<li><a href="#云服务器内存耗尽，打开虚拟内存">云服务器内存耗尽，打开虚拟内存</a></li>
 </ul>
 
 <!-- /MarkdownTOC -->
@@ -126,6 +128,38 @@
 </ol>
 
 <p>原因：compiz设置错误。</p>
+
+<h2 id="google-chrome更新出错">google chrome更新出错</h2>
+
+<p>1.Setup key with:</p>
+
+<pre><code>wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+</code></pre>
+
+<p>2.Setup repository with:</p>
+
+<pre><code>sudo sh -c 'echo &quot;deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main&quot; &gt;&gt; /etc/apt/sources.list.d/google-chrome.list'
+</code></pre>
+
+<p>3.Update package with:</p>
+
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p>参考方案: <a href="http://www.ubuntuupdates.org/ppa/google_chrome">3rd Party Repository: Google Chrome</a></p>
+
+<h2 id="云服务器内存耗尽-打开虚拟内存">云服务器内存耗尽，打开虚拟内存</h2>
+
+<p>virtual memory exhausted: Cannot allocate memory 问题：</p>
+
+<pre><code>$ dd if=/dev/zero of=/swap bs=1024 count=1M 
+Format the swap file: 
+$ mkswap /swap 
+Enable the swap file: 
+$ swapon /swap 
+Enable swap on boot: 
+$ echo &quot;/swap swap swap sw 0 0&quot; &gt;&gt; /etc/fstab
+</code></pre>
 
   </div>
   <div id="disqus_thread"></div>
@@ -155,7 +189,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.gitcafe.io/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
