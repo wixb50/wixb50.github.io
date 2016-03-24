@@ -104,6 +104,7 @@ sudo apt-get install ubuntu-tweak
 
 + 开放网络客户端 [Lantern](https://getlantern.org/)
 + [Shadowsocks](https://shadowsocks.org/en/index.html) 装好之后还要设置浏览器代理  
++ [tsocks](http://blog.xinshangshangxin.com/2015/06/21/linux%E7%BB%88%E7%AB%AF%E7%BF%BB%E5%A2%99/) 终端socks翻墙工具
 
 安装PPA is for Ubuntu >= 14.04.
 ```
@@ -139,7 +140,8 @@ sudo dpkg -i symbol-fonts_1.2_all.deb
 
 Frontend：  
 
-+ [node](https://nodejs.org/en/) 最好编译安装 [install-tutorial](https://linux.cn/article-5766-1.html)
++ [nvm](https://github.com/creationix/nvm) node版本管理,安装
++ [node](https://nodejs.org/en/) 使用nvm安装,或者[编译安装](https://linux.cn/article-5766-1.html)
 + [npm](null-link) node包管理器
 + [bower](null-link) 前端开发包管理器
 + [gulp](null-link) 构建工具

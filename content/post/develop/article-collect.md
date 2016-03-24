@@ -19,3 +19,19 @@ title = "文章收藏"
 
 + [【资料汇总】React (中文)](https://github.com/dingyiming/learn-Js-react/issues/1)
 
+## JavaScript
+
++ [JavaScript 开发最佳实践](http://web.jobbole.com/85265/)
+
+## Web
+
++ [浏览器与服务器的消息通信](http://blog.brucefeng.info/post/brower-server-msg)
++ [教你申请.tk/.ml/.cf/.gq/.ga等免费域名](http://www.dou-bi.com/dbwz-3/)
+
+## SQL
+
++ [关系型数据库树形结构的设计](https://segmentfault.com/a/1190000004443840#articleHeader0)
+
+## Docker
+
++ [如果有10000台机器，你想怎么玩?](http://qinghua.github.io/kubernetes-in-mesos-1/)

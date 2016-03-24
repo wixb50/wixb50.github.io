@@ -180,6 +180,8 @@ Check your cluster heatlh : http://10.0.0.1:8080/static/app/#/dashboard/
 Check each server :
 
     ssh core@10.0.0.1
+    fleetctl list-machines
+    # and
     journalctl -f
     
 # Enjoy

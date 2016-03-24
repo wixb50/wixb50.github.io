@@ -19,3 +19,7 @@ title = "Github Star"
 ## Tex
 
 + [一个简洁优雅的 XeLaTeX 简历模板](https://github.com/billryan/resume/tree/zh_CN)
+
+## Frontend
+
++ [最全的资源教程-前端涉及的所有知识体系](https://github.com/AutumnsWind/Front-end-tutorial)
