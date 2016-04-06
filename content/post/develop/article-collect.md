@@ -10,6 +10,8 @@ title = "文章收藏"
 ## OpenSource
 
 + [科技公司钟爱的50款开源工具](https://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&mid=405458525&idx=1&sn=55df62ed6bd01823806a0f1823f3d09c&scene=1&srcid=02264HbqiU0NKglMR5FpYrxr&key=710a5d99946419d952b51286bb476ae852980381752236f35f6efed2d81774806f1a7c345fa76ff83cf2e78cf079c5ea&ascene=0)
++ [开源软件TOP10-上](http://toutiao.com/a6249769056532447489/)
++ [技术干货分享](http://blog.luoyuanhang.com/2016/03/27/%E6%8A%80%E6%9C%AF%E5%B9%B2%E8%B4%A7%E5%88%86%E4%BA%AB/)
 
 ## Python
 
@@ -35,3 +37,11 @@ title = "文章收藏"
 ## Docker
 
 + [如果有10000台机器，你想怎么玩?](http://qinghua.github.io/kubernetes-in-mesos-1/)
+
+## Archatecture
+
++ [微服务实战：从发布到架构](http://toutiao.com/m6140376053/)
+
+## Other
+
++ [应该掌握的10个搜索技巧](http://www.imooc.com/article/4071)

@@ -61,6 +61,8 @@ title = "sublime-text-3配置"
 
 11.[anaconda](https://github.com/DamnWidget/anaconda),python功能插件
 
+12.[Javatar](https://javatar.readthedocs.org/),Java IDE插件
+
 ## sublime text 3安装Package Control
 
 ### 简单安装方法

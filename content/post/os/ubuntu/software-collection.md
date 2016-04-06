@@ -334,6 +334,9 @@ $ sudo apt-get install zsh  #先安装zsh
 $ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"  #配置oh-my-zsh,zsh的自动配置
 $ chsh -s /bin/zsh  #替换bash为zsh
 $ sudo reboot  #重启生效
+
+# 另外更新oh-my-zsh
+$ upgrade_oh_my_zsh
 ```
 修改`～/zshrc`文件，将主题改为`ZSH_THEME="gentoo"`显示完整路径。    
 将以前`~/bashrc`中的环境变量复制到`～/zshrc`文件最后(如果想用)。
