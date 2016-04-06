@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/software/</link>
+    <link>http://wixb50.github.io/categories/software/</link>
     <description>Recent content in Software on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 23 Dec 2015 16:21:30 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -194,10 +194,10 @@ parameterized-uri=true
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -698,10 +698,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1112,6 +1112,9 @@ Alt + → #Move to the terminal right of the current one
 $ sh -c &amp;quot;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;quot;  #配置oh-my-zsh,zsh的自动配置
 $ chsh -s /bin/zsh  #替换bash为zsh
 $ sudo reboot  #重启生效
+
+# 另外更新oh-my-zsh
+$ upgrade_oh_my_zsh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;修改&lt;code&gt;～/zshrc&lt;/code&gt;文件，将主题改为&lt;code&gt;ZSH_THEME=&amp;quot;gentoo&amp;quot;&lt;/code&gt;显示完整路径。&lt;br /&gt;
