@@ -80,6 +80,7 @@ sudo apt-get install ubuntu-tweak
 ```
 + 主题网址[http://gnome-look.org/](http://gnome-look.org/) 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用`unity-tweak-tool`选择;
 + icon网址[https://github.com/NitruxSA/ardis-icon-theme](https://github.com/NitruxSA/ardis-icon-theme) 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用`unity-tweak-tool`选择;或者直接命令安装再设置;
++ [挺好看的一个主题](https://github.com/anmoljagetia/Flatabulous/),里面“NoobsLab”源的主题都挺好看的。
 
 ### 添加字体
 
@@ -93,7 +94,8 @@ sudo apt-get install ubuntu-tweak
 
 ### 思维导图
 
-+ 最流行的思维导图 [XMind](http://www.xmind.net/cn/) 下载deb安装 
++ 最流行的思维导图 [XMind](http://www.xmind.net/cn/) 下载deb安装
++ java实现的[FreeMind](http://freemind.sourceforge.net/wiki/index.php/Download)  下载deb安装
 + 百度在线脑图 [百度脑图](http://naotu.baidu.com/)
 
 ### 影音

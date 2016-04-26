@@ -25,6 +25,7 @@ title = "ubuntu常用命令集合"
 - [新增User](#新增user)
 - [fg、bg、jobs、&、nohup、ctrl+z、ctrl+c 、kill命令](#fg、bg、jobs、、nohup、ctrlz、ctrlc-、kill命令)
 - [kill，killall，pkill，xkill 命令](#kill，killall，pkill，xkill-命令)
+- [add-apt-repository命令](#add-apt-repository命令)
 
 <!-- /MarkdownTOC -->
 
@@ -272,3 +273,27 @@ xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩
 xkill 调用方法：
 [root@localhost ~]# xkill
 ```
+
+## add-apt-repository命令
+个人软件包档案（PPA）是Ubuntu独有的解决方案，允许独立开发者和贡献者构建、贡献任何定制的软件包来作为通过启动面板的第三方APT仓库。如果你是Ubuntu用户，有可能你已经增加一些流行的第三方PPA仓库到你的Ubuntu系统。如果你需要删除掉已经预先配置好的PPA仓库，下面将教你怎么做。
+
+假如你想增加一个叫“ppa:webapps/preview”第三方PPA仓库到你的系统中，如下：
+```
+$ sudo add-apt-repository ppa:webapps/preview
+```
+如果你想要 单独地删除某个PPA仓库，运行下面的命令：
+```
+$ sudo add-apt-repository --remove ppa:someppa/ppa 
+```
+注意，上述命令不会同时删除任何已经安装或更新的软件包。
+
+如果你想要 完整的删除一个PPA仓库并包括来自这个PPA安装或更新过的软件包，你需要ppa-purge命令。
+
+```
+# 首先要安装ppa-purge软件包
+$ sudo apt-get install ppa-purge
+# 然后使用如下命令删除PPA仓库和与之相关的软件包
+$ sudo ppa-purge ppa:webapps/preview 
+```
+这样就ok了。
+

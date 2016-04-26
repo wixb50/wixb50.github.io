@@ -1,8 +1,8 @@
 +++
-categories = ["mysql","data-dictionary"]
+categories = ["mysql","tools"]
 date = "2015-11-13T21:35:17+08:00"
 description = "mysql数据字典生成工具php版"
-keywords = ["data-dictionary"]
+keywords = ["tools"]
 title = "mysql数据字典生成工具"
 
 +++

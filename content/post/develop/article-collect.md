@@ -17,6 +17,14 @@ title = "文章收藏"
 
 + [怎样合并字典最符合Python语言习惯](http://codingpy.com/article/the-idiomatic-way-to-merge-dicts-in-python/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
+## Java
+
++ [八个最实用的Java开发工具](http://www.imooc.com/article/1149)
+
+## Golang
+
++ [Golang语言基础](http://xhrwang.me/2014/12/22/golang-fundamentals-1-types-variables-constants.html)
+
 ## React
 
 + [【资料汇总】React (中文)](https://github.com/dingyiming/learn-Js-react/issues/1)
@@ -33,6 +41,7 @@ title = "文章收藏"
 ## SQL
 
 + [关系型数据库树形结构的设计](https://segmentfault.com/a/1190000004443840#articleHeader0)
++ [数据库设计那些事](http://sunheran.com/2015/01/27/database-design/)
 
 ## Docker
 
@@ -41,6 +50,11 @@ title = "文章收藏"
 ## Archatecture
 
 + [微服务实战：从发布到架构](http://toutiao.com/m6140376053/)
+
+## LaTex
+
++ [LaTex排版全解](http://www.cnblogs.com/jingwhale/p/4250296.html)
++ [PDFLaTex-XeLatex-PDFTex-XeTex等区别](http://www.lai18.com/content/1987690.html)
 
 ## Other
 

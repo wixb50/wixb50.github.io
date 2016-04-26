@@ -14,7 +14,6 @@ title = "sublime-text-3配置"
   - [简单安装方法](#简单安装方法)
   - [常规安装方法](#常规安装方法)
 - [Sublime Text 2/3 输入法修复](#Ubuntu(Debian))
-  - [**注意**](#注意)
   - [使用方法](#使用方法)
 - [卸载已安装的插件](#卸载已安装的插件)
 
@@ -90,10 +89,6 @@ If for some reason the console installation instructions do not work for you (su
 + 安装 Fcitx 输入法 + 皮肤
 + 修复 Sublime Text 2/3's 在 Ubuntu(Debian) 系统下的无法输入中文输入法的问题
 
-### **注意**
-
-+ **这个修复仅当在终端中使用 `subl .` 调用 Sublime Text 的时有效, 具体原因请看源代码[src/subl](https://github.com/lyfeyaj/sublime-text-imfix/blob/master/src/subl)**
-
 ### 使用方法
 
 + 更新并升级系统为最新(较新的系统会解决很多可能出现的问题)
@@ -114,7 +109,9 @@ git clone https://github.com/lyfeyaj/sublime-text-imfix.git
 cd sublime-text-imfix && ./sublime-imfix
 ```
 
-+ 完成! 重新启动后就可以在Sublime Text 2/3 中 使用Fcitx了! 注意: 皮肤可能需要自己选择 ^_^
++ 完成! 重新启动后控制台运行`subl`就可以在Sublime Text 2/3 中 使用Fcitx了! 注意: 皮肤可能需要自己选择 ^_^
+
++ 补充，[修正只能在终端中打开才能输入中文问题](https://github.com/lyfeyaj/sublime-text-imfix/issues/10)。就可以放心的玩耍了。
 
 ## 卸载已安装的插件
 
