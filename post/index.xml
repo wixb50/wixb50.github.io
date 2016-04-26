@@ -2,22 +2,188 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.coding.me/post/</link>
+    <link>http://wixb50.github.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Sun, 13 Mar 2016 15:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Apr 2016 11:35:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>实用的20个正则表达式</title>
+      <link>http://wixb50.github.io/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sat, 23 Apr 2016 11:35:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>
+
+&lt;p&gt;正则表达式，仅仅用一段非常简短的表达式语句，便能够快速实现一个非常复杂的业务逻辑。熟练地掌握正则表达式的话，能够使你的开发效率得到极大的提升。&lt;/p&gt;
+
+&lt;p&gt;正则表达式经常被用于字段或任意字符串的校验，如下面这段校验基本日期格式的JavaScript代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var reg = /^(\\d{1,4})(-|\\/)(\\d{1,2})\\2(\\d{1,2})$/;
+var r = fieldValue.match(reg);
+if(r==null)alert(&#39;Date format error!&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面是整理的，在开发中经常使用到的20个正则表达式。&lt;/p&gt;
+
+&lt;h4 id=&#34;1-校验密码强度&#34;&gt;1 . 校验密码强度&lt;/h4&gt;
+
+&lt;p&gt;密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-校验中文&#34;&gt;2. 校验中文&lt;/h4&gt;
+
+&lt;p&gt;字符串仅能是中文。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^[\\u4e00-\\u9fa5]{0,}$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;3-由数字-26个英文字母或下划线组成的字符串&#34;&gt;3. 由数字、26个英文字母或下划线组成的字符串&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;^\\w+$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;4-校验e-mail-地址&#34;&gt;4. 校验E-Mail 地址&lt;/h4&gt;
+
+&lt;p&gt;同密码一样，下面是E-mail地址合规性的正则检查语句。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[\\w!#$%&amp;amp;&#39;*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;amp;&#39;*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;5-校验身份证号码&#34;&gt;5. 校验身份证号码&lt;/h4&gt;
+
+&lt;p&gt;下面是身份证号码的正则校验。15 或 18位。&lt;br /&gt;
+15位：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;18位：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;6-校验日期&#34;&gt;6. 校验日期&lt;/h4&gt;
+
+&lt;p&gt;“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;7-校验金额&#34;&gt;7. 校验金额&lt;/h4&gt;
+
+&lt;p&gt;金额校验，精确到2位小数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^[0-9]+(.[0-9]{2})?$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;8-校验手机号&#34;&gt;8. 校验手机号&lt;/h4&gt;
+
+&lt;p&gt;下面是国内 13、15、18开头的手机号正则表达式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;9-判断ie的版本&#34;&gt;9. 判断IE的版本&lt;/h4&gt;
+
+&lt;p&gt;IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^.*MSIE [5-8](?:\\.[0-9]+)?(?!.*Trident\\/[5-9]\\.0).*$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;10-校验ip-v4地址&#34;&gt;10. 校验IP-v4地址&lt;/h4&gt;
+
+&lt;p&gt;IP4 正则语句。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;11-校验ip-v6地址&#34;&gt;11. 校验IP-v6地址&lt;/h4&gt;
+
+&lt;p&gt;IP6 正则语句。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;12-检查url的前缀&#34;&gt;12. 检查URL的前缀&lt;/h4&gt;
+
+&lt;p&gt;应用开发中很多时候需要区分请求是HTTPS还是HTTP，通过下面的表达式可以取出一个url的前缀然后再逻辑判断。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (!s.match(/^[a-zA-Z]+:\\/\\//)){
+s = &#39;http://&#39; + s;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;13-提取url链接&#34;&gt;13. 提取URL链接&lt;/h4&gt;
+
+&lt;p&gt;下面的这个表达式可以筛选出一段文本中的URL。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^(f|ht){1}(tp|tps):\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- ./?%&amp;amp;=]*)?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;14-文件路径及扩展名校验&#34;&gt;14. 文件路径及扩展名校验&lt;/h4&gt;
+
+&lt;p&gt;验证文件路径和扩展名&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^([a-zA-Z]\\:|\\\\)\\\\([^\\\\]+\\\\)*[^\\/:*?&amp;quot;&amp;lt;&amp;gt;|]+\\.txt(l)?$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;15-提取color-hex-codes&#34;&gt;15. 提取Color Hex Codes&lt;/h4&gt;
+
+&lt;p&gt;有时需要抽取网页中的颜色代码，可以使用下面的表达式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\\#([a-fA-F]|[0-9]){3,6}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;16-提取网页图片&#34;&gt;16. 提取网页图片&lt;/h4&gt;
+
+&lt;p&gt;假若你想提取网页中所有图片信息，可以利用下面的表达式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\\&amp;lt; *[img][^\\&amp;gt;]*[src] *= *[\\&amp;quot;\\&#39;]{0,1}([^\\&amp;quot;\\&#39;\\ &amp;gt;]*)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;17-提取页面超链接&#34;&gt;17. 提取页面超链接&lt;/h4&gt;
+
+&lt;p&gt;提取html中的超链接。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(&amp;lt;a\\s*(?!.*\\brel=)[^&amp;gt;]*)(href=&amp;quot;https?://)((?!(?:(?:www\\.)?&#39;.implode(&#39;|(?:www\\.)?&#39;, $follow_list).&#39;))[^&amp;quot;]+)&amp;quot;((?!.*\\brel=)[^&amp;gt;]*)(?:[^&amp;gt;]*)&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;18-精炼css&#34;&gt;18. 精炼CSS&lt;/h4&gt;
+
+&lt;p&gt;通过下面的表达式，可以搜索相同属性值的CSS，从而达到精炼代码的目的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;^\\s*[a-zA-Z\\-]+\\s*[:]{1}\\s[a-zA-Z0-9\\s.#]+[;]{1}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;19-抽取注释&#34;&gt;19. 抽取注释&lt;/h4&gt;
+
+&lt;p&gt;如果你需要移除HMTL中的注释，可以使用如下的表达式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!--(.*?)--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;20-匹配html标签&#34;&gt;20. 匹配HTML标签&lt;/h4&gt;
+
+&lt;p&gt;通过下面的表达式可以匹配出HTML中的标签。
+&lt;code&gt;
+&amp;lt;/?\\w+((\\s+\\w+(\\s*=\\s*(?:&amp;quot;.*?&amp;quot;|&#39;.*?&#39;|[\\^&#39;&amp;quot;&amp;gt;\\s]+))?)+\\s*|\\s*)/?&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Docker集群系列之－Kubernetes对象文件定义</title>
-      <link>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
       <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
       <description>
 
 &lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
@@ -350,19 +516,19 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
     
     <item>
       <title>nosql介绍</title>
-      <link>http://wixb50.coding.me/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 08 Mar 2016 10:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github Star</title>
-      <link>http://wixb50.coding.me/2016/02/27/github-star/</link>
+      <link>http://wixb50.github.io/2016/02/27/github-star/</link>
       <pubDate>Sat, 27 Feb 2016 09:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/27/github-star/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/github-star/</guid>
       <description>
 
 &lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
@@ -395,10 +561,10 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
     
     <item>
       <title>文章收藏</title>
-      <link>http://wixb50.coding.me/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
+      <link>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
       <pubDate>Sat, 27 Feb 2016 09:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
       <description>
 
 &lt;h2 id=&#34;opensource&#34;&gt;OpenSource&lt;/h2&gt;
@@ -413,6 +579,18 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://codingpy.com/article/the-idiomatic-way-to-merge-dicts-in-python/?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&#34;&gt;怎样合并字典最符合Python语言习惯&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;java&#34;&gt;Java&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.imooc.com/article/1149&#34;&gt;八个最实用的Java开发工具&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;golang&#34;&gt;Golang&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://xhrwang.me/2014/12/22/golang-fundamentals-1-types-variables-constants.html&#34;&gt;Golang语言基础&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;react&#34;&gt;React&lt;/h2&gt;
@@ -438,6 +616,7 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000004443840#articleHeader0&#34;&gt;关系型数据库树形结构的设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://sunheran.com/2015/01/27/database-design/&#34;&gt;数据库设计那些事&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
@@ -452,6 +631,13 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
 &lt;li&gt;&lt;a href=&#34;http://toutiao.com/m6140376053/&#34;&gt;微服务实战：从发布到架构&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&#34;latex&#34;&gt;LaTex&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/jingwhale/p/4250296.html&#34;&gt;LaTex排版全解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.lai18.com/content/1987690.html&#34;&gt;PDFLaTex-XeLatex-PDFTex-XeTex等区别&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;other&#34;&gt;Other&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -462,10 +648,10 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
     
     <item>
       <title>linux 路由表设置 之 route 指令</title>
-      <link>http://wixb50.coding.me/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Fri, 26 Feb 2016 22:15:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -611,10 +797,10 @@ default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
     
     <item>
       <title>pip常用命令</title>
-      <link>http://wixb50.coding.me/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 21 Feb 2016 13:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h3 id=&#34;列出已安装的包&#34;&gt;列出已安装的包&lt;/h3&gt;
@@ -707,10 +893,10 @@ django-pagination==1.0.7
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
@@ -965,10 +1151,10 @@ journalctl -f
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -1145,10 +1331,10 @@ parameterized-uri=true
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1649,10 +1835,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1725,10 +1911,10 @@ $ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -2023,10 +2209,10 @@ systemctl -l status docker
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -2174,10 +2360,10 @@ cb35b356... 172.17.8.103  -
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.coding.me/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -2259,10 +2445,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -2331,45 +2517,6 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted unive
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted universe multiverse
 &lt;/code&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
-      <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
-sudo apt-get install vnc4server
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;tightvncserver在ubuntu14.04下面是不用装的，如果连接的是ubuntu12.04的话。是需要安装的&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install tightvncserver
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2、安装xfce4的桌面&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install xubuntu-desktop
-echo &amp;quot;xfce4-session&amp;quot; &amp;gt;~/.xsession  #在需要远程登录的用户下执行一遍即可
-sudo service xrdp restart
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果无法远程连接成功，记得在终端下执行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;重新启动系统。&lt;/p&gt;
-
-&lt;p&gt;Windows下的操作：&lt;br /&gt;
-使用&amp;raquo;窗口键+R&amp;raquo;打开&amp;raquo;运行对话框&amp;raquo;&amp;ndash;&amp;gt;输入&amp;raquo;mstsc&amp;raquo;&amp;ndash;&amp;gt;回车&amp;ndash;&amp;gt;输入Ubuntu主机的IP地址&amp;ndash;&amp;gt;&amp;laquo;连接&amp;raquo;。在Ubuntu下可以通过“ifconfig”获得本机网络连接的概况，其中包括IP地址。
-填上正确的IP地址，按回车，会出现一个登陆框，我们选择“sesman-Xvnc”这个，然后输入你的Ubuntu的用户名和密码，OK！&lt;/p&gt;
-
-&lt;p&gt;后记：使用这种方法连上Ubuntu还有个问题，就是键盘的快捷键会有点小混乱。此时断开远程桌面，在Ubuntu的实体机器上，打开管理键盘快捷键，将带有“windows”键，ubunntu显示是“mod5”键（好像是类似的，记不清了）的快捷键组合删掉即可。&lt;/p&gt;
 </description>
     </item>
     

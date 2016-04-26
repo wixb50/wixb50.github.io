@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Node on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/node/</link>
+    <link>http://wixb50.github.io/categories/node/</link>
     <description>Recent content in Node on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,74 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sun, 06 Dec 2015 12:51:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/node/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/node/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>nodejs linux安装与卸载</title>
-      <link>http://wixb50.coding.me/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
+      <link>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</link>
       <pubDate>Sun, 06 Dec 2015 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
       <description>
 
-&lt;h2 id=&#34;node-js-安装-卸载-升级&#34;&gt;Node.js 安装、卸载、升级&lt;/h2&gt;
+&lt;h2 id=&#34;nvm安装&#34;&gt;nvm安装&lt;/h2&gt;
+
+&lt;p&gt;nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。&lt;/p&gt;
+
+&lt;h3 id=&#34;一-卸载已安装到全局的-node-npm&#34;&gt;一、卸载已安装到全局的 node/npm&lt;/h3&gt;
+
+&lt;p&gt;如果之前是在官网下载的 node 安装包，运行后会自动安装在全局目录，其中&lt;/p&gt;
+
+&lt;p&gt;node 命令在 /usr/local/bin/node ，npm 命令在全局 node_modules 目录中，具体路径为 /usr/local/lib/node_modules/npm&lt;/p&gt;
+
+&lt;p&gt;安装 nvm 之后最好先删除下已安装的 node 和全局 node 模块：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm ls -g --depth=0 #查看已经安装在全局的模块，以便删除这些全局模块后再按照不同的 node 版本重新进行全局安装
+
+sudo rm -rf /usr/local/lib/node_modules #删除全局 node_modules 目录
+sudo rm /usr/local/bin/node #删除 node
+cd  /usr/local/bin &amp;amp;&amp;amp; ls -l | grep &amp;quot;../lib/node_modules/&amp;quot; | awk &#39;{print $9}&#39;| xargs rm #删除全局 node 模块注册的软链
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;二-安装-nvm&#34;&gt;二、安装 nvm&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash  #具体最新版见github
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装完成后请重新打开终端环境， oh-my-zsh 也是一样。&lt;/p&gt;
+
+&lt;h3 id=&#34;三-安装切换各版本-node-npm&#34;&gt;三、安装切换各版本 node/npm&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm install stable #安装最新稳定版 node，现在是 5.0.0
+nvm install 4.2.2 #安装 4.2.2 版本
+nvm install 0.12.7 #安装 0.12.7 版本
+
+# 特别说明：以下模块安装仅供演示说明，并非必须安装模块
+nvm use 0 #切换至 0.12.7 版本
+npm install -g mz-fis #安装 mz-fis 模块至全局目录，安装完成的路径是 /Users/&amp;lt;你的用户名&amp;gt;/.nvm/versions/node/v0.12.7/lib/mz-fis
+nvm use 4 #切换至 4.2.2 版本
+npm install -g react-native-cli #安装 react-native-cli 模块至全局目录，安装完成的路径是 /Users/&amp;lt;你的用户名&amp;gt;/.nvm/versions/node/v4.2.2/lib/react-native-cli
+
+nvm alias default 0.12.7 #设置默认 node 版本为 0.12.7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;四-使用-nvmrc-文件配置项目所使用的-node-版本&#34;&gt;四、使用 .nvmrc 文件配置项目所使用的 node 版本&lt;/h3&gt;
+
+&lt;p&gt;如果你的默认 node 版本（通过 nvm alias 命令设置的）与项目所需的版本不同，则可在项目根目录或其任意父级目录中创建 .nvmrc 文件，在文件中指定使用的 node 版本号，例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd &amp;lt;项目根目录&amp;gt;  #进入项目根目录
+echo 4 &amp;gt; .nvmrc #添加 .nvmrc 文件
+nvm use #无需指定版本号，会自动使用 .nvmrc 文件中配置的版本
+node -v #查看 node 是否切换为对应版本
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ps&#34;&gt;Ps&lt;/h3&gt;
+
+&lt;p&gt;&lt;small&gt;类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本，
+因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ，
+当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。&lt;/small&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;node-js-编译安装-不推荐&#34;&gt;Node.js 编译安装(不推荐)&lt;/h2&gt;
 
 &lt;h3 id=&#34;安装-源码下载&#34;&gt;安装、源码下载&lt;/h3&gt;
 
@@ -61,7 +118,7 @@
 
 &lt;p&gt;直接下载源码重新编译，安装。（覆盖了旧的版本）&lt;/p&gt;
 
-&lt;h2 id=&#34;ps&#34;&gt;Ps&lt;/h2&gt;
+&lt;h2 id=&#34;ps-1&#34;&gt;Ps&lt;/h2&gt;
 
 &lt;p&gt;&lt;small&gt;也同样适用与其他linux平台编译安装软件。&lt;/small&gt;&lt;/p&gt;
 </description>
@@ -69,10 +126,10 @@
     
     <item>
       <title>gulp 资源教程集合</title>
-      <link>http://wixb50.coding.me/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</link>
       <pubDate>Fri, 20 Nov 2015 18:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/20/gulp-%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h1 id=&#34;gulp-资源教程集合&#34;&gt;gulp 资源教程集合&lt;/h1&gt;

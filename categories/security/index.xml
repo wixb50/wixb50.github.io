@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/security/</link>
+    <link>http://wixb50.github.io/categories/security/</link>
     <description>Recent content in Security on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 19 Nov 2015 15:12:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>http安全</title>
-      <link>http://wixb50.coding.me/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
+      <link>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</link>
       <pubDate>Thu, 19 Nov 2015 15:12:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
+      <guid>http://wixb50.github.io/2015/11/19/http%E5%AE%89%E5%85%A8/</guid>
       <description>
 
 &lt;h2 id=&#34;https&#34;&gt;https&lt;/h2&gt;

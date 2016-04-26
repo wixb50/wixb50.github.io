@@ -10,18 +10,18 @@
   <title>nodejs linux安装与卸载 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=1&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,14 +88,71 @@
 <div class="content container">
   <div class="post">
     <h1>nodejs linux安装与卸载</h1>
-    <span class="post-date">Dec 6, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.coding.me/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/#disqus_thread">Comments</a>
+    <span class="post-date">Dec 6, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/node">node</a>
+    <a class="label" href="http://wixb50.github.io/categories/node">node</a>
     </span>
     
 
-<h2 id="node-js-安装-卸载-升级">Node.js 安装、卸载、升级</h2>
+<h2 id="nvm安装">nvm安装</h2>
+
+<p>nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。</p>
+
+<h3 id="一-卸载已安装到全局的-node-npm">一、卸载已安装到全局的 node/npm</h3>
+
+<p>如果之前是在官网下载的 node 安装包，运行后会自动安装在全局目录，其中</p>
+
+<p>node 命令在 /usr/local/bin/node ，npm 命令在全局 node_modules 目录中，具体路径为 /usr/local/lib/node_modules/npm</p>
+
+<p>安装 nvm 之后最好先删除下已安装的 node 和全局 node 模块：</p>
+
+<pre><code>npm ls -g --depth=0 #查看已经安装在全局的模块，以便删除这些全局模块后再按照不同的 node 版本重新进行全局安装
+
+sudo rm -rf /usr/local/lib/node_modules #删除全局 node_modules 目录
+sudo rm /usr/local/bin/node #删除 node
+cd  /usr/local/bin &amp;&amp; ls -l | grep &quot;../lib/node_modules/&quot; | awk '{print $9}'| xargs rm #删除全局 node 模块注册的软链
+</code></pre>
+
+<h3 id="二-安装-nvm">二、安装 nvm</h3>
+
+<pre><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash  #具体最新版见github
+</code></pre>
+
+<p>安装完成后请重新打开终端环境， oh-my-zsh 也是一样。</p>
+
+<h3 id="三-安装切换各版本-node-npm">三、安装切换各版本 node/npm</h3>
+
+<pre><code>nvm install stable #安装最新稳定版 node，现在是 5.0.0
+nvm install 4.2.2 #安装 4.2.2 版本
+nvm install 0.12.7 #安装 0.12.7 版本
+
+# 特别说明：以下模块安装仅供演示说明，并非必须安装模块
+nvm use 0 #切换至 0.12.7 版本
+npm install -g mz-fis #安装 mz-fis 模块至全局目录，安装完成的路径是 /Users/&lt;你的用户名&gt;/.nvm/versions/node/v0.12.7/lib/mz-fis
+nvm use 4 #切换至 4.2.2 版本
+npm install -g react-native-cli #安装 react-native-cli 模块至全局目录，安装完成的路径是 /Users/&lt;你的用户名&gt;/.nvm/versions/node/v4.2.2/lib/react-native-cli
+
+nvm alias default 0.12.7 #设置默认 node 版本为 0.12.7
+</code></pre>
+
+<h3 id="四-使用-nvmrc-文件配置项目所使用的-node-版本">四、使用 .nvmrc 文件配置项目所使用的 node 版本</h3>
+
+<p>如果你的默认 node 版本（通过 nvm alias 命令设置的）与项目所需的版本不同，则可在项目根目录或其任意父级目录中创建 .nvmrc 文件，在文件中指定使用的 node 版本号，例如：</p>
+
+<pre><code>cd &lt;项目根目录&gt;  #进入项目根目录
+echo 4 &gt; .nvmrc #添加 .nvmrc 文件
+nvm use #无需指定版本号，会自动使用 .nvmrc 文件中配置的版本
+node -v #查看 node 是否切换为对应版本
+</code></pre>
+
+<h3 id="ps">Ps</h3>
+
+<p><small>类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本，
+因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ，
+当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。</small></p>
+
+<h2 id="node-js-编译安装-不推荐">Node.js 编译安装(不推荐)</h2>
 
 <h3 id="安装-源码下载">安装、源码下载</h3>
 
@@ -136,7 +193,7 @@
 
 <p>直接下载源码重新编译，安装。（覆盖了旧的版本）</p>
 
-<h2 id="ps">Ps</h2>
+<h2 id="ps-1">Ps</h2>
 
 <p><small>也同样适用与其他linux平台编译安装软件。</small></p>
 
@@ -168,7 +225,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
