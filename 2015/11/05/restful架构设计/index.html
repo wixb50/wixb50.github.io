@@ -10,18 +10,18 @@
   <title>restful架构设计 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=1&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,22 +88,24 @@
 <div class="content container">
   <div class="post">
     <h1>restful架构设计</h1>
-    <span class="post-date">Nov 5, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.coding.me/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/#disqus_thread">Comments</a>
+    <span class="post-date">Nov 5, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/11/05/restful%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/architecture">architecture</a>
+    <a class="label" href="http://wixb50.github.io/categories/architecture">architecture</a>
     </span>
     <p>三、资源（Resources）</p>
 
 <p>REST的名称&raquo;表现层状态转化&raquo;中，省略了主语。&raquo;表现层&raquo;其实指的是&raquo;资源&raquo;（Resources）的&raquo;表现层&raquo;。
 所谓&raquo;资源&raquo;，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。你可以用一个URI（统一资源定位符）指向它，每种资源对应一个特定的URI。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或独一无二的识别符。
-所谓&raquo;上网&raquo;，就是与互联网上一系列的&raquo;资源&raquo;互动，调用它的URI。<br />
-四、表现层（Representation）</p>
+所谓&raquo;上网&raquo;，就是与互联网上一系列的&raquo;资源&raquo;互动，调用它的URI。</p>
+
+<p>四、表现层（Representation）</p>
 
 <p>&laquo;资源&raquo;是一种信息实体，它可以有多种外在表现形式。我们把&raquo;资源&raquo;具体呈现出来的形式，叫做它的&raquo;表现层&raquo;（Representation）。
 比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。
-URI只代表资源的实体，不代表它的形式。严格地说，有些网址最后的&raquo;.html&raquo;后缀名是不必要的，因为这个后缀名表示格式，属于&raquo;表现层&raquo;范畴，而URI应该只代表&raquo;资源&raquo;的位置。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&raquo;表现层&raquo;的描述。<br />
-五、状态转化（State Transfer）</p>
+URI只代表资源的实体，不代表它的形式。严格地说，有些网址最后的&raquo;.html&raquo;后缀名是不必要的，因为这个后缀名表示格式，属于&raquo;表现层&raquo;范畴，而URI应该只代表&raquo;资源&raquo;的位置。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&raquo;表现层&raquo;的描述。</p>
+
+<p>五、状态转化（State Transfer）</p>
 
 <p>访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。
 互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&raquo;状态转化&raquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&raquo;表现层状态转化&raquo;。
@@ -137,7 +139,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

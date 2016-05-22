@@ -10,18 +10,18 @@
   <title>ubuntu常用软件集合 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=1&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,10 +88,10 @@
 <div class="content container">
   <div class="post">
     <h1>ubuntu常用软件集合</h1>
-    <span class="post-date">Nov 12, 2015 &middot; 3 minute read &middot; <a href="http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/#disqus_thread">Comments</a>
+    <span class="post-date">Nov 12, 2015 &middot; 4 minute read &middot; <a href="http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.coding.me/categories/software">software</a>
+    <a class="label" href="http://wixb50.github.io/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.github.io/categories/software">software</a>
     </span>
     
 
@@ -117,7 +117,6 @@
 <li><a href="#tldr命令工具">tldr命令工具</a></li>
 <li><a href="#终端工具terminator">终端工具Terminator</a></li>
 <li><a href="#terminal增强zsh">terminal增强zsh</a></li>
-<li><a href="#wine-18">Wine 1.8</a></li>
 </ul>
 
 <!-- /MarkdownTOC -->
@@ -296,13 +295,22 @@ Personal：<code>GOROOT</code>配置在<code>/etc/profile</code>内，<code>GOPA
 <blockquote>
 <p>python包管理器pip：<code>sudo apt-get install python-pip</code><br />
 python包管理器pip3：<code>sudo apt-get install python3-pip</code><br />
-python虚拟环境：<code>sudo pip install virtualenv</code>，参考<a href="https://segmentfault.com/a/1190000004079979">virtualenv 和 virtualenvwrapper 实践</a></p>
+python虚拟环境：<code>sudo pip install virtualenv</code>，参考<a href="https://segmentfault.com/a/1190000004079979">virtualenv 和virtualenvwrapper 实践</a><br />
+安装 virtualenvwrapper：<code>pip install virtualenvwrapper</code>，配置如下</p>
 </blockquote>
 
 <pre><code># virtualenvwrapper的配置到./bashrc
 export WORKON_HOME='~/.virtualenvs'
 source /usr/local/bin/virtualenvwrapper.sh
 </code></pre>
+
+<blockquote>
+<p>常用命令:<br />
+创建一个虚拟环境:<code>mkvirtualenv -p /user/bin/python ENV</code><br />
+切换工作环境：<code>workon ENV</code><br />
+离开虚拟环境：<code>deactivate</code><br />
+删除虚拟环境：<code>rmvirtualenv ENV</code></p>
+</blockquote>
 
 <ul>
 <li>[gradle]() java包管理器,构建工具</li>
@@ -513,6 +521,25 @@ $ upgrade_oh_my_zsh
 <p>修改<code>～/zshrc</code>文件，将主题改为<code>ZSH_THEME=&quot;gentoo&quot;</code>显示完整路径。<br />
 将以前<code>~/bashrc</code>中的环境变量复制到<code>～/zshrc</code>文件最后(如果想用)。</p>
 
+<p><strong>&lsquo;autojump&rsquo; plugin install</strong></p>
+
+<p>系统安装autojump</p>
+
+<pre><code>apt-get install autojump
+</code></pre>
+
+<p>zsh 中开启 autojump 插件的支持</p>
+
+<pre><code>vim ~/.zshrc
+# plugins=(xxx)改为
+plugins=(xxx autojump)
+</code></pre>
+
+<p>使用方法</p>
+
+<pre><code>j &lt;目录名&gt;
+</code></pre>
+
 <h3 id="wine-1-8">Wine 1.8</h3>
 
 <p>1、对于 64 位系统，需要开启 32 位架构支持：</p>
@@ -539,6 +566,40 @@ sudo apt-get install --install-recommends winehq-devel
 </code></pre>
 
 <p>NOTE:<a href="https://wiki.winehq.org/Gecko">手动安装Gecko</a></p>
+
+<h3 id="chm解压查看7zip">chm解压查看7zip</h3>
+
+<p>安装</p>
+
+<pre><code>sudo apt-get install p7zip
+</code></pre>
+
+<p>解压chm文件命令</p>
+
+<pre><code>7z e test.chm ./test
+</code></pre>
+
+<h3 id="wireshark抓包工具">wireshark抓包工具</h3>
+
+<p>安装命令</p>
+
+<pre><code>sudo apt-get install wireshark
+</code></pre>
+
+<p>因为wireshark只允许超级用户使用访问网卡，但是采用<code>sudo wireshark</code>会报错，所以解决方案是，将当前用户加入<code>wireshark组</code>中：</p>
+
+<ul>
+<li>执行<code>sudo dpkg-reconfigure wireshark-common</code>，在弹出的窗口中选择是或者Yes;</li>
+<li>执行<code>sudo adduser $USER wireshark</code>;</li>
+<li>重启。</li>
+</ul>
+
+<h3 id="nmap局域网扫描工具">Nmap局域网扫描工具</h3>
+
+<p>安装</p>
+
+<pre><code>sudo apt-get install nmap
+</code></pre>
 
   </div>
   <div id="disqus_thread"></div>
@@ -568,7 +629,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

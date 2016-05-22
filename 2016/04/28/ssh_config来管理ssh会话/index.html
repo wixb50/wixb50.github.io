@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>ssh_config来管理ssh会话 &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="使用ssh_config来管理ssh会话">
+  <meta name="keywords" content="linux">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="/avatar.jpg"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=1&height=32"></iframe>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>ssh_config来管理ssh会话</h1>
+    <span class="post-date">Apr 28, 2016 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/linux">linux</a>
+    </span>
+    
+
+<h2 id="简介">简介</h2>
+
+<p>通常利用 ssh 连接远程服务器，一般都要输入以下类型命令：</p>
+
+<pre><code>ssh user@hostname -p port
+</code></pre>
+
+<p>但是如果有多个服务器的话，每次都需要重新输入，还需要专门记忆，个人比较懒，不想记这么多，也不想为了登录一个server，打重复代码太多。</p>
+
+<p>一般，有一种解决方案是，采用第三方的manager工具，比如：putty、PAC manager，但是对于喜欢在终端玩耍的孩纸就不喜欢这个了。</p>
+
+<h2 id="ssh-config方案">ssh_config方案</h2>
+
+<p>还好，ssh提供一种优雅灵活的方案，就是利用ssh的用户配置文件config管理ssh会话。ssh的用户配置文件放在用户<code>~/.ssh/config</code>目录中，不存在则新建一个。配置语法如下：</p>
+
+<pre><code>Host 别名
+    HostName  主机名
+    User      用户名
+    Port      端口，默认22
+    IdentityFile 密钥文件的路径，默认当前目录的
+</code></pre>
+
+<p>有了这些配置，就可以这样用ssh 登录服务器了：</p>
+
+<pre><code>ssh 别名
+</code></pre>
+
+<h2 id="ps">Ps</h2>
+
+<p>如果需要实现无密码登录主机的，请在自行google配置。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+

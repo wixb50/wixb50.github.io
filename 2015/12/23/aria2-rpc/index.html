@@ -10,18 +10,18 @@
   <title>aria2 rpc &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=1&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,10 +88,10 @@
 <div class="content container">
   <div class="post">
     <h1>aria2 rpc</h1>
-    <span class="post-date">Dec 23, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.coding.me/2015/12/23/aria2-rpc/#disqus_thread">Comments</a>
+    <span class="post-date">Dec 23, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/12/23/aria2-rpc/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/linux">linux</a><a class="label" href="http://wixb50.coding.me/categories/software">software</a>
+    <a class="label" href="http://wixb50.github.io/categories/linux">linux</a><a class="label" href="http://wixb50.github.io/categories/software">software</a>
     </span>
     
 
@@ -99,7 +99,7 @@
 &lt;!&ndash; MarkdownTOC &ndash;&gt;</p>
 
 <ul>
-<li><a href="#null-link">前言</a></li>
+<li>[](#前言null-link)</li>
 <li><a href="#初步部署-aria2-简易版">初步部署 Aria2 简易版</a></li>
 <li><a href="#进阶-aria2">进阶 Aria2</a></li>
 <li><a href="#end">End</a></li>
@@ -118,94 +118,64 @@
 
 <h2 id="初步部署-aria2-简易版">初步部署 Aria2 简易版</h2>
 
-<p><strong>1. 新建几个有关文件</strong></p>
+<p><strong>1. 安装aria</strong>
+终端输入安装</p>
 
-<p>上面已经提供了下载链接，根据平台/系统位数（32bit/64bit）下载相应文件即可。（存放路径最好是英文/数字）然后在目录下以新建文本文档的方式新建几个文件，方便之后的使用。</p>
+<pre><code>sudo apt-get install aria2
+</code></pre>
 
-<ul>
-<li>Aria2.log（运行日志）</li>
-<li>aria2.session（下载历史）</li>
-<li>aria2.conf（配置文件）</li>
-<li>HideRun.vbs （用来隐藏命令行窗口,仅限windows下）</li>
-</ul>
+<p><strong>2.创建一个目录存放aria2配置终端输入</strong></p>
 
-<p>而后用记事本修改配置文件 aria2.conf，<strong>根据实际情况修改：</strong></p>
+<pre><code>sudo mkdir /etc/aria2    #新建文件夹
+sudo touch /etc/aria2/aria2.session    #新建session文件
+sudo chmod 777 /etc/aria2/aria2.session    #设置aria2.session可写
+sudo vim /etc/aria2/aria2.conf    #创建配置文件
+</code></pre>
 
-<pre><code>dir=默认下载目录（例：D:\Inbox）
-log=日志文件存放目录（例：D:\Aria2\Aria2.log）
-input-file=记录下载历史文件目录（例：D:\Aria2\aria2.session）
-save-session=存放下载历史文件目录（例：同上）
-save-session-interval=60
-force-save=true
-log-level=error
-  
-  
-# see --split option
-max-concurrent-downloads=5
-continue=true
-max-overall-download-limit=0
-max-overall-upload-limit=50K
-max-upload-limit=20
-  
-# Http/FTP options
-connect-timeout=120
-lowest-speed-limit=10K
-max-connection-per-server=10
-max-file-not-found=2
-min-split-size=1M
-split=5
-check-certificate=false
-http-no-cache=true
-  
-# FTP Specific Options
-  
-# BT/PT Setting
-bt-enable-lpd=true
-#bt-max-peers=55
-follow-torrent=true
-enable-dht6=false
-bt-seed-unverified
-rpc-save-upload-metadata=true
-bt-hash-check-seed
-bt-remove-unselected-file
-bt-request-peer-speed-limit=100K
-seed-ratio=0.0
-  
-  
-# Metalink Specific Options
-  
-# RPC Options
+<p>在aria2.conf添加已经代码 <strong>根据实际情况修改：</strong></p>
+
+<pre><code>#＝＝＝＝＝＝＝＝＝文件保存目录自行修改
+dir=/home/nishishui/aria2_download
+disable-ipv6=true
+#打开rpc的目的是为了给web管理端用
 enable-rpc=true
-pause=false
 rpc-allow-origin-all=true
 rpc-listen-all=true
-rpc-save-upload-metadata=true
-rpc-secure=false
-  
-# Advanced Options
-daemon=true
-disable-ipv6=true
-enable-mmap=true
-file-allocation=falloc
-max-download-result=120
-#no-file-allocation-limit=32M
-force-sequential=true
-parameterized-uri=true
+#rpc-listen-port=6800
+continue=true
+input-file=/etc/aria2/aria2.session
+save-session=/etc/aria2/aria2.session
+max-concurrent-downloads=5
 </code></pre>
 
-<p><strong>Windows NOTE :</strong> 而后修改 HideRun.vbs，将 Aria2c.exe 与配置文件 Aria2.conf 链接，并实现无命令行启动。那么日后打开 Aria2 就双击 HideRun.vbs 这个文件而不是双击 aria2c.exe。</p>
+<p><strong>3.启动aria2</strong></p>
 
-<pre><code>CreateObject(&quot;WScript.Shell&quot;).Run &quot;（程序所在目录 例：D:\Aria2\aria2c.exe） --conf-path=aria2.conf&quot;,0
+<pre><code>sudo aria2c --conf-path=/etc/aria2/aria2.conf
 </code></pre>
 
-<p><strong>Linux NOTE :</strong> 可使用配置文件直接运行，转到后台即可。</p>
+<p>如果没有提示错误，按ctrl+c停止运行命令，转为后台运行：</p>
 
-<pre><code>aria2c --conf-path=aria2.conf &amp;  #其中&amp;(后台运行)是可选项
+<pre><code>sudo aria2 --conf-path=/etc/aria2/aria2.conf -D
 </code></pre>
 
-<p><strong>2. Web 前端控制</strong></p>
+<p><strong>4. 创建启动脚本</strong></p>
 
-<p>如此这般，Aria2 就配置好了，如果要添加开机自启动将 HideRun.vbs 的快捷方式拖入启动文件夹建立计划任务就 OK 了。那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 <a href="https://github.com/ziahamza/webui-aria2">Aria2 Web UI</a> 和 <a href="https://github.com/binux/yaaw">YAAW</a>。</p>
+<pre><code>vim ~/aria2/aria2_start.sh 
+sudo aria2c --conf-path=/etc/aria2/aria2.conf -D  
+
+vim ~/aria2/aria2_stop.sh 
+#!/bin/bash
+process_name=aria2c
+kill_process(){
+        process_id=`ps -eo pid,command|grep $process_name |grep -v &quot;grep&quot; |awk '{print $1}'`
+        sudo kill $process_id
+}
+kill_process
+</code></pre>
+
+<p><strong>5. Web 前端控制</strong></p>
+
+<p>如此这般，Aria2 就配置好了，那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 <a href="https://github.com/ziahamza/webui-aria2">Aria2 Web UI</a> 和 <a href="https://github.com/binux/yaaw">YAAW</a>。</p>
 
 <ul>
 <li>Aria2 Web UI（推荐！）: <a href="http://ziahamza.github.io/webui-aria2/">英文原版</a></li>
@@ -263,6 +233,8 @@ parameterized-uri=true
 
 <ul>
 <li><a href="https://gist.github.com/aa65535/5e956c4eb4f451ddec29">https://gist.github.com/aa65535/5e956c4eb4f451ddec29</a></li>
+<li><a href="http://www.aliencn.net/2015/08/02/Use_aria2_in_RaspberryPi/">在树莓派中使用aria2下载工具</a></li>
+<li><a href="http://www.nixonli.com/linux/ubuntu/17040.html">ubuntu 配置 aria2</a></li>
 </ul>
 
   </div>
@@ -293,7 +265,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

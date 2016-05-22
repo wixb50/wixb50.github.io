@@ -2,22 +2,249 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wixb blog</title>
-    <link>http://wixb50.coding.me/post/</link>
+    <link>http://wixb50.github.io/post/</link>
     <description>Recent content in Posts on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Sat, 23 Apr 2016 11:35:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 May 2016 14:25:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>树莓派安装Gogs</title>
+      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
+      <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
+      <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;本文主要介绍二进制安装方案，如果想用其他方法安装，请参考&lt;a href=&#34;https://gogs.io/docs&#34;&gt;官方文档&lt;/a&gt;;&lt;/p&gt;
+
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;所有的版本都支持 MySQL 和 PostgreSQL、SQLite作为数据库，针对你想要存放的位置建立好数据库服务器。&lt;/li&gt;
+&lt;li&gt;在 &lt;a href=&#34;https://github.com/gogits/gogs/releases&#34;&gt;https://github.com/gogits/gogs/releases&lt;/a&gt; 下载号对应的二进制安装包，下载最新的rsapi*.zip即可，导入到树莓派中。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;新建用户&#34;&gt;新建用户&lt;/h2&gt;
+
+&lt;p&gt;Gogs 默认以 git 用户运行，所以最好新建一个用户，要不然可能会出现你的主账户无法登录的问题。运行&lt;code&gt;sudo adduser git&lt;/code&gt;新建好用户，&lt;code&gt;su git&lt;/code&gt;以git用户身份登录。&lt;/p&gt;
+
+&lt;h2 id=&#34;运行配置&#34;&gt;运行配置&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;解压压缩包。&lt;/li&gt;
+&lt;li&gt;使用命令 cd 进入到刚刚创建的目录。&lt;/li&gt;
+&lt;li&gt;执行命令 ./gogs web，然后，访问&lt;a href=&#34;http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。&#34;&gt;http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;部署应用&#34;&gt;部署应用&lt;/h2&gt;
+
+&lt;h3 id=&#34;端口问题&#34;&gt;端口问题&lt;/h3&gt;
+
+&lt;p&gt;端口占用问题，可以通过启动命令指定端口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./gogs web -port 3001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;开机启动&#34;&gt;开机启动&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;采用Systemd以守护进程定义service运行。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1.在&lt;code&gt;/etc/systemd/system/gogs.service&lt;/code&gt;新建文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Unit]
+Description=Gogs (Go Git Service)
+After=syslog.target
+After=network.target
+#After=mysqld.service
+#After=postgresql.service
+#After=memcached.service
+#After=redis.service
+
+[Service]
+# Modify these two values and uncomment them if you have
+# repos with lots of files and get an HTTP error 500 because
+# of that
+###
+#LimitMEMLOCK=infinity
+#LimitNOFILE=65535
+Type=simple
+User=git
+Group=git
+WorkingDirectory=/home/git/gogs
+ExecStart=/home/git/gogs/gogs web
+Restart=always
+Environment=USER=git HOME=/home/git
+
+[Install]
+WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.更新 User、Group、WorkingDirectory、ExecStart 和 Environment 为相对应的值。其中 WorkingDirectory 为您的 Gogs 实际安装路径根目录。&lt;/p&gt;
+
+&lt;p&gt;3.[可选] 如果您 Gogs 安装示例使用 MySQL/MariaDB、PostgreSQL、Redis 或 memcached，请去掉相应 After 属性的注释。&lt;/p&gt;
+
+&lt;p&gt;4.然后通过 &lt;code&gt;sudo systemctl enable gogs&lt;/code&gt; 命令激活，最后执行 &lt;code&gt;sudo systemd start gogs&lt;/code&gt;，就可以做到开机启动了。&lt;/p&gt;
+
+&lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gogs.io/docs/installation/install_from_binary&#34;&gt;Gogs二进制安装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>树莓派搭建ownCloud</title>
+      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
+      <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
+      <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;我们将要搭建自己的云系统平台，更精确点是一个云存储系统，我们将使用开源的软件ownCloud搭建私有云，这个平台已经适用于大多数主流平台，android、IOS、mac、linux、windows都是可以的。&lt;/p&gt;
+
+&lt;p&gt;首先介绍一下ownCloud： 简单来说就是一个基于PHP的自建网盘。基本上是私人使用，没有用户注册功能，但是有用户添加功能，你可以无限制地添加用户，OwnCloud还提供了不少的免费应用，这些应用可以让你更好观看视频、倾听音乐等。&lt;/p&gt;
+
+&lt;h2 id=&#34;安装步骤&#34;&gt;安装步骤&lt;/h2&gt;
+
+&lt;h3 id=&#34;安装lamp套件&#34;&gt;安装LAMP套件&lt;/h3&gt;
+
+&lt;p&gt;1.安装apache2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install apache2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.安装mysql&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install mysql-server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.安装php和依赖&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install php5 php5-mysql php5-gd php5-curl #其中可能漏掉了，有错误提示的时候装上即可
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.从  &lt;a href=&#34;https://owncloud.org/install/&#34;&gt;https://owncloud.org/install/&lt;/a&gt; 下载最新的ownCloud Server&lt;/p&gt;
+
+&lt;p&gt;5.web服务器的根目录为&lt;code&gt;/var/www/html&lt;/code&gt;将文件解压到本目录即可&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /var/www/html  #（网页目录）
+tar -xzvf owncloud-9.0.1.tar.bz2 -C  /var/www/html   #(解压至web目录)
+cd /var/www/html/owncloud         #（进入owncloud web目录）
+mkdir data          #(建立数据库目录)
+cd data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;6.OwnCloud在安装的过程中需要对一些目录有写的权限,为此，web服务器用户（www-data对于基于Debian的系统）必须要拥有apps、data、config目录的权限。运行以下命令完成：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#owncloud 目录下
+sudo chown -R www-data:www-data data 
+sudo chown -R www-data:www-data config 
+sudo chown -R www-data:www-data apps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;7.打开浏览器，输入 &lt;a href=&#34;http://IP/owncloud&#34;&gt;http://IP/owncloud&lt;/a&gt; ,进入设置界面设计，即可访问&lt;/p&gt;
+
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.voidcn.com/blog/u010873775/article/p-5812004.html&#34;&gt;使用owncloud云服务&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>npm命令个人笔记</title>
+      <link>http://wixb50.github.io/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 14 May 2016 12:51:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</guid>
+      <description>
+
+&lt;h1 id=&#34;修改npm源为淘宝npm源的三种方法&#34;&gt;修改npm源为淘宝npm源的三种方法&lt;/h1&gt;
+
+&lt;p&gt;镜像地址：&lt;a href=&#34;https://npm.taobao.org/&#34;&gt;淘宝 NPM 镜像&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;通过config命令&#34;&gt;通过config命令&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;npm config set registry https://registry.npm.taobao.org 
+npm info underscore （如果上面配置正确这个命令会有字符串response）
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;命令行指定&#34;&gt;命令行指定&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;npm --registry https://registry.npm.taobao.org info underscore 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;编辑-npmrc-加入下面内容&#34;&gt;编辑 ~/.npmrc 加入下面内容&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;registry = https://registry.npm.taobao.org
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;tutorial&#34;&gt;tutorial&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://javascript.ruanyifeng.com/nodejs/npm.html&#34;&gt;npm模块管理器&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ssh_config来管理ssh会话</title>
+      <link>http://wixb50.github.io/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/</link>
+      <pubDate>Thu, 28 Apr 2016 18:15:30 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/</guid>
+      <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;通常利用 ssh 连接远程服务器，一般都要输入以下类型命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh user@hostname -p port
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是如果有多个服务器的话，每次都需要重新输入，还需要专门记忆，个人比较懒，不想记这么多，也不想为了登录一个server，打重复代码太多。&lt;/p&gt;
+
+&lt;p&gt;一般，有一种解决方案是，采用第三方的manager工具，比如：putty、PAC manager，但是对于喜欢在终端玩耍的孩纸就不喜欢这个了。&lt;/p&gt;
+
+&lt;h2 id=&#34;ssh-config方案&#34;&gt;ssh_config方案&lt;/h2&gt;
+
+&lt;p&gt;还好，ssh提供一种优雅灵活的方案，就是利用ssh的用户配置文件config管理ssh会话。ssh的用户配置文件放在用户&lt;code&gt;~/.ssh/config&lt;/code&gt;目录中，不存在则新建一个。配置语法如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Host 别名
+    HostName  主机名
+    User      用户名
+    Port      端口，默认22
+    IdentityFile 密钥文件的路径，默认当前目录的
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;有了这些配置，就可以这样用ssh 登录服务器了：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh 别名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ps&#34;&gt;Ps&lt;/h2&gt;
+
+&lt;p&gt;如果需要实现无密码登录主机的，请在自行google配置。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>实用的20个正则表达式</title>
-      <link>http://wixb50.coding.me/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <link>http://wixb50.github.io/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
       <pubDate>Sat, 23 Apr 2016 11:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <guid>http://wixb50.github.io/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
       <description>
 
 &lt;p&gt;正则表达式，仅仅用一段非常简短的表达式语句，便能够快速实现一个非常复杂的业务逻辑。熟练地掌握正则表达式的话，能够使你的开发效率得到极大的提升。&lt;/p&gt;
@@ -180,10 +407,10 @@ s = &#39;http://&#39; + s;}
     
     <item>
       <title>Docker集群系列之－Kubernetes对象文件定义</title>
-      <link>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
       <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
       <description>
 
 &lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
@@ -516,19 +743,19 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
     
     <item>
       <title>nosql介绍</title>
-      <link>http://wixb50.coding.me/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 08 Mar 2016 10:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github Star</title>
-      <link>http://wixb50.coding.me/2016/02/27/github-star/</link>
+      <link>http://wixb50.github.io/2016/02/27/github-star/</link>
       <pubDate>Sat, 27 Feb 2016 09:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/27/github-star/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/github-star/</guid>
       <description>
 
 &lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
@@ -561,10 +788,10 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
     
     <item>
       <title>文章收藏</title>
-      <link>http://wixb50.coding.me/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
+      <link>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
       <pubDate>Sat, 27 Feb 2016 09:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
+      <guid>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
       <description>
 
 &lt;h2 id=&#34;opensource&#34;&gt;OpenSource&lt;/h2&gt;
@@ -585,6 +812,8 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.imooc.com/article/1149&#34;&gt;八个最实用的Java开发工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.hollischuang.com/archives/1459&#34;&gt;Java开发常用的在线工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.smoker.cc/translation/20160511.html&#34;&gt;Better Java&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;golang&#34;&gt;Golang&lt;/h2&gt;
@@ -648,10 +877,10 @@ $ kubectl delete -f &amp;lt;filename.yaml&amp;gt;
     
     <item>
       <title>linux 路由表设置 之 route 指令</title>
-      <link>http://wixb50.coding.me/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Fri, 26 Feb 2016 22:15:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -797,10 +1026,10 @@ default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
     
     <item>
       <title>pip常用命令</title>
-      <link>http://wixb50.coding.me/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 21 Feb 2016 13:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h3 id=&#34;列出已安装的包&#34;&gt;列出已安装的包&lt;/h3&gt;
@@ -893,10 +1122,10 @@ django-pagination==1.0.7
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
@@ -1151,17 +1380,17 @@ journalctl -f
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
 &amp;lt;!&amp;ndash; MarkdownTOC &amp;ndash;&amp;gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#null-link&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[](#前言null-link)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#进阶-aria2&#34;&gt;进阶 Aria2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#end&#34;&gt;End&lt;/a&gt;&lt;/li&gt;
@@ -1180,94 +1409,64 @@ journalctl -f
 
 &lt;h2 id=&#34;初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;1. 新建几个有关文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 安装aria&lt;/strong&gt;
+终端输入安装&lt;/p&gt;
 
-&lt;p&gt;上面已经提供了下载链接，根据平台/系统位数（32bit/64bit）下载相应文件即可。（存放路径最好是英文/数字）然后在目录下以新建文本文档的方式新建几个文件，方便之后的使用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install aria2
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Aria2.log（运行日志）&lt;/li&gt;
-&lt;li&gt;aria2.session（下载历史）&lt;/li&gt;
-&lt;li&gt;aria2.conf（配置文件）&lt;/li&gt;
-&lt;li&gt;HideRun.vbs （用来隐藏命令行窗口,仅限windows下）&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;2.创建一个目录存放aria2配置终端输入&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;而后用记事本修改配置文件 aria2.conf，&lt;strong&gt;根据实际情况修改：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkdir /etc/aria2    #新建文件夹
+sudo touch /etc/aria2/aria2.session    #新建session文件
+sudo chmod 777 /etc/aria2/aria2.session    #设置aria2.session可写
+sudo vim /etc/aria2/aria2.conf    #创建配置文件
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;dir=默认下载目录（例：D:\Inbox）
-log=日志文件存放目录（例：D:\Aria2\Aria2.log）
-input-file=记录下载历史文件目录（例：D:\Aria2\aria2.session）
-save-session=存放下载历史文件目录（例：同上）
-save-session-interval=60
-force-save=true
-log-level=error
-  
-  
-# see --split option
-max-concurrent-downloads=5
-continue=true
-max-overall-download-limit=0
-max-overall-upload-limit=50K
-max-upload-limit=20
-  
-# Http/FTP options
-connect-timeout=120
-lowest-speed-limit=10K
-max-connection-per-server=10
-max-file-not-found=2
-min-split-size=1M
-split=5
-check-certificate=false
-http-no-cache=true
-  
-# FTP Specific Options
-  
-# BT/PT Setting
-bt-enable-lpd=true
-#bt-max-peers=55
-follow-torrent=true
-enable-dht6=false
-bt-seed-unverified
-rpc-save-upload-metadata=true
-bt-hash-check-seed
-bt-remove-unselected-file
-bt-request-peer-speed-limit=100K
-seed-ratio=0.0
-  
-  
-# Metalink Specific Options
-  
-# RPC Options
+&lt;p&gt;在aria2.conf添加已经代码 &lt;strong&gt;根据实际情况修改：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#＝＝＝＝＝＝＝＝＝文件保存目录自行修改
+dir=/home/nishishui/aria2_download
+disable-ipv6=true
+#打开rpc的目的是为了给web管理端用
 enable-rpc=true
-pause=false
 rpc-allow-origin-all=true
 rpc-listen-all=true
-rpc-save-upload-metadata=true
-rpc-secure=false
-  
-# Advanced Options
-daemon=true
-disable-ipv6=true
-enable-mmap=true
-file-allocation=falloc
-max-download-result=120
-#no-file-allocation-limit=32M
-force-sequential=true
-parameterized-uri=true
+#rpc-listen-port=6800
+continue=true
+input-file=/etc/aria2/aria2.session
+save-session=/etc/aria2/aria2.session
+max-concurrent-downloads=5
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Windows NOTE :&lt;/strong&gt; 而后修改 HideRun.vbs，将 Aria2c.exe 与配置文件 Aria2.conf 链接，并实现无命令行启动。那么日后打开 Aria2 就双击 HideRun.vbs 这个文件而不是双击 aria2c.exe。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.启动aria2&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;CreateObject(&amp;quot;WScript.Shell&amp;quot;).Run &amp;quot;（程序所在目录 例：D:\Aria2\aria2c.exe） --conf-path=aria2.conf&amp;quot;,0
+&lt;pre&gt;&lt;code&gt;sudo aria2c --conf-path=/etc/aria2/aria2.conf
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Linux NOTE :&lt;/strong&gt; 可使用配置文件直接运行，转到后台即可。&lt;/p&gt;
+&lt;p&gt;如果没有提示错误，按ctrl+c停止运行命令，转为后台运行：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;aria2c --conf-path=aria2.conf &amp;amp;  #其中&amp;amp;(后台运行)是可选项
+&lt;pre&gt;&lt;code&gt;sudo aria2 --conf-path=/etc/aria2/aria2.conf -D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;2. Web 前端控制&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. 创建启动脚本&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;如此这般，Aria2 就配置好了，如果要添加开机自启动将 HideRun.vbs 的快捷方式拖入启动文件夹建立计划任务就 OK 了。那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 &lt;a href=&#34;https://github.com/ziahamza/webui-aria2&#34;&gt;Aria2 Web UI&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/binux/yaaw&#34;&gt;YAAW&lt;/a&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim ~/aria2/aria2_start.sh 
+sudo aria2c --conf-path=/etc/aria2/aria2.conf -D  
+
+vim ~/aria2/aria2_stop.sh 
+#!/bin/bash
+process_name=aria2c
+kill_process(){
+        process_id=`ps -eo pid,command|grep $process_name |grep -v &amp;quot;grep&amp;quot; |awk &#39;{print $1}&#39;`
+        sudo kill $process_id
+}
+kill_process
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Web 前端控制&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如此这般，Aria2 就配置好了，那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 &lt;a href=&#34;https://github.com/ziahamza/webui-aria2&#34;&gt;Aria2 Web UI&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/binux/yaaw&#34;&gt;YAAW&lt;/a&gt;。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Aria2 Web UI（推荐！）: &lt;a href=&#34;http://ziahamza.github.io/webui-aria2/&#34;&gt;英文原版&lt;/a&gt;&lt;/li&gt;
@@ -1325,16 +1524,18 @@ parameterized-uri=true
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&#34;&gt;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aliencn.net/2015/08/02/Use_aria2_in_RaspberryPi/&#34;&gt;在树莓派中使用aria2下载工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nixonli.com/linux/ubuntu/17040.html&#34;&gt;ubuntu 配置 aria2&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1835,10 +2036,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1850,6 +2051,8 @@ http://foo/bar
 &lt;li&gt;&lt;a href=&#34;#unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#云服务器内存耗尽，打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改了ssh默认端口之后，如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -1906,616 +2109,34 @@ $ swapon /swap
 Enable swap on boot: 
 $ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
-      <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
-      <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
 
-&lt;!-- MarkdownTOC --&gt;
+&lt;p&gt;现在假设原来的项目的remote设置为git@domain.com:Projects/p1.git，将服务器SSH默认端口修改为3022后，导致push出错。&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#null-link&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#前置条件&#34;&gt;前置条件&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#安装coreos虚拟机&#34;&gt;安装CoreOS虚拟机&lt;/a&gt;
+&lt;p&gt;第一种解决方案:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#choosing-a-channel&#34;&gt;Choosing a Channel&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#deploying-with-vmware-vsphere-client-55&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cloud-config&#34;&gt;Cloud-Config&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#需要说明的discovery&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#logging-in&#34;&gt;Logging in&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-new-machines&#34;&gt;Adding New Machines&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#一些有用的coreos命令&#34;&gt;一些有用的CoreOS命令&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#参考资料&#34;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- /MarkdownTOC --&gt;
-
-&lt;h2 id=&#34;前言-null-link&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;因为大多数环境都是适配于大公司的云平台，但是也是有折中办法的。CoreOS是一个基于Linux 内核的轻量级操作系统，为了计算机集群的基础设施建设而生，专注于自动化，轻松部署，安全，可靠，规模化。作为一个操作系统，CoreOS 提供了在应用容器内部署应用所需要的基础功能环境以及一系列用于服务发现和配置共享的内建工具。而ESXi专为运行虚拟机、最大限度降低配置要求和简化部署而设计。所以我觉得使用ESXi当作IaaS架构，运行CoreOS集群，这样是可行的。话不多少，开始把。&lt;/p&gt;
-
-&lt;h2 id=&#34;前置条件&#34;&gt;前置条件&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;安装ESXi机器一台：怎么装自己应该知道把，如果因为驱动原因还需要自己定制安装ISO，见Google。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;安装coreos虚拟机&#34;&gt;安装CoreOS虚拟机&lt;/h2&gt;
-
-&lt;h3 id=&#34;choosing-a-channel&#34;&gt;Choosing a Channel&lt;/h3&gt;
-
-&lt;p&gt;CoreOS is released into alpha, beta, and stable channels. Releases to each channel serve as a release-candidate for the next channel. For example, a bug-free alpha release is promoted bit-for-bit to the beta channel.&lt;/p&gt;
-
-&lt;p&gt;The channel is selected based on the URLs below. Simply replace &lt;code&gt;stable&lt;/code&gt; with &lt;code&gt;alpha&lt;/code&gt; or &lt;code&gt;beta&lt;/code&gt; in the URL. Select 1 of these to download the appropriate image. Read the release notes for specific features and bug fixes in each channel.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl -LO http://stable.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+&lt;pre&gt;&lt;code&gt;# 直接修改URL为SSH://开头
+git remote set-url origin ssh://git@domain.com:3022/~/Projects/p1.git
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;curl -LO http://beta.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
+&lt;p&gt;第二种解决方案：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 修改本地配置文件
+cat&amp;gt;~/.ssh/config
+# 映射一个别名
+host newdomain
+hostname domain.com
+port 3022
+# ctrl+D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;curl -LO http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
 
-&lt;h3 id=&#34;deploying-with-vmware-vsphere-client-5-5&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/h3&gt;
-
-&lt;p&gt;Use the vSphere Client to deploy the VM as follows:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;in the menu, click “File &amp;gt; Deploy OVF Template…”&lt;/li&gt;
-&lt;li&gt;in the wizard, specify the location of the OVA downloaded earlier&lt;/li&gt;
-&lt;li&gt;name your VM&lt;/li&gt;
-&lt;li&gt;choose “thin provision” for the disk format if you want the disk to grow dynamically&lt;/li&gt;
-&lt;li&gt;choose your network settings&lt;/li&gt;
-&lt;li&gt;confirm the settings then click “Finish”&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;NOTE: Unselect “Power on after deployment” so you have a chance to edit VM settings before powering it up for the first time.&lt;/p&gt;
-
-&lt;p&gt;The last step uploads the files to your ESXi datastore and registers your VM. You can now tweak the VM settings, like memory and virtual cores. These instructions were tested to deploy to an ESXi 5.1 host.&lt;/p&gt;
-
-&lt;p&gt;Before powering it on, you will have to create a cloud-config.&lt;/p&gt;
-
-&lt;h2 id=&#34;cloud-config&#34;&gt;Cloud-Config&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;是CoreOS内比较重要的概念，可以理解为一种配置CoreOS的方式：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Providing Cloud-Config with Config-Drive&lt;/strong&gt;&lt;br /&gt;
-Cloud-config can be specified by via &lt;a href=&#34;https://github.com/coreos/coreos-cloudinit/blob/master/Documentation/config-drive.md&#34;&gt;config-drive&lt;/a&gt; with the filesystem label &lt;code&gt;config-2&lt;/code&gt;. This is commonly done through whatever interface allows for attaching CD-ROMs or new drives.&lt;/p&gt;
-
-&lt;p&gt;First create a user_data file using the the &lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;cloud-config guide&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#cloud-config
-hostname: core-01  #替换成你的命名的主机名
-write_files:
-    - path: /etc/systemd/network/static.network
-      permissions: 0644  #文件权限,无需改
-      content: |
-        [Match]
-        Name=ens192  #网卡名称,如果你的是别的名称,请改回来
-
-        [Network]
-        Address=192.1.1.150/24  #网络配置,同时把下面的IP改掉
-        Gateway=192.1.1.1
-        DNS=10.11.248.114
-        DNS=8.8.4.4
-coreos:
-    etcd2:
-        # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
-        discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;  #这里在后面详细讲
-        # multi-region and multi-cloud deployments need to use 192.1.1.150
-        advertise-client-urls: http://192.1.1.150:2379
-        initial-advertise-peer-urls: http://192.1.1.150:2380
-        # listen on both the official ports and the legacy ports
-        # legacy ports can be omitted if your application doesn&#39;t depend on them
-        listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
-        listen-peer-urls: http://192.1.1.150:2380,http://192.1.1.150:7001
-    fleet:
-        public-ip: 192.1.1.150
-        metadata: region=europe #metadata,可自定义
-    flannel:
-        etcd_prefix: /coreos.com/network2
-    locksmith:
-        endpoint: 192.1.1.150:4001
-    update:
-        reboot-strategy: etcd-lock
-        group: stable
-    units:
-        - name: etcd2.service #注意是etcd2,第二版哟
-          command: start
-        - name: fleet.service
-          command: start
-users:
-  - name: &amp;quot;core&amp;quot;  #改成你的用户名,可不是core
-    groups:
-      - &amp;quot;sudo&amp;quot;
-      - &amp;quot;docker&amp;quot;
-    ssh-authorized-keys:   
-      - ssh-rsa 替换成你的公钥... 
-manage_etc_hosts: localhost
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Cloud-Config配置信息验证地址&lt;a href=&#34;https://coreos.com/validate/&#34;&gt;https://coreos.com/validate/&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;需要说明的-discovery&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;　　因为要搭建集群，需要用到服务发现，配置集群的服务发现有两种方式：一种是Static方式，第二种就是Discovery方式了。其中个人不推荐第一种方式，因为每加入一台主机就需要手动配置etcd节点，非常不方便。&lt;br /&gt;
-　　第二种Discovery方式是使用远程的服务器辅助服务发现，只需要配置好Discovery的URl就可以自动把新加入的服务器加入集群。其中iscovery服务器可以使用官网提供的，也可以自己搭建(我还没搭建过，这里不介绍了)。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl https://discovery.etcd.io/new?size=3  #控制台或者浏览器执行即可,推荐使用size=1,见下面说明
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;其中有一个&lt;code&gt;size&lt;/code&gt;参数，讲一下我遇到的问题：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;没有使用size参数结果老是启动不了;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;使用了&lt;code&gt;size=3&lt;/code&gt;，结果启动主节点，主节点的etcd2就一直等待从节点加入，结果等我去加入它的时候，已经超时了;&lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;size=1&lt;/code&gt;，没有什么要等待了，过一会就自动启动成功了&lt;code&gt;fleetctl list-machines&lt;/code&gt;也能正常显示。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;所以，我可能不知道网上哪些一下子启动3个节点是怎么做到的，还是有待学习。但是这里我也有自己的解决方法，就是使用&lt;code&gt;size=1&lt;/code&gt;先运行出来一个只有一台主机的集群，果然可以运行。然后使用主节点的&lt;code&gt;&amp;lt;Token&amp;gt;&lt;/code&gt;再去构建其他节点的&lt;code&gt;Cloud-config&lt;/code&gt;，然后运行，结果果然它自己就能加入到第一个节点里面。&lt;/p&gt;
-
-&lt;p&gt;这里我可能投机取巧了点，但是能运行，也能达到效果就行，哈哈，希望不会有什么bug。&lt;/p&gt;
-
-&lt;p&gt;Finally, to create a cloud-config ISO, use the following commands using the user_data file we just created:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#wrap up a config named user_data in a config drive image:
-mkdir -p /tmp/new-drive/openstack/latest
-cp user_data /tmp/new-drive/openstack/latest/user_data
-mkisofs -R -V config-2 -o configdrive-01.iso /tmp/new-drive
-rm -r /tmp/new-drive
-
-#transform iso file to datastore
-#scp configdrive-01.iso root@192.1.1.132:/vmfs/volumes/datastore1/ISO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note that the config-drive standard was originally an OpenStack feature, which is why you’ll see strings containing openstack. This filepath needs to be retained, although CoreOS supports config-drive on all platforms.&lt;/p&gt;
-
-&lt;p&gt;Note: The $private_ipv4 and $public_ipv4 substitution variables referenced in other documents are not supported on VMware. You can replace all these variables by the (static) IP of the CoreOS server you’re setting up. For example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;coreos:
-  etcd2:
-    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
-    discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;
-    # multi-region and multi-cloud deployments need to use $public_ipv4
-    advertise-client-urls: http://$public_ipv4:2379
-    initial-advertise-peer-urls: http://$private_ipv4:2380
-    # listen on both the official ports and the legacy ports
-    # legacy ports can be omitted if your application doesn&#39;t depend on them
-    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
-    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;becomes&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;coreos:
-  etcd2:
-    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
-    discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;
-    # multi-region and multi-cloud deployments need to use $public_ipv4
-    advertise-client-urls: http://192.168.0.100:2379
-    initial-advertise-peer-urls: http://192.168.0.100:2380
-    # listen on both the official ports and the legacy ports
-    # legacy ports can be omitted if your application doesn&#39;t depend on them
-    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
-    listen-peer-urls: http://192.168.0.100:2380,http://192.168.0.100:7001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Attach the ISO to the VM as follows:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;edit the settings of the CoreOS VM&lt;/li&gt;
-&lt;li&gt;in the dialog, select “CD/DVD drive 1” in the device list&lt;/li&gt;
-&lt;li&gt;select “connect at power on”&lt;/li&gt;
-&lt;li&gt;choose “datastore ISO file” as the device type&lt;/li&gt;
-&lt;li&gt;browse the datastore and select your config drive ISO&lt;/li&gt;
-&lt;li&gt;confirm the changes and click “OK”&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;NOTE:如果发现ip不对，可查看配置文件，Maybe重启一下也可以解决哟。&lt;/p&gt;
-
-&lt;h2 id=&#34;logging-in&#34;&gt;Logging in&lt;/h2&gt;
-
-&lt;p&gt;可以查看ESXi控制台CoreOS的IP，但是静态的自己已经知道了。&lt;/p&gt;
-
-&lt;p&gt;Now you can login using your SSH key or password set in your cloud-config，可以登录就没必要折腾下步了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh core@192.1.1.150
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Alternatively, if the cloud-config fails to apply you can append coreos.autologin to the kernel parameters on boot, the console won’t prompt for a password. This is handy for debugging.&lt;/p&gt;
-
-&lt;p&gt;When GNU GRUB appears at boot, make sure CoreOS default is selected and press e, then add coreos.autologin after &lt;code&gt;$linux_append&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Before&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.holysh1t.net/vgwtest/coreosstuff/grubautologin1.png&#34; alt=&#34;之前的启动界面&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;After&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.holysh1t.net/vgwtest/coreosstuff/grubautologin2.png&#34; alt=&#34;之前的启动界面&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;When coreos.autologin is added, press &lt;code&gt;CTRL+X&lt;/code&gt; to boot CoreOS with these parameters. Note that the next time autologin will be disabled again as these kernel parameters aren’t persistent.&lt;/p&gt;
-
-&lt;p&gt;You can now manually apply the cloud-config by using the following command in the console of CoreOS:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo /usr/bin/coreos-cloudinit --from-file /media/configdrive/openstack/latest/user_data
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;adding-new-machines&#34;&gt;Adding New Machines&lt;/h2&gt;
-
-&lt;p&gt;按照前面所说的，如果需要把其他CoreOS加入集群，只需要把Discovery URL改成原来集群地址即可自动加入了，是不是很方便呀。&lt;/p&gt;
-
-&lt;p&gt;If you forgot which discovery URL you used, you may look it up on one of the members of the cluster. Use the following grep command on one of your existing machines:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;grep DISCOVERY /run/systemd/system/etcd2.service.d/20-cloudinit.conf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will see a line the contains the original discovery URL, like the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Environment=&amp;quot;ETCD_DISCOVERY=https://discovery.etcd.io/575302f03f4fb2db82e81ea2abca55e9&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Your basic CoreOS cluster is set up, and now you can move on to testing with it!&lt;/p&gt;
-
-&lt;h2 id=&#34;一些有用的coreos命令&#34;&gt;一些有用的CoreOS命令&lt;/h2&gt;
-
-&lt;p&gt;查看当前集群所有machines&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;fleetctl list-machines
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;查看服务运行状态&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;systemctl -l status etcd2  #其中-l参数可选
-systemctl -l status fleet
-systemctl -l status docker
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;查看服务的运行日志&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;journalctl -u etcd2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS官网&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ibm.com/developerworks/cn/cloud/library/1505_gutb_coreos/&#34;&gt;在 ESXi5 上部署 CoreOS 集群解决方案&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.tuicool.com/m/articles/zyaAbyJ&#34;&gt;平台云基石-CoreOS之集群篇&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://stable.release.core-os.net/&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.holysh1t.net/vgwtest/coreosstuff/coreos-vmware-esxi-setup.html&#34;&gt;Running CoreOS on VMware ESXi 5.1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
-      <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
-      <description>
-
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
-
-&lt;!-- MarkdownTOC --&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#前言&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#准备工作&#34;&gt;准备工作&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#配置工作&#34;&gt;配置工作&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#安装-vagrant-and-virtualbox&#34;&gt;安装 Vagrant and VirtualBox&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#从coreos官方代码库获取基本配置，并进行修改&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#启动集群&#34;&gt;启动集群&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#测试集群&#34;&gt;测试集群&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- /MarkdownTOC --&gt;
-
-&lt;h2 id=&#34;前言-null&#34;&gt;&lt;a href=&#34;null&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;第一次接触CoreOS这样的分布式平台，运行一个集群看起来好像一个很复杂的任务，这里我们给你展示在本地快速搭建一个CoreOS集群环境是多么的容易。&lt;/p&gt;
-
-&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
-
-&lt;p&gt;本地的机器上已经安装了最新版本的Virtualbox, Vagrant 和 git。&lt;/p&gt;
-
-&lt;h2 id=&#34;配置工作&#34;&gt;配置工作&lt;/h2&gt;
-
-&lt;h3 id=&#34;安装-vagrant-and-virtualbox&#34;&gt;安装 Vagrant and VirtualBox&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;vagrant&lt;/a&gt; 和 &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;virtualbox&lt;/a&gt;都是直接下载双击安装的，具体安装教程看官网。&lt;/p&gt;
-
-&lt;h3 id=&#34;从coreos官方代码库获取基本配置-并进行修改&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/h3&gt;
-
-&lt;p&gt;首先，获取模板配置文件&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/coreos/coreos-vagrant
-cd coreos-vagrant
-cp user-data.sample user-data
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;获取新的token&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl https://discovery.etcd.io/new
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用新的token配置到user-data文件如下，&lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vagrant.html&#34;&gt;官网示例&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#cloud-config
-
-coreos:
-  etcd2:
-    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
-    # specify the initial size of your cluster with ?size=X
-    # WARNING: replace each time you &#39;vagrant destroy&#39;
-    discovery: https://discovery.etcd.io/&amp;lt;token&amp;gt;
-    # multi-region and multi-cloud deployments need to use $public_ipv4
-    advertise-client-urls: http://$private_ipv4:2379,http://$private_ipv4:4001
-    initial-advertise-peer-urls: http://$private_ipv4:2380
-    # listen on both the official ports and the legacy ports
-    # legacy ports can be omitted if your application doesn&#39;t depend on them
-    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
-    listen-peer-urls: http://$private_ipv4:2380
-  fleet:
-    public-ip: $public_ipv4
-  flannel:
-    interface: $public_ipv4
-  units:
-    - name: etcd2.service
-      command: start
-    - name: fleet.service
-      command: start
-    - name: flanneld.service
-      drop-ins:
-      - name: 50-network-config.conf
-        content: |
-          [Service]
-          ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config &#39;{ &amp;quot;Network&amp;quot;: &amp;quot;10.1.0.0/16&amp;quot; }&#39;
-      # Uncomment line above if you want to use flannel in your installation.
-      # command: start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;提示：编辑完毕后，请到[&lt;a href=&#34;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&#34;&gt;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;启动集群&#34;&gt;启动集群&lt;/h2&gt;
-
-&lt;p&gt;默认情况下，CoreOS Vagrantfile 将会启动单机。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;我们需要复制并修改config.rb.sample文件.&lt;/p&gt;
-
-&lt;p&gt;复制文件&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cp config.rb.sample config.rb
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;修改 config.rb 文件，配置 $num_instances 和 $update_channel 这两个参数。比如：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Official CoreOS channel from which updates should be downloade
-$num_instances=3  ## 表示我们要创建3台主机
-# Official CoreOS channel from which updates should be downloade
-$update_channel=&#39;stable&#39;  ## 表示使用的coreos版本，有：&#39;stable&#39;、&#39;beta&#39;、&#39;alpha&#39;.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;提示：如果国内下载比较慢，可以先事先下载好&lt;code&gt;coreos_production_vagrant.box&lt;/code&gt;，添加到vagrant的box里面。注意更改名字为&amp;raquo;coreos-stable|coreos-beta|coreos-alpha&amp;raquo;，和你上面填写的对应。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;启动集群&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vagrant up
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;添加ssh的公匙&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh-add ~/.vagrant.d/insecure_private_key
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;连接集群中的第一台机器&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vagrant ssh core-01 -- -A
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;测试集群&#34;&gt;测试集群&lt;/h2&gt;
-
-&lt;p&gt;使用fleet来查看机器运行状况&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;fleetctl list-machines
-=&amp;gt;
-MACHINE   IP            METADATA
-517d1c7d... 172.17.8.101  -
-cb35b356... 172.17.8.103  -
-17040743... 172.17.8.102  -
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如上类似的信息，恭喜，本地基于三台机器的集群已经成功启动，可能需要等个几秒才会完全启动。&lt;/p&gt;
-
-&lt;p&gt;那么之后你就可以基于CoreOS的三大工具做任务分发，分布式存储等很多功能了。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Docker Operation</title>
-      <link>http://wixb50.coding.me/2015/12/11/docker-operation/</link>
-      <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/11/docker-operation/</guid>
-      <description>
-
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
-
-&lt;!-- MarkdownTOC --&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#normal-commander&#34;&gt;normal commander&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#stop-all-containers&#34;&gt;Stop all containers.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#remove-all-images&#34;&gt;Remove all images&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- /MarkdownTOC --&gt;
-
-&lt;h2 id=&#34;normal-commander&#34;&gt;normal commander&lt;/h2&gt;
-
-&lt;h3 id=&#34;docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
-
-&lt;p&gt;如果你的宿主操作系统是 linux 那方法就很简单了，直接通过命令来启动服务即可。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker -d
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果是只是临时使用可以用下面语句&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker pull node
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/h3&gt;
-
-&lt;p&gt;存出镜像&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo docker save -o ubuntu_14.04.tar ubuntu:14.04
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;载入镜像&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo docker load &amp;lt; ubuntu_14.04.tar
-#or
-sudo docker --input ubuntu_14.04.tar
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/h2&gt;
-
-&lt;p&gt;NOTE: &lt;code&gt;sudo&lt;/code&gt;maybe.&lt;/p&gt;
-
-&lt;h4 id=&#34;stop-all-containers&#34;&gt;Stop all containers.&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;docker stop $(docker ps -a -q)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep &amp;quot;^&amp;lt;none&amp;gt;&amp;quot; | awk &amp;quot;{print $3}&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;remove-all-images&#34;&gt;Remove all images&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep \ | awk &#39;{print $3}&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ubuntu更改源设置</title>
-      <link>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
-      <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
-      <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;首先备份源列表：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;而后用vim或其他编辑器打开:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo vim /etc/apt/sources.list
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;从下面列表中选择合适的源，替换掉文件中所有的内容，保存编辑好的文件:&lt;/p&gt;
-
-&lt;p&gt;&lt;font color=&#34;red&#34;&gt;注意：一定要选对版本&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;最后，刷新列表&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get update
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;附上ubuntu14.04源：&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;网易163源：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse
-deb http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse
-deb http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse
-deb http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse
-deb http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse
-deb-src http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse
-deb-src http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse
-deb-src http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse
-deb-src http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse
-deb-src http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;搜狐源：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deb http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiverse
-deb http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiverse
-deb http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiverse
-deb http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiverse
-deb http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse
-deb-src http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiverse
-deb-src http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiverse
-deb-src http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiverse
-deb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiverse
-deb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;oschina源：
+&lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：
 &lt;code&gt;
-deb http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
-deb http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted universe multiverse
-deb http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
-deb http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
-deb http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted universe multiverse
-deb-src http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
-deb-src http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted universe multiverse
-deb-src http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
-deb-src http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
-deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted universe multiverse
+export XMODIFIERS=&amp;quot;@im=fcitx&amp;quot;
+export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
 &lt;/code&gt;&lt;/p&gt;
 </description>
     </item>

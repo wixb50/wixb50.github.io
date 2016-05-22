@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/software/</link>
+    <link>http://wixb50.github.io/categories/software/</link>
     <description>Recent content in Software on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,21 +10,21 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 23 Dec 2015 16:21:30 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
 &amp;lt;!&amp;ndash; MarkdownTOC &amp;ndash;&amp;gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#null-link&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[](#前言null-link)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#进阶-aria2&#34;&gt;进阶 Aria2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#end&#34;&gt;End&lt;/a&gt;&lt;/li&gt;
@@ -43,94 +43,64 @@
 
 &lt;h2 id=&#34;初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;1. 新建几个有关文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 安装aria&lt;/strong&gt;
+终端输入安装&lt;/p&gt;
 
-&lt;p&gt;上面已经提供了下载链接，根据平台/系统位数（32bit/64bit）下载相应文件即可。（存放路径最好是英文/数字）然后在目录下以新建文本文档的方式新建几个文件，方便之后的使用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install aria2
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Aria2.log（运行日志）&lt;/li&gt;
-&lt;li&gt;aria2.session（下载历史）&lt;/li&gt;
-&lt;li&gt;aria2.conf（配置文件）&lt;/li&gt;
-&lt;li&gt;HideRun.vbs （用来隐藏命令行窗口,仅限windows下）&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;2.创建一个目录存放aria2配置终端输入&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;而后用记事本修改配置文件 aria2.conf，&lt;strong&gt;根据实际情况修改：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkdir /etc/aria2    #新建文件夹
+sudo touch /etc/aria2/aria2.session    #新建session文件
+sudo chmod 777 /etc/aria2/aria2.session    #设置aria2.session可写
+sudo vim /etc/aria2/aria2.conf    #创建配置文件
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;dir=默认下载目录（例：D:\Inbox）
-log=日志文件存放目录（例：D:\Aria2\Aria2.log）
-input-file=记录下载历史文件目录（例：D:\Aria2\aria2.session）
-save-session=存放下载历史文件目录（例：同上）
-save-session-interval=60
-force-save=true
-log-level=error
-  
-  
-# see --split option
-max-concurrent-downloads=5
-continue=true
-max-overall-download-limit=0
-max-overall-upload-limit=50K
-max-upload-limit=20
-  
-# Http/FTP options
-connect-timeout=120
-lowest-speed-limit=10K
-max-connection-per-server=10
-max-file-not-found=2
-min-split-size=1M
-split=5
-check-certificate=false
-http-no-cache=true
-  
-# FTP Specific Options
-  
-# BT/PT Setting
-bt-enable-lpd=true
-#bt-max-peers=55
-follow-torrent=true
-enable-dht6=false
-bt-seed-unverified
-rpc-save-upload-metadata=true
-bt-hash-check-seed
-bt-remove-unselected-file
-bt-request-peer-speed-limit=100K
-seed-ratio=0.0
-  
-  
-# Metalink Specific Options
-  
-# RPC Options
+&lt;p&gt;在aria2.conf添加已经代码 &lt;strong&gt;根据实际情况修改：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#＝＝＝＝＝＝＝＝＝文件保存目录自行修改
+dir=/home/nishishui/aria2_download
+disable-ipv6=true
+#打开rpc的目的是为了给web管理端用
 enable-rpc=true
-pause=false
 rpc-allow-origin-all=true
 rpc-listen-all=true
-rpc-save-upload-metadata=true
-rpc-secure=false
-  
-# Advanced Options
-daemon=true
-disable-ipv6=true
-enable-mmap=true
-file-allocation=falloc
-max-download-result=120
-#no-file-allocation-limit=32M
-force-sequential=true
-parameterized-uri=true
+#rpc-listen-port=6800
+continue=true
+input-file=/etc/aria2/aria2.session
+save-session=/etc/aria2/aria2.session
+max-concurrent-downloads=5
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Windows NOTE :&lt;/strong&gt; 而后修改 HideRun.vbs，将 Aria2c.exe 与配置文件 Aria2.conf 链接，并实现无命令行启动。那么日后打开 Aria2 就双击 HideRun.vbs 这个文件而不是双击 aria2c.exe。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.启动aria2&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;CreateObject(&amp;quot;WScript.Shell&amp;quot;).Run &amp;quot;（程序所在目录 例：D:\Aria2\aria2c.exe） --conf-path=aria2.conf&amp;quot;,0
+&lt;pre&gt;&lt;code&gt;sudo aria2c --conf-path=/etc/aria2/aria2.conf
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Linux NOTE :&lt;/strong&gt; 可使用配置文件直接运行，转到后台即可。&lt;/p&gt;
+&lt;p&gt;如果没有提示错误，按ctrl+c停止运行命令，转为后台运行：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;aria2c --conf-path=aria2.conf &amp;amp;  #其中&amp;amp;(后台运行)是可选项
+&lt;pre&gt;&lt;code&gt;sudo aria2 --conf-path=/etc/aria2/aria2.conf -D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;2. Web 前端控制&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. 创建启动脚本&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;如此这般，Aria2 就配置好了，如果要添加开机自启动将 HideRun.vbs 的快捷方式拖入启动文件夹建立计划任务就 OK 了。那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 &lt;a href=&#34;https://github.com/ziahamza/webui-aria2&#34;&gt;Aria2 Web UI&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/binux/yaaw&#34;&gt;YAAW&lt;/a&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim ~/aria2/aria2_start.sh 
+sudo aria2c --conf-path=/etc/aria2/aria2.conf -D  
+
+vim ~/aria2/aria2_stop.sh 
+#!/bin/bash
+process_name=aria2c
+kill_process(){
+        process_id=`ps -eo pid,command|grep $process_name |grep -v &amp;quot;grep&amp;quot; |awk &#39;{print $1}&#39;`
+        sudo kill $process_id
+}
+kill_process
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Web 前端控制&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如此这般，Aria2 就配置好了，那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 &lt;a href=&#34;https://github.com/ziahamza/webui-aria2&#34;&gt;Aria2 Web UI&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/binux/yaaw&#34;&gt;YAAW&lt;/a&gt;。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Aria2 Web UI（推荐！）: &lt;a href=&#34;http://ziahamza.github.io/webui-aria2/&#34;&gt;英文原版&lt;/a&gt;&lt;/li&gt;
@@ -188,16 +158,18 @@ parameterized-uri=true
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&#34;&gt;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aliencn.net/2015/08/02/Use_aria2_in_RaspberryPi/&#34;&gt;在树莓派中使用aria2下载工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nixonli.com/linux/ubuntu/17040.html&#34;&gt;ubuntu 配置 aria2&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -698,10 +670,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -726,7 +698,6 @@ http://foo/bar
 &lt;li&gt;&lt;a href=&#34;#tldr命令工具&#34;&gt;tldr命令工具&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#终端工具terminator&#34;&gt;终端工具Terminator&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#terminal增强zsh&#34;&gt;terminal增强zsh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#wine-18&#34;&gt;Wine 1.8&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -905,13 +876,22 @@ Personal：&lt;code&gt;GOROOT&lt;/code&gt;配置在&lt;code&gt;/etc/profile&lt;/
 &lt;blockquote&gt;
 &lt;p&gt;python包管理器pip：&lt;code&gt;sudo apt-get install python-pip&lt;/code&gt;&lt;br /&gt;
 python包管理器pip3：&lt;code&gt;sudo apt-get install python3-pip&lt;/code&gt;&lt;br /&gt;
-python虚拟环境：&lt;code&gt;sudo pip install virtualenv&lt;/code&gt;，参考&lt;a href=&#34;https://segmentfault.com/a/1190000004079979&#34;&gt;virtualenv 和 virtualenvwrapper 实践&lt;/a&gt;&lt;/p&gt;
+python虚拟环境：&lt;code&gt;sudo pip install virtualenv&lt;/code&gt;，参考&lt;a href=&#34;https://segmentfault.com/a/1190000004079979&#34;&gt;virtualenv 和virtualenvwrapper 实践&lt;/a&gt;&lt;br /&gt;
+安装 virtualenvwrapper：&lt;code&gt;pip install virtualenvwrapper&lt;/code&gt;，配置如下&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code&gt;# virtualenvwrapper的配置到./bashrc
 export WORKON_HOME=&#39;~/.virtualenvs&#39;
 source /usr/local/bin/virtualenvwrapper.sh
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;常用命令:&lt;br /&gt;
+创建一个虚拟环境:&lt;code&gt;mkvirtualenv -p /user/bin/python ENV&lt;/code&gt;&lt;br /&gt;
+切换工作环境：&lt;code&gt;workon ENV&lt;/code&gt;&lt;br /&gt;
+离开虚拟环境：&lt;code&gt;deactivate&lt;/code&gt;&lt;br /&gt;
+删除虚拟环境：&lt;code&gt;rmvirtualenv ENV&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[gradle]() java包管理器,构建工具&lt;/li&gt;
@@ -1122,6 +1102,25 @@ $ upgrade_oh_my_zsh
 &lt;p&gt;修改&lt;code&gt;～/zshrc&lt;/code&gt;文件，将主题改为&lt;code&gt;ZSH_THEME=&amp;quot;gentoo&amp;quot;&lt;/code&gt;显示完整路径。&lt;br /&gt;
 将以前&lt;code&gt;~/bashrc&lt;/code&gt;中的环境变量复制到&lt;code&gt;～/zshrc&lt;/code&gt;文件最后(如果想用)。&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;&amp;lsquo;autojump&amp;rsquo; plugin install&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;系统安装autojump&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install autojump
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;zsh 中开启 autojump 插件的支持&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim ~/.zshrc
+# plugins=(xxx)改为
+plugins=(xxx autojump)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;j &amp;lt;目录名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&#34;wine-1-8&#34;&gt;Wine 1.8&lt;/h3&gt;
 
 &lt;p&gt;1、对于 64 位系统，需要开启 32 位架构支持：&lt;/p&gt;
@@ -1148,6 +1147,40 @@ sudo apt-get install --install-recommends winehq-devel
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;NOTE:&lt;a href=&#34;https://wiki.winehq.org/Gecko&#34;&gt;手动安装Gecko&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;chm解压查看7zip&#34;&gt;chm解压查看7zip&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install p7zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解压chm文件命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;7z e test.chm ./test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;wireshark抓包工具&#34;&gt;wireshark抓包工具&lt;/h3&gt;
+
+&lt;p&gt;安装命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install wireshark
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因为wireshark只允许超级用户使用访问网卡，但是采用&lt;code&gt;sudo wireshark&lt;/code&gt;会报错，所以解决方案是，将当前用户加入&lt;code&gt;wireshark组&lt;/code&gt;中：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;执行&lt;code&gt;sudo dpkg-reconfigure wireshark-common&lt;/code&gt;，在弹出的窗口中选择是或者Yes;&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;sudo adduser $USER wireshark&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;重启。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;nmap局域网扫描工具&#34;&gt;Nmap局域网扫描工具&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install nmap
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

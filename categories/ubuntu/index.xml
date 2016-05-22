@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/ubuntu/</link>
+    <link>http://wixb50.github.io/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 17 Dec 2015 13:50:50 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -29,6 +29,8 @@
 &lt;li&gt;&lt;a href=&#34;#unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#云服务器内存耗尽，打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改了ssh默认端口之后，如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -85,15 +87,44 @@ $ swapon /swap
 Enable swap on boot: 
 $ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
+
+&lt;p&gt;现在假设原来的项目的remote设置为git@domain.com:Projects/p1.git，将服务器SSH默认端口修改为3022后，导致push出错。&lt;/p&gt;
+
+&lt;p&gt;第一种解决方案:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 直接修改URL为SSH://开头
+git remote set-url origin ssh://git@domain.com:3022/~/Projects/p1.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第二种解决方案：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 修改本地配置文件
+cat&amp;gt;~/.ssh/config
+# 映射一个别名
+host newdomain
+hostname domain.com
+port 3022
+# ctrl+D
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
+
+&lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：
+&lt;code&gt;
+export XMODIFIERS=&amp;quot;@im=fcitx&amp;quot;
+export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
+&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -167,10 +198,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -206,10 +237,10 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -234,7 +265,6 @@ sudo service xrdp restart
 &lt;li&gt;&lt;a href=&#34;#tldr命令工具&#34;&gt;tldr命令工具&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#终端工具terminator&#34;&gt;终端工具Terminator&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#terminal增强zsh&#34;&gt;terminal增强zsh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#wine-18&#34;&gt;Wine 1.8&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -413,13 +443,22 @@ Personal：&lt;code&gt;GOROOT&lt;/code&gt;配置在&lt;code&gt;/etc/profile&lt;/
 &lt;blockquote&gt;
 &lt;p&gt;python包管理器pip：&lt;code&gt;sudo apt-get install python-pip&lt;/code&gt;&lt;br /&gt;
 python包管理器pip3：&lt;code&gt;sudo apt-get install python3-pip&lt;/code&gt;&lt;br /&gt;
-python虚拟环境：&lt;code&gt;sudo pip install virtualenv&lt;/code&gt;，参考&lt;a href=&#34;https://segmentfault.com/a/1190000004079979&#34;&gt;virtualenv 和 virtualenvwrapper 实践&lt;/a&gt;&lt;/p&gt;
+python虚拟环境：&lt;code&gt;sudo pip install virtualenv&lt;/code&gt;，参考&lt;a href=&#34;https://segmentfault.com/a/1190000004079979&#34;&gt;virtualenv 和virtualenvwrapper 实践&lt;/a&gt;&lt;br /&gt;
+安装 virtualenvwrapper：&lt;code&gt;pip install virtualenvwrapper&lt;/code&gt;，配置如下&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code&gt;# virtualenvwrapper的配置到./bashrc
 export WORKON_HOME=&#39;~/.virtualenvs&#39;
 source /usr/local/bin/virtualenvwrapper.sh
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;常用命令:&lt;br /&gt;
+创建一个虚拟环境:&lt;code&gt;mkvirtualenv -p /user/bin/python ENV&lt;/code&gt;&lt;br /&gt;
+切换工作环境：&lt;code&gt;workon ENV&lt;/code&gt;&lt;br /&gt;
+离开虚拟环境：&lt;code&gt;deactivate&lt;/code&gt;&lt;br /&gt;
+删除虚拟环境：&lt;code&gt;rmvirtualenv ENV&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[gradle]() java包管理器,构建工具&lt;/li&gt;
@@ -630,6 +669,25 @@ $ upgrade_oh_my_zsh
 &lt;p&gt;修改&lt;code&gt;～/zshrc&lt;/code&gt;文件，将主题改为&lt;code&gt;ZSH_THEME=&amp;quot;gentoo&amp;quot;&lt;/code&gt;显示完整路径。&lt;br /&gt;
 将以前&lt;code&gt;~/bashrc&lt;/code&gt;中的环境变量复制到&lt;code&gt;～/zshrc&lt;/code&gt;文件最后(如果想用)。&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;&amp;lsquo;autojump&amp;rsquo; plugin install&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;系统安装autojump&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install autojump
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;zsh 中开启 autojump 插件的支持&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim ~/.zshrc
+# plugins=(xxx)改为
+plugins=(xxx autojump)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;j &amp;lt;目录名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&#34;wine-1-8&#34;&gt;Wine 1.8&lt;/h3&gt;
 
 &lt;p&gt;1、对于 64 位系统，需要开启 32 位架构支持：&lt;/p&gt;
@@ -656,15 +714,49 @@ sudo apt-get install --install-recommends winehq-devel
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;NOTE:&lt;a href=&#34;https://wiki.winehq.org/Gecko&#34;&gt;手动安装Gecko&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;chm解压查看7zip&#34;&gt;chm解压查看7zip&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install p7zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解压chm文件命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;7z e test.chm ./test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;wireshark抓包工具&#34;&gt;wireshark抓包工具&lt;/h3&gt;
+
+&lt;p&gt;安装命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install wireshark
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因为wireshark只允许超级用户使用访问网卡，但是采用&lt;code&gt;sudo wireshark&lt;/code&gt;会报错，所以解决方案是，将当前用户加入&lt;code&gt;wireshark组&lt;/code&gt;中：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;执行&lt;code&gt;sudo dpkg-reconfigure wireshark-common&lt;/code&gt;，在弹出的窗口中选择是或者Yes;&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;sudo adduser $USER wireshark&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;重启。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;nmap局域网扫描工具&#34;&gt;Nmap局域网扫描工具&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install nmap
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -695,6 +787,7 @@ sudo apt-get install --install-recommends winehq-devel
 &lt;li&gt;&lt;a href=&#34;#fg、bg、jobs、、nohup、ctrlz、ctrlc-、kill命令&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#kill，killall，pkill，xkill-命令&#34;&gt;kill，killall，pkill，xkill 命令&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#add-apt-repository命令&#34;&gt;add-apt-repository命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#nmap扫描工具&#34;&gt;nmap扫描工具&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -1023,6 +1116,7 @@ xkill 调用方法：
 &lt;p&gt;如果你想要 单独地删除某个PPA仓库，运行下面的命令：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo add-apt-repository --remove ppa:someppa/ppa 
+# 然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;注意，上述命令不会同时删除任何已经安装或更新的软件包。&lt;/p&gt;
@@ -1036,15 +1130,62 @@ $ sudo ppa-purge ppa:webapps/preview
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这样就ok了。&lt;/p&gt;
+
+&lt;h2 id=&#34;nmap扫描工具&#34;&gt;nmap扫描工具&lt;/h2&gt;
+
+&lt;p&gt;Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap 10.1.1.254
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;快速扫描主机开放端口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -F 192.168.0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nmap 简单扫描，并对返回的结果详细描述输出。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -vv 10.1.1.254 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -p1-50 10.1.1.254
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 指定端口扫描&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -p80,443,22,21 10.1.1.254
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 还可以设置扫描一个网段下的ip&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -sP 10.1.1.0/24 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;探测局域网段中各主机开启了哪些服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -sS 192.168.0.0/24
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 操作系统类型的探测&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -O 10.1.1.154
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -A 10.1.1.154
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -1119,10 +1260,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

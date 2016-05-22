@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Command on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/command/</link>
+    <link>http://wixb50.github.io/categories/command/</link>
     <description>Recent content in Command on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 07 Nov 2015 22:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/command/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/command/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -48,6 +48,7 @@
 &lt;li&gt;&lt;a href=&#34;#fg、bg、jobs、、nohup、ctrlz、ctrlc-、kill命令&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#kill，killall，pkill，xkill-命令&#34;&gt;kill，killall，pkill，xkill 命令&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#add-apt-repository命令&#34;&gt;add-apt-repository命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#nmap扫描工具&#34;&gt;nmap扫描工具&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -376,6 +377,7 @@ xkill 调用方法：
 &lt;p&gt;如果你想要 单独地删除某个PPA仓库，运行下面的命令：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo add-apt-repository --remove ppa:someppa/ppa 
+# 然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;注意，上述命令不会同时删除任何已经安装或更新的软件包。&lt;/p&gt;
@@ -389,6 +391,53 @@ $ sudo ppa-purge ppa:webapps/preview
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这样就ok了。&lt;/p&gt;
+
+&lt;h2 id=&#34;nmap扫描工具&#34;&gt;nmap扫描工具&lt;/h2&gt;
+
+&lt;p&gt;Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap 10.1.1.254
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;快速扫描主机开放端口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -F 192.168.0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nmap 简单扫描，并对返回的结果详细描述输出。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -vv 10.1.1.254 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -p1-50 10.1.1.254
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 指定端口扫描&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -p80,443,22,21 10.1.1.254
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 还可以设置扫描一个网段下的ip&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -sP 10.1.1.0/24 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;探测局域网段中各主机开启了哪些服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -sS 192.168.0.0/24
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nmap 操作系统类型的探测&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -O 10.1.1.154
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nmap -A 10.1.1.154
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
