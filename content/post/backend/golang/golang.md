@@ -10,6 +10,9 @@ title = "golang资料"
 ## golang跨平台编译
 
 + WindowsCrossCompiling:[Building windows go programs on linux](https://github.com/golang/go/wiki/WindowsCrossCompiling)
+```
+$ GOOS=windows GOARCH=386 go build -o hello.exe hello.go
+```
 
 ## 集合类
 

@@ -27,7 +27,6 @@ title = "ubuntu常用软件集合"
 - [tldr命令工具](#tldr命令工具)
 - [终端工具Terminator](#终端工具terminator)
 - [terminal增强zsh](#terminal增强zsh)
-- [Wine 1.8](#wine-18)
 
 <!-- /MarkdownTOC -->
 
@@ -161,13 +160,19 @@ Backend：
 
 >python包管理器pip：`sudo apt-get install python-pip`  
 >python包管理器pip3：`sudo apt-get install python3-pip`  
->python虚拟环境：`sudo pip install virtualenv`，参考[virtualenv 和 virtualenvwrapper 实践](https://segmentfault.com/a/1190000004079979)
+>python虚拟环境：`sudo pip install virtualenv`，参考[virtualenv 和virtualenvwrapper 实践](https://segmentfault.com/a/1190000004079979)  
+>安装 virtualenvwrapper：`pip install virtualenvwrapper`，配置如下
+
 ```
 # virtualenvwrapper的配置到./bashrc
 export WORKON_HOME='~/.virtualenvs'
 source /usr/local/bin/virtualenvwrapper.sh
 ```
-
+>常用命令:  
+创建一个虚拟环境:`mkvirtualenv -p /user/bin/python ENV`  
+切换工作环境：`workon ENV`  
+离开虚拟环境：`deactivate`  
+删除虚拟环境：`rmvirtualenv ENV`
 
 + [gradle]() java包管理器,构建工具
 
@@ -343,6 +348,23 @@ $ upgrade_oh_my_zsh
 修改`～/zshrc`文件，将主题改为`ZSH_THEME="gentoo"`显示完整路径。    
 将以前`~/bashrc`中的环境变量复制到`～/zshrc`文件最后(如果想用)。
 
+**'autojump' plugin install**
+
+系统安装autojump
+```
+apt-get install autojump
+```
+ zsh 中开启 autojump 插件的支持
+```
+vim ~/.zshrc
+# plugins=(xxx)改为
+plugins=(xxx autojump)
+ ```
+使用方法
+```
+j <目录名>
+```
+
 ### Wine 1.8
 
 1、对于 64 位系统，需要开启 32 位架构支持：
@@ -366,3 +388,31 @@ winecfg
 ```
 
 NOTE:[手动安装Gecko](https://wiki.winehq.org/Gecko)
+
+### chm解压查看7zip
+安装
+```
+sudo apt-get install p7zip
+```
+解压chm文件命令
+```
+7z e test.chm ./test
+```
+
+### wireshark抓包工具
+安装命令
+```
+sudo apt-get install wireshark
+```
+因为wireshark只允许超级用户使用访问网卡，但是采用`sudo wireshark`会报错，所以解决方案是，将当前用户加入`wireshark组`中：
+
++ 执行`sudo dpkg-reconfigure wireshark-common`，在弹出的窗口中选择是或者Yes;
++ 执行`sudo adduser $USER wireshark`;
++ 重启。
+
+### Nmap局域网扫描工具
+安装
+```
+sudo apt-get install nmap
+```
+

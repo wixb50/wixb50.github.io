@@ -20,6 +20,8 @@ title = "文章收藏"
 ## Java
 
 + [八个最实用的Java开发工具](http://www.imooc.com/article/1149)
++ [Java开发常用的在线工具](http://www.hollischuang.com/archives/1459)
++ [Better Java](http://blog.smoker.cc/translation/20160511.html)
 
 ## Golang
 

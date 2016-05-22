@@ -10,10 +10,12 @@ title = "ubuntu常见故障"
 ## 目录
 <!-- MarkdownTOC -->
 
-- [ssh错误: permission denied (publickey)](#ssh错误-permission-denied-publickey)
+- [ssh错误: permission denied \(publickey\)](#ssh错误-permission-denied-publickey)
 - [unity菜单栏消失](#unity菜单栏消失)
 - [google chrome更新出错](#google-chrome更新出错)
 - [云服务器内存耗尽，打开虚拟内存](#云服务器内存耗尽，打开虚拟内存)
+- [修改了SSH默认端口之后，如何配置git](#修改了ssh默认端口之后，如何配置git)
+- [Linux WPS不能使用中文输入法](#linux-wps不能使用中文输入法)
 
 <!-- /MarkdownTOC -->
 
@@ -57,4 +59,31 @@ Enable the swap file:
 $ swapon /swap 
 Enable swap on boot: 
 $ echo "/swap swap swap sw 0 0" >> /etc/fstab
+```
+
+## 修改了SSH默认端口之后，如何配置git
+现在假设原来的项目的remote设置为git@domain.com:Projects/p1.git，将服务器SSH默认端口修改为3022后，导致push出错。
+
+第一种解决方案:
+```
+# 直接修改URL为SSH://开头
+git remote set-url origin ssh://git@domain.com:3022/~/Projects/p1.git
+```
+第二种解决方案：
+```
+# 修改本地配置文件
+cat>~/.ssh/config
+# 映射一个别名
+host newdomain
+hostname domain.com
+port 3022
+# ctrl+D
+```
+
+## Linux WPS不能使用中文输入法
+
+因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：
+```
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE="fcitx"
 ```

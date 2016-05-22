@@ -10,7 +10,7 @@ title = "aria2 rpc"
 ##目录
 <!-- MarkdownTOC -->
 
-- [前言](#null-link)
+- [](#前言null-link)
 - [初步部署 Aria2 简易版](#初步部署-aria2-简易版)
 - [进阶 Aria2](#进阶-aria2)
 - [End](#end)
@@ -26,93 +26,62 @@ title = "aria2 rpc"
 
 ## 初步部署 Aria2 简易版
 
-**1. 新建几个有关文件**
-
-上面已经提供了下载链接，根据平台/系统位数（32bit/64bit）下载相应文件即可。（存放路径最好是英文/数字）然后在目录下以新建文本文档的方式新建几个文件，方便之后的使用。
-
-+ Aria2.log（运行日志）
-+ aria2.session（下载历史）
-+ aria2.conf（配置文件）
-+ HideRun.vbs （用来隐藏命令行窗口,仅限windows下）
-
-
-而后用记事本修改配置文件 aria2.conf，**根据实际情况修改：**
+**1. 安装aria**
+终端输入安装
+```
+sudo apt-get install aria2
+```
+**2.创建一个目录存放aria2配置终端输入**
+```
+sudo mkdir /etc/aria2    #新建文件夹
+sudo touch /etc/aria2/aria2.session    #新建session文件
+sudo chmod 777 /etc/aria2/aria2.session    #设置aria2.session可写
+sudo vim /etc/aria2/aria2.conf    #创建配置文件
+```
+在aria2.conf添加已经代码 **根据实际情况修改：**
 
 ```
-dir=默认下载目录（例：D:\Inbox）
-log=日志文件存放目录（例：D:\Aria2\Aria2.log）
-input-file=记录下载历史文件目录（例：D:\Aria2\aria2.session）
-save-session=存放下载历史文件目录（例：同上）
-save-session-interval=60
-force-save=true
-log-level=error
-  
-  
-# see --split option
-max-concurrent-downloads=5
-continue=true
-max-overall-download-limit=0
-max-overall-upload-limit=50K
-max-upload-limit=20
-  
-# Http/FTP options
-connect-timeout=120
-lowest-speed-limit=10K
-max-connection-per-server=10
-max-file-not-found=2
-min-split-size=1M
-split=5
-check-certificate=false
-http-no-cache=true
-  
-# FTP Specific Options
-  
-# BT/PT Setting
-bt-enable-lpd=true
-#bt-max-peers=55
-follow-torrent=true
-enable-dht6=false
-bt-seed-unverified
-rpc-save-upload-metadata=true
-bt-hash-check-seed
-bt-remove-unselected-file
-bt-request-peer-speed-limit=100K
-seed-ratio=0.0
-  
-  
-# Metalink Specific Options
-  
-# RPC Options
+#＝＝＝＝＝＝＝＝＝文件保存目录自行修改
+dir=/home/nishishui/aria2_download
+disable-ipv6=true
+#打开rpc的目的是为了给web管理端用
 enable-rpc=true
-pause=false
 rpc-allow-origin-all=true
 rpc-listen-all=true
-rpc-save-upload-metadata=true
-rpc-secure=false
-  
-# Advanced Options
-daemon=true
-disable-ipv6=true
-enable-mmap=true
-file-allocation=falloc
-max-download-result=120
-#no-file-allocation-limit=32M
-force-sequential=true
-parameterized-uri=true
+#rpc-listen-port=6800
+continue=true
+input-file=/etc/aria2/aria2.session
+save-session=/etc/aria2/aria2.session
+max-concurrent-downloads=5
 ```
 
-**Windows NOTE :** 而后修改 HideRun.vbs，将 Aria2c.exe 与配置文件 Aria2.conf 链接，并实现无命令行启动。那么日后打开 Aria2 就双击 HideRun.vbs 这个文件而不是双击 aria2c.exe。
+**3.启动aria2**
 ```
-CreateObject("WScript.Shell").Run "（程序所在目录 例：D:\Aria2\aria2c.exe） --conf-path=aria2.conf",0
+sudo aria2c --conf-path=/etc/aria2/aria2.conf
 ```
-**Linux NOTE :** 可使用配置文件直接运行，转到后台即可。
+如果没有提示错误，按ctrl+c停止运行命令，转为后台运行：
 ```
-aria2c --conf-path=aria2.conf &  #其中&(后台运行)是可选项
+sudo aria2 --conf-path=/etc/aria2/aria2.conf -D
+```
+**4. 创建启动脚本**
+```
+vim ~/aria2/aria2_start.sh 
+sudo aria2c --conf-path=/etc/aria2/aria2.conf -D  
+
+vim ~/aria2/aria2_stop.sh 
+#!/bin/bash
+process_name=aria2c
+kill_process(){
+        process_id=`ps -eo pid,command|grep $process_name |grep -v "grep" |awk '{print $1}'`
+        sudo kill $process_id
+}
+kill_process
 ```
 
-**2. Web 前端控制**
 
-如此这般，Aria2 就配置好了，如果要添加开机自启动将 HideRun.vbs 的快捷方式拖入启动文件夹建立计划任务就 OK 了。那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 [Aria2 Web UI](https://github.com/ziahamza/webui-aria2) 和 [YAAW](https://github.com/binux/yaaw)。
+**5. Web 前端控制**
+
+如此这般，Aria2 就配置好了，那么问题就来了，这么一个看不见摸不着的软件怎么使用？别急，即使没有 GUI，Aria2 也还是有 Web 端控制界面的，目前比较知名的有 [Aria2 Web UI](https://github.com/ziahamza/webui-aria2) 和 [YAAW](https://github.com/binux/yaaw)。
 
 + Aria2 Web UI（推荐！）: [英文原版](http://ziahamza.github.io/webui-aria2/)
 + YAAW: [英文原版](http://binux.github.io/yaaw/demo/)  
@@ -160,3 +129,5 @@ End
 参考
 -
 + [https://gist.github.com/aa65535/5e956c4eb4f451ddec29](https://gist.github.com/aa65535/5e956c4eb4f451ddec29)
++ [在树莓派中使用aria2下载工具](http://www.aliencn.net/2015/08/02/Use_aria2_in_RaspberryPi/)
++ [ubuntu 配置 aria2](http://www.nixonli.com/linux/ubuntu/17040.html)

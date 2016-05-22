@@ -26,6 +26,7 @@ title = "ubuntu常用命令集合"
 - [fg、bg、jobs、&、nohup、ctrl+z、ctrl+c 、kill命令](#fg、bg、jobs、、nohup、ctrlz、ctrlc-、kill命令)
 - [kill，killall，pkill，xkill 命令](#kill，killall，pkill，xkill-命令)
 - [add-apt-repository命令](#add-apt-repository命令)
+- [nmap扫描工具](#nmap扫描工具)
 
 <!-- /MarkdownTOC -->
 
@@ -284,6 +285,7 @@ $ sudo add-apt-repository ppa:webapps/preview
 如果你想要 单独地删除某个PPA仓库，运行下面的命令：
 ```
 $ sudo add-apt-repository --remove ppa:someppa/ppa 
+# 然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除
 ```
 注意，上述命令不会同时删除任何已经安装或更新的软件包。
 
@@ -296,4 +298,42 @@ $ sudo apt-get install ppa-purge
 $ sudo ppa-purge ppa:webapps/preview 
 ```
 这样就ok了。
+
+## nmap扫描工具
+Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。
+```
+nmap 10.1.1.254
+```
+快速扫描主机开放端口
+```
+nmap -F 192.168.0.1
+```
+Nmap 简单扫描，并对返回的结果详细描述输出。
+```
+nmap -vv 10.1.1.254 
+```
+nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。
+```
+nmap -p1-50 10.1.1.254
+```
+nmap 指定端口扫描
+```
+nmap -p80,443,22,21 10.1.1.254
+```
+nmap 还可以设置扫描一个网段下的ip
+```
+nmap -sP 10.1.1.0/24 
+```
+探测局域网段中各主机开启了哪些服务
+```
+nmap -sS 192.168.0.0/24
+```
+nmap 操作系统类型的探测
+```
+nmap -O 10.1.1.154
+```
+次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。
+```
+nmap -A 10.1.1.154
+```
 
