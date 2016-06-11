@@ -2,22 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspberry Pi on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/raspberry-pi/</link>
+    <link>http://wixb50.github.io/categories/raspberry-pi/</link>
     <description>Recent content in Raspberry Pi on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Wed, 18 May 2016 14:25:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 May 2016 20:25:17 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>树莓派samba离线下载器</title>
+      <link>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</link>
+      <pubDate>Tue, 24 May 2016 20:25:17 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid>
+      <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;主要用samba实现局域网共享。&lt;/p&gt;
+
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+
+&lt;p&gt;apt安装：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install samba samba-common-bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置文件/etc/samba/smb.conf，在最后添加以下命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[raspi]                                   #共享文件的名称，将在网络上以此名称显示
+        path = /mnt/myusbdrive                     #共享文件的路径
+        valid users = pi             #允许访问的用户
+        browseable = yes                  #允许浏览                                 
+        public = yes                      #共享开放                                      
+        writable = yes                    #可写
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;保存后，重启 samba 服务，输入:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo /etc/init.d/samba restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置密码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;smbpasswd –a pi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;连接&#34;&gt;连接&lt;/h2&gt;
+
+&lt;p&gt;在&lt;code&gt;nautilus&lt;/code&gt;中选择连接到服务器，地址为&lt;code&gt;smb://192.168.1X.10X/&lt;/code&gt;，连接输入用户名密码即可。或者在windows上映射到网络驱动器，地址&lt;code&gt;\\192.1.1.1XX\{{你的目录}}&lt;/code&gt;即可连接。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>树莓派安装Gogs</title>
-      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
+      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
+      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
       <description>
 
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -102,10 +147,10 @@ WantedBy=multi-user.target
     
     <item>
       <title>树莓派搭建ownCloud</title>
-      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
+      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
+      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
       <description>
 
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;

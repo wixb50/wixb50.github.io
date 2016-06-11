@@ -2,22 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Command on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/command/</link>
+    <link>http://wixb50.github.io/categories/command/</link>
     <description>Recent content in Command on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Sat, 07 Nov 2015 22:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/command/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Jun 2016 10:07:33 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/command/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CentOS常用命令集合</title>
+      <link>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <pubDate>Wed, 01 Jun 2016 10:07:33 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <description>
+
+&lt;h2 id=&#34;centos添加及删除用户&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;adduser int # 新增用户
+passwd int # 设置或者修改密码
+chmod 740 /etc/sudoers # 设置超级管理员组配置文件可写
+vim /etc/sudoers # 编辑文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加int如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;## Allow root to run any commands anywhere 
+root    ALL=(ALL)   ALL
+int ALL=(ALL)   ALL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其他命令
+&lt;code&gt;
+userdel test # 删除用户
+userdel -f test # 删除用户及用户组
+&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;

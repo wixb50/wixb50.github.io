@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/ubuntu/</link>
+    <link>http://wixb50.github.io/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 17 Dec 2015 13:50:50 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -31,6 +31,8 @@
 &lt;li&gt;&lt;a href=&#34;#云服务器内存耗尽，打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#修改了ssh默认端口之后，如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#清理ubuntu连接过的服务器记录&#34;&gt;清理ubuntu连接过的服务器记录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ubuntu与windows双系统时间不同步&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -111,20 +113,38 @@ port 3022
 
 &lt;h2 id=&#34;linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
 
-&lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：
-&lt;code&gt;
-export XMODIFIERS=&amp;quot;@im=fcitx&amp;quot;
+&lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export XMODIFIERS=&amp;quot;@im=fcitx&amp;quot;
 export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;清理ubuntu连接过的服务器记录&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
+
+&lt;p&gt;保存目录为nautilus中，直接清空配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rm ~/.config/nautilus/servers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ubuntu与windows双系统时间不同步&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;之所以 Windows 与 Ubuntu 双系统之间有时间差，是因为这两个系统使用了不同的方式来识别硬件时钟（Hardware Clock）。Ubuntu 将硬件时钟当作 UTC 时间，而 Windows 将硬件时钟当作本地时间（ Local time）。由于时间的处理方式不同，Windows 不管重启多少次都识别 Local time，时间都不会改变。而当我们从 Ubuntu 重启到 Windows 时，硬件时钟已经被 Ubuntu 认为 UTC 方式，而 Windows 再将其强制转换成 Local time，这就造成了时间差。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我们只需将 Ubuntu 的 UTC 时间切换成 Local time 即可。具体做法就是将 /etc/default/rcS 文件中的 “UTC=yes” 改成 “UTC=no” 即可（没有引号）。更改完成完成之后 Ubuntu 便会使用 Local time 而非 UTC。
+&lt;code&gt;
+sudo sed -i &#39;s/UTC=no/UTC=yes/&#39; /etc/default/rcS
 &lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -198,10 +218,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -237,10 +257,10 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -265,6 +285,12 @@ sudo service xrdp restart
 &lt;li&gt;&lt;a href=&#34;#tldr命令工具&#34;&gt;tldr命令工具&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#终端工具terminator&#34;&gt;终端工具Terminator&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#terminal增强zsh&#34;&gt;terminal增强zsh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#wine-18&#34;&gt;Wine 1.8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#chm解压查看7zip&#34;&gt;chm解压查看7zip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#wireshark抓包工具&#34;&gt;wireshark抓包工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#nmap局域网扫描工具&#34;&gt;Nmap局域网扫描工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sqlite3工具&#34;&gt;sqlite3工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#整站离线工具httrack&#34;&gt;整站离线工具HTTrack&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -669,6 +695,18 @@ $ upgrade_oh_my_zsh
 &lt;p&gt;修改&lt;code&gt;～/zshrc&lt;/code&gt;文件，将主题改为&lt;code&gt;ZSH_THEME=&amp;quot;gentoo&amp;quot;&lt;/code&gt;显示完整路径。&lt;br /&gt;
 将以前&lt;code&gt;~/bashrc&lt;/code&gt;中的环境变量复制到&lt;code&gt;～/zshrc&lt;/code&gt;文件最后(如果想用)。&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;附:&lt;/strong&gt;基于gentoo主题修改之后的一个主题&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function prompt_char {
+  if [ $UID -eq 0 ]; then echo &amp;quot;#&amp;quot;; else echo $; fi
+}
+local ret_status=&amp;quot;%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )&amp;quot;
+PROMPT=&#39;${ret_status} %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt_info)%_$(prompt_char)%{$reset_color%} &#39;
+
+ZSH_THEME_GIT_PROMPT_PREFIX=&amp;quot;(&amp;quot;
+ZSH_THEME_GIT_PROMPT_SUFFIX=&amp;quot;) &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;&lt;strong&gt;&amp;lsquo;autojump&amp;rsquo; plugin install&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;系统安装autojump&lt;/p&gt;
@@ -748,15 +786,45 @@ sudo apt-get install --install-recommends winehq-devel
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install nmap
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;sqlite3工具&#34;&gt;sqlite3工具&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install sqlite3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用命令(其他命令请自行google)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sqlite3 test.db # 打开数据库文件
+sqlite&amp;gt;.database # 查看数据库文件信息
+sqlite&amp;gt;.schema # 查看所有表创建语句
+sqlite&amp;gt;.tables # 获取所有表和视图
+sqlite&amp;gt;.exit # 退出
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;整站离线工具httrack&#34;&gt;整站离线工具HTTrack&lt;/h3&gt;
+
+&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install httrack
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一个例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;httrack &amp;quot;http://www.all.net/&amp;quot; -O &amp;quot;/tmp/www.all.net&amp;quot; &amp;quot;+*.all.net/*&amp;quot; -v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它的意思是：以&lt;a href=&#34;http://www.all.net/&#34;&gt;http://www.all.net/&lt;/a&gt; 为起始URL，输出到/tmp/www.all.net文件夹，范围是www.all.net域名下的所有文件，并显示所有错误信息（verbose）&lt;a href=&#34;http://www.httrack.com/html/fcguide.html&#34;&gt;参考文档&lt;/a&gt;。&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -1182,10 +1250,10 @@ $ sudo ppa-purge ppa:webapps/preview
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
@@ -1260,10 +1328,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 

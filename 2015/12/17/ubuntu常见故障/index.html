@@ -10,18 +10,18 @@
   <title>ubuntu常见故障 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=1&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,10 +88,10 @@
 <div class="content container">
   <div class="post">
     <h1>ubuntu常见故障</h1>
-    <span class="post-date">Dec 17, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/#disqus_thread">Comments</a>
+    <span class="post-date">Dec 17, 2015 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.coding.me/categories/os">os</a>
+    <a class="label" href="http://wixb50.github.io/categories/ubuntu">ubuntu</a><a class="label" href="http://wixb50.github.io/categories/os">os</a>
     </span>
     
 
@@ -106,6 +106,8 @@
 <li><a href="#云服务器内存耗尽，打开虚拟内存">云服务器内存耗尽，打开虚拟内存</a></li>
 <li><a href="#修改了ssh默认端口之后，如何配置git">修改了SSH默认端口之后，如何配置git</a></li>
 <li><a href="#linux-wps不能使用中文输入法">Linux WPS不能使用中文输入法</a></li>
+<li><a href="#清理ubuntu连接过的服务器记录">清理ubuntu连接过的服务器记录</a></li>
+<li><a href="#ubuntu与windows双系统时间不同步">Ubuntu与Windows双系统时间不同步</a></li>
 </ul>
 
 <!-- /MarkdownTOC -->
@@ -186,10 +188,28 @@ port 3022
 
 <h2 id="linux-wps不能使用中文输入法">Linux WPS不能使用中文输入法</h2>
 
-<p>因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：
-<code>
-export XMODIFIERS=&quot;@im=fcitx&quot;
+<p>因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：</p>
+
+<pre><code>export XMODIFIERS=&quot;@im=fcitx&quot;
 export QT_IM_MODULE=&quot;fcitx&quot;
+</code></pre>
+
+<h2 id="清理ubuntu连接过的服务器记录">清理ubuntu连接过的服务器记录</h2>
+
+<p>保存目录为nautilus中，直接清空配置文件</p>
+
+<pre><code>rm ~/.config/nautilus/servers
+</code></pre>
+
+<h2 id="ubuntu与windows双系统时间不同步">Ubuntu与Windows双系统时间不同步</h2>
+
+<blockquote>
+<p>之所以 Windows 与 Ubuntu 双系统之间有时间差，是因为这两个系统使用了不同的方式来识别硬件时钟（Hardware Clock）。Ubuntu 将硬件时钟当作 UTC 时间，而 Windows 将硬件时钟当作本地时间（ Local time）。由于时间的处理方式不同，Windows 不管重启多少次都识别 Local time，时间都不会改变。而当我们从 Ubuntu 重启到 Windows 时，硬件时钟已经被 Ubuntu 认为 UTC 方式，而 Windows 再将其强制转换成 Local time，这就造成了时间差。</p>
+</blockquote>
+
+<p>我们只需将 Ubuntu 的 UTC 时间切换成 Local time 即可。具体做法就是将 /etc/default/rcS 文件中的 “UTC=yes” 改成 “UTC=no” 即可（没有引号）。更改完成完成之后 Ubuntu 便会使用 Local time 而非 UTC。
+<code>
+sudo sed -i 's/UTC=no/UTC=yes/' /etc/default/rcS
 </code></p>
 
   </div>
@@ -220,7 +240,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
