@@ -12,7 +12,7 @@
 
 1.直接使用运行脚本`./github-submit.sh`，将develop、master分支推送到github上面。  
 
-2.直接使用运行脚本`./gitcafe-submit.sh`，将master分支强制推送到gitcafe的`gitcafe-pages`分支上面。
+2.直接使用运行脚本`./coding-submit.sh`，将master分支强制推送到coding的`coding-pages`分支上面。
 
 ---
 #### Support by Wixb.

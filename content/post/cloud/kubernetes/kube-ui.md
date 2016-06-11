@@ -1,6 +1,6 @@
 +++
 categories = ["kubernetes","kube-ui"]
-date = "2015-01-02T15:38:38+08:00"
+date = "2016-01-02T15:38:38+08:00"
 description = "kubernetes 安装配置 kube-ui"
 keywords = ["kubernetes"]
 title = "kubernetes 安装配置 kube-ui"
