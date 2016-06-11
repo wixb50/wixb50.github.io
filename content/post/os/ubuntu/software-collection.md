@@ -27,6 +27,12 @@ title = "ubuntu常用软件集合"
 - [tldr命令工具](#tldr命令工具)
 - [终端工具Terminator](#终端工具terminator)
 - [terminal增强zsh](#terminal增强zsh)
+- [Wine 1.8](#wine-18)
+- [chm解压查看7zip](#chm解压查看7zip)
+- [wireshark抓包工具](#wireshark抓包工具)
+- [Nmap局域网扫描工具](#nmap局域网扫描工具)
+- [sqlite3工具](#sqlite3工具)
+- [整站离线工具HTTrack](#整站离线工具httrack)
 
 <!-- /MarkdownTOC -->
 
@@ -348,6 +354,18 @@ $ upgrade_oh_my_zsh
 修改`～/zshrc`文件，将主题改为`ZSH_THEME="gentoo"`显示完整路径。    
 将以前`~/bashrc`中的环境变量复制到`～/zshrc`文件最后(如果想用)。
 
+**附:**基于gentoo主题修改之后的一个主题
+```
+function prompt_char {
+  if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
+}
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+PROMPT='${ret_status} %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt_info)%_$(prompt_char)%{$reset_color%} '
+
+ZSH_THEME_GIT_PROMPT_PREFIX="("
+ZSH_THEME_GIT_PROMPT_SUFFIX=") "
+```
+
 **'autojump' plugin install**
 
 系统安装autojump
@@ -359,7 +377,7 @@ apt-get install autojump
 vim ~/.zshrc
 # plugins=(xxx)改为
 plugins=(xxx autojump)
- ```
+```
 使用方法
 ```
 j <目录名>
@@ -416,3 +434,27 @@ sudo apt-get install wireshark
 sudo apt-get install nmap
 ```
 
+### sqlite3工具
+安装
+```
+sudo apt-get install sqlite3
+```
+使用命令(其他命令请自行google)
+```
+sqlite3 test.db # 打开数据库文件
+sqlite>.database # 查看数据库文件信息
+sqlite>.schema # 查看所有表创建语句
+sqlite>.tables # 获取所有表和视图
+sqlite>.exit # 退出
+```
+
+### 整站离线工具HTTrack
+安装
+```
+sudo apt-get install httrack
+```
+一个例子
+```
+httrack "http://www.all.net/" -O "/tmp/www.all.net" "+*.all.net/*" -v
+```
+它的意思是：以http://www.all.net/ 为起始URL，输出到/tmp/www.all.net文件夹，范围是www.all.net域名下的所有文件，并显示所有错误信息（verbose）[参考文档](http://www.httrack.com/html/fcguide.html)。

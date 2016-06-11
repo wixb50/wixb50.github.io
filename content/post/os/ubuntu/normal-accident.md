@@ -16,6 +16,8 @@ title = "ubuntu常见故障"
 - [云服务器内存耗尽，打开虚拟内存](#云服务器内存耗尽，打开虚拟内存)
 - [修改了SSH默认端口之后，如何配置git](#修改了ssh默认端口之后，如何配置git)
 - [Linux WPS不能使用中文输入法](#linux-wps不能使用中文输入法)
+- [清理ubuntu连接过的服务器记录](#清理ubuntu连接过的服务器记录)
+- [Ubuntu与Windows双系统时间不同步](#ubuntu与windows双系统时间不同步)
 
 <!-- /MarkdownTOC -->
 
@@ -86,4 +88,20 @@ port 3022
 ```
 export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE="fcitx"
+```
+
+## 清理ubuntu连接过的服务器记录
+
+保存目录为nautilus中，直接清空配置文件
+```
+rm ~/.config/nautilus/servers
+```
+
+## Ubuntu与Windows双系统时间不同步
+
+>之所以 Windows 与 Ubuntu 双系统之间有时间差，是因为这两个系统使用了不同的方式来识别硬件时钟（Hardware Clock）。Ubuntu 将硬件时钟当作 UTC 时间，而 Windows 将硬件时钟当作本地时间（ Local time）。由于时间的处理方式不同，Windows 不管重启多少次都识别 Local time，时间都不会改变。而当我们从 Ubuntu 重启到 Windows 时，硬件时钟已经被 Ubuntu 认为 UTC 方式，而 Windows 再将其强制转换成 Local time，这就造成了时间差。
+
+我们只需将 Ubuntu 的 UTC 时间切换成 Local time 即可。具体做法就是将 /etc/default/rcS 文件中的 “UTC=yes” 改成 “UTC=no” 即可（没有引号）。更改完成完成之后 Ubuntu 便会使用 Local time 而非 UTC。
+```
+sudo sed -i 's/UTC=no/UTC=yes/' /etc/default/rcS
 ```

@@ -44,7 +44,8 @@ sudo vim /etc/aria2/aria2.conf    #创建配置文件
 #＝＝＝＝＝＝＝＝＝文件保存目录自行修改
 dir=/home/nishishui/aria2_download
 disable-ipv6=true
-#打开rpc的目的是为了给web管理端用
+# 打开rpc的目的是为了给web管理端用
+rpc-secret=123456 # 连接时候设置：http://token:xxxxxx@host:port/jsonrpc
 enable-rpc=true
 rpc-allow-origin-all=true
 rpc-listen-all=true
@@ -52,7 +53,14 @@ rpc-listen-all=true
 continue=true
 input-file=/etc/aria2/aria2.session
 save-session=/etc/aria2/aria2.session
+# 最大同时下载任务数
 max-concurrent-downloads=5
+# 同一服务器连接数, 添加时可指定, 默认:1
+max-connection-per-server=5
+# 假定size=10M, 文件为20MiB 则使用两个来源下载; 文件为15MiB 则使用一个来源下载
+min-split-size=10M
+# 单个任务最大线程数, 添加时可指定, 默认:5
+split=5
 ```
 
 **3.启动aria2**

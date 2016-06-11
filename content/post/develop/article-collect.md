@@ -58,6 +58,10 @@ title = "文章收藏"
 + [LaTex排版全解](http://www.cnblogs.com/jingwhale/p/4250296.html)
 + [PDFLaTex-XeLatex-PDFTex-XeTex等区别](http://www.lai18.com/content/1987690.html)
 
+## Ubuntu
+
++ [Linux平台常用软件总结(Ubuntu版)](http://www.jianshu.com/p/4adbfd83b29f)
+
 ## Other
 
 + [应该掌握的10个搜索技巧](http://www.imooc.com/article/4071)
