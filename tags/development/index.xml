@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on Wixb blog</title>
-    <link>http://wixb50.github.io/tags/development/</link>
+    <link>http://wixb50.coding.me/tags/development/</link>
     <description>Recent content in Development on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 31 Oct 2015 16:14:34 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/tags/development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>welcome</title>
-      <link>http://wixb50.github.io/2015/10/31/welcome/</link>
+      <link>http://wixb50.coding.me/2015/10/31/welcome/</link>
       <pubDate>Sat, 31 Oct 2015 16:14:34 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/10/31/welcome/</guid>
+      <guid>http://wixb50.coding.me/2015/10/31/welcome/</guid>
       <description>
 
-&lt;h2 id=&#34;stay-hungry-stay-foolish&#34;&gt;Stay hungry,Stay foolish.&lt;/h2&gt;
+&lt;h2 id=&#34;stay-hungry-stay-foolish:2cc7dc244eed4480e8b46c91e911e96b&#34;&gt;Stay hungry,Stay foolish.&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://tonybai.com/2015/09/23/intro-of-gohugo/&#34;&gt;使用Hugo搭建静态站点&lt;/a&gt;&lt;/li&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/software/</link>
+    <link>http://wixb50.coding.me/categories/software/</link>
     <description>Recent content in Software on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 23 Dec 2015 16:21:30 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.coding.me/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.coding.me/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -33,7 +33,7 @@
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;前言-null-link&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;前言-null-link:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://aria2.sourceforge.net/&#34;&gt;Aria2&lt;/a&gt; 是一个轻量级多协议和多源命令行下载实用工具。它支持 HTTP / HTTPS, FTP, SFTP, bt 和 Metalink。通过内置 Aria2 可以操作 json - rpc 和 xml - rpc。对，Aria2 没有 GUI 图形界面，只有粗糙的命令行界面！但这也正是 Aria2 之轻快好省所在。&lt;/p&gt;
 
@@ -41,7 +41,7 @@
 &lt;li&gt;官方下载链接：&lt;a href=&#34;http://sourceforge.net/projects/aria2/files/stable/&#34;&gt;http://sourceforge.net/projects/aria2/files/stable/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/h2&gt;
+&lt;h2 id=&#34;初步部署-aria2-简易版:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;初步部署 Aria2 简易版&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;1. 安装aria&lt;/strong&gt;
 终端输入安装&lt;/p&gt;
@@ -118,7 +118,7 @@ kill_process
 
 &lt;p&gt;简易版的 Aria2 至此就部署完毕，你可以在 Web 控制前段方便地添加下载链接/bt种子了。&lt;/p&gt;
 
-&lt;h2 id=&#34;进阶-aria2&#34;&gt;进阶 Aria2&lt;/h2&gt;
+&lt;h2 id=&#34;进阶-aria2:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;进阶 Aria2&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;1. 配置文件 aria2.conf 详解&lt;/strong&gt;&lt;/p&gt;
 
@@ -160,9 +160,9 @@ kill_process
 &lt;li&gt;Chrome Extension: &lt;a href=&#34;https://chrome.google.com/webstore/detail/%E6%B7%BB%E5%8A%A0%E5%88%B0aria2/nimeojfecmndgolmlmjghjmbpdkhhogl&#34;&gt;添加到 aria2&lt;/a&gt; &lt;a href=&#34;http://git.oschina.net/yky/CDHelper&#34;&gt;Chrome Download Helper&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;end&#34;&gt;End&lt;/h2&gt;
+&lt;h2 id=&#34;end:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;End&lt;/h2&gt;
 
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;h2 id=&#34;参考:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;参考&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&#34;&gt;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&lt;/a&gt;&lt;/li&gt;
@@ -174,10 +174,10 @@ kill_process
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
@@ -678,13 +678,13 @@ http://foo/bar
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -716,13 +716,13 @@ http://foo/bar
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
+&lt;h3 id=&#34;broswer:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Broswer&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装，同步自己的chrome配置&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;editor&#34;&gt;Editor&lt;/h3&gt;
+&lt;h3 id=&#34;editor:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Editor&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
@@ -746,7 +746,7 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 &lt;li&gt;简单的MD编辑器&lt;a href=&#34;http://sourceforge.net/projects/retext/&#34;&gt;Retext&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+&lt;h3 id=&#34;git:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Git&lt;/h3&gt;
 
 &lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;br /&gt;
 安装&lt;code&gt;sudo apt-get install git-flow&lt;/code&gt;&lt;/p&gt;
@@ -759,7 +759,7 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 &lt;p&gt;删除&lt;code&gt;.smartgit&lt;/code&gt;下面的&lt;code&gt;settings.xml&lt;/code&gt;即可重新使用1个月。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;美化&#34;&gt;美化&lt;/h3&gt;
+&lt;h3 id=&#34;美化:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;美化&lt;/h3&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;默认使用Unity桌面&lt;/p&gt;
@@ -779,13 +779,13 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;&lt;a href=&#34;https://github.com/anmoljagetia/Flatabulous/&#34;&gt;挺好看的一个主题&lt;/a&gt;,里面“NoobsLab”源的主题都挺好看的。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;添加字体&#34;&gt;添加字体&lt;/h3&gt;
+&lt;h3 id=&#34;添加字体:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;添加字体&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ubuntu添加字体非常简单，只需要在～目录下新建&lt;code&gt;.fonts&lt;/code&gt;文件夹，然后把后缀为&lt;code&gt;.ttf&lt;/code&gt;字体文件复制其中，就自动加入了。可以使用软件查看。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+&lt;h3 id=&#34;sql:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;SQL&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Mysql客户端 &lt;a href=&#34;http://dev.mysql.com/downloads/workbench/&#34;&gt;Workbench&lt;/a&gt; 下载deb安装&lt;/li&gt;
@@ -793,7 +793,7 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;Mongo客户端 &lt;a href=&#34;http://robomongo.org/&#34;&gt;Robomongo&lt;/a&gt; 下载deb安装&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;思维导图&#34;&gt;思维导图&lt;/h3&gt;
+&lt;h3 id=&#34;思维导图:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;思维导图&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;最流行的思维导图 &lt;a href=&#34;http://www.xmind.net/cn/&#34;&gt;XMind&lt;/a&gt; 下载deb安装&lt;/li&gt;
@@ -801,13 +801,13 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;百度在线脑图 &lt;a href=&#34;http://naotu.baidu.com/&#34;&gt;百度脑图&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;影音&#34;&gt;影音&lt;/h3&gt;
+&lt;h3 id=&#34;影音:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;影音&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;VLC Media Player&lt;/code&gt; 软件商店安装&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fq&#34;&gt;FQ&lt;/h3&gt;
+&lt;h3 id=&#34;fq:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;FQ&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;开放网络客户端 &lt;a href=&#34;https://getlantern.org/&#34;&gt;Lantern&lt;/a&gt;&lt;/li&gt;
@@ -834,13 +834,13 @@ sudo apt-get install shadowsocks-qt5
 
 &lt;p&gt;&lt;strong&gt;[NOTICE] : Chrome推荐使用&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/releases&#34;&gt;SwitchyOmega&lt;/a&gt;插件进行设置。自动规则：&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&#34;&gt;wiki-GEWList&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h3&gt;
+&lt;h3 id=&#34;虚拟机:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;虚拟机&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;开源&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt; 下载deb安装&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;linux-wps&#34;&gt;Linux WPS&lt;/h3&gt;
+&lt;h3 id=&#34;linux-wps:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Linux WPS&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装
@@ -852,7 +852,7 @@ sudo dpkg -i symbol-fonts_1.2_all.deb
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
+&lt;h3 id=&#34;develop:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Develop&lt;/h3&gt;
 
 &lt;p&gt;Frontend：&lt;/p&gt;
 
@@ -912,7 +912,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 &lt;li&gt;[vagrant]() 虚拟机管理工具&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;latex&#34;&gt;LaTex&lt;/h3&gt;
+&lt;h3 id=&#34;latex:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;LaTex&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;TexLive2015安装&lt;/p&gt;
@@ -958,21 +958,21 @@ $ sudo umount /mnt/
 &lt;a href=&#34;http://texstudio.sourceforge.net/&#34;&gt;官网&lt;/a&gt;下载deb安装包安装即可&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;aria2下载工具&#34;&gt;Aria2下载工具&lt;/h3&gt;
+&lt;h3 id=&#34;aria2下载工具:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Aria2下载工具&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://aria2.sourceforge.net/&#34;&gt;官网介绍&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install aria2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;tldr命令工具&#34;&gt;tldr命令工具&lt;/h3&gt;
+&lt;h3 id=&#34;tldr命令工具:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;tldr命令工具&lt;/h3&gt;
 
 &lt;p&gt;下载go client的&lt;code&gt;platform binaries&lt;/code&gt;的&lt;code&gt;deb&lt;/code&gt;包安装：&lt;a href=&#34;https://github.com/tldr-pages/tldr&#34;&gt;github主页&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo dpkg -i tldr_0.1.0_amd64.deb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;终端工具terminator&#34;&gt;终端工具Terminator&lt;/h3&gt;
+&lt;h3 id=&#34;终端工具terminator:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;终端工具Terminator&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;安装&lt;/p&gt;
@@ -1093,7 +1093,7 @@ $ sh -c &amp;laquo;$(wget &lt;a href=&#34;https://raw.github.com/robbyrussell/oh
 $ chsh -s /bin/zsh  #替换bash为zsh
 $ sudo reboot  #重启生效&lt;/p&gt;
 
-&lt;h1 id=&#34;另外更新oh-my-zsh&#34;&gt;另外更新oh-my-zsh&lt;/h1&gt;
+&lt;h1 id=&#34;另外更新oh-my-zsh:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;另外更新oh-my-zsh&lt;/h1&gt;
 
 &lt;p&gt;$ upgrade_oh_my_zsh&lt;/p&gt;
 
@@ -1125,7 +1125,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=&amp;laquo;) &amp;laquo;&lt;/p&gt;
 
 &lt;p&gt;vim ~/.zshrc&lt;/p&gt;
 
-&lt;h1 id=&#34;plugins-xxx-改为&#34;&gt;plugins=(xxx)改为&lt;/h1&gt;
+&lt;h1 id=&#34;plugins-xxx-改为:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;plugins=(xxx)改为&lt;/h1&gt;
 
 &lt;p&gt;plugins=(xxx autojump)&lt;/p&gt;
 

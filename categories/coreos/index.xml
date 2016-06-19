@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coreos on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/coreos/</link>
+    <link>http://wixb50.coding.me/categories/coreos/</link>
     <description>Recent content in Coreos on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 30 Dec 2015 19:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/coreos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/coreos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录:b041d08cd2cacb464d298a81037e9efc&#34;&gt;目录&lt;/h1&gt;
@@ -266,13 +266,13 @@ kubectl get rc
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:8a4718f7d5df59499af8fd92000810ea&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -299,19 +299,19 @@ kubectl get rc
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;前言-null-link&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;前言-null-link:8a4718f7d5df59499af8fd92000810ea&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;因为大多数环境都是适配于大公司的云平台，但是也是有折中办法的。CoreOS是一个基于Linux 内核的轻量级操作系统，为了计算机集群的基础设施建设而生，专注于自动化，轻松部署，安全，可靠，规模化。作为一个操作系统，CoreOS 提供了在应用容器内部署应用所需要的基础功能环境以及一系列用于服务发现和配置共享的内建工具。而ESXi专为运行虚拟机、最大限度降低配置要求和简化部署而设计。所以我觉得使用ESXi当作IaaS架构，运行CoreOS集群，这样是可行的。话不多少，开始把。&lt;/p&gt;
 
-&lt;h2 id=&#34;前置条件&#34;&gt;前置条件&lt;/h2&gt;
+&lt;h2 id=&#34;前置条件:8a4718f7d5df59499af8fd92000810ea&#34;&gt;前置条件&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;安装ESXi机器一台：怎么装自己应该知道把，如果因为驱动原因还需要自己定制安装ISO，见Google。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;安装coreos虚拟机&#34;&gt;安装CoreOS虚拟机&lt;/h2&gt;
+&lt;h2 id=&#34;安装coreos虚拟机:8a4718f7d5df59499af8fd92000810ea&#34;&gt;安装CoreOS虚拟机&lt;/h2&gt;
 
-&lt;h3 id=&#34;choosing-a-channel&#34;&gt;Choosing a Channel&lt;/h3&gt;
+&lt;h3 id=&#34;choosing-a-channel:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Choosing a Channel&lt;/h3&gt;
 
 &lt;p&gt;CoreOS is released into alpha, beta, and stable channels. Releases to each channel serve as a release-candidate for the next channel. For example, a bug-free alpha release is promoted bit-for-bit to the beta channel.&lt;/p&gt;
 
@@ -326,7 +326,7 @@ kubectl get rc
 &lt;pre&gt;&lt;code&gt;curl -LO http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;deploying-with-vmware-vsphere-client-5-5&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/h3&gt;
+&lt;h3 id=&#34;deploying-with-vmware-vsphere-client-5-5:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/h3&gt;
 
 &lt;p&gt;Use the vSphere Client to deploy the VM as follows:&lt;/p&gt;
 
@@ -345,7 +345,7 @@ kubectl get rc
 
 &lt;p&gt;Before powering it on, you will have to create a cloud-config.&lt;/p&gt;
 
-&lt;h2 id=&#34;cloud-config&#34;&gt;Cloud-Config&lt;/h2&gt;
+&lt;h2 id=&#34;cloud-config:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Cloud-Config&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;是CoreOS内比较重要的概念，可以理解为一种配置CoreOS的方式：&lt;/p&gt;
 
@@ -406,7 +406,7 @@ manage_etc_hosts: localhost
 
 &lt;p&gt;Cloud-Config配置信息验证地址&lt;a href=&#34;https://coreos.com/validate/&#34;&gt;https://coreos.com/validate/&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;需要说明的-discovery&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;需要说明的-discovery:8a4718f7d5df59499af8fd92000810ea&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/h3&gt;
 
 &lt;p&gt;　　因为要搭建集群，需要用到服务发现，配置集群的服务发现有两种方式：一种是Static方式，第二种就是Discovery方式了。其中个人不推荐第一种方式，因为每加入一台主机就需要手动配置etcd节点，非常不方便。&lt;br /&gt;
 　　第二种Discovery方式是使用远程的服务器辅助服务发现，只需要配置好Discovery的URl就可以自动把新加入的服务器加入集群。其中iscovery服务器可以使用官网提供的，也可以自己搭建(我还没搭建过，这里不介绍了)。&lt;/p&gt;
@@ -483,7 +483,7 @@ rm -r /tmp/new-drive
 
 &lt;p&gt;NOTE:如果发现ip不对，可查看配置文件，Maybe重启一下也可以解决哟。&lt;/p&gt;
 
-&lt;h2 id=&#34;logging-in&#34;&gt;Logging in&lt;/h2&gt;
+&lt;h2 id=&#34;logging-in:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Logging in&lt;/h2&gt;
 
 &lt;p&gt;可以查看ESXi控制台CoreOS的IP，但是静态的自己已经知道了。&lt;/p&gt;
 
@@ -511,7 +511,7 @@ rm -r /tmp/new-drive
 &lt;pre&gt;&lt;code&gt;sudo /usr/bin/coreos-cloudinit --from-file /media/configdrive/openstack/latest/user_data
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;adding-new-machines&#34;&gt;Adding New Machines&lt;/h2&gt;
+&lt;h2 id=&#34;adding-new-machines:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Adding New Machines&lt;/h2&gt;
 
 &lt;p&gt;按照前面所说的，如果需要把其他CoreOS加入集群，只需要把Discovery URL改成原来集群地址即可自动加入了，是不是很方便呀。&lt;/p&gt;
 
@@ -525,11 +525,11 @@ rm -r /tmp/new-drive
 &lt;pre&gt;&lt;code&gt;Environment=&amp;quot;ETCD_DISCOVERY=https://discovery.etcd.io/575302f03f4fb2db82e81ea2abca55e9&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Your basic CoreOS cluster is set up, and now you can move on to testing with it!&lt;/p&gt;
 
-&lt;h2 id=&#34;一些有用的coreos命令&#34;&gt;一些有用的CoreOS命令&lt;/h2&gt;
+&lt;h2 id=&#34;一些有用的coreos命令:8a4718f7d5df59499af8fd92000810ea&#34;&gt;一些有用的CoreOS命令&lt;/h2&gt;
 
 &lt;p&gt;查看当前集群所有machines&lt;/p&gt;
 
@@ -548,7 +548,7 @@ systemctl -l status docker
 &lt;pre&gt;&lt;code&gt;journalctl -u etcd2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料:8a4718f7d5df59499af8fd92000810ea&#34;&gt;参考资料&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS官网&lt;/a&gt;&lt;/li&gt;
@@ -562,10 +562,10 @@ systemctl -l status docker
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;

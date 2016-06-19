@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspberry Pi on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/raspberry-pi/</link>
+    <link>http://wixb50.coding.me/categories/raspberry-pi/</link>
     <description>Recent content in Raspberry Pi on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,21 +10,21 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Tue, 24 May 2016 20:25:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>树莓派samba离线下载器</title>
-      <link>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</link>
+      <link>http://wixb50.coding.me/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</link>
       <pubDate>Tue, 24 May 2016 20:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid>
+      <guid>http://wixb50.coding.me/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid>
       <description>
 
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介:c437bf4e2f36fed37a46449037a257ea&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;主要用samba实现局域网共享。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;h2 id=&#34;安装:c437bf4e2f36fed37a46449037a257ea&#34;&gt;安装&lt;/h2&gt;
 
 &lt;p&gt;apt安装：&lt;/p&gt;
 
@@ -51,7 +51,7 @@
 &lt;pre&gt;&lt;code&gt;smbpasswd –a pi
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;连接&#34;&gt;连接&lt;/h2&gt;
+&lt;h2 id=&#34;连接:c437bf4e2f36fed37a46449037a257ea&#34;&gt;连接&lt;/h2&gt;
 
 &lt;p&gt;在&lt;code&gt;nautilus&lt;/code&gt;中选择连接到服务器，地址为&lt;code&gt;smb://192.168.1X.10X/&lt;/code&gt;，连接输入用户名密码即可。或者在windows上映射到网络驱动器，地址&lt;code&gt;\\192.1.1.1XX\{{你的目录}}&lt;/code&gt;即可连接。&lt;/p&gt;
 </description>
@@ -59,28 +59,28 @@
     
     <item>
       <title>树莓派安装Gogs</title>
-      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
+      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
+      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
       <description>
 
-&lt;h2 id=&#34;简介:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;本文主要介绍二进制安装方案，如果想用其他方法安装，请参考&lt;a href=&#34;https://gogs.io/docs&#34;&gt;官方文档&lt;/a&gt;;&lt;/p&gt;
 
-&lt;h2 id=&#34;准备工作:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;准备工作&lt;/h2&gt;
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;所有的版本都支持 MySQL 和 PostgreSQL、SQLite作为数据库，针对你想要存放的位置建立好数据库服务器。&lt;/li&gt;
 &lt;li&gt;在 &lt;a href=&#34;https://github.com/gogits/gogs/releases&#34;&gt;https://github.com/gogits/gogs/releases&lt;/a&gt; 下载号对应的二进制安装包，下载最新的rsapi*.zip即可，导入到树莓派中。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;新建用户:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;新建用户&lt;/h2&gt;
+&lt;h2 id=&#34;新建用户&#34;&gt;新建用户&lt;/h2&gt;
 
 &lt;p&gt;Gogs 默认以 git 用户运行，所以最好新建一个用户，要不然可能会出现你的主账户无法登录的问题。运行&lt;code&gt;sudo adduser git&lt;/code&gt;新建好用户，&lt;code&gt;su git&lt;/code&gt;以git用户身份登录。&lt;/p&gt;
 
-&lt;h2 id=&#34;运行配置:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;运行配置&lt;/h2&gt;
+&lt;h2 id=&#34;运行配置&#34;&gt;运行配置&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;解压压缩包。&lt;/li&gt;
@@ -88,16 +88,16 @@
 &lt;li&gt;执行命令 ./gogs web，然后，访问&lt;a href=&#34;http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。&#34;&gt;http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;部署应用:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;部署应用&lt;/h2&gt;
+&lt;h2 id=&#34;部署应用&#34;&gt;部署应用&lt;/h2&gt;
 
-&lt;h3 id=&#34;端口问题:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;端口问题&lt;/h3&gt;
+&lt;h3 id=&#34;端口问题&#34;&gt;端口问题&lt;/h3&gt;
 
 &lt;p&gt;端口占用问题，可以通过启动命令指定端口&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;./gogs web -port 3001
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;开机启动:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;开机启动&lt;/h3&gt;
+&lt;h3 id=&#34;开机启动&#34;&gt;开机启动&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;采用Systemd以守护进程定义service运行。&lt;/strong&gt;&lt;/p&gt;
 
@@ -137,7 +137,7 @@ WantedBy=multi-user.target
 
 &lt;p&gt;4.然后通过 &lt;code&gt;sudo systemctl enable gogs&lt;/code&gt; 命令激活，最后执行 &lt;code&gt;sudo systemd start gogs&lt;/code&gt;，就可以做到开机启动了。&lt;/p&gt;
 
-&lt;h2 id=&#34;参考文档:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;参考文档&lt;/h2&gt;
+&lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gogs.io/docs/installation/install_from_binary&#34;&gt;Gogs二进制安装&lt;/a&gt;&lt;/li&gt;
@@ -147,10 +147,10 @@ WantedBy=multi-user.target
     
     <item>
       <title>树莓派搭建ownCloud</title>
-      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
+      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
+      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
       <description>
 
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;

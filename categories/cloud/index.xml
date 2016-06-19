@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cloud on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/cloud/</link>
+    <link>http://wixb50.coding.me/categories/cloud/</link>
     <description>Recent content in Cloud on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Fri, 17 Jun 2016 19:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>docker入门</title>
-      <link>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
+      <link>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
       <pubDate>Fri, 17 Jun 2016 19:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
+      <guid>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
       <description>
 
-&lt;h1 id=&#34;前言&#34;&gt;[前言]()&lt;/h1&gt;
+&lt;h1 id=&#34;前言:11cc16163169598471edee7a60af0f73&#34;&gt;[前言]()&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;虚拟化&lt;/strong&gt;，是指通过虚拟化技术将一台计算机虚拟为多台逻辑计算机。在一台计算机上同时运行多个逻辑计算机，每个逻辑计算机可运行不同的操作系统，并且应用程序都可以在相互独立的空间内运行而互不影响，从而显著提高计算机的工作效率。&lt;/p&gt;
 
@@ -28,7 +28,7 @@
 
 &lt;p&gt;如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群和不可变基础设施是非常有利的。&lt;/p&gt;
 
-&lt;h1 id=&#34;基本概念&#34;&gt;基本概念&lt;/h1&gt;
+&lt;h1 id=&#34;基本概念:11cc16163169598471edee7a60af0f73&#34;&gt;基本概念&lt;/h1&gt;
 
 &lt;p&gt;Docker 包括三个基本概念&lt;/p&gt;
 
@@ -40,7 +40,7 @@
 
 &lt;p&gt;理解了这三个概念，就理解了 Docker 的整个生命周期。&lt;/p&gt;
 
-&lt;h2 id=&#34;镜像&#34;&gt;镜像&lt;/h2&gt;
+&lt;h2 id=&#34;镜像:11cc16163169598471edee7a60af0f73&#34;&gt;镜像&lt;/h2&gt;
 
 &lt;p&gt;Docker 镜像（Image）就是一个只读的模板，相当于操作系统(OS)安装的Ghost。&lt;/p&gt;
 
@@ -50,7 +50,7 @@
 
 &lt;p&gt;Docker 提供了一个很简单的机制来创建镜像或者更新现有的镜像，用户甚至可以直接从其他人那里下载一个已经做好的镜像来直接使用。&lt;/p&gt;
 
-&lt;h2 id=&#34;容器&#34;&gt;容器&lt;/h2&gt;
+&lt;h2 id=&#34;容器:11cc16163169598471edee7a60af0f73&#34;&gt;容器&lt;/h2&gt;
 
 &lt;p&gt;Docker 利用容器（Container）来运行应用。&lt;/p&gt;
 
@@ -58,7 +58,7 @@
 
 &lt;p&gt;可以把容器看做是一个简易版的 Linux 环境（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。&lt;/p&gt;
 
-&lt;h2 id=&#34;仓库&#34;&gt;仓库&lt;/h2&gt;
+&lt;h2 id=&#34;仓库:11cc16163169598471edee7a60af0f73&#34;&gt;仓库&lt;/h2&gt;
 
 &lt;p&gt;仓库（Repository）是集中存放镜像文件的场所。&lt;/p&gt;
 
@@ -72,7 +72,7 @@
 
 &lt;p&gt;*注：Docker 仓库的概念跟 Git 类似，注册服务器可以理解为 GitHub 这样的托管服务。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;h2 id=&#34;安装:11cc16163169598471edee7a60af0f73&#34;&gt;安装&lt;/h2&gt;
 
 &lt;p&gt;Docker 目前只能安装在 64 位平台上，并且要求内核版本不低于 3.10，实际上内核越新越好，过低的内核版本容易造成功能的不稳定。&lt;/p&gt;
 
@@ -81,9 +81,9 @@
 &lt;pre&gt;&lt;code&gt;curl -sSL https://get.docker.com/ | sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
+&lt;h1 id=&#34;常用命令:11cc16163169598471edee7a60af0f73&#34;&gt;常用命令&lt;/h1&gt;
 
-&lt;h2 id=&#34;镜像命令&#34;&gt;镜像命令&lt;/h2&gt;
+&lt;h2 id=&#34;镜像命令:11cc16163169598471edee7a60af0f73&#34;&gt;镜像命令&lt;/h2&gt;
 
 &lt;p&gt;获取镜像&lt;/p&gt;
 
@@ -103,7 +103,7 @@
 &lt;pre&gt;&lt;code&gt;$ sudo docker rmi training/sinatra
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;容器命令&#34;&gt;容器命令&lt;/h2&gt;
+&lt;h2 id=&#34;容器命令:11cc16163169598471edee7a60af0f73&#34;&gt;容器命令&lt;/h2&gt;
 
 &lt;p&gt;基于一个images，新建并启动一个容器&lt;/p&gt;
 
@@ -141,7 +141,7 @@ Hello world
 
 &lt;p&gt;使用 hostPort:containerPort 格式本地的 5000 端口映射到容器的 5000 端口.&lt;/p&gt;
 
-&lt;h1 id=&#34;docker进阶&#34;&gt;Docker进阶&lt;/h1&gt;
+&lt;h1 id=&#34;docker进阶:11cc16163169598471edee7a60af0f73&#34;&gt;Docker进阶&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;数据卷管理&lt;/li&gt;
@@ -159,13 +159,13 @@ Hello world
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.coding.me/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.coding.me/2015/12/11/docker-operation/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:9623c25974239aae48309dcafd31d278&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -188,9 +188,9 @@ Hello world
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;normal-commander&#34;&gt;normal commander&lt;/h2&gt;
+&lt;h2 id=&#34;normal-commander:9623c25974239aae48309dcafd31d278&#34;&gt;normal commander&lt;/h2&gt;
 
-&lt;h3 id=&#34;docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
+&lt;h3 id=&#34;docker-使用代理连接-docker-hub:9623c25974239aae48309dcafd31d278&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
 
 &lt;p&gt;如果你的宿主操作系统是 linux 那方法就很简单了，直接通过命令来启动服务即可。&lt;/p&gt;
 
@@ -202,7 +202,7 @@ Hello world
 &lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker pull node
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/h3&gt;
+&lt;h3 id=&#34;存出或者载入镜像:9623c25974239aae48309dcafd31d278&#34;&gt;存出或者载入镜像&lt;/h3&gt;
 
 &lt;p&gt;存出镜像&lt;/p&gt;
 
@@ -216,26 +216,26 @@ Hello world
 sudo docker --input ubuntu_14.04.tar
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/h2&gt;
+&lt;h2 id=&#34;批量操作docker-commander:9623c25974239aae48309dcafd31d278&#34;&gt;批量操作docker commander.&lt;/h2&gt;
 
 &lt;p&gt;NOTE: &lt;code&gt;sudo&lt;/code&gt;maybe.&lt;/p&gt;
 
-&lt;h4 id=&#34;stop-all-containers&#34;&gt;Stop all containers.&lt;/h4&gt;
+&lt;h4 id=&#34;stop-all-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Stop all containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker stop $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-stopped-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-untagged-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all untagged images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep &amp;quot;^&amp;lt;none&amp;gt;&amp;quot; | awk &amp;quot;{print $3}&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-images&#34;&gt;Remove all images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep \ | awk &#39;{print $3}&#39;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -244,10 +244,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>etcd安装</title>
-      <link>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
+      <link>http://wixb50.coding.me/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://wixb50.coding.me/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -338,10 +338,10 @@ hello world
     
     <item>
       <title>Vagrant建立快照</title>
-      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
       <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -388,10 +388,10 @@ For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt;
     
     <item>
       <title>Vagrant常用命令</title>
-      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant常用命令&#34;&gt;Vagrant常用命令&lt;/h2&gt;
@@ -667,13 +667,13 @@ vagrant@db:~$
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
-&lt;h3 id=&#34;方法一-安装命令:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法一：安装命令&lt;/h3&gt;
+&lt;h3 id=&#34;方法一-安装命令&#34;&gt;方法一：安装命令&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install apt-transport-https
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
@@ -682,14 +682,14 @@ sudo apt-get update
 sudo apt-get install lxc-docker
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;方法二-安装命令-推荐:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法二：安装命令(推荐)&lt;/h3&gt;
+&lt;h3 id=&#34;方法二-安装命令-推荐&#34;&gt;方法二：安装命令(推荐)&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;curl -sSL https://get.docker.com/ | sh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;完&lt;/p&gt;
 
-&lt;h3 id=&#34;docker资料收集:a3a6e387cbc471e9a108d854770f0455&#34;&gt;Docker资料收集&lt;/h3&gt;
+&lt;h3 id=&#34;docker资料收集&#34;&gt;Docker资料收集&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@gargar454/deploy-a-mesos-cluster-with-7-commands-using-docker-57951e020586#.74cyoyjp5&#34;&gt;Deploy a Mesos Cluster with 7 Commands Using Docker&lt;/a&gt;&lt;/li&gt;

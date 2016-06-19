@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kube Ui on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/kube-ui/</link>
+    <link>http://wixb50.coding.me/categories/kube-ui/</link>
     <description>Recent content in Kube Ui on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 02 Jan 2016 15:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/kube-ui/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/kube-ui/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>kubernetes 安装配置 kube-ui</title>
-      <link>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
+      <link>http://wixb50.coding.me/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
       <pubDate>Sat, 02 Jan 2016 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
+      <guid>http://wixb50.coding.me/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;下载gcr.io/google_containers/pause镜像并导入&lt;/p&gt;
 

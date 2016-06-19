@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/ubuntu/</link>
+    <link>http://wixb50.coding.me/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 17 Dec 2015 13:50:50 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
 &lt;h2 id=&#34;目录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;目录&lt;/h2&gt;
@@ -141,10 +141,10 @@ export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -218,10 +218,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -257,13 +257,13 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -295,13 +295,13 @@ sudo service xrdp restart
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h3 id=&#34;broswer&#34;&gt;Broswer&lt;/h3&gt;
+&lt;h3 id=&#34;broswer:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Broswer&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html&#34;&gt;chrome&lt;/a&gt; 下载deb包安装，同步自己的chrome配置&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;editor&#34;&gt;Editor&lt;/h3&gt;
+&lt;h3 id=&#34;editor:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Editor&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
@@ -325,7 +325,7 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 &lt;li&gt;简单的MD编辑器&lt;a href=&#34;http://sourceforge.net/projects/retext/&#34;&gt;Retext&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+&lt;h3 id=&#34;git:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Git&lt;/h3&gt;
 
 &lt;p&gt;安装&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;br /&gt;
 安装&lt;code&gt;sudo apt-get install git-flow&lt;/code&gt;&lt;/p&gt;
@@ -338,7 +338,7 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 &lt;p&gt;删除&lt;code&gt;.smartgit&lt;/code&gt;下面的&lt;code&gt;settings.xml&lt;/code&gt;即可重新使用1个月。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;美化&#34;&gt;美化&lt;/h3&gt;
+&lt;h3 id=&#34;美化:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;美化&lt;/h3&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;默认使用Unity桌面&lt;/p&gt;
@@ -358,13 +358,13 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;&lt;a href=&#34;https://github.com/anmoljagetia/Flatabulous/&#34;&gt;挺好看的一个主题&lt;/a&gt;,里面“NoobsLab”源的主题都挺好看的。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;添加字体&#34;&gt;添加字体&lt;/h3&gt;
+&lt;h3 id=&#34;添加字体:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;添加字体&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ubuntu添加字体非常简单，只需要在～目录下新建&lt;code&gt;.fonts&lt;/code&gt;文件夹，然后把后缀为&lt;code&gt;.ttf&lt;/code&gt;字体文件复制其中，就自动加入了。可以使用软件查看。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+&lt;h3 id=&#34;sql:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;SQL&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Mysql客户端 &lt;a href=&#34;http://dev.mysql.com/downloads/workbench/&#34;&gt;Workbench&lt;/a&gt; 下载deb安装&lt;/li&gt;
@@ -372,7 +372,7 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;Mongo客户端 &lt;a href=&#34;http://robomongo.org/&#34;&gt;Robomongo&lt;/a&gt; 下载deb安装&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;思维导图&#34;&gt;思维导图&lt;/h3&gt;
+&lt;h3 id=&#34;思维导图:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;思维导图&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;最流行的思维导图 &lt;a href=&#34;http://www.xmind.net/cn/&#34;&gt;XMind&lt;/a&gt; 下载deb安装&lt;/li&gt;
@@ -380,13 +380,13 @@ sudo apt-get install ubuntu-tweak
 &lt;li&gt;百度在线脑图 &lt;a href=&#34;http://naotu.baidu.com/&#34;&gt;百度脑图&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;影音&#34;&gt;影音&lt;/h3&gt;
+&lt;h3 id=&#34;影音:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;影音&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;VLC Media Player&lt;/code&gt; 软件商店安装&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fq&#34;&gt;FQ&lt;/h3&gt;
+&lt;h3 id=&#34;fq:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;FQ&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;开放网络客户端 &lt;a href=&#34;https://getlantern.org/&#34;&gt;Lantern&lt;/a&gt;&lt;/li&gt;
@@ -413,13 +413,13 @@ sudo apt-get install shadowsocks-qt5
 
 &lt;p&gt;&lt;strong&gt;[NOTICE] : Chrome推荐使用&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/releases&#34;&gt;SwitchyOmega&lt;/a&gt;插件进行设置。自动规则：&lt;a href=&#34;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&#34;&gt;wiki-GEWList&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h3&gt;
+&lt;h3 id=&#34;虚拟机:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;虚拟机&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;开源&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt; 下载deb安装&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;linux-wps&#34;&gt;Linux WPS&lt;/h3&gt;
+&lt;h3 id=&#34;linux-wps:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Linux WPS&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装
@@ -431,7 +431,7 @@ sudo dpkg -i symbol-fonts_1.2_all.deb
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
+&lt;h3 id=&#34;develop:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Develop&lt;/h3&gt;
 
 &lt;p&gt;Frontend：&lt;/p&gt;
 
@@ -491,7 +491,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 &lt;li&gt;[vagrant]() 虚拟机管理工具&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;latex&#34;&gt;LaTex&lt;/h3&gt;
+&lt;h3 id=&#34;latex:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;LaTex&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;TexLive2015安装&lt;/p&gt;
@@ -537,21 +537,21 @@ $ sudo umount /mnt/
 &lt;a href=&#34;http://texstudio.sourceforge.net/&#34;&gt;官网&lt;/a&gt;下载deb安装包安装即可&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;aria2下载工具&#34;&gt;Aria2下载工具&lt;/h3&gt;
+&lt;h3 id=&#34;aria2下载工具:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;Aria2下载工具&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://aria2.sourceforge.net/&#34;&gt;官网介绍&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install aria2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;tldr命令工具&#34;&gt;tldr命令工具&lt;/h3&gt;
+&lt;h3 id=&#34;tldr命令工具:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;tldr命令工具&lt;/h3&gt;
 
 &lt;p&gt;下载go client的&lt;code&gt;platform binaries&lt;/code&gt;的&lt;code&gt;deb&lt;/code&gt;包安装：&lt;a href=&#34;https://github.com/tldr-pages/tldr&#34;&gt;github主页&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo dpkg -i tldr_0.1.0_amd64.deb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;终端工具terminator&#34;&gt;终端工具Terminator&lt;/h3&gt;
+&lt;h3 id=&#34;终端工具terminator:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;终端工具Terminator&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;安装&lt;/p&gt;
@@ -672,7 +672,7 @@ $ sh -c &amp;laquo;$(wget &lt;a href=&#34;https://raw.github.com/robbyrussell/oh
 $ chsh -s /bin/zsh  #替换bash为zsh
 $ sudo reboot  #重启生效&lt;/p&gt;
 
-&lt;h1 id=&#34;另外更新oh-my-zsh&#34;&gt;另外更新oh-my-zsh&lt;/h1&gt;
+&lt;h1 id=&#34;另外更新oh-my-zsh:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;另外更新oh-my-zsh&lt;/h1&gt;
 
 &lt;p&gt;$ upgrade_oh_my_zsh&lt;/p&gt;
 
@@ -704,7 +704,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=&amp;laquo;) &amp;laquo;&lt;/p&gt;
 
 &lt;p&gt;vim ~/.zshrc&lt;/p&gt;
 
-&lt;h1 id=&#34;plugins-xxx-改为&#34;&gt;plugins=(xxx)改为&lt;/h1&gt;
+&lt;h1 id=&#34;plugins-xxx-改为:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;plugins=(xxx)改为&lt;/h1&gt;
 
 &lt;p&gt;plugins=(xxx autojump)&lt;/p&gt;
 
@@ -806,13 +806,13 @@ sqlite&amp;gt;.exit # 退出&lt;/p&gt;
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;目录:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -845,7 +845,7 @@ sqlite&amp;gt;.exit # 退出&lt;/p&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;shutdown-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;shutdown 命令&lt;/h2&gt;
+&lt;h2 id=&#34;shutdown-命令&#34;&gt;shutdown 命令&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;shutdown –help  #可以查看shutdown命令如何使用，当然也可以使用man shutdown命令。
 shutdown -h now #现在立即关机
@@ -856,7 +856,7 @@ shutdown -r 20:23 #在20：23时将重启计算机
 shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ln-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;ln 命令&lt;/h2&gt;
+&lt;h2 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h2&gt;
 
 &lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
 
@@ -876,7 +876,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 &lt;pre&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux下设置ssh无密码登录:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;linux下设置ssh无密码登录&lt;/h2&gt;
+&lt;h2 id=&#34;linux下设置ssh无密码登录&#34;&gt;linux下设置ssh无密码登录&lt;/h2&gt;
 
 &lt;p&gt;原理说明
 &amp;gt;密匙认证需要依靠密匙，&lt;br /&gt;
@@ -885,7 +885,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 3.服务器收到请求之后，先在你在该服务器的宿主目录下寻找你的公匙，然后检查该公匙是 否是合法，如果合法就用公匙加密一随机数（即所谓的challenge）并发送给客户端软件。&lt;br /&gt;
 4.客户端软件收到 “challenge”之后就用私匙解密再把它发送给服务器。因为用公匙加密的数据只能用密匙解密，服务器经过比较就可以知道该客户连接的合法性。&lt;/p&gt;
 
-&lt;h3 id=&#34;1-生成公钥和私钥:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;1.生成公钥和私钥&lt;/h3&gt;
+&lt;h3 id=&#34;1-生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/h3&gt;
 
 &lt;p&gt;Shell代码&lt;/p&gt;
 
@@ -896,16 +896,16 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 　id_rsa      ：私钥&lt;br /&gt;
 　id_rsa.pub  ：公钥&lt;/p&gt;
 
-&lt;h3 id=&#34;2-导入公钥到认证文件-更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/h3&gt;
+&lt;h3 id=&#34;2-导入公钥到认证文件-更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/h3&gt;
 
-&lt;h4 id=&#34;2-1-导入本机:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.1 导入本机&lt;/h4&gt;
+&lt;h4 id=&#34;2-1-导入本机&#34;&gt;2.1 导入本机&lt;/h4&gt;
 
 &lt;p&gt;Shell代码&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;2-2-导入要免密码登录的服务器:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
+&lt;h4 id=&#34;2-2-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
 
 &lt;p&gt;方法一：
 首先将公钥复制到服务器，Shell代码&lt;/p&gt;
@@ -926,7 +926,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 
 &lt;p&gt;可以执行测试登录，如果无任何错误提示，可以输密码登录，但就是不能无密码登录，则执行下步。&lt;/p&gt;
 
-&lt;h4 id=&#34;2-3-在服务器上更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.3 在服务器上更改权限&lt;/h4&gt;
+&lt;h4 id=&#34;2-3-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/h4&gt;
 
 &lt;p&gt;Shell 代码&lt;/p&gt;
 
@@ -934,7 +934,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 chmod 600 ~/.ssh/authorized_keys 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;3-测试:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;3.测试&lt;/h3&gt;
+&lt;h3 id=&#34;3-测试&#34;&gt;3.测试&lt;/h3&gt;
 
 &lt;p&gt;执行Shell&lt;/p&gt;
 
@@ -943,7 +943,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 &lt;p&gt;第一次登录可能需要yes确认，之后就可以直接登录了。&lt;/p&gt;
 
-&lt;h2 id=&#34;dpkg命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;dpkg命令&lt;/h2&gt;
+&lt;h2 id=&#34;dpkg命令&#34;&gt;dpkg命令&lt;/h2&gt;
 
 &lt;p&gt;以下是一些 Dpkg 的普通用法：&lt;/p&gt;
 
@@ -966,9 +966,9 @@ chmod 600 ~/.ssh/authorized_keys
   重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;apt命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;apt命令&lt;/h2&gt;
+&lt;h2 id=&#34;apt命令&#34;&gt;apt命令&lt;/h2&gt;
 
-&lt;h3 id=&#34;软件安装后相关文件位置:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;软件安装后相关文件位置&lt;/h3&gt;
+&lt;h3 id=&#34;软件安装后相关文件位置&#34;&gt;软件安装后相关文件位置&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;下载的软件存放位置&lt;/p&gt;
@@ -1006,7 +1006,7 @@ chmod 600 ~/.ssh/authorized_keys
 &lt;p&gt;/var/lib/apt/lists&lt;br /&gt;
 使用apt-get update命令会从/etc/apt/sources.list中下载软件列表，并保存到该目录&lt;/p&gt;
 
-&lt;h2 id=&#34;设置su密码的命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;设置su密码的命令&lt;/h2&gt;
+&lt;h2 id=&#34;设置su密码的命令&#34;&gt;设置su密码的命令&lt;/h2&gt;
 
 &lt;p&gt;Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。&lt;/p&gt;
 
@@ -1027,7 +1027,7 @@ chmod 600 ~/.ssh/authorized_keys
 1). su的密码是root的密码，而sudo的密码是用户的密码；&lt;br /&gt;
 2). su直接将身份变成root，而sudo是以用户登录后以root的身份运行命令，不需要知道root密码；&lt;/p&gt;
 
-&lt;h2 id=&#34;新增user:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;新增User&lt;/h2&gt;
+&lt;h2 id=&#34;新增user&#34;&gt;新增User&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;使用有权限的用户，在终端里输入&lt;/p&gt;
@@ -1054,7 +1054,7 @@ chmod 600 ~/.ssh/authorized_keys
 &lt;pre&gt;&lt;code&gt;sudo usermod -a -G sudo username
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/h2&gt;
+&lt;h2 id=&#34;fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&amp;amp;
@@ -1149,7 +1149,7 @@ xkill 调用方法：
 
 &lt;p&gt;$ sudo add-apt-repository &amp;ndash;remove ppa:someppa/ppa&lt;/p&gt;
 
-&lt;h1 id=&#34;然后进入-etc-apt-sources-list-d-目录-将相应-ppa-源的保存文件删除:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除&lt;/h1&gt;
+&lt;h1 id=&#34;然后进入-etc-apt-sources-list-d-目录-将相应-ppa-源的保存文件删除&#34;&gt;然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;注意，上述命令不会同时删除任何已经安装或更新的软件包。
 
@@ -1157,11 +1157,11 @@ xkill 调用方法：
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;首先要安装ppa-purge软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;首先要安装ppa-purge软件包&lt;/h1&gt;
+&lt;h1 id=&#34;首先要安装ppa-purge软件包&#34;&gt;首先要安装ppa-purge软件包&lt;/h1&gt;
 
 &lt;p&gt;$ sudo apt-get install ppa-purge&lt;/p&gt;
 
-&lt;h1 id=&#34;然后使用如下命令删除ppa仓库和与之相关的软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;然后使用如下命令删除PPA仓库和与之相关的软件包&lt;/h1&gt;
+&lt;h1 id=&#34;然后使用如下命令删除ppa仓库和与之相关的软件包&#34;&gt;然后使用如下命令删除PPA仓库和与之相关的软件包&lt;/h1&gt;
 
 &lt;p&gt;$ sudo ppa-purge ppa:webapps/preview&lt;/p&gt;
 
@@ -1218,13 +1218,13 @@ Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范�
     
     <item>
       <title>ubuntu网络配置</title>
-      <link>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 07 Nov 2015 20:39:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
-&lt;h3 id=&#34;ubuntu配置网络静态ip&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
+&lt;h3 id=&#34;ubuntu配置网络静态ip:991ed17e58068fd8025035303cfcf20c&#34;&gt;Ubuntu配置网络静态IP&lt;/h3&gt;
 
 &lt;p&gt;Ubuntu网络配置文件是在/etc/network/interfaces&lt;br /&gt;
 &amp;gt;默认文件&lt;/p&gt;
@@ -1267,7 +1267,7 @@ nameserver 10.0.0.2
 
 &lt;p&gt;重启服务器。&lt;/p&gt;
 
-&lt;h3 id=&#34;ubuntu-14-04-重启后dns配置丢失问题的解决方案&#34;&gt;Ubuntu 14.04 重启后DNS配置丢失问题的解决方案&lt;/h3&gt;
+&lt;h3 id=&#34;ubuntu-14-04-重启后dns配置丢失问题的解决方案:991ed17e58068fd8025035303cfcf20c&#34;&gt;Ubuntu 14.04 重启后DNS配置丢失问题的解决方案&lt;/h3&gt;
 
 &lt;p&gt;每次修改DNS配置文件 /etc/resolv.conf 重启后就会失效。从网上查知，这个文件是动态创建，所以每次重启都会被重写。&lt;/p&gt;
 
@@ -1296,10 +1296,10 @@ nameserver 114.114.114.114
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 
