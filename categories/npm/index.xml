@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Npm on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/npm/</link>
+    <link>http://wixb50.coding.me/categories/npm/</link>
     <description>Recent content in Npm on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 14 May 2016 12:51:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/npm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/npm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>npm命令个人笔记</title>
-      <link>http://wixb50.github.io/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</link>
+      <link>http://wixb50.coding.me/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 14 May 2016 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</guid>
+      <guid>http://wixb50.coding.me/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</guid>
       <description>
 
 &lt;h1 id=&#34;修改npm源为淘宝npm源的三种方法:2781525c49d5dc2211f1ef54b5f22423&#34;&gt;修改npm源为淘宝npm源的三种方法&lt;/h1&gt;

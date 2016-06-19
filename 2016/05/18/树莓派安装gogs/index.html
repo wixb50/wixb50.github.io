@@ -10,18 +10,18 @@
   <title>树莓派安装Gogs &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=0&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
   </div>
 </div>
 
@@ -88,29 +88,29 @@
 <div class="content container">
   <div class="post">
     <h1>树莓派安装Gogs</h1>
-    <span class="post-date">May 18, 2016 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/#disqus_thread">Comments</a>
+    <span class="post-date">May 18, 2016 &middot; 1 minute read &middot; <a href="http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.github.io/categories/raspberry-pi">raspberry-pi</a>
+    <a class="label" href="http://wixb50.coding.me/categories/raspberry-pi">raspberry-pi</a>
     </span>
     
 
-<h2 id="简介">简介</h2>
+<h2 id="简介:bcae9c1d5df2989839f1781e78b932a8">简介</h2>
 
 <p>本文主要介绍二进制安装方案，如果想用其他方法安装，请参考<a href="https://gogs.io/docs">官方文档</a>;</p>
 
-<h2 id="准备工作">准备工作</h2>
+<h2 id="准备工作:bcae9c1d5df2989839f1781e78b932a8">准备工作</h2>
 
 <ol>
 <li>所有的版本都支持 MySQL 和 PostgreSQL、SQLite作为数据库，针对你想要存放的位置建立好数据库服务器。</li>
 <li>在 <a href="https://github.com/gogits/gogs/releases">https://github.com/gogits/gogs/releases</a> 下载号对应的二进制安装包，下载最新的rsapi*.zip即可，导入到树莓派中。</li>
 </ol>
 
-<h2 id="新建用户">新建用户</h2>
+<h2 id="新建用户:bcae9c1d5df2989839f1781e78b932a8">新建用户</h2>
 
 <p>Gogs 默认以 git 用户运行，所以最好新建一个用户，要不然可能会出现你的主账户无法登录的问题。运行<code>sudo adduser git</code>新建好用户，<code>su git</code>以git用户身份登录。</p>
 
-<h2 id="运行配置">运行配置</h2>
+<h2 id="运行配置:bcae9c1d5df2989839f1781e78b932a8">运行配置</h2>
 
 <ol>
 <li>解压压缩包。</li>
@@ -118,16 +118,16 @@
 <li>执行命令 ./gogs web，然后，访问<a href="http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。">http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。</a></li>
 </ol>
 
-<h2 id="部署应用">部署应用</h2>
+<h2 id="部署应用:bcae9c1d5df2989839f1781e78b932a8">部署应用</h2>
 
-<h3 id="端口问题">端口问题</h3>
+<h3 id="端口问题:bcae9c1d5df2989839f1781e78b932a8">端口问题</h3>
 
 <p>端口占用问题，可以通过启动命令指定端口</p>
 
 <pre><code>./gogs web -port 3001
 </code></pre>
 
-<h3 id="开机启动">开机启动</h3>
+<h3 id="开机启动:bcae9c1d5df2989839f1781e78b932a8">开机启动</h3>
 
 <p><strong>采用Systemd以守护进程定义service运行。</strong></p>
 
@@ -167,7 +167,7 @@ WantedBy=multi-user.target
 
 <p>4.然后通过 <code>sudo systemctl enable gogs</code> 命令激活，最后执行 <code>sudo systemd start gogs</code>，就可以做到开机启动了。</p>
 
-<h2 id="参考文档">参考文档</h2>
+<h2 id="参考文档:bcae9c1d5df2989839f1781e78b932a8">参考文档</h2>
 
 <ul>
 <li><a href="https://gogs.io/docs/installation/install_from_binary">Gogs二进制安装</a></li>
@@ -201,7 +201,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

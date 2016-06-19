@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wixb blog</title>
-    <link>http://wixb50.github.io/</link>
+    <link>http://wixb50.coding.me/</link>
     <description>Recent content on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Fri, 17 Jun 2016 19:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>docker入门</title>
-      <link>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
+      <link>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
       <pubDate>Fri, 17 Jun 2016 19:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
+      <guid>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
       <description>
 
-&lt;h1 id=&#34;前言:11cc16163169598471edee7a60af0f73&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;虚拟化&lt;/strong&gt;，是指通过虚拟化技术将一台计算机虚拟为多台逻辑计算机。在一台计算机上同时运行多个逻辑计算机，每个逻辑计算机可运行不同的操作系统，并且应用程序都可以在相互独立的空间内运行而互不影响，从而显著提高计算机的工作效率。&lt;/p&gt;
 
@@ -28,7 +28,7 @@
 
 &lt;p&gt;如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群和不可变基础设施是非常有利的。&lt;/p&gt;
 
-&lt;h1 id=&#34;基本概念:11cc16163169598471edee7a60af0f73&#34;&gt;基本概念&lt;/h1&gt;
+&lt;h1 id=&#34;基本概念&#34;&gt;基本概念&lt;/h1&gt;
 
 &lt;p&gt;Docker 包括三个基本概念&lt;/p&gt;
 
@@ -40,7 +40,7 @@
 
 &lt;p&gt;理解了这三个概念，就理解了 Docker 的整个生命周期。&lt;/p&gt;
 
-&lt;h2 id=&#34;镜像:11cc16163169598471edee7a60af0f73&#34;&gt;镜像&lt;/h2&gt;
+&lt;h2 id=&#34;镜像&#34;&gt;镜像&lt;/h2&gt;
 
 &lt;p&gt;Docker 镜像（Image）就是一个只读的模板，相当于操作系统(OS)安装的Ghost。&lt;/p&gt;
 
@@ -50,7 +50,7 @@
 
 &lt;p&gt;Docker 提供了一个很简单的机制来创建镜像或者更新现有的镜像，用户甚至可以直接从其他人那里下载一个已经做好的镜像来直接使用。&lt;/p&gt;
 
-&lt;h2 id=&#34;容器:11cc16163169598471edee7a60af0f73&#34;&gt;容器&lt;/h2&gt;
+&lt;h2 id=&#34;容器&#34;&gt;容器&lt;/h2&gt;
 
 &lt;p&gt;Docker 利用容器（Container）来运行应用。&lt;/p&gt;
 
@@ -58,7 +58,7 @@
 
 &lt;p&gt;可以把容器看做是一个简易版的 Linux 环境（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。&lt;/p&gt;
 
-&lt;h2 id=&#34;仓库:11cc16163169598471edee7a60af0f73&#34;&gt;仓库&lt;/h2&gt;
+&lt;h2 id=&#34;仓库&#34;&gt;仓库&lt;/h2&gt;
 
 &lt;p&gt;仓库（Repository）是集中存放镜像文件的场所。&lt;/p&gt;
 
@@ -72,7 +72,7 @@
 
 &lt;p&gt;*注：Docker 仓库的概念跟 Git 类似，注册服务器可以理解为 GitHub 这样的托管服务。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装:11cc16163169598471edee7a60af0f73&#34;&gt;安装&lt;/h2&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
 
 &lt;p&gt;Docker 目前只能安装在 64 位平台上，并且要求内核版本不低于 3.10，实际上内核越新越好，过低的内核版本容易造成功能的不稳定。&lt;/p&gt;
 
@@ -81,9 +81,9 @@
 &lt;pre&gt;&lt;code&gt;curl -sSL https://get.docker.com/ | sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;常用命令:11cc16163169598471edee7a60af0f73&#34;&gt;常用命令&lt;/h1&gt;
+&lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
 
-&lt;h2 id=&#34;镜像命令:11cc16163169598471edee7a60af0f73&#34;&gt;镜像命令&lt;/h2&gt;
+&lt;h2 id=&#34;镜像命令&#34;&gt;镜像命令&lt;/h2&gt;
 
 &lt;p&gt;获取镜像&lt;/p&gt;
 
@@ -103,7 +103,7 @@
 &lt;pre&gt;&lt;code&gt;$ sudo docker rmi training/sinatra
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;容器命令:11cc16163169598471edee7a60af0f73&#34;&gt;容器命令&lt;/h2&gt;
+&lt;h2 id=&#34;容器命令&#34;&gt;容器命令&lt;/h2&gt;
 
 &lt;p&gt;基于一个images，新建并启动一个容器&lt;/p&gt;
 
@@ -141,7 +141,7 @@ Hello world
 
 &lt;p&gt;使用 hostPort:containerPort 格式本地的 5000 端口映射到容器的 5000 端口.&lt;/p&gt;
 
-&lt;h1 id=&#34;docker进阶:11cc16163169598471edee7a60af0f73&#34;&gt;Docker进阶&lt;/h1&gt;
+&lt;h1 id=&#34;docker进阶&#34;&gt;Docker进阶&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;数据卷管理&lt;/li&gt;
@@ -159,13 +159,13 @@ Hello world
     
     <item>
       <title>CentOS常用命令集合</title>
-      <link>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.coding.me/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Wed, 01 Jun 2016 10:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.coding.me/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;centos添加及删除用户:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
+&lt;h2 id=&#34;centos添加及删除用户&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;adduser int # 新增用户
 passwd int # 设置或者修改密码
@@ -190,17 +190,17 @@ userdel -f test # 删除用户及用户组
     
     <item>
       <title>树莓派samba离线下载器</title>
-      <link>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</link>
+      <link>http://wixb50.coding.me/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</link>
       <pubDate>Tue, 24 May 2016 20:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid>
+      <guid>http://wixb50.coding.me/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid>
       <description>
 
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介:c437bf4e2f36fed37a46449037a257ea&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;主要用samba实现局域网共享。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;h2 id=&#34;安装:c437bf4e2f36fed37a46449037a257ea&#34;&gt;安装&lt;/h2&gt;
 
 &lt;p&gt;apt安装：&lt;/p&gt;
 
@@ -227,7 +227,7 @@ userdel -f test # 删除用户及用户组
 &lt;pre&gt;&lt;code&gt;smbpasswd –a pi
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;连接&#34;&gt;连接&lt;/h2&gt;
+&lt;h2 id=&#34;连接:c437bf4e2f36fed37a46449037a257ea&#34;&gt;连接&lt;/h2&gt;
 
 &lt;p&gt;在&lt;code&gt;nautilus&lt;/code&gt;中选择连接到服务器，地址为&lt;code&gt;smb://192.168.1X.10X/&lt;/code&gt;，连接输入用户名密码即可。或者在windows上映射到网络驱动器，地址&lt;code&gt;\\192.1.1.1XX\{{你的目录}}&lt;/code&gt;即可连接。&lt;/p&gt;
 </description>
@@ -235,28 +235,28 @@ userdel -f test # 删除用户及用户组
     
     <item>
       <title>树莓派安装Gogs</title>
-      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
+      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
+      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
       <description>
 
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;本文主要介绍二进制安装方案，如果想用其他方法安装，请参考&lt;a href=&#34;https://gogs.io/docs&#34;&gt;官方文档&lt;/a&gt;;&lt;/p&gt;
 
-&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+&lt;h2 id=&#34;准备工作:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;准备工作&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;所有的版本都支持 MySQL 和 PostgreSQL、SQLite作为数据库，针对你想要存放的位置建立好数据库服务器。&lt;/li&gt;
 &lt;li&gt;在 &lt;a href=&#34;https://github.com/gogits/gogs/releases&#34;&gt;https://github.com/gogits/gogs/releases&lt;/a&gt; 下载号对应的二进制安装包，下载最新的rsapi*.zip即可，导入到树莓派中。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;新建用户&#34;&gt;新建用户&lt;/h2&gt;
+&lt;h2 id=&#34;新建用户:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;新建用户&lt;/h2&gt;
 
 &lt;p&gt;Gogs 默认以 git 用户运行，所以最好新建一个用户，要不然可能会出现你的主账户无法登录的问题。运行&lt;code&gt;sudo adduser git&lt;/code&gt;新建好用户，&lt;code&gt;su git&lt;/code&gt;以git用户身份登录。&lt;/p&gt;
 
-&lt;h2 id=&#34;运行配置&#34;&gt;运行配置&lt;/h2&gt;
+&lt;h2 id=&#34;运行配置:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;运行配置&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;解压压缩包。&lt;/li&gt;
@@ -264,16 +264,16 @@ userdel -f test # 删除用户及用户组
 &lt;li&gt;执行命令 ./gogs web，然后，访问&lt;a href=&#34;http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。&#34;&gt;http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;部署应用&#34;&gt;部署应用&lt;/h2&gt;
+&lt;h2 id=&#34;部署应用:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;部署应用&lt;/h2&gt;
 
-&lt;h3 id=&#34;端口问题&#34;&gt;端口问题&lt;/h3&gt;
+&lt;h3 id=&#34;端口问题:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;端口问题&lt;/h3&gt;
 
 &lt;p&gt;端口占用问题，可以通过启动命令指定端口&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;./gogs web -port 3001
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;开机启动&#34;&gt;开机启动&lt;/h3&gt;
+&lt;h3 id=&#34;开机启动:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;开机启动&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;采用Systemd以守护进程定义service运行。&lt;/strong&gt;&lt;/p&gt;
 
@@ -313,7 +313,7 @@ WantedBy=multi-user.target
 
 &lt;p&gt;4.然后通过 &lt;code&gt;sudo systemctl enable gogs&lt;/code&gt; 命令激活，最后执行 &lt;code&gt;sudo systemd start gogs&lt;/code&gt;，就可以做到开机启动了。&lt;/p&gt;
 
-&lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
+&lt;h2 id=&#34;参考文档:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;参考文档&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gogs.io/docs/installation/install_from_binary&#34;&gt;Gogs二进制安装&lt;/a&gt;&lt;/li&gt;
@@ -323,21 +323,21 @@ WantedBy=multi-user.target
     
     <item>
       <title>树莓派搭建ownCloud</title>
-      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
+      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
+      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
       <description>
 
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介:d7d9936e2453b500c8afe809383d64a8&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;我们将要搭建自己的云系统平台，更精确点是一个云存储系统，我们将使用开源的软件ownCloud搭建私有云，这个平台已经适用于大多数主流平台，android、IOS、mac、linux、windows都是可以的。&lt;/p&gt;
 
 &lt;p&gt;首先介绍一下ownCloud： 简单来说就是一个基于PHP的自建网盘。基本上是私人使用，没有用户注册功能，但是有用户添加功能，你可以无限制地添加用户，OwnCloud还提供了不少的免费应用，这些应用可以让你更好观看视频、倾听音乐等。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装步骤&#34;&gt;安装步骤&lt;/h2&gt;
+&lt;h2 id=&#34;安装步骤:d7d9936e2453b500c8afe809383d64a8&#34;&gt;安装步骤&lt;/h2&gt;
 
-&lt;h3 id=&#34;安装lamp套件&#34;&gt;安装LAMP套件&lt;/h3&gt;
+&lt;h3 id=&#34;安装lamp套件:d7d9936e2453b500c8afe809383d64a8&#34;&gt;安装LAMP套件&lt;/h3&gt;
 
 &lt;p&gt;1.安装apache2&lt;/p&gt;
 
@@ -375,7 +375,7 @@ sudo chown -R www-data:www-data apps
 
 &lt;p&gt;7.打开浏览器，输入 &lt;a href=&#34;http://IP/owncloud&#34;&gt;http://IP/owncloud&lt;/a&gt; ,进入设置界面设计，即可访问&lt;/p&gt;
 
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料:d7d9936e2453b500c8afe809383d64a8&#34;&gt;参考资料&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.voidcn.com/blog/u010873775/article/p-5812004.html&#34;&gt;使用owncloud云服务&lt;/a&gt;&lt;/li&gt;
@@ -385,10 +385,10 @@ sudo chown -R www-data:www-data apps
     
     <item>
       <title>npm命令个人笔记</title>
-      <link>http://wixb50.github.io/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</link>
+      <link>http://wixb50.coding.me/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 14 May 2016 12:51:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</guid>
+      <guid>http://wixb50.coding.me/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</guid>
       <description>
 
 &lt;h1 id=&#34;修改npm源为淘宝npm源的三种方法:2781525c49d5dc2211f1ef54b5f22423&#34;&gt;修改npm源为淘宝npm源的三种方法&lt;/h1&gt;
@@ -421,13 +421,13 @@ npm info underscore （如果上面配置正确这个命令会有字符串respon
     
     <item>
       <title>ssh_config来管理ssh会话</title>
-      <link>http://wixb50.github.io/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/</link>
+      <link>http://wixb50.coding.me/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/</link>
       <pubDate>Thu, 28 Apr 2016 18:15:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/</guid>
+      <guid>http://wixb50.coding.me/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/</guid>
       <description>
 
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介:0984e7ebd3dce43c74ff94df48f1ae75&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;通常利用 ssh 连接远程服务器，一般都要输入以下类型命令：&lt;/p&gt;
 
@@ -438,7 +438,7 @@ npm info underscore （如果上面配置正确这个命令会有字符串respon
 
 &lt;p&gt;一般，有一种解决方案是，采用第三方的manager工具，比如：putty、PAC manager，但是对于喜欢在终端玩耍的孩纸就不喜欢这个了。&lt;/p&gt;
 
-&lt;h2 id=&#34;ssh-config方案&#34;&gt;ssh_config方案&lt;/h2&gt;
+&lt;h2 id=&#34;ssh-config方案:0984e7ebd3dce43c74ff94df48f1ae75&#34;&gt;ssh_config方案&lt;/h2&gt;
 
 &lt;p&gt;还好，ssh提供一种优雅灵活的方案，就是利用ssh的用户配置文件config管理ssh会话。ssh的用户配置文件放在用户&lt;code&gt;~/.ssh/config&lt;/code&gt;目录中，不存在则新建一个。配置语法如下：&lt;/p&gt;
 
@@ -454,7 +454,7 @@ npm info underscore （如果上面配置正确这个命令会有字符串respon
 &lt;pre&gt;&lt;code&gt;ssh 别名
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ps&#34;&gt;Ps&lt;/h2&gt;
+&lt;h2 id=&#34;ps:0984e7ebd3dce43c74ff94df48f1ae75&#34;&gt;Ps&lt;/h2&gt;
 
 &lt;p&gt;如果需要实现无密码登录主机的，请在自行google配置。&lt;/p&gt;
 </description>
@@ -462,10 +462,10 @@ npm info underscore （如果上面配置正确这个命令会有字符串respon
     
     <item>
       <title>实用的20个正则表达式</title>
-      <link>http://wixb50.github.io/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <link>http://wixb50.coding.me/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
       <pubDate>Sat, 23 Apr 2016 11:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <guid>http://wixb50.coding.me/2016/04/23/%E5%AE%9E%E7%94%A8%E7%9A%8420%E4%B8%AA%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
       <description>
 
 &lt;p&gt;正则表达式，仅仅用一段非常简短的表达式语句，便能够快速实现一个非常复杂的业务逻辑。熟练地掌握正则表达式的话，能够使你的开发效率得到极大的提升。&lt;/p&gt;
@@ -479,33 +479,33 @@ if(r==null)alert(&#39;Date format error!&#39;);
 
 &lt;p&gt;下面是整理的，在开发中经常使用到的20个正则表达式。&lt;/p&gt;
 
-&lt;h4 id=&#34;1-校验密码强度&#34;&gt;1 . 校验密码强度&lt;/h4&gt;
+&lt;h4 id=&#34;1-校验密码强度:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;1 . 校验密码强度&lt;/h4&gt;
 
 &lt;p&gt;密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;2-校验中文&#34;&gt;2. 校验中文&lt;/h4&gt;
+&lt;h4 id=&#34;2-校验中文:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;2. 校验中文&lt;/h4&gt;
 
 &lt;p&gt;字符串仅能是中文。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^[\\u4e00-\\u9fa5]{0,}$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;3-由数字-26个英文字母或下划线组成的字符串&#34;&gt;3. 由数字、26个英文字母或下划线组成的字符串&lt;/h4&gt;
+&lt;h4 id=&#34;3-由数字-26个英文字母或下划线组成的字符串:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;3. 由数字、26个英文字母或下划线组成的字符串&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;^\\w+$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;4-校验e-mail-地址&#34;&gt;4. 校验E-Mail 地址&lt;/h4&gt;
+&lt;h4 id=&#34;4-校验e-mail-地址:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;4. 校验E-Mail 地址&lt;/h4&gt;
 
 &lt;p&gt;同密码一样，下面是E-mail地址合规性的正则检查语句。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;[\\w!#$%&amp;amp;&#39;*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;amp;&#39;*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;5-校验身份证号码&#34;&gt;5. 校验身份证号码&lt;/h4&gt;
+&lt;h4 id=&#34;5-校验身份证号码:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;5. 校验身份证号码&lt;/h4&gt;
 
 &lt;p&gt;下面是身份证号码的正则校验。15 或 18位。&lt;br /&gt;
 15位：&lt;/p&gt;
@@ -518,49 +518,49 @@ if(r==null)alert(&#39;Date format error!&#39;);
 &lt;pre&gt;&lt;code&gt;^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;6-校验日期&#34;&gt;6. 校验日期&lt;/h4&gt;
+&lt;h4 id=&#34;6-校验日期:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;6. 校验日期&lt;/h4&gt;
 
 &lt;p&gt;“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;7-校验金额&#34;&gt;7. 校验金额&lt;/h4&gt;
+&lt;h4 id=&#34;7-校验金额:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;7. 校验金额&lt;/h4&gt;
 
 &lt;p&gt;金额校验，精确到2位小数。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^[0-9]+(.[0-9]{2})?$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;8-校验手机号&#34;&gt;8. 校验手机号&lt;/h4&gt;
+&lt;h4 id=&#34;8-校验手机号:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;8. 校验手机号&lt;/h4&gt;
 
 &lt;p&gt;下面是国内 13、15、18开头的手机号正则表达式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;9-判断ie的版本&#34;&gt;9. 判断IE的版本&lt;/h4&gt;
+&lt;h4 id=&#34;9-判断ie的版本:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;9. 判断IE的版本&lt;/h4&gt;
 
 &lt;p&gt;IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^.*MSIE [5-8](?:\\.[0-9]+)?(?!.*Trident\\/[5-9]\\.0).*$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;10-校验ip-v4地址&#34;&gt;10. 校验IP-v4地址&lt;/h4&gt;
+&lt;h4 id=&#34;10-校验ip-v4地址:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;10. 校验IP-v4地址&lt;/h4&gt;
 
 &lt;p&gt;IP4 正则语句。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;\\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;11-校验ip-v6地址&#34;&gt;11. 校验IP-v6地址&lt;/h4&gt;
+&lt;h4 id=&#34;11-校验ip-v6地址:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;11. 校验IP-v6地址&lt;/h4&gt;
 
 &lt;p&gt;IP6 正则语句。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;12-检查url的前缀&#34;&gt;12. 检查URL的前缀&lt;/h4&gt;
+&lt;h4 id=&#34;12-检查url的前缀:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;12. 检查URL的前缀&lt;/h4&gt;
 
 &lt;p&gt;应用开发中很多时候需要区分请求是HTTPS还是HTTP，通过下面的表达式可以取出一个url的前缀然后再逻辑判断。&lt;/p&gt;
 
@@ -568,56 +568,56 @@ if(r==null)alert(&#39;Date format error!&#39;);
 s = &#39;http://&#39; + s;}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;13-提取url链接&#34;&gt;13. 提取URL链接&lt;/h4&gt;
+&lt;h4 id=&#34;13-提取url链接:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;13. 提取URL链接&lt;/h4&gt;
 
 &lt;p&gt;下面的这个表达式可以筛选出一段文本中的URL。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^(f|ht){1}(tp|tps):\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- ./?%&amp;amp;=]*)?
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;14-文件路径及扩展名校验&#34;&gt;14. 文件路径及扩展名校验&lt;/h4&gt;
+&lt;h4 id=&#34;14-文件路径及扩展名校验:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;14. 文件路径及扩展名校验&lt;/h4&gt;
 
 &lt;p&gt;验证文件路径和扩展名&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^([a-zA-Z]\\:|\\\\)\\\\([^\\\\]+\\\\)*[^\\/:*?&amp;quot;&amp;lt;&amp;gt;|]+\\.txt(l)?$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;15-提取color-hex-codes&#34;&gt;15. 提取Color Hex Codes&lt;/h4&gt;
+&lt;h4 id=&#34;15-提取color-hex-codes:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;15. 提取Color Hex Codes&lt;/h4&gt;
 
 &lt;p&gt;有时需要抽取网页中的颜色代码，可以使用下面的表达式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;\\#([a-fA-F]|[0-9]){3,6}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;16-提取网页图片&#34;&gt;16. 提取网页图片&lt;/h4&gt;
+&lt;h4 id=&#34;16-提取网页图片:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;16. 提取网页图片&lt;/h4&gt;
 
 &lt;p&gt;假若你想提取网页中所有图片信息，可以利用下面的表达式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;\\&amp;lt; *[img][^\\&amp;gt;]*[src] *= *[\\&amp;quot;\\&#39;]{0,1}([^\\&amp;quot;\\&#39;\\ &amp;gt;]*)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;17-提取页面超链接&#34;&gt;17. 提取页面超链接&lt;/h4&gt;
+&lt;h4 id=&#34;17-提取页面超链接:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;17. 提取页面超链接&lt;/h4&gt;
 
 &lt;p&gt;提取html中的超链接。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;(&amp;lt;a\\s*(?!.*\\brel=)[^&amp;gt;]*)(href=&amp;quot;https?://)((?!(?:(?:www\\.)?&#39;.implode(&#39;|(?:www\\.)?&#39;, $follow_list).&#39;))[^&amp;quot;]+)&amp;quot;((?!.*\\brel=)[^&amp;gt;]*)(?:[^&amp;gt;]*)&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;18-精炼css&#34;&gt;18. 精炼CSS&lt;/h4&gt;
+&lt;h4 id=&#34;18-精炼css:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;18. 精炼CSS&lt;/h4&gt;
 
 &lt;p&gt;通过下面的表达式，可以搜索相同属性值的CSS，从而达到精炼代码的目的。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;^\\s*[a-zA-Z\\-]+\\s*[:]{1}\\s[a-zA-Z0-9\\s.#]+[;]{1}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;19-抽取注释&#34;&gt;19. 抽取注释&lt;/h4&gt;
+&lt;h4 id=&#34;19-抽取注释:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;19. 抽取注释&lt;/h4&gt;
 
 &lt;p&gt;如果你需要移除HMTL中的注释，可以使用如下的表达式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;lt;!--(.*?)--&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;20-匹配html标签&#34;&gt;20. 匹配HTML标签&lt;/h4&gt;
+&lt;h4 id=&#34;20-匹配html标签:70935e7c5f4b3df59cdd661ce63710f7&#34;&gt;20. 匹配HTML标签&lt;/h4&gt;
 
 &lt;p&gt;通过下面的表达式可以匹配出HTML中的标签。&lt;/p&gt;
 
@@ -628,17 +628,17 @@ s = &#39;http://&#39; + s;}
     
     <item>
       <title>Docker集群系列之－Kubernetes对象文件定义</title>
-      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <link>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
       <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <guid>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
       <description>
 
-&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
+&lt;h2 id=&#34;说明:face623dedab27120a5b251ee433661e&#34;&gt;说明&lt;/h2&gt;
 
 &lt;p&gt;主要对kubernetes用户需要定义的Pod,RC和Service的配置文件进行详细说明。&lt;/p&gt;
 
-&lt;h2 id=&#34;pod定义文件详解&#34;&gt;Pod定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;pod定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;Pod定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;Pod定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -730,7 +730,7 @@ spec:       # required
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&#34;rc定义文件详解&#34;&gt;RC定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;rc定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;RC定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;RC(ReplicationController)定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -749,7 +749,7 @@ spec:       # required
   template: object      # required
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;service定义文件详解&#34;&gt;Service定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;service定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;Service定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;Service定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -948,7 +948,7 @@ spec:       # required
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&#34;附录&#34;&gt;附录&lt;/h2&gt;
+&lt;h2 id=&#34;附录:face623dedab27120a5b251ee433661e&#34;&gt;附录&lt;/h2&gt;
 
 &lt;p&gt;根据yaml创建：&lt;/p&gt;
 
@@ -964,42 +964,42 @@ spec:       # required
     
     <item>
       <title>nosql介绍</title>
-      <link>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://wixb50.coding.me/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 08 Mar 2016 10:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://wixb50.coding.me/2016/03/08/nosql%E4%BB%8B%E7%BB%8D/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github Star</title>
-      <link>http://wixb50.github.io/2016/02/27/github-star/</link>
+      <link>http://wixb50.coding.me/2016/02/27/github-star/</link>
       <pubDate>Sat, 27 Feb 2016 09:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/02/27/github-star/</guid>
+      <guid>http://wixb50.coding.me/2016/02/27/github-star/</guid>
       <description>
 
-&lt;h2 id=&#34;docker:d685a63346009b103c6a9f19e03bdb28&#34;&gt;Docker&lt;/h2&gt;
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
 
-&lt;h3 id=&#34;应用:d685a63346009b103c6a9f19e03bdb28&#34;&gt;应用&lt;/h3&gt;
+&lt;h3 id=&#34;应用&#34;&gt;应用&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/huichen/zerg&#34;&gt;基于docker的分布式爬虫服务&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;markdown:d685a63346009b103c6a9f19e03bdb28&#34;&gt;MarkDown&lt;/h2&gt;
+&lt;h2 id=&#34;markdown&#34;&gt;MarkDown&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/geekcompany/ResumeSample&#34;&gt;程序员简历MD模板&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;tex:d685a63346009b103c6a9f19e03bdb28&#34;&gt;Tex&lt;/h2&gt;
+&lt;h2 id=&#34;tex&#34;&gt;Tex&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/billryan/resume/tree/zh_CN&#34;&gt;一个简洁优雅的 XeLaTeX 简历模板&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;frontend:d685a63346009b103c6a9f19e03bdb28&#34;&gt;Frontend&lt;/h2&gt;
+&lt;h2 id=&#34;frontend&#34;&gt;Frontend&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/AutumnsWind/Front-end-tutorial&#34;&gt;最全的资源教程-前端涉及的所有知识体系&lt;/a&gt;&lt;/li&gt;
@@ -1009,10 +1009,10 @@ spec:       # required
     
     <item>
       <title>文章收藏</title>
-      <link>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
+      <link>http://wixb50.coding.me/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</link>
       <pubDate>Sat, 27 Feb 2016 09:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
+      <guid>http://wixb50.coding.me/2016/02/27/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/</guid>
       <description>
 
 &lt;h2 id=&#34;opensource&#34;&gt;OpenSource&lt;/h2&gt;
@@ -1104,19 +1104,19 @@ spec:       # required
     
     <item>
       <title>linux 路由表设置 之 route 指令</title>
-      <link>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
+      <link>http://wixb50.coding.me/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Fri, 26 Feb 2016 22:15:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
+      <guid>http://wixb50.coding.me/2016/02/26/linux-%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AE%BE%E7%BD%AE-%E4%B9%8B-route-%E6%8C%87%E4%BB%A4/</guid>
       <description>
 
-&lt;h2 id=&#34;简介:2551668924b6548635a8f396a79ec58e&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;路由表（routing table）是一个存储在路由器或者联网计算机中的电子表格或类数据库。路由表存储着指向特定网络地址的路径（在有些情况下，还记录有路径的路由度量值）。路由表中含有网络周边的拓扑信息。路由表建立的主要目标是为了实现路由协议和静态路由选择。&lt;/p&gt;
 
 &lt;p&gt;在Linux系统中，设置路由通常是为了解决以下问题：该Linux系统在一个局域网中，局域网中有一个网关，能够让机器访问Internet，那么就需要将这台机器的IP地址设置为Linux机器的默认路由。要注意的是，直接在命令行下执行route命令来添加路由，不会永久保存，当网卡重启或者机器重启之后，该路由就失效了;可以在/etc/rc.local中添加route命令来保证该路由设置永久有效。&lt;/p&gt;
 
-&lt;h2 id=&#34;使用实例:2551668924b6548635a8f396a79ec58e&#34;&gt;使用实例&lt;/h2&gt;
+&lt;h2 id=&#34;使用实例&#34;&gt;使用实例&lt;/h2&gt;
 
 &lt;p&gt;route 或者 route -n&lt;/p&gt;
 
@@ -1146,7 +1146,7 @@ Iface   该路由表项对应的输出接口&lt;br /&gt;
 备注：&lt;br /&gt;
 route -n (-n 表示不解析名字,列出速度会比route 快)&lt;/p&gt;
 
-&lt;h2 id=&#34;3-种路由类型:2551668924b6548635a8f396a79ec58e&#34;&gt;3 种路由类型&lt;/h2&gt;
+&lt;h2 id=&#34;3-种路由类型&#34;&gt;3 种路由类型&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;主机路由&lt;/strong&gt;&lt;/p&gt;
 
@@ -1175,7 +1175,7 @@ route -n (-n 表示不解析名字,列出速度会比route 快)&lt;/p&gt;
 default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;配置静态路由:2551668924b6548635a8f396a79ec58e&#34;&gt;配置静态路由&lt;/h2&gt;
+&lt;h2 id=&#34;配置静态路由&#34;&gt;配置静态路由&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;route 命令&lt;/strong&gt;&lt;/p&gt;
 
@@ -1194,7 +1194,7 @@ default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
 　-C 显示路由缓存&lt;br /&gt;
 　-f 清除所有网关入口的路由表。&lt;/p&gt;
 
-&lt;h2 id=&#34;p-与-add-命令一起使用时使路由具有永久性:2551668924b6548635a8f396a79ec58e&#34;&gt;　-p 与 add 命令一起使用时使路由具有永久性。&lt;/h2&gt;
+&lt;h2 id=&#34;p-与-add-命令一起使用时使路由具有永久性&#34;&gt;　-p 与 add 命令一起使用时使路由具有永久性。&lt;/h2&gt;
 
 &lt;p&gt;　add:添加一条新路由。&lt;br /&gt;
 　del:删除一条路由。&lt;br /&gt;
@@ -1240,9 +1240,9 @@ default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
 # route del default gw 192.168.1.1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;end:2551668924b6548635a8f396a79ec58e&#34;&gt;End&lt;/h2&gt;
+&lt;h2 id=&#34;end&#34;&gt;End&lt;/h2&gt;
 
-&lt;h2 id=&#34;参考资料:2551668924b6548635a8f396a79ec58e&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.2cto.com/net/201503/386381.html&#34;&gt;Linux route命令详解&lt;/a&gt;&lt;/li&gt;
@@ -1253,10 +1253,10 @@ default       192.168.1.1     0.0.0.0    UG       0        0     0    eth0
     
     <item>
       <title>pip常用命令</title>
-      <link>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.coding.me/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 21 Feb 2016 13:32:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.coding.me/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h3 id=&#34;列出已安装的包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;列出已安装的包&lt;/h3&gt;
@@ -1349,10 +1349,10 @@ django-pagination==1.0.7
     
     <item>
       <title>kubernetes 安装配置 kube-ui</title>
-      <link>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
+      <link>http://wixb50.coding.me/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
       <pubDate>Sat, 02 Jan 2016 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
+      <guid>http://wixb50.coding.me/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;下载gcr.io/google_containers/pause镜像并导入&lt;/p&gt;
 

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/software/</link>
+    <link>http://wixb50.coding.me/categories/software/</link>
     <description>Recent content in Software on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 23 Dec 2015 16:21:30 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>aria2 rpc</title>
-      <link>http://wixb50.github.io/2015/12/23/aria2-rpc/</link>
+      <link>http://wixb50.coding.me/2015/12/23/aria2-rpc/</link>
       <pubDate>Wed, 23 Dec 2015 16:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/23/aria2-rpc/</guid>
+      <guid>http://wixb50.coding.me/2015/12/23/aria2-rpc/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -33,7 +33,7 @@
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;前言-null-link&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;前言-null-link:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://aria2.sourceforge.net/&#34;&gt;Aria2&lt;/a&gt; 是一个轻量级多协议和多源命令行下载实用工具。它支持 HTTP / HTTPS, FTP, SFTP, bt 和 Metalink。通过内置 Aria2 可以操作 json - rpc 和 xml - rpc。对，Aria2 没有 GUI 图形界面，只有粗糙的命令行界面！但这也正是 Aria2 之轻快好省所在。&lt;/p&gt;
 
@@ -41,7 +41,7 @@
 &lt;li&gt;官方下载链接：&lt;a href=&#34;http://sourceforge.net/projects/aria2/files/stable/&#34;&gt;http://sourceforge.net/projects/aria2/files/stable/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;初步部署-aria2-简易版&#34;&gt;初步部署 Aria2 简易版&lt;/h2&gt;
+&lt;h2 id=&#34;初步部署-aria2-简易版:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;初步部署 Aria2 简易版&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;1. 安装aria&lt;/strong&gt;
 终端输入安装&lt;/p&gt;
@@ -118,7 +118,7 @@ kill_process
 
 &lt;p&gt;简易版的 Aria2 至此就部署完毕，你可以在 Web 控制前段方便地添加下载链接/bt种子了。&lt;/p&gt;
 
-&lt;h2 id=&#34;进阶-aria2&#34;&gt;进阶 Aria2&lt;/h2&gt;
+&lt;h2 id=&#34;进阶-aria2:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;进阶 Aria2&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;1. 配置文件 aria2.conf 详解&lt;/strong&gt;&lt;/p&gt;
 
@@ -160,9 +160,9 @@ kill_process
 &lt;li&gt;Chrome Extension: &lt;a href=&#34;https://chrome.google.com/webstore/detail/%E6%B7%BB%E5%8A%A0%E5%88%B0aria2/nimeojfecmndgolmlmjghjmbpdkhhogl&#34;&gt;添加到 aria2&lt;/a&gt; &lt;a href=&#34;http://git.oschina.net/yky/CDHelper&#34;&gt;Chrome Download Helper&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;end&#34;&gt;End&lt;/h2&gt;
+&lt;h2 id=&#34;end:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;End&lt;/h2&gt;
 
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;h2 id=&#34;参考:96794f524cfa0e9a6b2c98d6759fee66&#34;&gt;参考&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&#34;&gt;https://gist.github.com/aa65535/5e956c4eb4f451ddec29&lt;/a&gt;&lt;/li&gt;
@@ -174,10 +174,10 @@ kill_process
     
     <item>
       <title>aria2命令</title>
-      <link>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 23 Dec 2015 14:21:30 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.coding.me/2015/12/23/aria2%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;目录:a5ad8199707a54a6946a8b184275993b&#34;&gt;目录&lt;/h2&gt;
@@ -678,10 +678,10 @@ http://foo/bar
     
     <item>
       <title>ubuntu常用软件集合</title>
-      <link>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 12 Nov 2015 10:23:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.coding.me/2015/11/12/ubuntu%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录:a2ed53a4ba39da67d6c783ce735bb8ae&#34;&gt;目录&lt;/h2&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Editor on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/editor/</link>
+    <link>http://wixb50.coding.me/categories/editor/</link>
     <description>Recent content in Editor on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 04 Nov 2015 11:21:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/editor/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/editor/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>使用IntelliJ IDEA，gradle开发Java web应用步骤</title>
-      <link>http://wixb50.github.io/2015/11/04/%E4%BD%BF%E7%94%A8intellij-ideagradle%E5%BC%80%E5%8F%91java-web%E5%BA%94%E7%94%A8%E6%AD%A5%E9%AA%A4/</link>
+      <link>http://wixb50.coding.me/2015/11/04/%E4%BD%BF%E7%94%A8intellij-ideagradle%E5%BC%80%E5%8F%91java-web%E5%BA%94%E7%94%A8%E6%AD%A5%E9%AA%A4/</link>
       <pubDate>Wed, 04 Nov 2015 11:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/04/%E4%BD%BF%E7%94%A8intellij-ideagradle%E5%BC%80%E5%8F%91java-web%E5%BA%94%E7%94%A8%E6%AD%A5%E9%AA%A4/</guid>
+      <guid>http://wixb50.coding.me/2015/11/04/%E4%BD%BF%E7%94%A8intellij-ideagradle%E5%BC%80%E5%8F%91java-web%E5%BA%94%E7%94%A8%E6%AD%A5%E9%AA%A4/</guid>
       <description>&lt;p&gt;Java开发必备。&lt;/p&gt;
 
 &lt;p&gt;转自，&lt;a href=&#34;http://my.oschina.net/u/1010578/blog/390094&#34;&gt;使用IntelliJ IDEA，gradle开发Java web应用步骤&lt;/a&gt;。&lt;/p&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>sublime-text-3配置</title>
-      <link>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.coding.me/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 11:21:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.coding.me/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
