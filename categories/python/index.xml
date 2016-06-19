@@ -20,17 +20,17 @@
       <guid>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
-&lt;h3 id=&#34;列出已安装的包&#34;&gt;列出已安装的包&lt;/h3&gt;
+&lt;h3 id=&#34;列出已安装的包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;列出已安装的包&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;pip freeze&lt;/code&gt; or &lt;code&gt;pip list&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;导出requirements-txt&#34;&gt;导出requirements.txt&lt;/h3&gt;
+&lt;h3 id=&#34;导出requirements-txt:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;导出requirements.txt&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;pip freeze &amp;gt; &amp;lt;目录&amp;gt;/requirements.txt&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;安装包&#34;&gt;安装包&lt;/h2&gt;
+&lt;h2 id=&#34;安装包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;安装包&lt;/h2&gt;
 
-&lt;h3 id=&#34;在线安装&#34;&gt;在线安装&lt;/h3&gt;
+&lt;h3 id=&#34;在线安装:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;在线安装&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip install &amp;lt;包名&amp;gt; 或 pip install -r requirements.txt
 &lt;/code&gt;&lt;/pre&gt;
@@ -48,7 +48,7 @@ django-grappelli==2.6.3
 django-pagination==1.0.7
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;安装本地安装包&#34;&gt;安装本地安装包&lt;/h3&gt;
+&lt;h3 id=&#34;安装本地安装包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;安装本地安装包&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip install &amp;lt;目录&amp;gt;/&amp;lt;文件名&amp;gt; 或 pip install --use-wheel --no-index --find-links=wheelhouse/ &amp;lt;包名&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -60,47 +60,47 @@ django-pagination==1.0.7
 &lt;pre&gt;&lt;code&gt;pip install --no-index -f=&amp;lt;目录&amp;gt;/ &amp;lt;包名&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;卸载包&#34;&gt;卸载包&lt;/h3&gt;
+&lt;h3 id=&#34;卸载包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;卸载包&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip uninstall &amp;lt;包名&amp;gt; 或 pip uninstall -r requirements.txt
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;升级包&#34;&gt;升级包&lt;/h3&gt;
+&lt;h3 id=&#34;升级包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;升级包&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip install -U &amp;lt;包名&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;升级pip&#34;&gt;升级pip&lt;/h3&gt;
+&lt;h3 id=&#34;升级pip:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;升级pip&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip install -U pip
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;显示包所在的目录&#34;&gt;显示包所在的目录&lt;/h3&gt;
+&lt;h3 id=&#34;显示包所在的目录:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;显示包所在的目录&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip show -f &amp;lt;包名&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;搜索包&#34;&gt;搜索包&lt;/h3&gt;
+&lt;h3 id=&#34;搜索包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;搜索包&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip search &amp;lt;搜索关键字&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;查询可升级的包&#34;&gt;查询可升级的包&lt;/h3&gt;
+&lt;h3 id=&#34;查询可升级的包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;查询可升级的包&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip list -o
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;下载包而不安装&#34;&gt;下载包而不安装&lt;/h3&gt;
+&lt;h3 id=&#34;下载包而不安装:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;下载包而不安装&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip install &amp;lt;包名&amp;gt; -d &amp;lt;目录&amp;gt; 或 pip install -d &amp;lt;目录&amp;gt; -r requirements.txt
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;打包&#34;&gt;打包&lt;/h3&gt;
+&lt;h3 id=&#34;打包:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;打包&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;pip wheel &amp;lt;包名&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料:d15648cfed87d3d030e8555bf3cc01a5&#34;&gt;参考资料&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://pip.pypa.io/en/latest/&#34;&gt;pip document&lt;/a&gt;&lt;/li&gt;

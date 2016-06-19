@@ -171,10 +171,10 @@ s = &#39;http://&#39; + s;}
 
 &lt;h4 id=&#34;20-匹配html标签&#34;&gt;20. 匹配HTML标签&lt;/h4&gt;
 
-&lt;p&gt;通过下面的表达式可以匹配出HTML中的标签。
-&lt;code&gt;
-&amp;lt;/?\\w+((\\s+\\w+(\\s*=\\s*(?:&amp;quot;.*?&amp;quot;|&#39;.*?&#39;|[\\^&#39;&amp;quot;&amp;gt;\\s]+))?)+\\s*|\\s*)/?&amp;gt;
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过下面的表达式可以匹配出HTML中的标签。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;/?\\w+((\\s+\\w+(\\s*=\\s*(?:&amp;quot;.*?&amp;quot;|&#39;.*?&#39;|[\\^&#39;&amp;quot;&amp;gt;\\s]+))?)+\\s*|\\s*)/?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -186,7 +186,7 @@ s = &#39;http://&#39; + s;}
       <guid>http://wixb50.github.io/2015/11/13/mysql%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</guid>
       <description>
 
-&lt;h2 id=&#34;mysql数据词典生成器&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
+&lt;h2 id=&#34;mysql数据词典生成器:cdf3708ef874df6c6155af495a02d9ce&#34;&gt;mysql数据词典生成器&lt;/h2&gt;
 
 &lt;p&gt;一个php的在线词典生成器，便于将数据库导出成表格，一般论文里面可能有需要哦。&lt;/p&gt;
 
@@ -194,8 +194,7 @@ s = &#39;http://&#39; + s;}
 
 &lt;p&gt;效果图&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://www.funboxpower.com/wp-content/uploads/2015/04/QQ%E6%88%AA%E5%9B%BE20150401141354.png&#34; alt=&#34;result&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.funboxpower.com/wp-content/uploads/2015/04/QQ%E6%88%AA%E5%9B%BE20150401141354.png&#34; alt=&#34;result&#34; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;如果不能下载的话，附上源码：&lt;/p&gt;

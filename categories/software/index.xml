@@ -21,7 +21,7 @@
       <description>
 
 &lt;p&gt;##目录
-&amp;lt;!&amp;ndash; MarkdownTOC &amp;ndash;&amp;gt;&lt;/p&gt;
+&lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[](#前言null-link)&lt;/li&gt;
@@ -727,10 +727,9 @@ http://foo/bar
 &lt;ul&gt;
 &lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
 1.安装配置好JDK环境,下载tar.gz文件,解压到&lt;code&gt;tar -zxvf ideaIU-14.tar.gz -C /usr/local/intellijIDEA(自己命名)&lt;/code&gt;;&lt;br /&gt;
-2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;几个license：
+2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.
+&lt;code&gt;
+几个license：
 (1)
 key:IDEA
 value:61156-YRN2M-5MNCN-NZ8D2-7B4EW-U12L4
@@ -740,9 +739,7 @@ value:97493-G3A41-0SO24-W57LI-Y2UGI-JGTU2
 (3)
 key:itey
 value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
+&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.sublimetext.com/3&#34;&gt;Sublime Text 3&lt;/a&gt; 下载deb包安装&lt;/li&gt;
 &lt;li&gt;神一样的&lt;a href=&#34;http://www.vim.org/&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt; How to &lt;a href=&#34;http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/&#34;&gt;Install&lt;/a&gt;&lt;/li&gt;
@@ -771,15 +768,12 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 &lt;ul&gt;
 &lt;li&gt;unity-tweak-tool&lt;br /&gt;
 安装&lt;code&gt;sudo apt-get install unity-tweak-tool&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:tualatrix/ppa
+&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;
+&lt;code&gt;
+sudo add-apt-repository ppa:tualatrix/ppa
 sudo apt-get update
 sudo apt-get install ubuntu-tweak
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
+&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;主题网址&lt;a href=&#34;http://gnome-look.org/&#34;&gt;http://gnome-look.org/&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;&lt;/li&gt;
 &lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/anmoljagetia/Flatabulous/&#34;&gt;挺好看的一个主题&lt;/a&gt;,里面“NoobsLab”源的主题都挺好看的。&lt;/li&gt;
@@ -849,14 +843,14 @@ sudo apt-get install shadowsocks-qt5
 &lt;h3 id=&#34;linux-wps&#34;&gt;Linux WPS&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;#安装wps
+&lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装
+&lt;code&gt;
+#安装wps
 sudo dpkg -i wps-office_9.1.0.4975-a19p1_amd64.deb
 #安装symbol字体包
 sudo dpkg -i symbol-fonts_1.2_all.deb
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
 
@@ -981,22 +975,17 @@ $ sudo umount /mnt/
 &lt;h3 id=&#34;终端工具terminator&#34;&gt;终端工具Terminator&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;安装&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;安装&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install terminator
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;然后利用 Debian 的重新配置命令选择默认终端：&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;然后利用 Debian 的重新配置命令选择默认终端：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo update-alternatives --config x-terminal-emulator
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;terminator配置文件在~/.config/terminator/config 可以通过这个配置文件配置terminator的字体和颜色.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;terminator配置文件在~/.config/terminator/config 可以通过这个配置文件配置terminator的字体和颜色.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;font = Monaco 10  #设置体字
 background_color = &amp;quot;#204070&amp;quot; # 背景颜色
@@ -1011,61 +1000,61 @@ background_type = transparent # 背景类型可以设置为图片
 &lt;p&gt;更多配置见：&lt;code&gt;man terminator_config&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;快捷键&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;F11 #Toggle fullscreen
+&lt;li&gt;快捷键
+```
+F11 #Toggle fullscreen
 Ctrl + Shift+ O #Split terminals horizontally
 Ctrl + Shift+ E #Split terminals vertically
 Ctrl + Shift+ W #Close current Panel
-Ctrl + Shift+ T #Open new tab
+Ctrl + Shift+ T #Open new tab&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-Ctrl+Shift+C 复制
+&lt;p&gt;Ctrl+Shift+C 复制
 Ctrl+Shift+V 粘贴
 Ctrl+Shift+N 或者 Ctrl+Tab 在分割的各窗口之间切换
 Ctrl+Shift+X 将分割的某一个窗口放大至全屏使用
-Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
+Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面&lt;/p&gt;
 
-Alt + ↑ #Move to the terminal above the current one
+&lt;p&gt;Alt + ↑ #Move to the terminal above the current one
 Alt + ↓ #Move to the terminal below the current one
 Alt + ← #Move to the terminal left of the current one
-Alt + → #Move to the terminal right of the current one
+Alt + → #Move to the terminal right of the current one&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
++ 一个不错的配置(可将`palette`注释,采用默认的配色方案)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;一个不错的配置(可将&lt;code&gt;palette&lt;/code&gt;注释,采用默认的配色方案)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;[global_config]
-  title_transmit_bg_color = &amp;quot;#d30102&amp;quot;
+&lt;p&gt;[global_config]
+  title_transmit_bg_color = &amp;laquo;#d30102&amp;raquo;
   focus = system
   suppress_multiple_term_dialog = True
 [keybindings]
 [profiles]
   [[default]]
-    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    palette = &amp;laquo;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;raquo;
     copy_on_selection = True
     background_image = None
     background_darkness = 0.85
     background_type = transparent
     use_system_font = False
-    cursor_color = &amp;quot;#eee8d5&amp;quot;
-    foreground_color = &amp;quot;#839496&amp;quot;
+    cursor_color = &amp;laquo;#eee8d5&amp;raquo;
+    foreground_color = &amp;laquo;#839496&amp;raquo;
     show_titlebar = False
     font = Ubuntu Mono 14
-    background_color = &amp;quot;#002b36&amp;quot;
+    background_color = &amp;laquo;#002b36&amp;raquo;
   [[solarized-dark]]
-    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
-    background_color = &amp;quot;#002b36&amp;quot;
+    palette = &amp;laquo;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;raquo;
+    background_color = &amp;laquo;#002b36&amp;raquo;
     background_image = None
-    cursor_color = &amp;quot;#eee8d5&amp;quot;
-    foreground_color = &amp;quot;#839496&amp;quot;
+    cursor_color = &amp;laquo;#eee8d5&amp;raquo;
+    foreground_color = &amp;laquo;#839496&amp;raquo;
   [[solarized-light]]
-    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
-    background_color = &amp;quot;#fdf6e3&amp;quot;
+    palette = &amp;laquo;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;raquo;
+    background_color = &amp;laquo;#fdf6e3&amp;raquo;
     background_image = None
-    cursor_color = &amp;quot;#002b36&amp;quot;
-    foreground_color = &amp;quot;#657b83&amp;quot;
+    cursor_color = &amp;laquo;#002b36&amp;raquo;
+    foreground_color = &amp;laquo;#657b83&amp;raquo;
 [layouts]
   [[default]]
     [[[child1]]]
@@ -1074,169 +1063,165 @@ Alt + → #Move to the terminal right of the current one
       profile = default
     [[[window0]]]
       type = Window
-      parent = &amp;quot;&amp;quot;
-[plugins]
+      parent = &amp;laquo;&amp;raquo;
+[plugins]&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;透明高亮很Geek.
+
++ 右键目录打开
+
+1.安装工具：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;透明高亮很Geek.&lt;/p&gt;
+&lt;p&gt;apt-get install nautilus-actions -y&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;右键目录打开&lt;/li&gt;
-&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;2.启动改工具,Unity中输入nautilus-actions-config-tool,  
 
-&lt;p&gt;1.安装工具：&lt;/p&gt;
+3.见[配置教程](http://www.ikey4u.com/linux-terminator-settings/)  重要的启动参数：`--working-directory=%D/%w`  
 
-&lt;pre&gt;&lt;code&gt;apt-get install nautilus-actions -y
+4.重启生效
+
++ 参考资料   
+[开始使用Ubuntu作为工作环境](http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html)
+
+### terminal增强zsh
+依次执行以下步骤安装：([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;2.启动改工具,Unity中输入nautilus-actions-config-tool,&lt;/p&gt;
-
-&lt;p&gt;3.见&lt;a href=&#34;http://www.ikey4u.com/linux-terminator-settings/&#34;&gt;配置教程&lt;/a&gt;  重要的启动参数：&lt;code&gt;--working-directory=%D/%w&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;4.重启生效&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;参考资料&lt;br /&gt;
-&lt;a href=&#34;http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html&#34;&gt;开始使用Ubuntu作为工作环境&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;terminal增强zsh&#34;&gt;terminal增强zsh&lt;/h3&gt;
-
-&lt;p&gt;依次执行以下步骤安装：(&lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh&#34;&gt;oh-my-zsh&lt;/a&gt;)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install zsh  #先安装zsh
-$ sh -c &amp;quot;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;quot;  #配置oh-my-zsh,zsh的自动配置
+&lt;p&gt;$ sudo apt-get install zsh  #先安装zsh
+$ sh -c &amp;laquo;$(wget &lt;a href=&#34;https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh&#34;&gt;https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;/a&gt; -O -)&amp;raquo;  #配置oh-my-zsh,zsh的自动配置
 $ chsh -s /bin/zsh  #替换bash为zsh
-$ sudo reboot  #重启生效
+$ sudo reboot  #重启生效&lt;/p&gt;
 
-# 另外更新oh-my-zsh
-$ upgrade_oh_my_zsh
+&lt;h1 id=&#34;另外更新oh-my-zsh&#34;&gt;另外更新oh-my-zsh&lt;/h1&gt;
+
+&lt;p&gt;$ upgrade_oh_my_zsh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;修改`～/zshrc`文件，将主题改为`ZSH_THEME=&amp;quot;gentoo&amp;quot;`显示完整路径。    
+将以前`~/bashrc`中的环境变量复制到`～/zshrc`文件最后(如果想用)。
+
+**附:**基于gentoo主题修改之后的一个主题
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;修改&lt;code&gt;～/zshrc&lt;/code&gt;文件，将主题改为&lt;code&gt;ZSH_THEME=&amp;quot;gentoo&amp;quot;&lt;/code&gt;显示完整路径。&lt;br /&gt;
-将以前&lt;code&gt;~/bashrc&lt;/code&gt;中的环境变量复制到&lt;code&gt;～/zshrc&lt;/code&gt;文件最后(如果想用)。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;附:&lt;/strong&gt;基于gentoo主题修改之后的一个主题&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function prompt_char {
-  if [ $UID -eq 0 ]; then echo &amp;quot;#&amp;quot;; else echo $; fi
+&lt;p&gt;function prompt_char {
+  if [ $UID -eq 0 ]; then echo &amp;laquo;#&amp;raquo;; else echo $; fi
 }
-local ret_status=&amp;quot;%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )&amp;quot;
-PROMPT=&#39;${ret_status} %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt_info)%_$(prompt_char)%{$reset_color%} &#39;
+local ret_status=&amp;laquo;%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )&amp;raquo;
+PROMPT=&amp;lsquo;${ret_status} %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt&lt;em&gt;info)%&lt;/em&gt;$(prompt_char)%{$reset_color%} &amp;lsquo;&lt;/p&gt;
 
-ZSH_THEME_GIT_PROMPT_PREFIX=&amp;quot;(&amp;quot;
-ZSH_THEME_GIT_PROMPT_SUFFIX=&amp;quot;) &amp;quot;
+&lt;p&gt;ZSH_THEME_GIT_PROMPT_PREFIX=&amp;laquo;(&amp;raquo;
+ZSH_THEME_GIT_PROMPT_SUFFIX=&amp;laquo;) &amp;laquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+**&#39;autojump&#39; plugin install**
+
+系统安装autojump
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;&amp;lsquo;autojump&amp;rsquo; plugin install&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;apt-get install autojump&lt;/p&gt;
 
-&lt;p&gt;系统安装autojump&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get install autojump
+&lt;pre&gt;&lt;code&gt; zsh 中开启 autojump 插件的支持
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;zsh 中开启 autojump 插件的支持&lt;/p&gt;
+&lt;p&gt;vim ~/.zshrc&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;vim ~/.zshrc
-# plugins=(xxx)改为
-plugins=(xxx autojump)
+&lt;h1 id=&#34;plugins-xxx-改为&#34;&gt;plugins=(xxx)改为&lt;/h1&gt;
+
+&lt;p&gt;plugins=(xxx autojump)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;使用方法
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;使用方法&lt;/p&gt;
+&lt;p&gt;j &amp;lt;目录名&amp;gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;j &amp;lt;目录名&amp;gt;
+&lt;pre&gt;&lt;code&gt;
+### Wine 1.8
+
+1、对于 64 位系统，需要开启 32 位架构支持：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;wine-1-8&#34;&gt;Wine 1.8&lt;/h3&gt;
+&lt;p&gt;sudo dpkg &amp;ndash;add-architecture i386&lt;/p&gt;
 
-&lt;p&gt;1、对于 64 位系统，需要开启 32 位架构支持：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dpkg --add-architecture i386 
+&lt;pre&gt;&lt;code&gt;2、添加 Wine 官方 PPA：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;2、添加 Wine 官方 PPA：&lt;/p&gt;
+&lt;p&gt;sudo add-apt-repository ppa:wine/wine-builds&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:wine/wine-builds 
+&lt;pre&gt;&lt;code&gt;3、PPA 添加完成后，我们先刷新包缓存再安装 Wine 1.8：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;3、PPA 添加完成后，我们先刷新包缓存再安装 Wine 1.8：&lt;/p&gt;
+&lt;p&gt;sudo apt-get update
+sudo apt-get install &amp;ndash;install-recommends winehq-devel&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get update 
-sudo apt-get install --install-recommends winehq-devel 
+&lt;pre&gt;&lt;code&gt;如果你安装有老版本 Wine，执行上述命令时会自动被替换更新。
+
+4、安装完成后，可以使用如下命令来初始化 Wine 1.8 配置：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;如果你安装有老版本 Wine，执行上述命令时会自动被替换更新。&lt;/p&gt;
+&lt;p&gt;winecfg&lt;/p&gt;
 
-&lt;p&gt;4、安装完成后，可以使用如下命令来初始化 Wine 1.8 配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+NOTE:[手动安装Gecko](https://wiki.winehq.org/Gecko)
 
-&lt;pre&gt;&lt;code&gt;winecfg 
+### chm解压查看7zip
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;NOTE:&lt;a href=&#34;https://wiki.winehq.org/Gecko&#34;&gt;手动安装Gecko&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;sudo apt-get install p7zip&lt;/p&gt;
 
-&lt;h3 id=&#34;chm解压查看7zip&#34;&gt;chm解压查看7zip&lt;/h3&gt;
-
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install p7zip
+&lt;pre&gt;&lt;code&gt;解压chm文件命令
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;解压chm文件命令&lt;/p&gt;
+&lt;p&gt;7z e test.chm ./test&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;7z e test.chm ./test
+&lt;pre&gt;&lt;code&gt;
+### wireshark抓包工具
+安装命令
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;wireshark抓包工具&#34;&gt;wireshark抓包工具&lt;/h3&gt;
+&lt;p&gt;sudo apt-get install wireshark&lt;/p&gt;
 
-&lt;p&gt;安装命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;因为wireshark只允许超级用户使用访问网卡，但是采用`sudo wireshark`会报错，所以解决方案是，将当前用户加入`wireshark组`中：
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install wireshark
++ 执行`sudo dpkg-reconfigure wireshark-common`，在弹出的窗口中选择是或者Yes;
++ 执行`sudo adduser $USER wireshark`;
++ 重启。
+
+### Nmap局域网扫描工具
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;因为wireshark只允许超级用户使用访问网卡，但是采用&lt;code&gt;sudo wireshark&lt;/code&gt;会报错，所以解决方案是，将当前用户加入&lt;code&gt;wireshark组&lt;/code&gt;中：&lt;/p&gt;
+&lt;p&gt;sudo apt-get install nmap&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;执行&lt;code&gt;sudo dpkg-reconfigure wireshark-common&lt;/code&gt;，在弹出的窗口中选择是或者Yes;&lt;/li&gt;
-&lt;li&gt;执行&lt;code&gt;sudo adduser $USER wireshark&lt;/code&gt;;&lt;/li&gt;
-&lt;li&gt;重启。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;nmap局域网扫描工具&#34;&gt;Nmap局域网扫描工具&lt;/h3&gt;
-
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install nmap
+&lt;pre&gt;&lt;code&gt;
+### sqlite3工具
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;sqlite3工具&#34;&gt;sqlite3工具&lt;/h3&gt;
+&lt;p&gt;sudo apt-get install sqlite3&lt;/p&gt;
 
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install sqlite3
+&lt;pre&gt;&lt;code&gt;使用命令(其他命令请自行google)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;使用命令(其他命令请自行google)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sqlite3 test.db # 打开数据库文件
+&lt;p&gt;sqlite3 test.db # 打开数据库文件
 sqlite&amp;gt;.database # 查看数据库文件信息
 sqlite&amp;gt;.schema # 查看所有表创建语句
 sqlite&amp;gt;.tables # 获取所有表和视图
-sqlite&amp;gt;.exit # 退出
+sqlite&amp;gt;.exit # 退出&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+### 整站离线工具HTTrack
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;整站离线工具httrack&#34;&gt;整站离线工具HTTrack&lt;/h3&gt;
+&lt;p&gt;sudo apt-get install httrack&lt;/p&gt;
 
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install httrack
+&lt;pre&gt;&lt;code&gt;一个例子
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;一个例子&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;httrack &amp;quot;http://www.all.net/&amp;quot; -O &amp;quot;/tmp/www.all.net&amp;quot; &amp;quot;+*.all.net/*&amp;quot; -v
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;它的意思是：以&lt;a href=&#34;http://www.all.net/&#34;&gt;http://www.all.net/&lt;/a&gt; 为起始URL，输出到/tmp/www.all.net文件夹，范围是www.all.net域名下的所有文件，并显示所有错误信息（verbose）&lt;a href=&#34;http://www.httrack.com/html/fcguide.html&#34;&gt;参考文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;httrack &amp;laquo;&lt;a href=&#34;http://www.all.net/&amp;quot;&#34;&gt;http://www.all.net/&amp;quot;&lt;/a&gt; -O &amp;laquo;/tmp/www.all.net&amp;raquo; &amp;laquo;+&lt;em&gt;.all.net/&lt;/em&gt;&amp;raquo; -v
+```
+它的意思是：以&lt;a href=&#34;http://www.all.net/&#34;&gt;http://www.all.net/&lt;/a&gt; 为起始URL，输出到/tmp/www.all.net文件夹，范围是www.all.net域名下的所有文件，并显示所有错误信息（verbose）&lt;a href=&#34;http://www.httrack.com/html/fcguide.html&#34;&gt;参考文档&lt;/a&gt;。&lt;/p&gt;
 </description>
     </item>
     

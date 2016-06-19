@@ -21,7 +21,7 @@
       <description>
 
 &lt;p&gt;##目录
-&amp;lt;!&amp;ndash; MarkdownTOC &amp;ndash;&amp;gt;&lt;/p&gt;
+&lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#二进制文件方式下载&#34;&gt;二进制文件方式下载&lt;/a&gt;&lt;/li&gt;
@@ -34,7 +34,7 @@
 &lt;p&gt;etcd 基于 Go 语言实现，因此，用户可以从 项目主页 下载源代码自行编译，也可以下载编译好的二进制文件，甚至直接使用制作好的 Docker 镜像文件来体验。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;二进制文件方式下载&#34;&gt;二进制文件方式下载&lt;/h3&gt;
+&lt;h3 id=&#34;二进制文件方式下载:e9fd0bb186316c495358cb17e25d8651&#34;&gt;二进制文件方式下载&lt;/h3&gt;
 
 &lt;p&gt;编译好的二进制文件都在 github.com/coreos/etcd/releases 页面，用户可以选择需要的版本，或通过下载工具下载。&lt;/p&gt;
 
@@ -99,7 +99,7 @@ hello world
 {&amp;quot;action&amp;quot;:&amp;quot;get&amp;quot;,&amp;quot;node&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;/testkey&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;hello world&amp;quot;,&amp;quot;modifiedIndex&amp;quot;:3,&amp;quot;createdIndex&amp;quot;:3}}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;docker-镜像方式下载&#34;&gt;Docker 镜像方式下载&lt;/h3&gt;
+&lt;h3 id=&#34;docker-镜像方式下载:e9fd0bb186316c495358cb17e25d8651&#34;&gt;Docker 镜像方式下载&lt;/h3&gt;
 
 &lt;p&gt;镜像名称为 quay.io/coreos/etcd:v2.0.0_rc.1，可以通过下面的命令启动 etcd 服务监听到 4001 端口。&lt;br /&gt;
 &lt;code&gt;$ sudo docker run -p 4001:4001 -v /etc/ssl/certs/:/etc/ssl/certs/ quay.io/coreos/etcd:v2.0.0_rc.1&lt;/code&gt;&lt;/p&gt;

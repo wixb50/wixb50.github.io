@@ -20,7 +20,7 @@
       <guid>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;centos添加及删除用户&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
+&lt;h2 id=&#34;centos添加及删除用户:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;adduser int # 新增用户
 passwd int # 设置或者修改密码
@@ -35,11 +35,11 @@ root    ALL=(ALL)   ALL
 int ALL=(ALL)   ALL
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;其他命令
-&lt;code&gt;
-userdel test # 删除用户
+&lt;p&gt;其他命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;userdel test # 删除用户
 userdel -f test # 删除用户及用户组
-&lt;/code&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -51,7 +51,7 @@ userdel -f test # 删除用户及用户组
       <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -68,7 +68,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
+&lt;h2 id=&#34;ssh错误-permission-denied-publickey:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;登录远程主机，将/etc/ssh/sshd_config文件中的&lt;code&gt;PasswordAuthentication no&lt;/code&gt; 改为&lt;code&gt;PasswordAuthentication yes&lt;/code&gt;。&lt;br /&gt;&lt;/li&gt;
@@ -78,7 +78,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
 
-&lt;h2 id=&#34;unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/h2&gt;
+&lt;h2 id=&#34;unity菜单栏消失:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;unity菜单栏消失&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;安装&lt;code&gt;ccsm&lt;/code&gt;，终端打开&lt;code&gt;ccsm&lt;/code&gt;；&lt;/li&gt;
@@ -89,7 +89,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;原因：compiz设置错误。&lt;/p&gt;
 
-&lt;h2 id=&#34;google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/h2&gt;
+&lt;h2 id=&#34;google-chrome更新出错:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;google chrome更新出错&lt;/h2&gt;
 
 &lt;p&gt;1.Setup key with:&lt;/p&gt;
 
@@ -108,7 +108,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;参考方案: &lt;a href=&#34;http://www.ubuntuupdates.org/ppa/google_chrome&#34;&gt;3rd Party Repository: Google Chrome&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
+&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
 
 &lt;p&gt;virtual memory exhausted: Cannot allocate memory 问题：&lt;/p&gt;
 
@@ -121,7 +121,7 @@ Enable swap on boot:
 $ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
+&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
 
 &lt;p&gt;现在假设原来的项目的remote设置为git@domain.com:Projects/p1.git，将服务器SSH默认端口修改为3022后，导致push出错。&lt;/p&gt;
 
@@ -142,7 +142,7 @@ port 3022
 # ctrl+D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
+&lt;h2 id=&#34;linux-wps不能使用中文输入法:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
 
 &lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：&lt;/p&gt;
 
@@ -150,23 +150,23 @@ port 3022
 export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;清理ubuntu连接过的服务器记录&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
+&lt;h2 id=&#34;清理ubuntu连接过的服务器记录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
 
 &lt;p&gt;保存目录为nautilus中，直接清空配置文件&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;rm ~/.config/nautilus/servers
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ubuntu与windows双系统时间不同步&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
+&lt;h2 id=&#34;ubuntu与windows双系统时间不同步:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;之所以 Windows 与 Ubuntu 双系统之间有时间差，是因为这两个系统使用了不同的方式来识别硬件时钟（Hardware Clock）。Ubuntu 将硬件时钟当作 UTC 时间，而 Windows 将硬件时钟当作本地时间（ Local time）。由于时间的处理方式不同，Windows 不管重启多少次都识别 Local time，时间都不会改变。而当我们从 Ubuntu 重启到 Windows 时，硬件时钟已经被 Ubuntu 认为 UTC 方式，而 Windows 再将其强制转换成 Local time，这就造成了时间差。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;我们只需将 Ubuntu 的 UTC 时间切换成 Local time 即可。具体做法就是将 /etc/default/rcS 文件中的 “UTC=yes” 改成 “UTC=no” 即可（没有引号）。更改完成完成之后 Ubuntu 便会使用 Local time 而非 UTC。
-&lt;code&gt;
-sudo sed -i &#39;s/UTC=no/UTC=yes/&#39; /etc/default/rcS
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们只需将 Ubuntu 的 UTC 时间切换成 Local time 即可。具体做法就是将 /etc/default/rcS 文件中的 “UTC=yes” 改成 “UTC=no” 即可（没有引号）。更改完成完成之后 Ubuntu 便会使用 Local time 而非 UTC。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo sed -i &#39;s/UTC=no/UTC=yes/&#39; /etc/default/rcS
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -231,9 +231,9 @@ deb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe
 deb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;oschina源：
-&lt;code&gt;
-deb http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
+&lt;p&gt;oschina源：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
 deb http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted universe multiverse
 deb http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
 deb http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
@@ -243,7 +243,7 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted univ
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted universe multiverse
-&lt;/code&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -294,7 +294,7 @@ sudo service xrdp restart
       <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -327,7 +327,7 @@ sudo service xrdp restart
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;shutdown-命令&#34;&gt;shutdown 命令&lt;/h2&gt;
+&lt;h2 id=&#34;shutdown-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;shutdown 命令&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;shutdown –help  #可以查看shutdown命令如何使用，当然也可以使用man shutdown命令。
 shutdown -h now #现在立即关机
@@ -338,7 +338,7 @@ shutdown -r 20:23 #在20：23时将重启计算机
 shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h2&gt;
+&lt;h2 id=&#34;ln-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;ln 命令&lt;/h2&gt;
 
 &lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
 
@@ -358,7 +358,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 &lt;pre&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux下设置ssh无密码登录&#34;&gt;linux下设置ssh无密码登录&lt;/h2&gt;
+&lt;h2 id=&#34;linux下设置ssh无密码登录:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;linux下设置ssh无密码登录&lt;/h2&gt;
 
 &lt;p&gt;原理说明
 &amp;gt;密匙认证需要依靠密匙，&lt;br /&gt;
@@ -367,7 +367,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 3.服务器收到请求之后，先在你在该服务器的宿主目录下寻找你的公匙，然后检查该公匙是 否是合法，如果合法就用公匙加密一随机数（即所谓的challenge）并发送给客户端软件。&lt;br /&gt;
 4.客户端软件收到 “challenge”之后就用私匙解密再把它发送给服务器。因为用公匙加密的数据只能用密匙解密，服务器经过比较就可以知道该客户连接的合法性。&lt;/p&gt;
 
-&lt;h3 id=&#34;1-生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/h3&gt;
+&lt;h3 id=&#34;1-生成公钥和私钥:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;1.生成公钥和私钥&lt;/h3&gt;
 
 &lt;p&gt;Shell代码&lt;/p&gt;
 
@@ -378,16 +378,16 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 　id_rsa      ：私钥&lt;br /&gt;
 　id_rsa.pub  ：公钥&lt;/p&gt;
 
-&lt;h3 id=&#34;2-导入公钥到认证文件-更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/h3&gt;
+&lt;h3 id=&#34;2-导入公钥到认证文件-更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/h3&gt;
 
-&lt;h4 id=&#34;2-1-导入本机&#34;&gt;2.1 导入本机&lt;/h4&gt;
+&lt;h4 id=&#34;2-1-导入本机:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.1 导入本机&lt;/h4&gt;
 
 &lt;p&gt;Shell代码&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;2-2-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
+&lt;h4 id=&#34;2-2-导入要免密码登录的服务器:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
 
 &lt;p&gt;方法一：
 首先将公钥复制到服务器，Shell代码&lt;/p&gt;
@@ -408,7 +408,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 
 &lt;p&gt;可以执行测试登录，如果无任何错误提示，可以输密码登录，但就是不能无密码登录，则执行下步。&lt;/p&gt;
 
-&lt;h4 id=&#34;2-3-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/h4&gt;
+&lt;h4 id=&#34;2-3-在服务器上更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.3 在服务器上更改权限&lt;/h4&gt;
 
 &lt;p&gt;Shell 代码&lt;/p&gt;
 
@@ -416,7 +416,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 chmod 600 ~/.ssh/authorized_keys 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;3-测试&#34;&gt;3.测试&lt;/h3&gt;
+&lt;h3 id=&#34;3-测试:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;3.测试&lt;/h3&gt;
 
 &lt;p&gt;执行Shell&lt;/p&gt;
 
@@ -425,7 +425,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 &lt;p&gt;第一次登录可能需要yes确认，之后就可以直接登录了。&lt;/p&gt;
 
-&lt;h2 id=&#34;dpkg命令&#34;&gt;dpkg命令&lt;/h2&gt;
+&lt;h2 id=&#34;dpkg命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;dpkg命令&lt;/h2&gt;
 
 &lt;p&gt;以下是一些 Dpkg 的普通用法：&lt;/p&gt;
 
@@ -448,9 +448,9 @@ chmod 600 ~/.ssh/authorized_keys
   重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;apt命令&#34;&gt;apt命令&lt;/h2&gt;
+&lt;h2 id=&#34;apt命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;apt命令&lt;/h2&gt;
 
-&lt;h3 id=&#34;软件安装后相关文件位置&#34;&gt;软件安装后相关文件位置&lt;/h3&gt;
+&lt;h3 id=&#34;软件安装后相关文件位置:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;软件安装后相关文件位置&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;下载的软件存放位置&lt;/p&gt;
@@ -488,7 +488,7 @@ chmod 600 ~/.ssh/authorized_keys
 &lt;p&gt;/var/lib/apt/lists&lt;br /&gt;
 使用apt-get update命令会从/etc/apt/sources.list中下载软件列表，并保存到该目录&lt;/p&gt;
 
-&lt;h2 id=&#34;设置su密码的命令&#34;&gt;设置su密码的命令&lt;/h2&gt;
+&lt;h2 id=&#34;设置su密码的命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;设置su密码的命令&lt;/h2&gt;
 
 &lt;p&gt;Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。&lt;/p&gt;
 
@@ -509,19 +509,17 @@ chmod 600 ~/.ssh/authorized_keys
 1). su的密码是root的密码，而sudo的密码是用户的密码；&lt;br /&gt;
 2). su直接将身份变成root，而sudo是以用户登录后以root的身份运行命令，不需要知道root密码；&lt;/p&gt;
 
-&lt;h2 id=&#34;新增user&#34;&gt;新增User&lt;/h2&gt;
+&lt;h2 id=&#34;新增user:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;新增User&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;使用有权限的用户，在终端里输入&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;使用有权限的用户，在终端里输入&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo adduser username
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;然后一直回车即可，新建成功。&lt;/p&gt;
+&lt;p&gt;然后一直回车即可，新建成功。&lt;/p&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;添加sudo用户&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;添加sudo用户&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
@@ -538,180 +536,165 @@ chmod 600 ~/.ssh/authorized_keys
 &lt;pre&gt;&lt;code&gt;sudo usermod -a -G sudo username
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/h2&gt;
+&lt;h2 id=&#34;fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&amp;amp;&lt;/li&gt;
+&lt;li&gt;&amp;amp;
+```
+加在一个命令的最后，可以把这个命令放到后台执行，如&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;加在一个命令的最后，可以把这个命令放到后台执行，如
+&lt;p&gt;watch  -n 10 sh  test.sh  &amp;amp;  #每10s在后台执行一次test.sh脚本&lt;/p&gt;
 
-watch  -n 10 sh  test.sh  &amp;amp;  #每10s在后台执行一次test.sh脚本
+&lt;pre&gt;&lt;code&gt;+ ctrl + z
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;ctrl + z&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;可以将一个正在前台执行的命令放到后台，并且处于暂停状态。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;可以将一个正在前台执行的命令放到后台，并且处于暂停状态。
+&lt;pre&gt;&lt;code&gt;+ jobs
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;jobs&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;查看当前有多少在后台运行的命令&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;查看当前有多少在后台运行的命令
+&lt;p&gt;jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。&lt;/p&gt;
 
-jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
+&lt;pre&gt;&lt;code&gt;+ fg
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;fg&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。
+&lt;pre&gt;&lt;code&gt;+ bg
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;bg&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。
+&lt;pre&gt;&lt;code&gt;+ kill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;kill&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
+&lt;p&gt;法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
 法子2：通过ps命令查看job的进程号（PID，假设为pid），然后执行kill pid
-前台进程的终止：Ctrl+c
+前台进程的终止：Ctrl+c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+ nohup
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;nohup&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）
+&lt;p&gt;ps -aux | grep &amp;laquo;test.sh&amp;raquo;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分&lt;/p&gt;
 
-ps -aux | grep &amp;quot;test.sh&amp;quot;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分
+&lt;pre&gt;&lt;code&gt;
+## kill，killall，pkill，xkill 命令
+
++ kill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;kill-killall-pkill-xkill-命令&#34;&gt;kill，killall，pkill，xkill 命令&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;kill&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kill ［信号代码］ 进程ID（kill  -pid）
-－s：指定发送的信号。 
-－p：模拟发送信号。 
-－l：指定信号的名称列表。 
-pid：要中止进程的ID号。 
+&lt;p&gt;kill ［信号代码］ 进程ID（kill  -pid）
+－s：指定发送的信号。
+－p：模拟发送信号。
+－l：指定信号的名称列表。
+pid：要中止进程的ID号。
 Signal：表示信号。
-注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；
+注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+ killall
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;killall&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;killall 通过程序的名字，直接杀死所有进程。
+&lt;p&gt;killall 通过程序的名字，直接杀死所有进程。
 用法：killall 正在运行的程序名
-killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行
+killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+ pkill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;pkill&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
+用法：pkill 正在运行的程序名&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
-用法：pkill 正在运行的程序名
+&lt;pre&gt;&lt;code&gt;+ xkill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;xkill&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
+&lt;p&gt;xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
 当xkill运行时出来和个人脑骨的图标，哪个图形程序崩溃一点就OK了。如果您想终止xkill ，就按右键取消；
 xkill 调用方法：
-[root@localhost ~]# xkill
+[root@localhost ~]# xkill&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+## add-apt-repository命令
+个人软件包档案（PPA）是Ubuntu独有的解决方案，允许独立开发者和贡献者构建、贡献任何定制的软件包来作为通过启动面板的第三方APT仓库。如果你是Ubuntu用户，有可能你已经增加一些流行的第三方PPA仓库到你的Ubuntu系统。如果你需要删除掉已经预先配置好的PPA仓库，下面将教你怎么做。
+
+假如你想增加一个叫“ppa:webapps/preview”第三方PPA仓库到你的系统中，如下：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;add-apt-repository命令&#34;&gt;add-apt-repository命令&lt;/h2&gt;
+&lt;p&gt;$ sudo add-apt-repository ppa:webapps/preview&lt;/p&gt;
 
-&lt;p&gt;个人软件包档案（PPA）是Ubuntu独有的解决方案，允许独立开发者和贡献者构建、贡献任何定制的软件包来作为通过启动面板的第三方APT仓库。如果你是Ubuntu用户，有可能你已经增加一些流行的第三方PPA仓库到你的Ubuntu系统。如果你需要删除掉已经预先配置好的PPA仓库，下面将教你怎么做。&lt;/p&gt;
-
-&lt;p&gt;假如你想增加一个叫“ppa:webapps/preview”第三方PPA仓库到你的系统中，如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo add-apt-repository ppa:webapps/preview
+&lt;pre&gt;&lt;code&gt;如果你想要 单独地删除某个PPA仓库，运行下面的命令：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;如果你想要 单独地删除某个PPA仓库，运行下面的命令：&lt;/p&gt;
+&lt;p&gt;$ sudo add-apt-repository &amp;ndash;remove ppa:someppa/ppa&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ sudo add-apt-repository --remove ppa:someppa/ppa 
-# 然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除
+&lt;h1 id=&#34;然后进入-etc-apt-sources-list-d-目录-将相应-ppa-源的保存文件删除:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;注意，上述命令不会同时删除任何已经安装或更新的软件包。
+
+如果你想要 完整的删除一个PPA仓库并包括来自这个PPA安装或更新过的软件包，你需要ppa-purge命令。
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;注意，上述命令不会同时删除任何已经安装或更新的软件包。&lt;/p&gt;
+&lt;h1 id=&#34;首先要安装ppa-purge软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;首先要安装ppa-purge软件包&lt;/h1&gt;
 
-&lt;p&gt;如果你想要 完整的删除一个PPA仓库并包括来自这个PPA安装或更新过的软件包，你需要ppa-purge命令。&lt;/p&gt;
+&lt;p&gt;$ sudo apt-get install ppa-purge&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# 首先要安装ppa-purge软件包
-$ sudo apt-get install ppa-purge
-# 然后使用如下命令删除PPA仓库和与之相关的软件包
-$ sudo ppa-purge ppa:webapps/preview 
+&lt;h1 id=&#34;然后使用如下命令删除ppa仓库和与之相关的软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;然后使用如下命令删除PPA仓库和与之相关的软件包&lt;/h1&gt;
+
+&lt;p&gt;$ sudo ppa-purge ppa:webapps/preview&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;这样就ok了。
+
+## nmap扫描工具
+Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;这样就ok了。&lt;/p&gt;
+&lt;p&gt;nmap 10.1.1.254&lt;/p&gt;
 
-&lt;h2 id=&#34;nmap扫描工具&#34;&gt;nmap扫描工具&lt;/h2&gt;
-
-&lt;p&gt;Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nmap 10.1.1.254
+&lt;pre&gt;&lt;code&gt;快速扫描主机开放端口
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;快速扫描主机开放端口&lt;/p&gt;
+&lt;p&gt;nmap -F 192.168.0.1&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -F 192.168.0.1
+&lt;pre&gt;&lt;code&gt;Nmap 简单扫描，并对返回的结果详细描述输出。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Nmap 简单扫描，并对返回的结果详细描述输出。&lt;/p&gt;
+&lt;p&gt;nmap -vv 10.1.1.254&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -vv 10.1.1.254 
+&lt;pre&gt;&lt;code&gt;nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。&lt;/p&gt;
+&lt;p&gt;nmap -p1-50 10.1.1.254&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -p1-50 10.1.1.254
+&lt;pre&gt;&lt;code&gt;nmap 指定端口扫描
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 指定端口扫描&lt;/p&gt;
+&lt;p&gt;nmap -p80,443,22,21 10.1.1.254&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -p80,443,22,21 10.1.1.254
+&lt;pre&gt;&lt;code&gt;nmap 还可以设置扫描一个网段下的ip
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 还可以设置扫描一个网段下的ip&lt;/p&gt;
+&lt;p&gt;nmap -sP 10.1.1.0/24&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -sP 10.1.1.0/24 
+&lt;pre&gt;&lt;code&gt;探测局域网段中各主机开启了哪些服务
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;探测局域网段中各主机开启了哪些服务&lt;/p&gt;
+&lt;p&gt;nmap -sS 192.168.0.0/24&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -sS 192.168.0.0/24
+&lt;pre&gt;&lt;code&gt;nmap 操作系统类型的探测
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 操作系统类型的探测&lt;/p&gt;
+&lt;p&gt;nmap -O 10.1.1.154&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -O 10.1.1.154
+&lt;pre&gt;&lt;code&gt;次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nmap -A 10.1.1.154
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nmap -A 10.1.1.154
+```&lt;/p&gt;
 </description>
     </item>
     

@@ -134,11 +134,11 @@
 &lt;h2 id=&#34;golang跨平台编译&#34;&gt;golang跨平台编译&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;WindowsCrossCompiling:&lt;a href=&#34;https://github.com/golang/go/wiki/WindowsCrossCompiling&#34;&gt;Building windows go programs on linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;WindowsCrossCompiling:&lt;a href=&#34;https://github.com/golang/go/wiki/WindowsCrossCompiling&#34;&gt;Building windows go programs on linux&lt;/a&gt;
+&lt;code&gt;
+$ GOOS=windows GOARCH=386 go build -o hello.exe hello.go
+&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ GOOS=windows GOARCH=386 go build -o hello.exe hello.go
-&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;集合类&#34;&gt;集合类&lt;/h2&gt;
 

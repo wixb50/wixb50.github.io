@@ -20,7 +20,7 @@
       <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -37,7 +37,7 @@
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
+&lt;h2 id=&#34;ssh错误-permission-denied-publickey:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;登录远程主机，将/etc/ssh/sshd_config文件中的&lt;code&gt;PasswordAuthentication no&lt;/code&gt; 改为&lt;code&gt;PasswordAuthentication yes&lt;/code&gt;。&lt;br /&gt;&lt;/li&gt;
@@ -47,7 +47,7 @@
 
 &lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
 
-&lt;h2 id=&#34;unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/h2&gt;
+&lt;h2 id=&#34;unity菜单栏消失:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;unity菜单栏消失&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;安装&lt;code&gt;ccsm&lt;/code&gt;，终端打开&lt;code&gt;ccsm&lt;/code&gt;；&lt;/li&gt;
@@ -58,7 +58,7 @@
 
 &lt;p&gt;原因：compiz设置错误。&lt;/p&gt;
 
-&lt;h2 id=&#34;google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/h2&gt;
+&lt;h2 id=&#34;google-chrome更新出错:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;google chrome更新出错&lt;/h2&gt;
 
 &lt;p&gt;1.Setup key with:&lt;/p&gt;
 
@@ -77,7 +77,7 @@
 
 &lt;p&gt;参考方案: &lt;a href=&#34;http://www.ubuntuupdates.org/ppa/google_chrome&#34;&gt;3rd Party Repository: Google Chrome&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
+&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
 
 &lt;p&gt;virtual memory exhausted: Cannot allocate memory 问题：&lt;/p&gt;
 
@@ -90,7 +90,7 @@ Enable swap on boot:
 $ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
+&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
 
 &lt;p&gt;现在假设原来的项目的remote设置为git@domain.com:Projects/p1.git，将服务器SSH默认端口修改为3022后，导致push出错。&lt;/p&gt;
 
@@ -111,7 +111,7 @@ port 3022
 # ctrl+D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
+&lt;h2 id=&#34;linux-wps不能使用中文输入法:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
 
 &lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：&lt;/p&gt;
 
@@ -119,23 +119,23 @@ port 3022
 export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;清理ubuntu连接过的服务器记录&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
+&lt;h2 id=&#34;清理ubuntu连接过的服务器记录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
 
 &lt;p&gt;保存目录为nautilus中，直接清空配置文件&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;rm ~/.config/nautilus/servers
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ubuntu与windows双系统时间不同步&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
+&lt;h2 id=&#34;ubuntu与windows双系统时间不同步:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;之所以 Windows 与 Ubuntu 双系统之间有时间差，是因为这两个系统使用了不同的方式来识别硬件时钟（Hardware Clock）。Ubuntu 将硬件时钟当作 UTC 时间，而 Windows 将硬件时钟当作本地时间（ Local time）。由于时间的处理方式不同，Windows 不管重启多少次都识别 Local time，时间都不会改变。而当我们从 Ubuntu 重启到 Windows 时，硬件时钟已经被 Ubuntu 认为 UTC 方式，而 Windows 再将其强制转换成 Local time，这就造成了时间差。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;我们只需将 Ubuntu 的 UTC 时间切换成 Local time 即可。具体做法就是将 /etc/default/rcS 文件中的 “UTC=yes” 改成 “UTC=no” 即可（没有引号）。更改完成完成之后 Ubuntu 便会使用 Local time 而非 UTC。
-&lt;code&gt;
-sudo sed -i &#39;s/UTC=no/UTC=yes/&#39; /etc/default/rcS
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们只需将 Ubuntu 的 UTC 时间切换成 Local time 即可。具体做法就是将 /etc/default/rcS 文件中的 “UTC=yes” 改成 “UTC=no” 即可（没有引号）。更改完成完成之后 Ubuntu 便会使用 Local time 而非 UTC。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo sed -i &#39;s/UTC=no/UTC=yes/&#39; /etc/default/rcS
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -200,9 +200,9 @@ deb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe
 deb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;oschina源：
-&lt;code&gt;
-deb http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
+&lt;p&gt;oschina源：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deb http://mirrors.oschina.net/ubuntu/ trusty main restricted universe multiverse
 deb http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted universe multiverse
 deb http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
 deb http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
@@ -212,7 +212,7 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-backports main restricted univ
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-proposed main restricted universe multiverse
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-security main restricted universe multiverse
 deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted universe multiverse
-&lt;/code&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -306,10 +306,9 @@ sudo service xrdp restart
 &lt;ul&gt;
 &lt;li&gt;The Most Intelligent Java IDE:&lt;a href=&#34;https://www.jetbrains.com/idea/&#34;&gt;Intellij IDEA&lt;/a&gt;&lt;br /&gt;
 1.安装配置好JDK环境,下载tar.gz文件,解压到&lt;code&gt;tar -zxvf ideaIU-14.tar.gz -C /usr/local/intellijIDEA(自己命名)&lt;/code&gt;;&lt;br /&gt;
-2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;几个license：
+2.进入安装目录下的bin目录，执行&lt;code&gt;./idea.sh&lt;/code&gt;.
+&lt;code&gt;
+几个license：
 (1)
 key:IDEA
 value:61156-YRN2M-5MNCN-NZ8D2-7B4EW-U12L4
@@ -319,9 +318,7 @@ value:97493-G3A41-0SO24-W57LI-Y2UGI-JGTU2
 (3)
 key:itey
 value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
+&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.sublimetext.com/3&#34;&gt;Sublime Text 3&lt;/a&gt; 下载deb包安装&lt;/li&gt;
 &lt;li&gt;神一样的&lt;a href=&#34;http://www.vim.org/&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt; How to &lt;a href=&#34;http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/&#34;&gt;Install&lt;/a&gt;&lt;/li&gt;
@@ -350,15 +347,12 @@ value:91758-T1CLA-C64F3-T7X5R-A7YDO-CRSN1
 &lt;ul&gt;
 &lt;li&gt;unity-tweak-tool&lt;br /&gt;
 安装&lt;code&gt;sudo apt-get install unity-tweak-tool&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:tualatrix/ppa
+&lt;li&gt;也可以通过安装ubuntu-tweak来实现主题更换&lt;br /&gt;
+&lt;code&gt;
+sudo add-apt-repository ppa:tualatrix/ppa
 sudo apt-get update
 sudo apt-get install ubuntu-tweak
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
+&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;主题网址&lt;a href=&#34;http://gnome-look.org/&#34;&gt;http://gnome-look.org/&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/themes/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;&lt;/li&gt;
 &lt;li&gt;icon网址&lt;a href=&#34;https://github.com/NitruxSA/ardis-icon-theme&#34;&gt;https://github.com/NitruxSA/ardis-icon-theme&lt;/a&gt; 将解压的主题文件夹拷贝到/usr/share/icons/目录下,然后使用&lt;code&gt;unity-tweak-tool&lt;/code&gt;选择;或者直接命令安装再设置;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/anmoljagetia/Flatabulous/&#34;&gt;挺好看的一个主题&lt;/a&gt;,里面“NoobsLab”源的主题都挺好看的。&lt;/li&gt;
@@ -428,14 +422,14 @@ sudo apt-get install shadowsocks-qt5
 &lt;h3 id=&#34;linux-wps&#34;&gt;Linux WPS&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;#安装wps
+&lt;li&gt;&lt;a href=&#34;http://www.wps.cn/&#34;&gt;WPS官网&lt;/a&gt;下载linux下的安装包，下载&lt;a href=&#34;http://pan.baidu.com/s/1o7wTo7o&#34;&gt;Symbol 字体安装包&lt;/a&gt;安装
+&lt;code&gt;
+#安装wps
 sudo dpkg -i wps-office_9.1.0.4975-a19p1_amd64.deb
 #安装symbol字体包
 sudo dpkg -i symbol-fonts_1.2_all.deb
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;develop&#34;&gt;Develop&lt;/h3&gt;
 
@@ -560,22 +554,17 @@ $ sudo umount /mnt/
 &lt;h3 id=&#34;终端工具terminator&#34;&gt;终端工具Terminator&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;安装&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;安装&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install terminator
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;然后利用 Debian 的重新配置命令选择默认终端：&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;然后利用 Debian 的重新配置命令选择默认终端：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo update-alternatives --config x-terminal-emulator
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;terminator配置文件在~/.config/terminator/config 可以通过这个配置文件配置terminator的字体和颜色.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;terminator配置文件在~/.config/terminator/config 可以通过这个配置文件配置terminator的字体和颜色.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;font = Monaco 10  #设置体字
 background_color = &amp;quot;#204070&amp;quot; # 背景颜色
@@ -590,61 +579,61 @@ background_type = transparent # 背景类型可以设置为图片
 &lt;p&gt;更多配置见：&lt;code&gt;man terminator_config&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;快捷键&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;F11 #Toggle fullscreen
+&lt;li&gt;快捷键
+```
+F11 #Toggle fullscreen
 Ctrl + Shift+ O #Split terminals horizontally
 Ctrl + Shift+ E #Split terminals vertically
 Ctrl + Shift+ W #Close current Panel
-Ctrl + Shift+ T #Open new tab
+Ctrl + Shift+ T #Open new tab&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-Ctrl+Shift+C 复制
+&lt;p&gt;Ctrl+Shift+C 复制
 Ctrl+Shift+V 粘贴
 Ctrl+Shift+N 或者 Ctrl+Tab 在分割的各窗口之间切换
 Ctrl+Shift+X 将分割的某一个窗口放大至全屏使用
-Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
+Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面&lt;/p&gt;
 
-Alt + ↑ #Move to the terminal above the current one
+&lt;p&gt;Alt + ↑ #Move to the terminal above the current one
 Alt + ↓ #Move to the terminal below the current one
 Alt + ← #Move to the terminal left of the current one
-Alt + → #Move to the terminal right of the current one
+Alt + → #Move to the terminal right of the current one&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
++ 一个不错的配置(可将`palette`注释,采用默认的配色方案)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;一个不错的配置(可将&lt;code&gt;palette&lt;/code&gt;注释,采用默认的配色方案)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;[global_config]
-  title_transmit_bg_color = &amp;quot;#d30102&amp;quot;
+&lt;p&gt;[global_config]
+  title_transmit_bg_color = &amp;laquo;#d30102&amp;raquo;
   focus = system
   suppress_multiple_term_dialog = True
 [keybindings]
 [profiles]
   [[default]]
-    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
+    palette = &amp;laquo;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;raquo;
     copy_on_selection = True
     background_image = None
     background_darkness = 0.85
     background_type = transparent
     use_system_font = False
-    cursor_color = &amp;quot;#eee8d5&amp;quot;
-    foreground_color = &amp;quot;#839496&amp;quot;
+    cursor_color = &amp;laquo;#eee8d5&amp;raquo;
+    foreground_color = &amp;laquo;#839496&amp;raquo;
     show_titlebar = False
     font = Ubuntu Mono 14
-    background_color = &amp;quot;#002b36&amp;quot;
+    background_color = &amp;laquo;#002b36&amp;raquo;
   [[solarized-dark]]
-    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
-    background_color = &amp;quot;#002b36&amp;quot;
+    palette = &amp;laquo;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;raquo;
+    background_color = &amp;laquo;#002b36&amp;raquo;
     background_image = None
-    cursor_color = &amp;quot;#eee8d5&amp;quot;
-    foreground_color = &amp;quot;#839496&amp;quot;
+    cursor_color = &amp;laquo;#eee8d5&amp;raquo;
+    foreground_color = &amp;laquo;#839496&amp;raquo;
   [[solarized-light]]
-    palette = &amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;
-    background_color = &amp;quot;#fdf6e3&amp;quot;
+    palette = &amp;laquo;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;raquo;
+    background_color = &amp;laquo;#fdf6e3&amp;raquo;
     background_image = None
-    cursor_color = &amp;quot;#002b36&amp;quot;
-    foreground_color = &amp;quot;#657b83&amp;quot;
+    cursor_color = &amp;laquo;#002b36&amp;raquo;
+    foreground_color = &amp;laquo;#657b83&amp;raquo;
 [layouts]
   [[default]]
     [[[child1]]]
@@ -653,169 +642,165 @@ Alt + → #Move to the terminal right of the current one
       profile = default
     [[[window0]]]
       type = Window
-      parent = &amp;quot;&amp;quot;
-[plugins]
+      parent = &amp;laquo;&amp;raquo;
+[plugins]&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;透明高亮很Geek.
+
++ 右键目录打开
+
+1.安装工具：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;透明高亮很Geek.&lt;/p&gt;
+&lt;p&gt;apt-get install nautilus-actions -y&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;右键目录打开&lt;/li&gt;
-&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;2.启动改工具,Unity中输入nautilus-actions-config-tool,  
 
-&lt;p&gt;1.安装工具：&lt;/p&gt;
+3.见[配置教程](http://www.ikey4u.com/linux-terminator-settings/)  重要的启动参数：`--working-directory=%D/%w`  
 
-&lt;pre&gt;&lt;code&gt;apt-get install nautilus-actions -y
+4.重启生效
+
++ 参考资料   
+[开始使用Ubuntu作为工作环境](http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html)
+
+### terminal增强zsh
+依次执行以下步骤安装：([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;2.启动改工具,Unity中输入nautilus-actions-config-tool,&lt;/p&gt;
-
-&lt;p&gt;3.见&lt;a href=&#34;http://www.ikey4u.com/linux-terminator-settings/&#34;&gt;配置教程&lt;/a&gt;  重要的启动参数：&lt;code&gt;--working-directory=%D/%w&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;4.重启生效&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;参考资料&lt;br /&gt;
-&lt;a href=&#34;http://blog.codinglabs.org/articles/getting-started-with-ubuntu.html&#34;&gt;开始使用Ubuntu作为工作环境&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;terminal增强zsh&#34;&gt;terminal增强zsh&lt;/h3&gt;
-
-&lt;p&gt;依次执行以下步骤安装：(&lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh&#34;&gt;oh-my-zsh&lt;/a&gt;)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install zsh  #先安装zsh
-$ sh -c &amp;quot;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;quot;  #配置oh-my-zsh,zsh的自动配置
+&lt;p&gt;$ sudo apt-get install zsh  #先安装zsh
+$ sh -c &amp;laquo;$(wget &lt;a href=&#34;https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh&#34;&gt;https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;/a&gt; -O -)&amp;raquo;  #配置oh-my-zsh,zsh的自动配置
 $ chsh -s /bin/zsh  #替换bash为zsh
-$ sudo reboot  #重启生效
+$ sudo reboot  #重启生效&lt;/p&gt;
 
-# 另外更新oh-my-zsh
-$ upgrade_oh_my_zsh
+&lt;h1 id=&#34;另外更新oh-my-zsh&#34;&gt;另外更新oh-my-zsh&lt;/h1&gt;
+
+&lt;p&gt;$ upgrade_oh_my_zsh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;修改`～/zshrc`文件，将主题改为`ZSH_THEME=&amp;quot;gentoo&amp;quot;`显示完整路径。    
+将以前`~/bashrc`中的环境变量复制到`～/zshrc`文件最后(如果想用)。
+
+**附:**基于gentoo主题修改之后的一个主题
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;修改&lt;code&gt;～/zshrc&lt;/code&gt;文件，将主题改为&lt;code&gt;ZSH_THEME=&amp;quot;gentoo&amp;quot;&lt;/code&gt;显示完整路径。&lt;br /&gt;
-将以前&lt;code&gt;~/bashrc&lt;/code&gt;中的环境变量复制到&lt;code&gt;～/zshrc&lt;/code&gt;文件最后(如果想用)。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;附:&lt;/strong&gt;基于gentoo主题修改之后的一个主题&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function prompt_char {
-  if [ $UID -eq 0 ]; then echo &amp;quot;#&amp;quot;; else echo $; fi
+&lt;p&gt;function prompt_char {
+  if [ $UID -eq 0 ]; then echo &amp;laquo;#&amp;raquo;; else echo $; fi
 }
-local ret_status=&amp;quot;%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )&amp;quot;
-PROMPT=&#39;${ret_status} %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt_info)%_$(prompt_char)%{$reset_color%} &#39;
+local ret_status=&amp;laquo;%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )&amp;raquo;
+PROMPT=&amp;lsquo;${ret_status} %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt&lt;em&gt;info)%&lt;/em&gt;$(prompt_char)%{$reset_color%} &amp;lsquo;&lt;/p&gt;
 
-ZSH_THEME_GIT_PROMPT_PREFIX=&amp;quot;(&amp;quot;
-ZSH_THEME_GIT_PROMPT_SUFFIX=&amp;quot;) &amp;quot;
+&lt;p&gt;ZSH_THEME_GIT_PROMPT_PREFIX=&amp;laquo;(&amp;raquo;
+ZSH_THEME_GIT_PROMPT_SUFFIX=&amp;laquo;) &amp;laquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+**&#39;autojump&#39; plugin install**
+
+系统安装autojump
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;&amp;lsquo;autojump&amp;rsquo; plugin install&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;apt-get install autojump&lt;/p&gt;
 
-&lt;p&gt;系统安装autojump&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get install autojump
+&lt;pre&gt;&lt;code&gt; zsh 中开启 autojump 插件的支持
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;zsh 中开启 autojump 插件的支持&lt;/p&gt;
+&lt;p&gt;vim ~/.zshrc&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;vim ~/.zshrc
-# plugins=(xxx)改为
-plugins=(xxx autojump)
+&lt;h1 id=&#34;plugins-xxx-改为&#34;&gt;plugins=(xxx)改为&lt;/h1&gt;
+
+&lt;p&gt;plugins=(xxx autojump)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;使用方法
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;使用方法&lt;/p&gt;
+&lt;p&gt;j &amp;lt;目录名&amp;gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;j &amp;lt;目录名&amp;gt;
+&lt;pre&gt;&lt;code&gt;
+### Wine 1.8
+
+1、对于 64 位系统，需要开启 32 位架构支持：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;wine-1-8&#34;&gt;Wine 1.8&lt;/h3&gt;
+&lt;p&gt;sudo dpkg &amp;ndash;add-architecture i386&lt;/p&gt;
 
-&lt;p&gt;1、对于 64 位系统，需要开启 32 位架构支持：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dpkg --add-architecture i386 
+&lt;pre&gt;&lt;code&gt;2、添加 Wine 官方 PPA：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;2、添加 Wine 官方 PPA：&lt;/p&gt;
+&lt;p&gt;sudo add-apt-repository ppa:wine/wine-builds&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:wine/wine-builds 
+&lt;pre&gt;&lt;code&gt;3、PPA 添加完成后，我们先刷新包缓存再安装 Wine 1.8：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;3、PPA 添加完成后，我们先刷新包缓存再安装 Wine 1.8：&lt;/p&gt;
+&lt;p&gt;sudo apt-get update
+sudo apt-get install &amp;ndash;install-recommends winehq-devel&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get update 
-sudo apt-get install --install-recommends winehq-devel 
+&lt;pre&gt;&lt;code&gt;如果你安装有老版本 Wine，执行上述命令时会自动被替换更新。
+
+4、安装完成后，可以使用如下命令来初始化 Wine 1.8 配置：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;如果你安装有老版本 Wine，执行上述命令时会自动被替换更新。&lt;/p&gt;
+&lt;p&gt;winecfg&lt;/p&gt;
 
-&lt;p&gt;4、安装完成后，可以使用如下命令来初始化 Wine 1.8 配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+NOTE:[手动安装Gecko](https://wiki.winehq.org/Gecko)
 
-&lt;pre&gt;&lt;code&gt;winecfg 
+### chm解压查看7zip
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;NOTE:&lt;a href=&#34;https://wiki.winehq.org/Gecko&#34;&gt;手动安装Gecko&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;sudo apt-get install p7zip&lt;/p&gt;
 
-&lt;h3 id=&#34;chm解压查看7zip&#34;&gt;chm解压查看7zip&lt;/h3&gt;
-
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install p7zip
+&lt;pre&gt;&lt;code&gt;解压chm文件命令
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;解压chm文件命令&lt;/p&gt;
+&lt;p&gt;7z e test.chm ./test&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;7z e test.chm ./test
+&lt;pre&gt;&lt;code&gt;
+### wireshark抓包工具
+安装命令
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;wireshark抓包工具&#34;&gt;wireshark抓包工具&lt;/h3&gt;
+&lt;p&gt;sudo apt-get install wireshark&lt;/p&gt;
 
-&lt;p&gt;安装命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;因为wireshark只允许超级用户使用访问网卡，但是采用`sudo wireshark`会报错，所以解决方案是，将当前用户加入`wireshark组`中：
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install wireshark
++ 执行`sudo dpkg-reconfigure wireshark-common`，在弹出的窗口中选择是或者Yes;
++ 执行`sudo adduser $USER wireshark`;
++ 重启。
+
+### Nmap局域网扫描工具
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;因为wireshark只允许超级用户使用访问网卡，但是采用&lt;code&gt;sudo wireshark&lt;/code&gt;会报错，所以解决方案是，将当前用户加入&lt;code&gt;wireshark组&lt;/code&gt;中：&lt;/p&gt;
+&lt;p&gt;sudo apt-get install nmap&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;执行&lt;code&gt;sudo dpkg-reconfigure wireshark-common&lt;/code&gt;，在弹出的窗口中选择是或者Yes;&lt;/li&gt;
-&lt;li&gt;执行&lt;code&gt;sudo adduser $USER wireshark&lt;/code&gt;;&lt;/li&gt;
-&lt;li&gt;重启。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;nmap局域网扫描工具&#34;&gt;Nmap局域网扫描工具&lt;/h3&gt;
-
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install nmap
+&lt;pre&gt;&lt;code&gt;
+### sqlite3工具
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;sqlite3工具&#34;&gt;sqlite3工具&lt;/h3&gt;
+&lt;p&gt;sudo apt-get install sqlite3&lt;/p&gt;
 
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install sqlite3
+&lt;pre&gt;&lt;code&gt;使用命令(其他命令请自行google)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;使用命令(其他命令请自行google)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sqlite3 test.db # 打开数据库文件
+&lt;p&gt;sqlite3 test.db # 打开数据库文件
 sqlite&amp;gt;.database # 查看数据库文件信息
 sqlite&amp;gt;.schema # 查看所有表创建语句
 sqlite&amp;gt;.tables # 获取所有表和视图
-sqlite&amp;gt;.exit # 退出
+sqlite&amp;gt;.exit # 退出&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+### 整站离线工具HTTrack
+安装
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;整站离线工具httrack&#34;&gt;整站离线工具HTTrack&lt;/h3&gt;
+&lt;p&gt;sudo apt-get install httrack&lt;/p&gt;
 
-&lt;p&gt;安装&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install httrack
+&lt;pre&gt;&lt;code&gt;一个例子
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;一个例子&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;httrack &amp;quot;http://www.all.net/&amp;quot; -O &amp;quot;/tmp/www.all.net&amp;quot; &amp;quot;+*.all.net/*&amp;quot; -v
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;它的意思是：以&lt;a href=&#34;http://www.all.net/&#34;&gt;http://www.all.net/&lt;/a&gt; 为起始URL，输出到/tmp/www.all.net文件夹，范围是www.all.net域名下的所有文件，并显示所有错误信息（verbose）&lt;a href=&#34;http://www.httrack.com/html/fcguide.html&#34;&gt;参考文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;httrack &amp;laquo;&lt;a href=&#34;http://www.all.net/&amp;quot;&#34;&gt;http://www.all.net/&amp;quot;&lt;/a&gt; -O &amp;laquo;/tmp/www.all.net&amp;raquo; &amp;laquo;+&lt;em&gt;.all.net/&lt;/em&gt;&amp;raquo; -v
+```
+它的意思是：以&lt;a href=&#34;http://www.all.net/&#34;&gt;http://www.all.net/&lt;/a&gt; 为起始URL，输出到/tmp/www.all.net文件夹，范围是www.all.net域名下的所有文件，并显示所有错误信息（verbose）&lt;a href=&#34;http://www.httrack.com/html/fcguide.html&#34;&gt;参考文档&lt;/a&gt;。&lt;/p&gt;
 </description>
     </item>
     
@@ -827,7 +812,7 @@ sqlite&amp;gt;.exit # 退出
       <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -860,7 +845,7 @@ sqlite&amp;gt;.exit # 退出
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;shutdown-命令&#34;&gt;shutdown 命令&lt;/h2&gt;
+&lt;h2 id=&#34;shutdown-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;shutdown 命令&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;shutdown –help  #可以查看shutdown命令如何使用，当然也可以使用man shutdown命令。
 shutdown -h now #现在立即关机
@@ -871,7 +856,7 @@ shutdown -r 20:23 #在20：23时将重启计算机
 shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ln-命令&#34;&gt;ln 命令&lt;/h2&gt;
+&lt;h2 id=&#34;ln-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;ln 命令&lt;/h2&gt;
 
 &lt;p&gt;功能是为某一个文件或目录在另外一个位置建立一个同步的链接：&lt;/p&gt;
 
@@ -891,7 +876,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 &lt;pre&gt;&lt;code&gt;rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux下设置ssh无密码登录&#34;&gt;linux下设置ssh无密码登录&lt;/h2&gt;
+&lt;h2 id=&#34;linux下设置ssh无密码登录:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;linux下设置ssh无密码登录&lt;/h2&gt;
 
 &lt;p&gt;原理说明
 &amp;gt;密匙认证需要依靠密匙，&lt;br /&gt;
@@ -900,7 +885,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 3.服务器收到请求之后，先在你在该服务器的宿主目录下寻找你的公匙，然后检查该公匙是 否是合法，如果合法就用公匙加密一随机数（即所谓的challenge）并发送给客户端软件。&lt;br /&gt;
 4.客户端软件收到 “challenge”之后就用私匙解密再把它发送给服务器。因为用公匙加密的数据只能用密匙解密，服务器经过比较就可以知道该客户连接的合法性。&lt;/p&gt;
 
-&lt;h3 id=&#34;1-生成公钥和私钥&#34;&gt;1.生成公钥和私钥&lt;/h3&gt;
+&lt;h3 id=&#34;1-生成公钥和私钥:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;1.生成公钥和私钥&lt;/h3&gt;
 
 &lt;p&gt;Shell代码&lt;/p&gt;
 
@@ -911,16 +896,16 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 　id_rsa      ：私钥&lt;br /&gt;
 　id_rsa.pub  ：公钥&lt;/p&gt;
 
-&lt;h3 id=&#34;2-导入公钥到认证文件-更改权限&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/h3&gt;
+&lt;h3 id=&#34;2-导入公钥到认证文件-更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.导入公钥到认证文件,更改权限&lt;/h3&gt;
 
-&lt;h4 id=&#34;2-1-导入本机&#34;&gt;2.1 导入本机&lt;/h4&gt;
+&lt;h4 id=&#34;2-1-导入本机:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.1 导入本机&lt;/h4&gt;
 
 &lt;p&gt;Shell代码&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;2-2-导入要免密码登录的服务器&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
+&lt;h4 id=&#34;2-2-导入要免密码登录的服务器:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.2 导入要免密码登录的服务器&lt;/h4&gt;
 
 &lt;p&gt;方法一：
 首先将公钥复制到服务器，Shell代码&lt;/p&gt;
@@ -941,7 +926,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 
 &lt;p&gt;可以执行测试登录，如果无任何错误提示，可以输密码登录，但就是不能无密码登录，则执行下步。&lt;/p&gt;
 
-&lt;h4 id=&#34;2-3-在服务器上更改权限&#34;&gt;2.3 在服务器上更改权限&lt;/h4&gt;
+&lt;h4 id=&#34;2-3-在服务器上更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;2.3 在服务器上更改权限&lt;/h4&gt;
 
 &lt;p&gt;Shell 代码&lt;/p&gt;
 
@@ -949,7 +934,7 @@ shutdown -r 20:23 &amp;amp; #可以将在20：23时重启的任务放到后台�
 chmod 600 ~/.ssh/authorized_keys 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;3-测试&#34;&gt;3.测试&lt;/h3&gt;
+&lt;h3 id=&#34;3-测试:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;3.测试&lt;/h3&gt;
 
 &lt;p&gt;执行Shell&lt;/p&gt;
 
@@ -958,7 +943,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 &lt;p&gt;第一次登录可能需要yes确认，之后就可以直接登录了。&lt;/p&gt;
 
-&lt;h2 id=&#34;dpkg命令&#34;&gt;dpkg命令&lt;/h2&gt;
+&lt;h2 id=&#34;dpkg命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;dpkg命令&lt;/h2&gt;
 
 &lt;p&gt;以下是一些 Dpkg 的普通用法：&lt;/p&gt;
 
@@ -981,9 +966,9 @@ chmod 600 ~/.ssh/authorized_keys
   重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;apt命令&#34;&gt;apt命令&lt;/h2&gt;
+&lt;h2 id=&#34;apt命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;apt命令&lt;/h2&gt;
 
-&lt;h3 id=&#34;软件安装后相关文件位置&#34;&gt;软件安装后相关文件位置&lt;/h3&gt;
+&lt;h3 id=&#34;软件安装后相关文件位置:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;软件安装后相关文件位置&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;下载的软件存放位置&lt;/p&gt;
@@ -1021,7 +1006,7 @@ chmod 600 ~/.ssh/authorized_keys
 &lt;p&gt;/var/lib/apt/lists&lt;br /&gt;
 使用apt-get update命令会从/etc/apt/sources.list中下载软件列表，并保存到该目录&lt;/p&gt;
 
-&lt;h2 id=&#34;设置su密码的命令&#34;&gt;设置su密码的命令&lt;/h2&gt;
+&lt;h2 id=&#34;设置su密码的命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;设置su密码的命令&lt;/h2&gt;
 
 &lt;p&gt;Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。&lt;/p&gt;
 
@@ -1042,19 +1027,17 @@ chmod 600 ~/.ssh/authorized_keys
 1). su的密码是root的密码，而sudo的密码是用户的密码；&lt;br /&gt;
 2). su直接将身份变成root，而sudo是以用户登录后以root的身份运行命令，不需要知道root密码；&lt;/p&gt;
 
-&lt;h2 id=&#34;新增user&#34;&gt;新增User&lt;/h2&gt;
+&lt;h2 id=&#34;新增user:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;新增User&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;使用有权限的用户，在终端里输入&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;使用有权限的用户，在终端里输入&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo adduser username
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;然后一直回车即可，新建成功。&lt;/p&gt;
+&lt;p&gt;然后一直回车即可，新建成功。&lt;/p&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;添加sudo用户&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;添加sudo用户&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
@@ -1071,180 +1054,165 @@ chmod 600 ~/.ssh/authorized_keys
 &lt;pre&gt;&lt;code&gt;sudo usermod -a -G sudo username
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/h2&gt;
+&lt;h2 id=&#34;fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;fg、bg、jobs、&amp;amp;、nohup、ctrl+z、ctrl+c 、kill命令&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&amp;amp;&lt;/li&gt;
+&lt;li&gt;&amp;amp;
+```
+加在一个命令的最后，可以把这个命令放到后台执行，如&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;加在一个命令的最后，可以把这个命令放到后台执行，如
+&lt;p&gt;watch  -n 10 sh  test.sh  &amp;amp;  #每10s在后台执行一次test.sh脚本&lt;/p&gt;
 
-watch  -n 10 sh  test.sh  &amp;amp;  #每10s在后台执行一次test.sh脚本
+&lt;pre&gt;&lt;code&gt;+ ctrl + z
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;ctrl + z&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;可以将一个正在前台执行的命令放到后台，并且处于暂停状态。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;可以将一个正在前台执行的命令放到后台，并且处于暂停状态。
+&lt;pre&gt;&lt;code&gt;+ jobs
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;jobs&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;查看当前有多少在后台运行的命令&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;查看当前有多少在后台运行的命令
+&lt;p&gt;jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。&lt;/p&gt;
 
-jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
+&lt;pre&gt;&lt;code&gt;+ fg
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;fg&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。
+&lt;pre&gt;&lt;code&gt;+ bg
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;bg&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。
+&lt;pre&gt;&lt;code&gt;+ kill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;kill&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
+&lt;p&gt;法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
 法子2：通过ps命令查看job的进程号（PID，假设为pid），然后执行kill pid
-前台进程的终止：Ctrl+c
+前台进程的终止：Ctrl+c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+ nohup
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;nohup&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）
+&lt;p&gt;ps -aux | grep &amp;laquo;test.sh&amp;raquo;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分&lt;/p&gt;
 
-ps -aux | grep &amp;quot;test.sh&amp;quot;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分
+&lt;pre&gt;&lt;code&gt;
+## kill，killall，pkill，xkill 命令
+
++ kill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;kill-killall-pkill-xkill-命令&#34;&gt;kill，killall，pkill，xkill 命令&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;kill&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kill ［信号代码］ 进程ID（kill  -pid）
-－s：指定发送的信号。 
-－p：模拟发送信号。 
-－l：指定信号的名称列表。 
-pid：要中止进程的ID号。 
+&lt;p&gt;kill ［信号代码］ 进程ID（kill  -pid）
+－s：指定发送的信号。
+－p：模拟发送信号。
+－l：指定信号的名称列表。
+pid：要中止进程的ID号。
 Signal：表示信号。
-注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；
+注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+ killall
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;killall&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;killall 通过程序的名字，直接杀死所有进程。
+&lt;p&gt;killall 通过程序的名字，直接杀死所有进程。
 用法：killall 正在运行的程序名
-killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行
+killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+ pkill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;pkill&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
+用法：pkill 正在运行的程序名&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
-用法：pkill 正在运行的程序名
+&lt;pre&gt;&lt;code&gt;+ xkill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;xkill&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
+&lt;p&gt;xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
 当xkill运行时出来和个人脑骨的图标，哪个图形程序崩溃一点就OK了。如果您想终止xkill ，就按右键取消；
 xkill 调用方法：
-[root@localhost ~]# xkill
+[root@localhost ~]# xkill&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+## add-apt-repository命令
+个人软件包档案（PPA）是Ubuntu独有的解决方案，允许独立开发者和贡献者构建、贡献任何定制的软件包来作为通过启动面板的第三方APT仓库。如果你是Ubuntu用户，有可能你已经增加一些流行的第三方PPA仓库到你的Ubuntu系统。如果你需要删除掉已经预先配置好的PPA仓库，下面将教你怎么做。
+
+假如你想增加一个叫“ppa:webapps/preview”第三方PPA仓库到你的系统中，如下：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;add-apt-repository命令&#34;&gt;add-apt-repository命令&lt;/h2&gt;
+&lt;p&gt;$ sudo add-apt-repository ppa:webapps/preview&lt;/p&gt;
 
-&lt;p&gt;个人软件包档案（PPA）是Ubuntu独有的解决方案，允许独立开发者和贡献者构建、贡献任何定制的软件包来作为通过启动面板的第三方APT仓库。如果你是Ubuntu用户，有可能你已经增加一些流行的第三方PPA仓库到你的Ubuntu系统。如果你需要删除掉已经预先配置好的PPA仓库，下面将教你怎么做。&lt;/p&gt;
-
-&lt;p&gt;假如你想增加一个叫“ppa:webapps/preview”第三方PPA仓库到你的系统中，如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo add-apt-repository ppa:webapps/preview
+&lt;pre&gt;&lt;code&gt;如果你想要 单独地删除某个PPA仓库，运行下面的命令：
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;如果你想要 单独地删除某个PPA仓库，运行下面的命令：&lt;/p&gt;
+&lt;p&gt;$ sudo add-apt-repository &amp;ndash;remove ppa:someppa/ppa&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ sudo add-apt-repository --remove ppa:someppa/ppa 
-# 然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除
+&lt;h1 id=&#34;然后进入-etc-apt-sources-list-d-目录-将相应-ppa-源的保存文件删除:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;注意，上述命令不会同时删除任何已经安装或更新的软件包。
+
+如果你想要 完整的删除一个PPA仓库并包括来自这个PPA安装或更新过的软件包，你需要ppa-purge命令。
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;注意，上述命令不会同时删除任何已经安装或更新的软件包。&lt;/p&gt;
+&lt;h1 id=&#34;首先要安装ppa-purge软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;首先要安装ppa-purge软件包&lt;/h1&gt;
 
-&lt;p&gt;如果你想要 完整的删除一个PPA仓库并包括来自这个PPA安装或更新过的软件包，你需要ppa-purge命令。&lt;/p&gt;
+&lt;p&gt;$ sudo apt-get install ppa-purge&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# 首先要安装ppa-purge软件包
-$ sudo apt-get install ppa-purge
-# 然后使用如下命令删除PPA仓库和与之相关的软件包
-$ sudo ppa-purge ppa:webapps/preview 
+&lt;h1 id=&#34;然后使用如下命令删除ppa仓库和与之相关的软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;然后使用如下命令删除PPA仓库和与之相关的软件包&lt;/h1&gt;
+
+&lt;p&gt;$ sudo ppa-purge ppa:webapps/preview&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;这样就ok了。
+
+## nmap扫描工具
+Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;这样就ok了。&lt;/p&gt;
+&lt;p&gt;nmap 10.1.1.254&lt;/p&gt;
 
-&lt;h2 id=&#34;nmap扫描工具&#34;&gt;nmap扫描工具&lt;/h2&gt;
-
-&lt;p&gt;Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nmap 10.1.1.254
+&lt;pre&gt;&lt;code&gt;快速扫描主机开放端口
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;快速扫描主机开放端口&lt;/p&gt;
+&lt;p&gt;nmap -F 192.168.0.1&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -F 192.168.0.1
+&lt;pre&gt;&lt;code&gt;Nmap 简单扫描，并对返回的结果详细描述输出。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Nmap 简单扫描，并对返回的结果详细描述输出。&lt;/p&gt;
+&lt;p&gt;nmap -vv 10.1.1.254&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -vv 10.1.1.254 
+&lt;pre&gt;&lt;code&gt;nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。&lt;/p&gt;
+&lt;p&gt;nmap -p1-50 10.1.1.254&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -p1-50 10.1.1.254
+&lt;pre&gt;&lt;code&gt;nmap 指定端口扫描
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 指定端口扫描&lt;/p&gt;
+&lt;p&gt;nmap -p80,443,22,21 10.1.1.254&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -p80,443,22,21 10.1.1.254
+&lt;pre&gt;&lt;code&gt;nmap 还可以设置扫描一个网段下的ip
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 还可以设置扫描一个网段下的ip&lt;/p&gt;
+&lt;p&gt;nmap -sP 10.1.1.0/24&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -sP 10.1.1.0/24 
+&lt;pre&gt;&lt;code&gt;探测局域网段中各主机开启了哪些服务
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;探测局域网段中各主机开启了哪些服务&lt;/p&gt;
+&lt;p&gt;nmap -sS 192.168.0.0/24&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -sS 192.168.0.0/24
+&lt;pre&gt;&lt;code&gt;nmap 操作系统类型的探测
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;nmap 操作系统类型的探测&lt;/p&gt;
+&lt;p&gt;nmap -O 10.1.1.154&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nmap -O 10.1.1.154
+&lt;pre&gt;&lt;code&gt;次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nmap -A 10.1.1.154
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nmap -A 10.1.1.154
+```&lt;/p&gt;
 </description>
     </item>
     

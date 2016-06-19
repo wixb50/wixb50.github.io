@@ -95,22 +95,22 @@
     </span>
     
 
-<h2 id="简介">简介</h2>
+<h2 id="简介:bcae9c1d5df2989839f1781e78b932a8">简介</h2>
 
 <p>本文主要介绍二进制安装方案，如果想用其他方法安装，请参考<a href="https://gogs.io/docs">官方文档</a>;</p>
 
-<h2 id="准备工作">准备工作</h2>
+<h2 id="准备工作:bcae9c1d5df2989839f1781e78b932a8">准备工作</h2>
 
 <ol>
 <li>所有的版本都支持 MySQL 和 PostgreSQL、SQLite作为数据库，针对你想要存放的位置建立好数据库服务器。</li>
 <li>在 <a href="https://github.com/gogits/gogs/releases">https://github.com/gogits/gogs/releases</a> 下载号对应的二进制安装包，下载最新的rsapi*.zip即可，导入到树莓派中。</li>
 </ol>
 
-<h2 id="新建用户">新建用户</h2>
+<h2 id="新建用户:bcae9c1d5df2989839f1781e78b932a8">新建用户</h2>
 
 <p>Gogs 默认以 git 用户运行，所以最好新建一个用户，要不然可能会出现你的主账户无法登录的问题。运行<code>sudo adduser git</code>新建好用户，<code>su git</code>以git用户身份登录。</p>
 
-<h2 id="运行配置">运行配置</h2>
+<h2 id="运行配置:bcae9c1d5df2989839f1781e78b932a8">运行配置</h2>
 
 <ol>
 <li>解压压缩包。</li>
@@ -118,16 +118,16 @@
 <li>执行命令 ./gogs web，然后，访问<a href="http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。">http://IP:3000，填写服务器信息就可以了(建议直接使用SQLite，反正就你自己用)。</a></li>
 </ol>
 
-<h2 id="部署应用">部署应用</h2>
+<h2 id="部署应用:bcae9c1d5df2989839f1781e78b932a8">部署应用</h2>
 
-<h3 id="端口问题">端口问题</h3>
+<h3 id="端口问题:bcae9c1d5df2989839f1781e78b932a8">端口问题</h3>
 
 <p>端口占用问题，可以通过启动命令指定端口</p>
 
 <pre><code>./gogs web -port 3001
 </code></pre>
 
-<h3 id="开机启动">开机启动</h3>
+<h3 id="开机启动:bcae9c1d5df2989839f1781e78b932a8">开机启动</h3>
 
 <p><strong>采用Systemd以守护进程定义service运行。</strong></p>
 
@@ -167,7 +167,7 @@ WantedBy=multi-user.target
 
 <p>4.然后通过 <code>sudo systemctl enable gogs</code> 命令激活，最后执行 <code>sudo systemd start gogs</code>，就可以做到开机启动了。</p>
 
-<h2 id="参考文档">参考文档</h2>
+<h2 id="参考文档:bcae9c1d5df2989839f1781e78b932a8">参考文档</h2>
 
 <ul>
 <li><a href="https://gogs.io/docs/installation/install_from_binary">Gogs二进制安装</a></li>

@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://wixb50.github.io/</loc>
-    <lastmod>2016-06-01T10:07:33+08:00</lastmod>
+    <lastmod>2016-06-17T19:38:38+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2016-06-17T19:38:38+08:00</lastmod>
   </url>
   
   <url>
@@ -70,6 +75,11 @@
   <url>
     <loc>http://wixb50.github.io/2016/02/21/pip%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2016-02-21T13:32:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</loc>
+    <lastmod>2016-01-02T15:38:38+08:00</lastmod>
   </url>
   
   <url>
@@ -188,12 +198,12 @@
   </url>
   
   <url>
-    <loc>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</loc>
     <lastmod>2015-11-05T13:26:17+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</loc>
+    <loc>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2015-11-05T13:26:17+08:00</lastmod>
   </url>
   
@@ -245,11 +255,6 @@
   <url>
     <loc>http://wixb50.github.io/2015/10/31/welcome/</loc>
     <lastmod>2015-10-31T16:14:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wixb50.github.io/2015/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</loc>
-    <lastmod>2015-01-02T15:38:38+08:00</lastmod>
   </url>
   
 </urlset>

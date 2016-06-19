@@ -9,15 +9,15 @@
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Fri, 02 Jan 2015 15:38:38 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Jan 2016 15:38:38 +0800</lastBuildDate>
     <atom:link href="http://wixb50.github.io/categories/kube-ui/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>kubernetes 安装配置 kube-ui</title>
-      <link>http://wixb50.github.io/2015/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
-      <pubDate>Fri, 02 Jan 2015 15:38:38 +0800</pubDate>
+      <link>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
+      <pubDate>Sat, 02 Jan 2016 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
+      <guid>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;下载gcr.io/google_containers/pause镜像并导入&lt;/p&gt;
 
@@ -147,7 +147,6 @@ kube-system   kube-ui-v3-0zyjp   1/1       Running   0          21h
 
 &lt;p&gt;访问 &lt;a href=&#34;http://master_ip:8080/ui/&#34;&gt;http://master_ip:8080/ui/&lt;/a&gt; 会自动跳转 &lt;a href=&#34;http://kube-ui:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/&#34;&gt;http://kube-ui:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/&lt;/a&gt; 即可访问kube-ui的dashboard 页面，如下图所示：
 &lt;img src=&#34;http://www.sunmite.com/wp-content/uploads/2015/11/1.jpg&#34; alt=&#34;image&#34; /&gt;
-
 可以查看minion的系统信息，pods，RC，services等信息。&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;可能遇到的问题&lt;/p&gt;

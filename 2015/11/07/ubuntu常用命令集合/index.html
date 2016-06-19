@@ -95,7 +95,7 @@
     </span>
     
 
-<h2 id="目录">目录</h2>
+<h2 id="目录:d42ac4d339ba837eb9ffd5b3e48c2f6d">目录</h2>
 
 <!-- MarkdownTOC -->
 
@@ -128,7 +128,7 @@
 
 <!-- /MarkdownTOC -->
 
-<h2 id="shutdown-命令">shutdown 命令</h2>
+<h2 id="shutdown-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d">shutdown 命令</h2>
 
 <pre><code>shutdown –help  #可以查看shutdown命令如何使用，当然也可以使用man shutdown命令。
 shutdown -h now #现在立即关机
@@ -139,7 +139,7 @@ shutdown -r 20:23 #在20：23时将重启计算机
 shutdown -r 20:23 &amp; #可以将在20：23时重启的任务放到后台去，用户可以继续操作终端
 </code></pre>
 
-<h2 id="ln-命令">ln 命令</h2>
+<h2 id="ln-命令:d42ac4d339ba837eb9ffd5b3e48c2f6d">ln 命令</h2>
 
 <p>功能是为某一个文件或目录在另外一个位置建立一个同步的链接：</p>
 
@@ -159,7 +159,7 @@ shutdown -r 20:23 &amp; #可以将在20：23时重启的任务放到后台去，
 <pre><code>rm -rf   symbolic_name   注意不是rm -rf   symbolic_name/
 </code></pre>
 
-<h2 id="linux下设置ssh无密码登录">linux下设置ssh无密码登录</h2>
+<h2 id="linux下设置ssh无密码登录:d42ac4d339ba837eb9ffd5b3e48c2f6d">linux下设置ssh无密码登录</h2>
 
 <p>原理说明
 &gt;密匙认证需要依靠密匙，<br />
@@ -168,7 +168,7 @@ shutdown -r 20:23 &amp; #可以将在20：23时重启的任务放到后台去，
 3.服务器收到请求之后，先在你在该服务器的宿主目录下寻找你的公匙，然后检查该公匙是 否是合法，如果合法就用公匙加密一随机数（即所谓的challenge）并发送给客户端软件。<br />
 4.客户端软件收到 “challenge”之后就用私匙解密再把它发送给服务器。因为用公匙加密的数据只能用密匙解密，服务器经过比较就可以知道该客户连接的合法性。</p>
 
-<h3 id="1-生成公钥和私钥">1.生成公钥和私钥</h3>
+<h3 id="1-生成公钥和私钥:d42ac4d339ba837eb9ffd5b3e48c2f6d">1.生成公钥和私钥</h3>
 
 <p>Shell代码</p>
 
@@ -179,16 +179,16 @@ shutdown -r 20:23 &amp; #可以将在20：23时重启的任务放到后台去，
 　id_rsa      ：私钥<br />
 　id_rsa.pub  ：公钥</p>
 
-<h3 id="2-导入公钥到认证文件-更改权限">2.导入公钥到认证文件,更改权限</h3>
+<h3 id="2-导入公钥到认证文件-更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d">2.导入公钥到认证文件,更改权限</h3>
 
-<h4 id="2-1-导入本机">2.1 导入本机</h4>
+<h4 id="2-1-导入本机:d42ac4d339ba837eb9ffd5b3e48c2f6d">2.1 导入本机</h4>
 
 <p>Shell代码</p>
 
 <pre><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys  
 </code></pre>
 
-<h4 id="2-2-导入要免密码登录的服务器">2.2 导入要免密码登录的服务器</h4>
+<h4 id="2-2-导入要免密码登录的服务器:d42ac4d339ba837eb9ffd5b3e48c2f6d">2.2 导入要免密码登录的服务器</h4>
 
 <p>方法一：
 首先将公钥复制到服务器，Shell代码</p>
@@ -209,7 +209,7 @@ shutdown -r 20:23 &amp; #可以将在20：23时重启的任务放到后台去，
 
 <p>可以执行测试登录，如果无任何错误提示，可以输密码登录，但就是不能无密码登录，则执行下步。</p>
 
-<h4 id="2-3-在服务器上更改权限">2.3 在服务器上更改权限</h4>
+<h4 id="2-3-在服务器上更改权限:d42ac4d339ba837eb9ffd5b3e48c2f6d">2.3 在服务器上更改权限</h4>
 
 <p>Shell 代码</p>
 
@@ -217,7 +217,7 @@ shutdown -r 20:23 &amp; #可以将在20：23时重启的任务放到后台去，
 chmod 600 ~/.ssh/authorized_keys 
 </code></pre>
 
-<h3 id="3-测试">3.测试</h3>
+<h3 id="3-测试:d42ac4d339ba837eb9ffd5b3e48c2f6d">3.测试</h3>
 
 <p>执行Shell</p>
 
@@ -226,7 +226,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 <p>第一次登录可能需要yes确认，之后就可以直接登录了。</p>
 
-<h2 id="dpkg命令">dpkg命令</h2>
+<h2 id="dpkg命令:d42ac4d339ba837eb9ffd5b3e48c2f6d">dpkg命令</h2>
 
 <p>以下是一些 Dpkg 的普通用法：</p>
 
@@ -249,9 +249,9 @@ chmod 600 ~/.ssh/authorized_keys
   重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。</li>
 </ol>
 
-<h2 id="apt命令">apt命令</h2>
+<h2 id="apt命令:d42ac4d339ba837eb9ffd5b3e48c2f6d">apt命令</h2>
 
-<h3 id="软件安装后相关文件位置">软件安装后相关文件位置</h3>
+<h3 id="软件安装后相关文件位置:d42ac4d339ba837eb9ffd5b3e48c2f6d">软件安装后相关文件位置</h3>
 
 <ol>
 <li><p>下载的软件存放位置</p>
@@ -289,7 +289,7 @@ chmod 600 ~/.ssh/authorized_keys
 <p>/var/lib/apt/lists<br />
 使用apt-get update命令会从/etc/apt/sources.list中下载软件列表，并保存到该目录</p>
 
-<h2 id="设置su密码的命令">设置su密码的命令</h2>
+<h2 id="设置su密码的命令:d42ac4d339ba837eb9ffd5b3e48c2f6d">设置su密码的命令</h2>
 
 <p>Ubuntu安装之默认状态下是不能使用su命令了，如果我们要使用su命令需要把root设置一个密码这样就可以使用su命令了。</p>
 
@@ -310,19 +310,17 @@ chmod 600 ~/.ssh/authorized_keys
 1). su的密码是root的密码，而sudo的密码是用户的密码；<br />
 2). su直接将身份变成root，而sudo是以用户登录后以root的身份运行命令，不需要知道root密码；</p>
 
-<h2 id="新增user">新增User</h2>
+<h2 id="新增user:d42ac4d339ba837eb9ffd5b3e48c2f6d">新增User</h2>
 
 <ul>
-<li>使用有权限的用户，在终端里输入</li>
-</ul>
+<li><p>使用有权限的用户，在终端里输入</p>
 
 <pre><code>sudo adduser username
 </code></pre>
 
-<p>然后一直回车即可，新建成功。</p>
+<p>然后一直回车即可，新建成功。</p></li>
 
-<ul>
-<li>添加sudo用户</li>
+<li><p>添加sudo用户</p></li>
 </ul>
 
 <blockquote>
@@ -339,180 +337,165 @@ chmod 600 ~/.ssh/authorized_keys
 <pre><code>sudo usermod -a -G sudo username
 </code></pre>
 
-<h2 id="fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令">fg、bg、jobs、&amp;、nohup、ctrl+z、ctrl+c 、kill命令</h2>
+<h2 id="fg-bg-jobs-nohup-ctrl-z-ctrl-c-kill命令:d42ac4d339ba837eb9ffd5b3e48c2f6d">fg、bg、jobs、&amp;、nohup、ctrl+z、ctrl+c 、kill命令</h2>
 
 <ul>
-<li>&amp;</li>
+<li>&amp;
+```
+加在一个命令的最后，可以把这个命令放到后台执行，如</li>
 </ul>
 
-<pre><code>加在一个命令的最后，可以把这个命令放到后台执行，如
+<p>watch  -n 10 sh  test.sh  &amp;  #每10s在后台执行一次test.sh脚本</p>
 
-watch  -n 10 sh  test.sh  &amp;  #每10s在后台执行一次test.sh脚本
+<pre><code>+ ctrl + z
 </code></pre>
 
-<ul>
-<li>ctrl + z</li>
-</ul>
+<p>可以将一个正在前台执行的命令放到后台，并且处于暂停状态。</p>
 
-<pre><code>可以将一个正在前台执行的命令放到后台，并且处于暂停状态。
+<pre><code>+ jobs
 </code></pre>
 
-<ul>
-<li>jobs</li>
-</ul>
+<p>查看当前有多少在后台运行的命令</p>
 
-<pre><code>查看当前有多少在后台运行的命令
+<p>jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。</p>
 
-jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
+<pre><code>+ fg
 </code></pre>
 
-<ul>
-<li>fg</li>
-</ul>
+<p>将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。</p>
 
-<pre><code>将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用fg %jobnumber（是命令编号，不是进程号）将选中的命令调出。
+<pre><code>+ bg
 </code></pre>
 
-<ul>
-<li>bg</li>
-</ul>
+<p>将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。</p>
 
-<pre><code>将一个在后台暂停的命令，变成在后台继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出。
+<pre><code>+ kill
 </code></pre>
 
-<ul>
-<li>kill</li>
-</ul>
-
-<pre><code>法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
+<p>法子1：通过jobs命令查看job号（假设为num），然后执行kill %num
 法子2：通过ps命令查看job的进程号（PID，假设为pid），然后执行kill pid
-前台进程的终止：Ctrl+c
+前台进程的终止：Ctrl+c</p>
+
+<pre><code>+ nohup
 </code></pre>
 
-<ul>
-<li>nohup</li>
-</ul>
+<p>如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）</p>
 
-<pre><code>如果让程序始终在后台执行，即使关闭当前的终端也执行（之前的&amp;做不到），这时候需要nohup。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。关闭中断后，在另一个终端jobs已经无法看到后台跑得程序了，此时利用ps（进程查看命令）
+<p>ps -aux | grep &laquo;test.sh&raquo;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分</p>
 
-ps -aux | grep &quot;test.sh&quot;  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分
+<pre><code>
+## kill，killall，pkill，xkill 命令
+
++ kill
 </code></pre>
 
-<h2 id="kill-killall-pkill-xkill-命令">kill，killall，pkill，xkill 命令</h2>
-
-<ul>
-<li>kill</li>
-</ul>
-
-<pre><code>kill ［信号代码］ 进程ID（kill  -pid）
-－s：指定发送的信号。 
-－p：模拟发送信号。 
-－l：指定信号的名称列表。 
-pid：要中止进程的ID号。 
+<p>kill ［信号代码］ 进程ID（kill  -pid）
+－s：指定发送的信号。
+－p：模拟发送信号。
+－l：指定信号的名称列表。
+pid：要中止进程的ID号。
 Signal：表示信号。
-注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；
+注：信号代码可以省略；我们常用的信号代码是-9 ，表示强制终止；对于僵尸进程，可以用kill -9 来强制终止退出；</p>
+
+<pre><code>+ killall
 </code></pre>
 
-<ul>
-<li>killall</li>
-</ul>
-
-<pre><code>killall 通过程序的名字，直接杀死所有进程。
+<p>killall 通过程序的名字，直接杀死所有进程。
 用法：killall 正在运行的程序名
-killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行
+killall 也和ps或pgrep 结合使用，比较方便；通过ps或pgrep 来查看哪些程序在运行</p>
+
+<pre><code>+ pkill
 </code></pre>
 
-<ul>
-<li>pkill</li>
-</ul>
+<p>pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
+用法：pkill 正在运行的程序名</p>
 
-<pre><code>pkill 和killall 应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill 来杀掉。
-用法：pkill 正在运行的程序名
+<pre><code>+ xkill
 </code></pre>
 
-<ul>
-<li>xkill</li>
-</ul>
-
-<pre><code>xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
+<p>xkill 是在桌面用的杀死图形界面的程序。比如当firefox 出现崩溃不能退出时，点鼠标就能杀死firefox 。
 当xkill运行时出来和个人脑骨的图标，哪个图形程序崩溃一点就OK了。如果您想终止xkill ，就按右键取消；
 xkill 调用方法：
-[root@localhost ~]# xkill
+[root@localhost ~]# xkill</p>
+
+<pre><code>
+## add-apt-repository命令
+个人软件包档案（PPA）是Ubuntu独有的解决方案，允许独立开发者和贡献者构建、贡献任何定制的软件包来作为通过启动面板的第三方APT仓库。如果你是Ubuntu用户，有可能你已经增加一些流行的第三方PPA仓库到你的Ubuntu系统。如果你需要删除掉已经预先配置好的PPA仓库，下面将教你怎么做。
+
+假如你想增加一个叫“ppa:webapps/preview”第三方PPA仓库到你的系统中，如下：
 </code></pre>
 
-<h2 id="add-apt-repository命令">add-apt-repository命令</h2>
+<p>$ sudo add-apt-repository ppa:webapps/preview</p>
 
-<p>个人软件包档案（PPA）是Ubuntu独有的解决方案，允许独立开发者和贡献者构建、贡献任何定制的软件包来作为通过启动面板的第三方APT仓库。如果你是Ubuntu用户，有可能你已经增加一些流行的第三方PPA仓库到你的Ubuntu系统。如果你需要删除掉已经预先配置好的PPA仓库，下面将教你怎么做。</p>
-
-<p>假如你想增加一个叫“ppa:webapps/preview”第三方PPA仓库到你的系统中，如下：</p>
-
-<pre><code>$ sudo add-apt-repository ppa:webapps/preview
+<pre><code>如果你想要 单独地删除某个PPA仓库，运行下面的命令：
 </code></pre>
 
-<p>如果你想要 单独地删除某个PPA仓库，运行下面的命令：</p>
+<p>$ sudo add-apt-repository &ndash;remove ppa:someppa/ppa</p>
 
-<pre><code>$ sudo add-apt-repository --remove ppa:someppa/ppa 
-# 然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除
+<h1 id="然后进入-etc-apt-sources-list-d-目录-将相应-ppa-源的保存文件删除:d42ac4d339ba837eb9ffd5b3e48c2f6d">然后进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除</h1>
+
+<pre><code>注意，上述命令不会同时删除任何已经安装或更新的软件包。
+
+如果你想要 完整的删除一个PPA仓库并包括来自这个PPA安装或更新过的软件包，你需要ppa-purge命令。
+
 </code></pre>
 
-<p>注意，上述命令不会同时删除任何已经安装或更新的软件包。</p>
+<h1 id="首先要安装ppa-purge软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d">首先要安装ppa-purge软件包</h1>
 
-<p>如果你想要 完整的删除一个PPA仓库并包括来自这个PPA安装或更新过的软件包，你需要ppa-purge命令。</p>
+<p>$ sudo apt-get install ppa-purge</p>
 
-<pre><code># 首先要安装ppa-purge软件包
-$ sudo apt-get install ppa-purge
-# 然后使用如下命令删除PPA仓库和与之相关的软件包
-$ sudo ppa-purge ppa:webapps/preview 
+<h1 id="然后使用如下命令删除ppa仓库和与之相关的软件包:d42ac4d339ba837eb9ffd5b3e48c2f6d">然后使用如下命令删除PPA仓库和与之相关的软件包</h1>
+
+<p>$ sudo ppa-purge ppa:webapps/preview</p>
+
+<pre><code>这样就ok了。
+
+## nmap扫描工具
+Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。
 </code></pre>
 
-<p>这样就ok了。</p>
+<p>nmap 10.1.1.254</p>
 
-<h2 id="nmap扫描工具">nmap扫描工具</h2>
-
-<p>Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范围内所开放的端口。</p>
-
-<pre><code>nmap 10.1.1.254
+<pre><code>快速扫描主机开放端口
 </code></pre>
 
-<p>快速扫描主机开放端口</p>
+<p>nmap -F 192.168.0.1</p>
 
-<pre><code>nmap -F 192.168.0.1
+<pre><code>Nmap 简单扫描，并对返回的结果详细描述输出。
 </code></pre>
 
-<p>Nmap 简单扫描，并对返回的结果详细描述输出。</p>
+<p>nmap -vv 10.1.1.254</p>
 
-<pre><code>nmap -vv 10.1.1.254 
+<pre><code>nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。
 </code></pre>
 
-<p>nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号。</p>
+<p>nmap -p1-50 10.1.1.254</p>
 
-<pre><code>nmap -p1-50 10.1.1.254
+<pre><code>nmap 指定端口扫描
 </code></pre>
 
-<p>nmap 指定端口扫描</p>
+<p>nmap -p80,443,22,21 10.1.1.254</p>
 
-<pre><code>nmap -p80,443,22,21 10.1.1.254
+<pre><code>nmap 还可以设置扫描一个网段下的ip
 </code></pre>
 
-<p>nmap 还可以设置扫描一个网段下的ip</p>
+<p>nmap -sP 10.1.1.0/24</p>
 
-<pre><code>nmap -sP 10.1.1.0/24 
+<pre><code>探测局域网段中各主机开启了哪些服务
 </code></pre>
 
-<p>探测局域网段中各主机开启了哪些服务</p>
+<p>nmap -sS 192.168.0.0/24</p>
 
-<pre><code>nmap -sS 192.168.0.0/24
+<pre><code>nmap 操作系统类型的探测
 </code></pre>
 
-<p>nmap 操作系统类型的探测</p>
+<p>nmap -O 10.1.1.154</p>
 
-<pre><code>nmap -O 10.1.1.154
+<pre><code>次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。
 </code></pre>
 
-<p>次选项设置包含了1-10000的端口ping扫描，操作系统扫描，脚本扫描，路由跟踪，服务探测。</p>
-
-<pre><code>nmap -A 10.1.1.154
-</code></pre>
+<p>nmap -A 10.1.1.154
+```</p>
 
   </div>
   <div id="disqus_thread"></div>

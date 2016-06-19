@@ -20,27 +20,27 @@
       <guid>http://wixb50.github.io/2016/02/27/github-star/</guid>
       <description>
 
-&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+&lt;h2 id=&#34;docker:d685a63346009b103c6a9f19e03bdb28&#34;&gt;Docker&lt;/h2&gt;
 
-&lt;h3 id=&#34;应用&#34;&gt;应用&lt;/h3&gt;
+&lt;h3 id=&#34;应用:d685a63346009b103c6a9f19e03bdb28&#34;&gt;应用&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/huichen/zerg&#34;&gt;基于docker的分布式爬虫服务&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;markdown&#34;&gt;MarkDown&lt;/h2&gt;
+&lt;h2 id=&#34;markdown:d685a63346009b103c6a9f19e03bdb28&#34;&gt;MarkDown&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/geekcompany/ResumeSample&#34;&gt;程序员简历MD模板&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;tex&#34;&gt;Tex&lt;/h2&gt;
+&lt;h2 id=&#34;tex:d685a63346009b103c6a9f19e03bdb28&#34;&gt;Tex&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/billryan/resume/tree/zh_CN&#34;&gt;一个简洁优雅的 XeLaTeX 简历模板&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;frontend&#34;&gt;Frontend&lt;/h2&gt;
+&lt;h2 id=&#34;frontend:d685a63346009b103c6a9f19e03bdb28&#34;&gt;Frontend&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/AutumnsWind/Front-end-tutorial&#34;&gt;最全的资源教程-前端涉及的所有知识体系&lt;/a&gt;&lt;/li&gt;
@@ -368,8 +368,7 @@
 
 &lt;p&gt;效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png&#34; alt=&#34;微信&#34; title=&#34;微信&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png&#34; alt=&#34;微信&#34; title=&#34;微信&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;参考式链接，是在链接文字的括号后面加上另一个方括号，在第二个方括号里面要填入用以辨识链接的标记。
   例如：&lt;/p&gt;
@@ -380,8 +379,7 @@
 
 &lt;p&gt;效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png&#34; alt=&#34;微信&#34; title=&#34;微信&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png&#34; alt=&#34;微信&#34; title=&#34;微信&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;分隔线&#34;&gt;分隔线&lt;/h2&gt;
 
@@ -542,7 +540,7 @@ git gc
 git fsck
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+&lt;h3 id=&#34;其他:fd6e78d88ef374478cbfb22f53498325&#34;&gt;其他&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;gitignore&lt;/strong&gt;&lt;br /&gt;
 忽略不想提交的文件&lt;/p&gt;
@@ -561,7 +559,7 @@ git flow release start v0.7.0  #它会创建一个release/v0.7.0分支，主要�
 git flow release finish v0.7.0  #合并完成一个测试分支
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;学习资料&#34;&gt;学习资料&lt;/h3&gt;
+&lt;h3 id=&#34;学习资料:fd6e78d88ef374478cbfb22f53498325&#34;&gt;学习资料&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://git-scm.com/book/zh/v2/&#34;&gt;GitPro2&lt;/a&gt;
 堪称权威,而且还有中文版&lt;/p&gt;
