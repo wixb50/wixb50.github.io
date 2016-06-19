@@ -1,9 +1,8 @@
 #!/bin/bash
 
 #1.first you need generate the static website.
-hugo server -b "http://wixb50.coding.me/" --appendPort=false &
+hugo -b "http://wixb50.coding.me/"
 sleep 2
-pkill hugo
 #input the submit message
 echo "please input the submit message:"
 read msg
