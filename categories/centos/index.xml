@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Centos on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/centos/</link>
+    <link>http://wixb50.github.io/categories/centos/</link>
     <description>Recent content in Centos on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 01 Jun 2016 10:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/centos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/centos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>CentOS常用命令集合</title>
-      <link>http://wixb50.coding.me/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Wed, 01 Jun 2016 10:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;centos添加及删除用户:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;

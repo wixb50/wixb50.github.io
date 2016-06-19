@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/docker/</link>
+    <link>http://wixb50.github.io/categories/docker/</link>
     <description>Recent content in Docker on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Fri, 17 Jun 2016 19:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>docker入门</title>
-      <link>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
+      <link>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
       <pubDate>Fri, 17 Jun 2016 19:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
+      <guid>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
       <description>
 
-&lt;h1 id=&#34;前言:11cc16163169598471edee7a60af0f73&#34;&gt;[前言]()&lt;/h1&gt;
+&lt;h1 id=&#34;前言:11cc16163169598471edee7a60af0f73&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;虚拟化&lt;/strong&gt;，是指通过虚拟化技术将一台计算机虚拟为多台逻辑计算机。在一台计算机上同时运行多个逻辑计算机，每个逻辑计算机可运行不同的操作系统，并且应用程序都可以在相互独立的空间内运行而互不影响，从而显著提高计算机的工作效率。&lt;/p&gt;
 
@@ -159,17 +159,17 @@ Hello world
     
     <item>
       <title>Docker集群系列之－Kubernetes对象文件定义</title>
-      <link>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
       <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
       <description>
 
-&lt;h2 id=&#34;说明:face623dedab27120a5b251ee433661e&#34;&gt;说明&lt;/h2&gt;
+&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
 
 &lt;p&gt;主要对kubernetes用户需要定义的Pod,RC和Service的配置文件进行详细说明。&lt;/p&gt;
 
-&lt;h2 id=&#34;pod定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;Pod定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;pod定义文件详解&#34;&gt;Pod定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;Pod定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -261,7 +261,7 @@ spec:       # required
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&#34;rc定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;RC定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;rc定义文件详解&#34;&gt;RC定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;RC(ReplicationController)定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -280,7 +280,7 @@ spec:       # required
   template: object      # required
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;service定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;Service定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;service定义文件详解&#34;&gt;Service定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;Service定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -479,7 +479,7 @@ spec:       # required
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&#34;附录:face623dedab27120a5b251ee433661e&#34;&gt;附录&lt;/h2&gt;
+&lt;h2 id=&#34;附录&#34;&gt;附录&lt;/h2&gt;
 
 &lt;p&gt;根据yaml创建：&lt;/p&gt;
 
@@ -495,10 +495,10 @@ spec:       # required
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
 &lt;h1 id=&#34;目录:b041d08cd2cacb464d298a81037e9efc&#34;&gt;目录&lt;/h1&gt;
@@ -747,10 +747,10 @@ kubectl get rc
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
 &lt;h2 id=&#34;目录:8a4718f7d5df59499af8fd92000810ea&#34;&gt;目录&lt;/h2&gt;
@@ -1043,10 +1043,10 @@ systemctl -l status docker
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.coding.me/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
 &lt;h2 id=&#34;目录:9623c25974239aae48309dcafd31d278&#34;&gt;目录&lt;/h2&gt;
@@ -1128,13 +1128,13 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
-&lt;h3 id=&#34;方法一-安装命令&#34;&gt;方法一：安装命令&lt;/h3&gt;
+&lt;h3 id=&#34;方法一-安装命令:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法一：安装命令&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install apt-transport-https
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
@@ -1143,14 +1143,14 @@ sudo apt-get update
 sudo apt-get install lxc-docker
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;方法二-安装命令-推荐&#34;&gt;方法二：安装命令(推荐)&lt;/h3&gt;
+&lt;h3 id=&#34;方法二-安装命令-推荐:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法二：安装命令(推荐)&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;curl -sSL https://get.docker.com/ | sh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;完&lt;/p&gt;
 
-&lt;h3 id=&#34;docker资料收集&#34;&gt;Docker资料收集&lt;/h3&gt;
+&lt;h3 id=&#34;docker资料收集:a3a6e387cbc471e9a108d854770f0455&#34;&gt;Docker资料收集&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@gargar454/deploy-a-mesos-cluster-with-7-commands-using-docker-57951e020586#.74cyoyjp5&#34;&gt;Deploy a Mesos Cluster with 7 Commands Using Docker&lt;/a&gt;&lt;/li&gt;
