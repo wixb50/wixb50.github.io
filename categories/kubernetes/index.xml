@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/kubernetes/</link>
+    <link>http://wixb50.coding.me/categories/kubernetes/</link>
     <description>Recent content in Kubernetes on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sun, 13 Mar 2016 15:10:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker集群系列之－Kubernetes对象文件定义</title>
-      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <link>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
       <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <guid>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
       <description>
 
 &lt;h2 id=&#34;说明:face623dedab27120a5b251ee433661e&#34;&gt;说明&lt;/h2&gt;
@@ -350,10 +350,10 @@ spec:       # required
     
     <item>
       <title>kubernetes 安装配置 kube-ui</title>
-      <link>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
+      <link>http://wixb50.coding.me/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</link>
       <pubDate>Sat, 02 Jan 2016 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
+      <guid>http://wixb50.coding.me/2016/01/02/kubernetes-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-kube-ui/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;下载gcr.io/google_containers/pause镜像并导入&lt;/p&gt;
 
@@ -500,13 +500,13 @@ Trying to reach: &#39;http://172.17.0.1:8080/&#39;
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
-&lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
+&lt;h1 id=&#34;目录:b041d08cd2cacb464d298a81037e9efc&#34;&gt;目录&lt;/h1&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -525,11 +525,11 @@ Trying to reach: &#39;http://172.17.0.1:8080/&#39;
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;h1 id=&#34;introduction:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Create a Kubernetes Cluster on VMware ESXi with CoreOS.&lt;/p&gt;
 
-&lt;h1 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h1&gt;
+&lt;h1 id=&#34;prerequisites:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Prerequisites&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;VMware ESXi
@@ -543,7 +543,7 @@ Trying to reach: &#39;http://172.17.0.1:8080/&#39;
 &lt;li&gt;Attention: This requires at least CoreOS version 695.0.0, which includes etcd2.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;coreos-on-vmware&#34;&gt;CoreOS on VMware&lt;/h1&gt;
+&lt;h1 id=&#34;coreos-on-vmware:b041d08cd2cacb464d298a81037e9efc&#34;&gt;CoreOS on VMware&lt;/h1&gt;
 
 &lt;p&gt;Based on official documentation : &lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vmware.html&#34;&gt;https://coreos.com/os/docs/latest/booting-on-vmware.html&lt;/a&gt;&lt;/p&gt;
 
@@ -567,7 +567,7 @@ confirm the settings then click &amp;quot;Finish&amp;quot;
 
 &lt;p&gt;Now you can create -at least- 2 servers based on this template, do this task but don&amp;rsquo;t start it yet.&lt;/p&gt;
 
-&lt;h1 id=&#34;cloud-config-for-master-node&#34;&gt;Cloud-Config for master node&lt;/h1&gt;
+&lt;h1 id=&#34;cloud-config-for-master-node:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Cloud-Config for master node&lt;/h1&gt;
 
 &lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
 
@@ -628,7 +628,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-master.iso master/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;cloud-config-for-minion-node&#34;&gt;Cloud-Config for minion node&lt;/h1&gt;
+&lt;h1 id=&#34;cloud-config-for-minion-node:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Cloud-Config for minion node&lt;/h1&gt;
 
 &lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
 
@@ -667,7 +667,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-minion.iso minion/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;start-the-cluster&#34;&gt;Start the cluster&lt;/h1&gt;
+&lt;h1 id=&#34;start-the-cluster:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Start the cluster&lt;/h1&gt;
 
 &lt;p&gt;On firt VM, mount the config-master.iso with VM properties (CD/DVD reader and &amp;laquo;Datastore ISO file&amp;raquo;), browse to &amp;laquo;&lt;path to datastore&gt;/cloud-config/&amp;laquo;. Don&amp;rsquo;t foget to set &amp;laquo;Connect on Start up&amp;raquo;.&lt;/p&gt;
 
@@ -692,7 +692,7 @@ sudo systemctl enable &amp;lt;service-name&amp;gt;  #Ensure service can boot fro
 sudo systemctl status &amp;lt;service-name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;check&#34;&gt;Check&lt;/h1&gt;
+&lt;h1 id=&#34;check:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Check&lt;/h1&gt;
 
 &lt;p&gt;Check your cluster heatlh : &lt;a href=&#34;http://10.0.0.1:8080/static/app/#/dashboard/&#34;&gt;http://10.0.0.1:8080/static/app/#/dashboard/&lt;/a&gt;&lt;/p&gt;
 
@@ -704,7 +704,7 @@ fleetctl list-machines
 journalctl -f
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;enjoy&#34;&gt;Enjoy&lt;/h1&gt;
+&lt;h1 id=&#34;enjoy:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Enjoy&lt;/h1&gt;
 
 &lt;p&gt;You may download the kubernetes client tool:&lt;code&gt;kubectl&lt;/code&gt;.Use it manage your cluster.&lt;/p&gt;
 
@@ -727,7 +727,7 @@ kubectl get rc
 &lt;pre&gt;&lt;code&gt;kubectl get svc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;&lt;/li&gt;
+&lt;h1 id=&#34;reference:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Reference&lt;/h1&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/xavierbaude/VMware-coreos-multi-nodes-Kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
@@ -741,7 +741,7 @@ kubectl get rc
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dockone.io/article/604&#34;&gt;CoreOS集成Kubernetes核心组件Kubelet&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
+&lt;h1 id=&#34;appendix:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;The &lt;a href=&#34;https://gist.github.com/anonymous/553e448c0f8ce9a23120&#34;&gt;source&lt;/a&gt; of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 

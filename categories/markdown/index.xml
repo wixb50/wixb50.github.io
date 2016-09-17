@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/markdown/</link>
+    <link>http://wixb50.coding.me/categories/markdown/</link>
     <description>Recent content in Markdown on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 05 Nov 2015 13:35:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/markdown/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Markdown简明语法教程</title>
-      <link>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.coding.me/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:35:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.coding.me/2015/11/05/markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</guid>
       <description>
 
-&lt;h1 id=&#34;markdown简明语法教程:9f575f659122e6b7a33330962fb929d3&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
+&lt;h1 id=&#34;markdown简明语法教程&#34;&gt;Markdown简明语法教程&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;&lt;/p&gt;
 
@@ -32,7 +32,7 @@
 &lt;li&gt;推荐使用Haroopad(Win)、MarkdownPad(Win)和Mou(OS X)编辑器，部分编辑器中文效果欠佳，可通过自定义CSS字体解决。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;基本:9f575f659122e6b7a33330962fb929d3&#34;&gt;基本&lt;/h2&gt;
+&lt;h2 id=&#34;基本&#34;&gt;基本&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Markdown是一种用来写作的轻量级标记语言。&lt;/li&gt;
@@ -41,7 +41,7 @@
 &lt;li&gt;特殊字符自动转换，例如&lt;code&gt;&amp;lt;&lt;/code&gt;和&lt;code&gt;&amp;amp;&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;字体:9f575f659122e6b7a33330962fb929d3&#34;&gt;字体&lt;/h2&gt;
+&lt;h2 id=&#34;字体&#34;&gt;字体&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;使用星号&lt;code&gt;*&lt;/code&gt;和底号&lt;code&gt;_&lt;/code&gt;表示&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;标签。&lt;/li&gt;
@@ -71,13 +71,13 @@
 
 &lt;p&gt;&lt;strong&gt;强调&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;换行:9f575f659122e6b7a33330962fb929d3&#34;&gt;换行&lt;/h2&gt;
+&lt;h2 id=&#34;换行&#34;&gt;换行&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;单一段落用空白行。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;标题:9f575f659122e6b7a33330962fb929d3&#34;&gt;标题&lt;/h2&gt;
+&lt;h2 id=&#34;标题&#34;&gt;标题&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;生成&lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;-&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;标签，是通过在文字前面加上同等个数&lt;code&gt;#&lt;/code&gt;符号来实现。&lt;/li&gt;
@@ -94,7 +94,7 @@
 
 &lt;p&gt;### 这是标题&lt;/p&gt;
 
-&lt;h2 id=&#34;列表:9f575f659122e6b7a33330962fb929d3&#34;&gt;列表&lt;/h2&gt;
+&lt;h2 id=&#34;列表&#34;&gt;列表&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;*&lt;/code&gt;，&lt;code&gt;-&lt;/code&gt;，&lt;code&gt;+&lt;/code&gt;这三个符号效果都一样，这3个符号被称为Markdown列表符号。而有序列表则使用数字接着一个英文句点（数字大小并不会影响输出序列）。&lt;/li&gt;
@@ -121,7 +121,7 @@
 &lt;li&gt;第三行&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;引用:9f575f659122e6b7a33330962fb929d3&#34;&gt;引用&lt;/h2&gt;
+&lt;h2 id=&#34;引用&#34;&gt;引用&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;&amp;gt;&lt;/code&gt;符号表示引用，可简写于第一行，也可以每一行都添加。&lt;/li&gt;
@@ -142,7 +142,7 @@
    &amp;gt;    引用中的引用&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;代码区块:9f575f659122e6b7a33330962fb929d3&#34;&gt;代码区块&lt;/h2&gt;
+&lt;h2 id=&#34;代码区块&#34;&gt;代码区块&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;`&lt;/code&gt;是表示inline代码，4个&lt;code&gt; &lt;/code&gt;（空格）来表示缩进式代码段，分别对应HTML的&lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt;，&lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;标签。也可以使用&lt;code&gt;```&lt;/code&gt;来表达围栏式代码块（&lt;strong&gt;GFM语法&lt;/strong&gt;，部分编辑器不支持），并指定他的语言类型，实现语法高亮。围栏式代码块可以大量减少缩进的使用，大规模的代码块使用非常方便。&lt;/li&gt;
@@ -195,7 +195,7 @@
   ?&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;链接:9f575f659122e6b7a33330962fb929d3&#34;&gt;链接&lt;/h2&gt;
+&lt;h2 id=&#34;链接&#34;&gt;链接&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Markdown支持两种形式的链接语法：行内式和参考式两种形式。&lt;/li&gt;
@@ -222,7 +222,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://melo618.com&#34; title=&#34;Melo618的博客&#34;&gt;Melo618&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;图片:9f575f659122e6b7a33330962fb929d3&#34;&gt;图片&lt;/h2&gt;
+&lt;h2 id=&#34;图片&#34;&gt;图片&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Markdown使用一种和链接很相似的语法来标记图片，只是多了一个&lt;code&gt;!&lt;/code&gt;在最前面，同样也允许两种样式：行内式和参考式。&lt;/li&gt;
@@ -250,7 +250,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://7sbovo.com1.z0.glb.clouddn.com/simple-markdown-guide-weixin.png&#34; alt=&#34;微信&#34; title=&#34;微信&#34; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;分隔线:9f575f659122e6b7a33330962fb929d3&#34;&gt;分隔线&lt;/h2&gt;
+&lt;h2 id=&#34;分隔线&#34;&gt;分隔线&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;使用三个以上的&lt;code&gt;*&lt;/code&gt;、&lt;code&gt;-&lt;/code&gt;来建立一个分隔线，行内不能有其他字符。&lt;/li&gt;
@@ -272,7 +272,7 @@
 
 &lt;p&gt;下文&lt;/p&gt;
 
-&lt;h2 id=&#34;表格:9f575f659122e6b7a33330962fb929d3&#34;&gt;表格&lt;/h2&gt;
+&lt;h2 id=&#34;表格&#34;&gt;表格&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Markdown使用&lt;code&gt;|&lt;/code&gt;和&lt;code&gt;-&lt;/code&gt;来绘制表格，&lt;code&gt;:&lt;/code&gt;可控制左对齐、右对齐及居中。&lt;/li&gt;
@@ -293,13 +293,13 @@
   | Version | 0.0.1                              |
   | Editor  | &lt;a href=&#34;mailto:Editor@Email.com&#34;&gt;Melo618&lt;/a&gt; |&lt;/p&gt;
 
-&lt;h2 id=&#34;特殊符号:9f575f659122e6b7a33330962fb929d3&#34;&gt;特殊符号&lt;/h2&gt;
+&lt;h2 id=&#34;特殊符号&#34;&gt;特殊符号&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Markdown利用&lt;code&gt;\&lt;/code&gt;字符来转义一些在语法中有特殊意义的符号。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;推荐阅读:9f575f659122e6b7a33330962fb929d3&#34;&gt;推荐阅读&lt;/h2&gt;
+&lt;h2 id=&#34;推荐阅读&#34;&gt;推荐阅读&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://wowubuntu.com/markdown/index.html&#34;&gt;Markdown语法说明（简体中文版）&lt;/a&gt;&lt;/li&gt;
@@ -307,7 +307,7 @@
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/github-flavored-markdown&#34;&gt;GitHub Flavored Markdown&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;license:9f575f659122e6b7a33330962fb929d3&#34;&gt;License&lt;/h2&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
 
 &lt;p&gt;Copyright © 2014-2015, Melo Chan. &lt;a href=&#34;http://opensource.org/licenses/MIT&#34;&gt;MIT License&lt;/a&gt;.&lt;/p&gt;
 </description>

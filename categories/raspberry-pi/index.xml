@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspberry Pi on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/raspberry-pi/</link>
+    <link>http://wixb50.coding.me/categories/raspberry-pi/</link>
     <description>Recent content in Raspberry Pi on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Tue, 24 May 2016 20:25:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>树莓派samba离线下载器</title>
-      <link>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</link>
+      <link>http://wixb50.coding.me/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</link>
       <pubDate>Tue, 24 May 2016 20:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid>
+      <guid>http://wixb50.coding.me/2016/05/24/%E6%A0%91%E8%8E%93%E6%B4%BEsamba%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid>
       <description>
 
 &lt;h2 id=&#34;简介:c437bf4e2f36fed37a46449037a257ea&#34;&gt;简介&lt;/h2&gt;
@@ -59,10 +59,10 @@
     
     <item>
       <title>树莓派安装Gogs</title>
-      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
+      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
+      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85gogs/</guid>
       <description>
 
 &lt;h2 id=&#34;简介:bcae9c1d5df2989839f1781e78b932a8&#34;&gt;简介&lt;/h2&gt;
@@ -147,21 +147,21 @@ WantedBy=multi-user.target
     
     <item>
       <title>树莓派搭建ownCloud</title>
-      <link>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
+      <link>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</link>
       <pubDate>Wed, 18 May 2016 14:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
+      <guid>http://wixb50.coding.me/2016/05/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAowncloud/</guid>
       <description>
 
-&lt;h2 id=&#34;简介:d7d9936e2453b500c8afe809383d64a8&#34;&gt;简介&lt;/h2&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 
 &lt;p&gt;我们将要搭建自己的云系统平台，更精确点是一个云存储系统，我们将使用开源的软件ownCloud搭建私有云，这个平台已经适用于大多数主流平台，android、IOS、mac、linux、windows都是可以的。&lt;/p&gt;
 
 &lt;p&gt;首先介绍一下ownCloud： 简单来说就是一个基于PHP的自建网盘。基本上是私人使用，没有用户注册功能，但是有用户添加功能，你可以无限制地添加用户，OwnCloud还提供了不少的免费应用，这些应用可以让你更好观看视频、倾听音乐等。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装步骤:d7d9936e2453b500c8afe809383d64a8&#34;&gt;安装步骤&lt;/h2&gt;
+&lt;h2 id=&#34;安装步骤&#34;&gt;安装步骤&lt;/h2&gt;
 
-&lt;h3 id=&#34;安装lamp套件:d7d9936e2453b500c8afe809383d64a8&#34;&gt;安装LAMP套件&lt;/h3&gt;
+&lt;h3 id=&#34;安装lamp套件&#34;&gt;安装LAMP套件&lt;/h3&gt;
 
 &lt;p&gt;1.安装apache2&lt;/p&gt;
 
@@ -199,7 +199,7 @@ sudo chown -R www-data:www-data apps
 
 &lt;p&gt;7.打开浏览器，输入 &lt;a href=&#34;http://IP/owncloud&#34;&gt;http://IP/owncloud&lt;/a&gt; ,进入设置界面设计，即可访问&lt;/p&gt;
 
-&lt;h2 id=&#34;参考资料:d7d9936e2453b500c8afe809383d64a8&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.voidcn.com/blog/u010873775/article/p-5812004.html&#34;&gt;使用owncloud云服务&lt;/a&gt;&lt;/li&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Wixb blog</title>
-    <link>http://wixb50.github.io/categories/git/</link>
+    <link>http://wixb50.coding.me/categories/git/</link>
     <description>Recent content in Git on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 05 Nov 2015 13:26:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.coding.me/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>gitlab搭建教程</title>
-      <link>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>http://wixb50.coding.me/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://wixb50.coding.me/2015/11/05/gitlab%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>
 
-&lt;h2 id=&#34;gitlab搭建教程&#34;&gt;gitlab搭建教程&lt;/h2&gt;
+&lt;h2 id=&#34;gitlab搭建教程:16634bb9a7d8730e3f7cb819de89b7ba&#34;&gt;gitlab搭建教程&lt;/h2&gt;
 
 &lt;hr /&gt;
 
@@ -38,10 +38,10 @@
     
     <item>
       <title>git常用命令集合</title>
-      <link>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.coding.me/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Thu, 05 Nov 2015 13:25:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.github.io/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.coding.me/2015/11/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;pre&gt;&lt;code&gt;git init                                                  # 初始化本地git仓库（创建新仓库）
@@ -132,7 +132,7 @@ git gc
 git fsck
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;其他:fd6e78d88ef374478cbfb22f53498325&#34;&gt;其他&lt;/h3&gt;
+&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;gitignore&lt;/strong&gt;&lt;br /&gt;
 忽略不想提交的文件&lt;/p&gt;
@@ -151,7 +151,7 @@ git flow release start v0.7.0  #它会创建一个release/v0.7.0分支，主要�
 git flow release finish v0.7.0  #合并完成一个测试分支
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;学习资料:fd6e78d88ef374478cbfb22f53498325&#34;&gt;学习资料&lt;/h3&gt;
+&lt;h3 id=&#34;学习资料&#34;&gt;学习资料&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://git-scm.com/book/zh/v2/&#34;&gt;GitPro2&lt;/a&gt;
 堪称权威,而且还有中文版&lt;/p&gt;
