@@ -7,6 +7,24 @@ title = "docker入门"
 
 +++
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 -->
+
+- [[前言](#)](#前言)
+- [基本概念](#基本概念)
+	- [镜像](#镜像)
+	- [容器](#容器)
+	- [仓库](#仓库)
+	- [安装](#安装)
+- [常用命令](#常用命令)
+	- [镜像命令](#镜像命令)
+	- [容器命令](#容器命令)
+- [Docker进阶](#docker进阶)
+	- [数据卷](#数据卷)
+		- [主机容器数据共享](#主机容器数据共享)
+		- [数据卷容器](#数据卷容器)
+	- [Dockerfile](#dockerfile)
+
+<!-- /TOC -->
 
 # [前言](#)
 
@@ -14,9 +32,15 @@ title = "docker入门"
 
 **Docker** 是个开源项目，它彻底释放了虚拟化的威力，极大提高了应用的运行效率，降低了云计算资源供应的成本，同时让应用的部署、测试和分发都变得前所未有的高效和轻松。Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 
-如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群和不可变基础设施是非常有利的。
+如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群、系统CI和不可变基础设施是非常有利的。
+
+**Docker简单原理** Docker只是管理运行轻量级容器的工具，容器是基于Linux内核技术包括namespace，cgroup，叠加文件系统如AUFS，工具提供运行应用，打包应用，分发应用。
+
+**Docker影响** Docker成为最火热，甚至最具颠覆性的技术之一。相对于传统的云服务提供商(Iaas,Paas,Saas)，提出了一种全新的Caas(容器即服务)，国内比较领先的有DaoCloud、时速云等。Docker提出了“Build once，Run anywhere。
 
 # 基本概念
+
+![原理图](http://www.otokaze.cn/wp-content/uploads/2016/09/docker_vs_vm.png)
 
 Docker 包括三个基本概念
 
@@ -51,9 +75,10 @@ Docker 利用容器（Container）来运行应用。
 
 当用户创建了自己的镜像之后就可以使用 push 命令将它上传到公有或者私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。
 
-*注：Docker 仓库的概念跟 Git 类似，注册服务器可以理解为 GitHub 这样的托管服务。
+\*注：Docker 仓库的概念跟 Git 类似，注册服务器可以理解为 GitHub 这样的托管服务。
 
 ## 安装
+
 Docker 目前只能安装在 64 位平台上，并且要求内核版本不低于 3.10，实际上内核越新越好，过低的内核版本容易造成功能的不稳定。
 
 快捷安装脚本
@@ -113,9 +138,53 @@ $ sudo docker run -d -p 5000:5000 training/webapp python app.py
 使用 hostPort:containerPort 格式本地的 5000 端口映射到容器的 5000 端口.
 # Docker进阶
 
-+ 数据卷管理
-+ Dockerfile
-+ 私有仓库
-+ 集群项目
-    * Docker compose、Docker machine、Docker swarm
-    * Kubernetes
+## 数据卷
+
+用于Docker 内部以及容器之间管理数据共享与存储。
+
+### 主机容器数据共享
+挂载一个主机目录作为数据卷,使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去
+```
+$ sudo docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py
+```
+之后对容器相应的目录更改便直接反映在主机中了。
+
+### 数据卷容器
+
+数据卷容器，其实就是一个正常的容器，专门用来提供数据卷供其它容器挂载的。
+
+首先，创建一个命名的数据卷容器 dbdata：
+```
+$ sudo docker run -d -v /dbdata --name dbdata training/postgres echo Data-only container for postgres
+```
+然后，在其他容器中使用 --volumes-from 来挂载 dbdata 容器中的数据卷。
+```
+$ sudo docker run -d --volumes-from dbdata --name db1 training/postgres
+```
+
+## Dockerfile
+
+docker 采用分层存储驱动，使用 Dockerfile 可以允许用户创建自定义的镜像。
+
+Dockerfile 分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令。
+
+```
+# Base image to use, this must be set as the first line
+FROM ubuntu
+
+# Maintainer: docker_user <docker_user at email.com> (@docker_user)
+MAINTAINER docker_user docker_user@email.com
+
+# Commands to update the image
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ raring main universe" >> /etc/apt/sources.list
+RUN apt-get update && apt-get install -y nginx
+RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+
+# Commands when creating a new container
+CMD /usr/sbin/nginx
+```
+其中，一开始必须指明所基于的镜像名称，接下来推荐说明维护者信息。
+
+后面则是镜像操作指令，例如 RUN 指令，RUN 指令将对镜像执行跟随的命令。每运行一条 RUN 指令，镜像添加新的一层，并提交。
+
+最后是 CMD 指令，来指定运行容器时的操作命令。
