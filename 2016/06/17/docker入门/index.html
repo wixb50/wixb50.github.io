@@ -10,18 +10,18 @@
   <title>docker入门 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=0&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,12 +88,45 @@
 <div class="content container">
   <div class="post">
     <h1>docker入门</h1>
-    <span class="post-date">Jun 17, 2016 &middot; 1 minute read &middot; <a href="http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/#disqus_thread">Comments</a>
+    <span class="post-date">Jun 17, 2016 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/docker">docker</a><a class="label" href="http://wixb50.coding.me/categories/cloud">cloud</a>
+    <a class="label" href="http://wixb50.github.io/categories/docker">docker</a><a class="label" href="http://wixb50.github.io/categories/cloud">cloud</a>
     </span>
     
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 -->
+
+<ul>
+<li><a href="#前言"><a href="#">前言</a></a></li>
+<li><a href="#基本概念">基本概念</a>
+
+<ul>
+<li><a href="#镜像">镜像</a></li>
+<li><a href="#容器">容器</a></li>
+<li><a href="#仓库">仓库</a></li>
+<li><a href="#安装">安装</a></li>
+</ul></li>
+<li><a href="#常用命令">常用命令</a>
+
+<ul>
+<li><a href="#镜像命令">镜像命令</a></li>
+<li><a href="#容器命令">容器命令</a></li>
+</ul></li>
+<li><a href="#docker进阶">Docker进阶</a>
+
+<ul>
+<li><a href="#数据卷">数据卷</a>
+
+<ul>
+<li><a href="#主机容器数据共享">主机容器数据共享</a></li>
+<li><a href="#数据卷容器">数据卷容器</a></li>
+</ul></li>
+<li><a href="#dockerfile">Dockerfile</a></li>
+</ul></li>
+</ul>
+
+<!-- /TOC -->
 
 <h1 id="前言"><a href="#">前言</a></h1>
 
@@ -101,9 +134,15 @@
 
 <p><strong>Docker</strong> 是个开源项目，它彻底释放了虚拟化的威力，极大提高了应用的运行效率，降低了云计算资源供应的成本，同时让应用的部署、测试和分发都变得前所未有的高效和轻松。Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
 
-<p>如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群和不可变基础设施是非常有利的。</p>
+<p>如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群、系统CI和不可变基础设施是非常有利的。</p>
+
+<p><strong>Docker简单原理</strong> Docker只是管理运行轻量级容器的工具，容器是基于Linux内核技术包括namespace，cgroup，叠加文件系统如AUFS，工具提供运行应用，打包应用，分发应用。</p>
+
+<p><strong>Docker影响</strong> Docker成为最火热，甚至最具颠覆性的技术之一。相对于传统的云服务提供商(Iaas,Paas,Saas)，提出了一种全新的Caas(容器即服务)，国内比较领先的有DaoCloud、时速云等。Docker提出了“Build once，Run anywhere。</p>
 
 <h1 id="基本概念">基本概念</h1>
+
+<p><img src="http://www.otokaze.cn/wp-content/uploads/2016/09/docker_vs_vm.png" alt="原理图" /></p>
 
 <p>Docker 包括三个基本概念</p>
 
@@ -218,17 +257,59 @@ Hello world
 
 <h1 id="docker进阶">Docker进阶</h1>
 
-<ul>
-<li>数据卷管理</li>
-<li>Dockerfile</li>
-<li>私有仓库</li>
-<li>集群项目
+<h2 id="数据卷">数据卷</h2>
 
-<ul>
-<li>Docker compose、Docker machine、Docker swarm</li>
-<li>Kubernetes</li>
-</ul></li>
-</ul>
+<p>用于Docker 内部以及容器之间管理数据共享与存储。</p>
+
+<h3 id="主机容器数据共享">主机容器数据共享</h3>
+
+<p>挂载一个主机目录作为数据卷,使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去</p>
+
+<pre><code>$ sudo docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py
+</code></pre>
+
+<p>之后对容器相应的目录更改便直接反映在主机中了。</p>
+
+<h3 id="数据卷容器">数据卷容器</h3>
+
+<p>数据卷容器，其实就是一个正常的容器，专门用来提供数据卷供其它容器挂载的。</p>
+
+<p>首先，创建一个命名的数据卷容器 dbdata：</p>
+
+<pre><code>$ sudo docker run -d -v /dbdata --name dbdata training/postgres echo Data-only container for postgres
+</code></pre>
+
+<p>然后，在其他容器中使用 &ndash;volumes-from 来挂载 dbdata 容器中的数据卷。</p>
+
+<pre><code>$ sudo docker run -d --volumes-from dbdata --name db1 training/postgres
+</code></pre>
+
+<h2 id="dockerfile">Dockerfile</h2>
+
+<p>docker 采用分层存储驱动，使用 Dockerfile 可以允许用户创建自定义的镜像。</p>
+
+<p>Dockerfile 分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令。</p>
+
+<pre><code># Base image to use, this must be set as the first line
+FROM ubuntu
+
+# Maintainer: docker_user &lt;docker_user at email.com&gt; (@docker_user)
+MAINTAINER docker_user docker_user@email.com
+
+# Commands to update the image
+RUN echo &quot;deb http://archive.ubuntu.com/ubuntu/ raring main universe&quot; &gt;&gt; /etc/apt/sources.list
+RUN apt-get update &amp;&amp; apt-get install -y nginx
+RUN echo &quot;\ndaemon off;&quot; &gt;&gt; /etc/nginx/nginx.conf
+
+# Commands when creating a new container
+CMD /usr/sbin/nginx
+</code></pre>
+
+<p>其中，一开始必须指明所基于的镜像名称，接下来推荐说明维护者信息。</p>
+
+<p>后面则是镜像操作指令，例如 RUN 指令，RUN 指令将对镜像执行跟随的命令。每运行一条 RUN 指令，镜像添加新的一层，并提交。</p>
+
+<p>最后是 CMD 指令，来指定运行容器时的操作命令。</p>
 
   </div>
   <div id="disqus_thread"></div>
@@ -258,7 +339,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

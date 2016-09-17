@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vagrant on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/vagrant/</link>
+    <link>http://wixb50.github.io/categories/vagrant/</link>
     <description>Recent content in Vagrant on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 12 Dec 2015 15:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/vagrant/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>快速搭建CoreOS集群</title>
-      <link>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sat, 12 Dec 2015 15:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/12/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:e6a38836310723430fe34edddeb94971&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -39,21 +39,21 @@
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;前言-null&#34;&gt;&lt;a href=&#34;null&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;前言-null:e6a38836310723430fe34edddeb94971&#34;&gt;&lt;a href=&#34;null&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;第一次接触CoreOS这样的分布式平台，运行一个集群看起来好像一个很复杂的任务，这里我们给你展示在本地快速搭建一个CoreOS集群环境是多么的容易。&lt;/p&gt;
 
-&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+&lt;h2 id=&#34;准备工作:e6a38836310723430fe34edddeb94971&#34;&gt;准备工作&lt;/h2&gt;
 
 &lt;p&gt;本地的机器上已经安装了最新版本的Virtualbox, Vagrant 和 git。&lt;/p&gt;
 
-&lt;h2 id=&#34;配置工作&#34;&gt;配置工作&lt;/h2&gt;
+&lt;h2 id=&#34;配置工作:e6a38836310723430fe34edddeb94971&#34;&gt;配置工作&lt;/h2&gt;
 
-&lt;h3 id=&#34;安装-vagrant-and-virtualbox&#34;&gt;安装 Vagrant and VirtualBox&lt;/h3&gt;
+&lt;h3 id=&#34;安装-vagrant-and-virtualbox:e6a38836310723430fe34edddeb94971&#34;&gt;安装 Vagrant and VirtualBox&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;vagrant&lt;/a&gt; 和 &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;virtualbox&lt;/a&gt;都是直接下载双击安装的，具体安装教程看官网。&lt;/p&gt;
 
-&lt;h3 id=&#34;从coreos官方代码库获取基本配置-并进行修改&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/h3&gt;
+&lt;h3 id=&#34;从coreos官方代码库获取基本配置-并进行修改:e6a38836310723430fe34edddeb94971&#34;&gt;从CoreOS官方代码库获取基本配置，并进行修改&lt;/h3&gt;
 
 &lt;p&gt;首先，获取模板配置文件&lt;/p&gt;
 
@@ -106,7 +106,7 @@ coreos:
 &lt;blockquote&gt;
 &lt;p&gt;提示：编辑完毕后，请到[&lt;a href=&#34;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&#34;&gt;http://codebeautify.org/yaml-validator][]校验下yaml文件格式是否正确。&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;启动集群&#34;&gt;启动集群&lt;/h2&gt;
+&lt;h2 id=&#34;启动集群:e6a38836310723430fe34edddeb94971&#34;&gt;启动集群&lt;/h2&gt;
 
 &lt;p&gt;默认情况下，CoreOS Vagrantfile 将会启动单机。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -145,7 +145,7 @@ $update_channel=&#39;stable&#39;  ## 表示使用的coreos版本，有：&#39;st
 &lt;pre&gt;&lt;code&gt;vagrant ssh core-01 -- -A
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;测试集群&#34;&gt;测试集群&lt;/h2&gt;
+&lt;h2 id=&#34;测试集群:e6a38836310723430fe34edddeb94971&#34;&gt;测试集群&lt;/h2&gt;
 
 &lt;p&gt;使用fleet来查看机器运行状况&lt;/p&gt;
 
@@ -165,10 +165,10 @@ cb35b356... 172.17.8.103  -
     
     <item>
       <title>Vagrant建立快照</title>
-      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
       <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -215,10 +215,10 @@ For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt;
     
     <item>
       <title>Vagrant常用命令</title>
-      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant常用命令:7846872d314dab4b0ed8e0de546c9a09&#34;&gt;Vagrant常用命令&lt;/h2&gt;

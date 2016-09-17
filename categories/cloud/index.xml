@@ -2,23 +2,223 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cloud on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/cloud/</link>
+    <link>http://wixb50.github.io/categories/cloud/</link>
     <description>Recent content in Cloud on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Fri, 17 Jun 2016 19:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Sep 2016 10:38:38 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>docker1.12 集群实践方案</title>
+      <link>http://wixb50.github.io/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Sat, 17 Sep 2016 10:38:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</guid>
+      <description>
+
+&lt;!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#docker私有仓库&#34;&gt;docker私有仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#docker-swarm&#34;&gt;Docker swarm&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#docker-service&#34;&gt;docker service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#add-on&#34;&gt;add on&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#consulregistrator服务注册&#34;&gt;consul、registrator服务注册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#graylog-日志收集&#34;&gt;graylog 日志收集&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#参考&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /TOC --&gt;
+
+&lt;h1 id=&#34;前言:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;Docker 1.12将原先独立的项目&lt;code&gt;docker swarm&lt;/code&gt;已经集成进自带的&lt;code&gt;docker engine&lt;/code&gt;，并为集群方案提供了整一套的跨主机集群、灵活调度、高可用性的方案，同时引入service的概念，增加了服务创建的简易性、灵活性，还拥有服务注册、服务发现、服务自动负载均衡等特性。&lt;/p&gt;
+
+&lt;p&gt;在本docker集群方案中，先介绍私有仓库的概念，作为集群服务部署的基础；然后利用docker提供的官方的集群方案swarm搭建集群；最后补充一些其他方案满足整集群的监控，日志收集等方面。&lt;/p&gt;
+
+&lt;h1 id=&#34;docker私有仓库:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;docker私有仓库&lt;/h1&gt;
+
+&lt;p&gt;仓库（Repository）是集中存放镜像文件的场所。仓库分为公开仓库（Public）和私有仓库（Private）两种形式。&lt;/p&gt;
+
+&lt;p&gt;最大的公开仓库是 Docker Hub，存放了数量庞大的镜像供用户下载。&lt;/p&gt;
+
+&lt;p&gt;当需要加快service的更新速度的时候，就需要在局域网内拥有自建的私有仓库，当用户创建了自己的镜像之后就可以使用 push 命令将它上传到私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。&lt;/p&gt;
+
+&lt;h1 id=&#34;docker-swarm:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;Docker swarm&lt;/h1&gt;
+
+&lt;p&gt;在docker1.12版本中不再试独立的项目，而集成在docker engine中，对于创建和管理集群都是非常方便的。&lt;/p&gt;
+
+&lt;p&gt;初始化集群master节点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker swarm init
+Swarm initialized: current node (0khsh2muxte9lkh584btlhgkv) is now a manager.
+
+To add a worker to this swarm, run the following command:
+    docker swarm join \
+    --token SWMTKN-1-3re5jcwzt0yjx5h5gtxgaspgib0gxrs75peyiwufbk9bzr4nmh-f496phvvqbtekc21lulndjnfy \
+    192.168.65.2:2377
+
+To add a manager to this swarm, run the following command:
+    docker swarm join \
+    --token SWMTKN-1-3re5jcwzt0yjx5h5gtxgaspgib0gxrs75peyiwufbk9bzr4nmh-5beo6o66ep6p9yhqh7m2f0h8y \
+    192.168.65.2:2377
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在同局域网中worker节点执行上述提供的加入集群命令即可。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；多个manager之间会自动raft一个作为master中心；所以为了保证集群的高可用性，可创建多几个manager节点。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;docker-service:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;docker service&lt;/h2&gt;
+
+&lt;p&gt;docker将所有部署的应用都抽象为service，在新建集群之后需要在集群中部署服务，这时候就要利用service命令了。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建service&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker service create --name gateway --publish 80:80 --replicas 2 nginx:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.在创建service之后，master会自动下发任务给集群节点，并生成指定数量的服务容器replicas；2.同时由于swarm采用的是overlay(跨主机网络)，在swarm内部会自动将该服务name注册到内部的注册中心；3.如该服务是提供给内部系统调用的话，只需要访问其service name即可自动转发到相应服务，这样就避免了难记又易变得ip地址。4.并且由于service是可能部署多个replicas的，所以swarm也能达到一定的负载均衡的作用。5.我们就只需要对提供给外部网络访问的服务暴露指定的端口&lt;code&gt;--publish 80:80&lt;/code&gt;就可以了。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;scale service数量&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker service scale gateway=2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;service滚动更新&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当我们代码有更新需要重新部署的时候，重新构建镜像push到仓库(不同tag版本命名)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker service update --image new-image-name gateway
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;service更新的时候如果image不一样，则service会自动根据新的image拉取镜像，进行滚动更新。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除service
+&lt;code&gt;
+$ docker service rm gateway
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;add-on:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;add on&lt;/h1&gt;
+
+&lt;h2 id=&#34;consul-registrator服务注册:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;consul、registrator服务注册&lt;/h2&gt;
+
+&lt;p&gt;由于swarm内部的服务注册和发现机制是内部的，不对外开放的，而且不是通过service启动的容器，swarm是发现不了的，所以为了监控整个集群的所有容器，我们可以自己搭建一套。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;consul注册中心&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;consul用户保存集群中注册的所有容器，提供一个信息存储中心，只需要搭建一个即可(也可部署集群)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d -h node \
+   --name=consul \
+   -p 8500:8500 \
+   -p 8600:53/udp \
+   progrium/consul:latest \
+   -server \
+   -bootstrap \
+   -advertise $DOCKER_IP \
+   -log-level debug
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过浏览器能够访问$DOCKER_IP:8500，你将在控制面板上看到Consul中已经注册的所有服务。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;registrator注册组件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;该组件Registrator配置好相应的环境变量并将这个容器注册到Consul上。它会监控本机的docker进程，如果容器开启会自动注册到consul，关闭则自动移除。所以需要在集群的每台主机上配置安装下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d \
+   --name=registrator \
+   --net=host \
+   -v /var/run/docker.sock:/tmp/docker.sock \
+   gliderlabs/registrator:latest \
+   consul://$DOCKER_IP:8500
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;graylog-日志收集:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;graylog 日志收集&lt;/h2&gt;
+
+&lt;p&gt;由于服务都是集群部署，上线之后直接使用&lt;code&gt;docker logs&lt;/code&gt;命令查看容器日志是不合理的，同时问题排查也相当困难。&lt;/p&gt;
+
+&lt;p&gt;所以搭建一个统一的日志收集器用以收集容器所有日志。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run -d --name graylog -p 9000:9000 -p 12201:12201/udp graylog2/allinone:latest
+// 在需要收集日志的容器或者service启动命令中加入(docker官方推荐)
+--log-driver=gelf --log-opt gelf-address=udp://192.168.0.42:12201
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样对于直接&lt;code&gt;stdout&lt;/code&gt;的日志将都会被发送到graylog中。至于graylog有什么强大功能就需要自己去发掘了。&lt;/p&gt;
+
+&lt;h1 id=&#34;参考:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;参考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dockone.io/article/272&#34;&gt;http://dockone.io/article/272&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;集群项目
+   * Docker compose、Docker machine、Docker swarm
+   * Kubernetes&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>docker入门</title>
-      <link>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
+      <link>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
       <pubDate>Fri, 17 Jun 2016 19:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
+      <guid>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
       <description>
+
+&lt;!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#基本概念&#34;&gt;基本概念&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#镜像&#34;&gt;镜像&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#容器&#34;&gt;容器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#仓库&#34;&gt;仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;安装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#常用命令&#34;&gt;常用命令&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#镜像命令&#34;&gt;镜像命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#容器命令&#34;&gt;容器命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#docker进阶&#34;&gt;Docker进阶&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#数据卷&#34;&gt;数据卷&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#主机容器数据共享&#34;&gt;主机容器数据共享&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#数据卷容器&#34;&gt;数据卷容器&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dockerfile&#34;&gt;Dockerfile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /TOC --&gt;
 
 &lt;h1 id=&#34;前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
 
@@ -26,9 +226,15 @@
 
 &lt;p&gt;&lt;strong&gt;Docker&lt;/strong&gt; 是个开源项目，它彻底释放了虚拟化的威力，极大提高了应用的运行效率，降低了云计算资源供应的成本，同时让应用的部署、测试和分发都变得前所未有的高效和轻松。Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。&lt;/p&gt;
 
-&lt;p&gt;如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群和不可变基础设施是非常有利的。&lt;/p&gt;
+&lt;p&gt;如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群、系统CI和不可变基础设施是非常有利的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Docker简单原理&lt;/strong&gt; Docker只是管理运行轻量级容器的工具，容器是基于Linux内核技术包括namespace，cgroup，叠加文件系统如AUFS，工具提供运行应用，打包应用，分发应用。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Docker影响&lt;/strong&gt; Docker成为最火热，甚至最具颠覆性的技术之一。相对于传统的云服务提供商(Iaas,Paas,Saas)，提出了一种全新的Caas(容器即服务)，国内比较领先的有DaoCloud、时速云等。Docker提出了“Build once，Run anywhere。&lt;/p&gt;
 
 &lt;h1 id=&#34;基本概念&#34;&gt;基本概念&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.otokaze.cn/wp-content/uploads/2016/09/docker_vs_vm.png&#34; alt=&#34;原理图&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Docker 包括三个基本概念&lt;/p&gt;
 
@@ -143,29 +349,71 @@ Hello world
 
 &lt;h1 id=&#34;docker进阶&#34;&gt;Docker进阶&lt;/h1&gt;
 
-&lt;ul&gt;
-&lt;li&gt;数据卷管理&lt;/li&gt;
-&lt;li&gt;Dockerfile&lt;/li&gt;
-&lt;li&gt;私有仓库&lt;/li&gt;
-&lt;li&gt;集群项目
+&lt;h2 id=&#34;数据卷&#34;&gt;数据卷&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Docker compose、Docker machine、Docker swarm&lt;/li&gt;
-&lt;li&gt;Kubernetes&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;用于Docker 内部以及容器之间管理数据共享与存储。&lt;/p&gt;
+
+&lt;h3 id=&#34;主机容器数据共享&#34;&gt;主机容器数据共享&lt;/h3&gt;
+
+&lt;p&gt;挂载一个主机目录作为数据卷,使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之后对容器相应的目录更改便直接反映在主机中了。&lt;/p&gt;
+
+&lt;h3 id=&#34;数据卷容器&#34;&gt;数据卷容器&lt;/h3&gt;
+
+&lt;p&gt;数据卷容器，其实就是一个正常的容器，专门用来提供数据卷供其它容器挂载的。&lt;/p&gt;
+
+&lt;p&gt;首先，创建一个命名的数据卷容器 dbdata：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo docker run -d -v /dbdata --name dbdata training/postgres echo Data-only container for postgres
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，在其他容器中使用 &amp;ndash;volumes-from 来挂载 dbdata 容器中的数据卷。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo docker run -d --volumes-from dbdata --name db1 training/postgres
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
+
+&lt;p&gt;docker 采用分层存储驱动，使用 Dockerfile 可以允许用户创建自定义的镜像。&lt;/p&gt;
+
+&lt;p&gt;Dockerfile 分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Base image to use, this must be set as the first line
+FROM ubuntu
+
+# Maintainer: docker_user &amp;lt;docker_user at email.com&amp;gt; (@docker_user)
+MAINTAINER docker_user docker_user@email.com
+
+# Commands to update the image
+RUN echo &amp;quot;deb http://archive.ubuntu.com/ubuntu/ raring main universe&amp;quot; &amp;gt;&amp;gt; /etc/apt/sources.list
+RUN apt-get update &amp;amp;&amp;amp; apt-get install -y nginx
+RUN echo &amp;quot;\ndaemon off;&amp;quot; &amp;gt;&amp;gt; /etc/nginx/nginx.conf
+
+# Commands when creating a new container
+CMD /usr/sbin/nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，一开始必须指明所基于的镜像名称，接下来推荐说明维护者信息。&lt;/p&gt;
+
+&lt;p&gt;后面则是镜像操作指令，例如 RUN 指令，RUN 指令将对镜像执行跟随的命令。每运行一条 RUN 指令，镜像添加新的一层，并提交。&lt;/p&gt;
+
+&lt;p&gt;最后是 CMD 指令，来指定运行容器时的操作命令。&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.coding.me/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:9623c25974239aae48309dcafd31d278&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -188,9 +436,9 @@ Hello world
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;normal-commander&#34;&gt;normal commander&lt;/h2&gt;
+&lt;h2 id=&#34;normal-commander:9623c25974239aae48309dcafd31d278&#34;&gt;normal commander&lt;/h2&gt;
 
-&lt;h3 id=&#34;docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
+&lt;h3 id=&#34;docker-使用代理连接-docker-hub:9623c25974239aae48309dcafd31d278&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
 
 &lt;p&gt;如果你的宿主操作系统是 linux 那方法就很简单了，直接通过命令来启动服务即可。&lt;/p&gt;
 
@@ -202,7 +450,7 @@ Hello world
 &lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker pull node
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/h3&gt;
+&lt;h3 id=&#34;存出或者载入镜像:9623c25974239aae48309dcafd31d278&#34;&gt;存出或者载入镜像&lt;/h3&gt;
 
 &lt;p&gt;存出镜像&lt;/p&gt;
 
@@ -216,26 +464,26 @@ Hello world
 sudo docker --input ubuntu_14.04.tar
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/h2&gt;
+&lt;h2 id=&#34;批量操作docker-commander:9623c25974239aae48309dcafd31d278&#34;&gt;批量操作docker commander.&lt;/h2&gt;
 
 &lt;p&gt;NOTE: &lt;code&gt;sudo&lt;/code&gt;maybe.&lt;/p&gt;
 
-&lt;h4 id=&#34;stop-all-containers&#34;&gt;Stop all containers.&lt;/h4&gt;
+&lt;h4 id=&#34;stop-all-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Stop all containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker stop $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-stopped-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-untagged-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all untagged images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep &amp;quot;^&amp;lt;none&amp;gt;&amp;quot; | awk &amp;quot;{print $3}&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-images&#34;&gt;Remove all images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep \ | awk &#39;{print $3}&#39;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -244,10 +492,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>etcd安装</title>
-      <link>http://wixb50.coding.me/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
+      <link>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -338,10 +586,10 @@ hello world
     
     <item>
       <title>Vagrant建立快照</title>
-      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
       <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -388,10 +636,10 @@ For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt;
     
     <item>
       <title>Vagrant常用命令</title>
-      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant常用命令:7846872d314dab4b0ed8e0de546c9a09&#34;&gt;Vagrant常用命令&lt;/h2&gt;
@@ -667,10 +915,10 @@ vagrant@db:~$
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;方法一-安装命令:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法一：安装命令&lt;/h3&gt;

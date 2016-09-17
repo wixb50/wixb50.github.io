@@ -2,23 +2,223 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/docker/</link>
+    <link>http://wixb50.github.io/categories/docker/</link>
     <description>Recent content in Docker on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wixb50@gmail.com (Wixb)</managingEditor>
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
-    <lastBuildDate>Fri, 17 Jun 2016 19:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Sep 2016 10:38:38 +0800</lastBuildDate>
+    <atom:link href="http://wixb50.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>docker1.12 集群实践方案</title>
+      <link>http://wixb50.github.io/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Sat, 17 Sep 2016 10:38:38 +0800</pubDate>
+      <author>wixb50@gmail.com (Wixb)</author>
+      <guid>http://wixb50.github.io/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</guid>
+      <description>
+
+&lt;!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#docker私有仓库&#34;&gt;docker私有仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#docker-swarm&#34;&gt;Docker swarm&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#docker-service&#34;&gt;docker service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#add-on&#34;&gt;add on&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#consulregistrator服务注册&#34;&gt;consul、registrator服务注册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#graylog-日志收集&#34;&gt;graylog 日志收集&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#参考&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /TOC --&gt;
+
+&lt;h1 id=&#34;前言:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;Docker 1.12将原先独立的项目&lt;code&gt;docker swarm&lt;/code&gt;已经集成进自带的&lt;code&gt;docker engine&lt;/code&gt;，并为集群方案提供了整一套的跨主机集群、灵活调度、高可用性的方案，同时引入service的概念，增加了服务创建的简易性、灵活性，还拥有服务注册、服务发现、服务自动负载均衡等特性。&lt;/p&gt;
+
+&lt;p&gt;在本docker集群方案中，先介绍私有仓库的概念，作为集群服务部署的基础；然后利用docker提供的官方的集群方案swarm搭建集群；最后补充一些其他方案满足整集群的监控，日志收集等方面。&lt;/p&gt;
+
+&lt;h1 id=&#34;docker私有仓库:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;docker私有仓库&lt;/h1&gt;
+
+&lt;p&gt;仓库（Repository）是集中存放镜像文件的场所。仓库分为公开仓库（Public）和私有仓库（Private）两种形式。&lt;/p&gt;
+
+&lt;p&gt;最大的公开仓库是 Docker Hub，存放了数量庞大的镜像供用户下载。&lt;/p&gt;
+
+&lt;p&gt;当需要加快service的更新速度的时候，就需要在局域网内拥有自建的私有仓库，当用户创建了自己的镜像之后就可以使用 push 命令将它上传到私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。&lt;/p&gt;
+
+&lt;h1 id=&#34;docker-swarm:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;Docker swarm&lt;/h1&gt;
+
+&lt;p&gt;在docker1.12版本中不再试独立的项目，而集成在docker engine中，对于创建和管理集群都是非常方便的。&lt;/p&gt;
+
+&lt;p&gt;初始化集群master节点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker swarm init
+Swarm initialized: current node (0khsh2muxte9lkh584btlhgkv) is now a manager.
+
+To add a worker to this swarm, run the following command:
+    docker swarm join \
+    --token SWMTKN-1-3re5jcwzt0yjx5h5gtxgaspgib0gxrs75peyiwufbk9bzr4nmh-f496phvvqbtekc21lulndjnfy \
+    192.168.65.2:2377
+
+To add a manager to this swarm, run the following command:
+    docker swarm join \
+    --token SWMTKN-1-3re5jcwzt0yjx5h5gtxgaspgib0gxrs75peyiwufbk9bzr4nmh-5beo6o66ep6p9yhqh7m2f0h8y \
+    192.168.65.2:2377
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在同局域网中worker节点执行上述提供的加入集群命令即可。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；多个manager之间会自动raft一个作为master中心；所以为了保证集群的高可用性，可创建多几个manager节点。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;docker-service:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;docker service&lt;/h2&gt;
+
+&lt;p&gt;docker将所有部署的应用都抽象为service，在新建集群之后需要在集群中部署服务，这时候就要利用service命令了。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建service&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker service create --name gateway --publish 80:80 --replicas 2 nginx:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.在创建service之后，master会自动下发任务给集群节点，并生成指定数量的服务容器replicas；2.同时由于swarm采用的是overlay(跨主机网络)，在swarm内部会自动将该服务name注册到内部的注册中心；3.如该服务是提供给内部系统调用的话，只需要访问其service name即可自动转发到相应服务，这样就避免了难记又易变得ip地址。4.并且由于service是可能部署多个replicas的，所以swarm也能达到一定的负载均衡的作用。5.我们就只需要对提供给外部网络访问的服务暴露指定的端口&lt;code&gt;--publish 80:80&lt;/code&gt;就可以了。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;scale service数量&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker service scale gateway=2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;service滚动更新&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当我们代码有更新需要重新部署的时候，重新构建镜像push到仓库(不同tag版本命名)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker service update --image new-image-name gateway
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;service更新的时候如果image不一样，则service会自动根据新的image拉取镜像，进行滚动更新。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除service
+&lt;code&gt;
+$ docker service rm gateway
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;add-on:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;add on&lt;/h1&gt;
+
+&lt;h2 id=&#34;consul-registrator服务注册:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;consul、registrator服务注册&lt;/h2&gt;
+
+&lt;p&gt;由于swarm内部的服务注册和发现机制是内部的，不对外开放的，而且不是通过service启动的容器，swarm是发现不了的，所以为了监控整个集群的所有容器，我们可以自己搭建一套。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;consul注册中心&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;consul用户保存集群中注册的所有容器，提供一个信息存储中心，只需要搭建一个即可(也可部署集群)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d -h node \
+   --name=consul \
+   -p 8500:8500 \
+   -p 8600:53/udp \
+   progrium/consul:latest \
+   -server \
+   -bootstrap \
+   -advertise $DOCKER_IP \
+   -log-level debug
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过浏览器能够访问$DOCKER_IP:8500，你将在控制面板上看到Consul中已经注册的所有服务。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;registrator注册组件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;该组件Registrator配置好相应的环境变量并将这个容器注册到Consul上。它会监控本机的docker进程，如果容器开启会自动注册到consul，关闭则自动移除。所以需要在集群的每台主机上配置安装下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d \
+   --name=registrator \
+   --net=host \
+   -v /var/run/docker.sock:/tmp/docker.sock \
+   gliderlabs/registrator:latest \
+   consul://$DOCKER_IP:8500
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;graylog-日志收集:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;graylog 日志收集&lt;/h2&gt;
+
+&lt;p&gt;由于服务都是集群部署，上线之后直接使用&lt;code&gt;docker logs&lt;/code&gt;命令查看容器日志是不合理的，同时问题排查也相当困难。&lt;/p&gt;
+
+&lt;p&gt;所以搭建一个统一的日志收集器用以收集容器所有日志。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run -d --name graylog -p 9000:9000 -p 12201:12201/udp graylog2/allinone:latest
+// 在需要收集日志的容器或者service启动命令中加入(docker官方推荐)
+--log-driver=gelf --log-opt gelf-address=udp://192.168.0.42:12201
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样对于直接&lt;code&gt;stdout&lt;/code&gt;的日志将都会被发送到graylog中。至于graylog有什么强大功能就需要自己去发掘了。&lt;/p&gt;
+
+&lt;h1 id=&#34;参考:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;参考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dockone.io/article/272&#34;&gt;http://dockone.io/article/272&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;集群项目
+   * Docker compose、Docker machine、Docker swarm
+   * Kubernetes&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>docker入门</title>
-      <link>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
+      <link>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
       <pubDate>Fri, 17 Jun 2016 19:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
+      <guid>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
       <description>
+
+&lt;!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#基本概念&#34;&gt;基本概念&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#镜像&#34;&gt;镜像&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#容器&#34;&gt;容器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#仓库&#34;&gt;仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;安装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#常用命令&#34;&gt;常用命令&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#镜像命令&#34;&gt;镜像命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#容器命令&#34;&gt;容器命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#docker进阶&#34;&gt;Docker进阶&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#数据卷&#34;&gt;数据卷&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#主机容器数据共享&#34;&gt;主机容器数据共享&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#数据卷容器&#34;&gt;数据卷容器&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dockerfile&#34;&gt;Dockerfile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /TOC --&gt;
 
 &lt;h1 id=&#34;前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
 
@@ -26,9 +226,15 @@
 
 &lt;p&gt;&lt;strong&gt;Docker&lt;/strong&gt; 是个开源项目，它彻底释放了虚拟化的威力，极大提高了应用的运行效率，降低了云计算资源供应的成本，同时让应用的部署、测试和分发都变得前所未有的高效和轻松。Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。&lt;/p&gt;
 
-&lt;p&gt;如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群和不可变基础设施是非常有利的。&lt;/p&gt;
+&lt;p&gt;如果把虚拟化比做OS，则Docker是OS上的再一层抽象，它运行的容器可以看作一个进程级别的虚拟机。启动、运行、安装都是只通过一个命令就能解决。对于搭建集群、系统CI和不可变基础设施是非常有利的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Docker简单原理&lt;/strong&gt; Docker只是管理运行轻量级容器的工具，容器是基于Linux内核技术包括namespace，cgroup，叠加文件系统如AUFS，工具提供运行应用，打包应用，分发应用。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Docker影响&lt;/strong&gt; Docker成为最火热，甚至最具颠覆性的技术之一。相对于传统的云服务提供商(Iaas,Paas,Saas)，提出了一种全新的Caas(容器即服务)，国内比较领先的有DaoCloud、时速云等。Docker提出了“Build once，Run anywhere。&lt;/p&gt;
 
 &lt;h1 id=&#34;基本概念&#34;&gt;基本概念&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.otokaze.cn/wp-content/uploads/2016/09/docker_vs_vm.png&#34; alt=&#34;原理图&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Docker 包括三个基本概念&lt;/p&gt;
 
@@ -143,26 +349,68 @@ Hello world
 
 &lt;h1 id=&#34;docker进阶&#34;&gt;Docker进阶&lt;/h1&gt;
 
-&lt;ul&gt;
-&lt;li&gt;数据卷管理&lt;/li&gt;
-&lt;li&gt;Dockerfile&lt;/li&gt;
-&lt;li&gt;私有仓库&lt;/li&gt;
-&lt;li&gt;集群项目
+&lt;h2 id=&#34;数据卷&#34;&gt;数据卷&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Docker compose、Docker machine、Docker swarm&lt;/li&gt;
-&lt;li&gt;Kubernetes&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;用于Docker 内部以及容器之间管理数据共享与存储。&lt;/p&gt;
+
+&lt;h3 id=&#34;主机容器数据共享&#34;&gt;主机容器数据共享&lt;/h3&gt;
+
+&lt;p&gt;挂载一个主机目录作为数据卷,使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之后对容器相应的目录更改便直接反映在主机中了。&lt;/p&gt;
+
+&lt;h3 id=&#34;数据卷容器&#34;&gt;数据卷容器&lt;/h3&gt;
+
+&lt;p&gt;数据卷容器，其实就是一个正常的容器，专门用来提供数据卷供其它容器挂载的。&lt;/p&gt;
+
+&lt;p&gt;首先，创建一个命名的数据卷容器 dbdata：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo docker run -d -v /dbdata --name dbdata training/postgres echo Data-only container for postgres
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，在其他容器中使用 &amp;ndash;volumes-from 来挂载 dbdata 容器中的数据卷。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo docker run -d --volumes-from dbdata --name db1 training/postgres
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
+
+&lt;p&gt;docker 采用分层存储驱动，使用 Dockerfile 可以允许用户创建自定义的镜像。&lt;/p&gt;
+
+&lt;p&gt;Dockerfile 分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Base image to use, this must be set as the first line
+FROM ubuntu
+
+# Maintainer: docker_user &amp;lt;docker_user at email.com&amp;gt; (@docker_user)
+MAINTAINER docker_user docker_user@email.com
+
+# Commands to update the image
+RUN echo &amp;quot;deb http://archive.ubuntu.com/ubuntu/ raring main universe&amp;quot; &amp;gt;&amp;gt; /etc/apt/sources.list
+RUN apt-get update &amp;amp;&amp;amp; apt-get install -y nginx
+RUN echo &amp;quot;\ndaemon off;&amp;quot; &amp;gt;&amp;gt; /etc/nginx/nginx.conf
+
+# Commands when creating a new container
+CMD /usr/sbin/nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，一开始必须指明所基于的镜像名称，接下来推荐说明维护者信息。&lt;/p&gt;
+
+&lt;p&gt;后面则是镜像操作指令，例如 RUN 指令，RUN 指令将对镜像执行跟随的命令。每运行一条 RUN 指令，镜像添加新的一层，并提交。&lt;/p&gt;
+
+&lt;p&gt;最后是 CMD 指令，来指定运行容器时的操作命令。&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Docker集群系列之－Kubernetes对象文件定义</title>
-      <link>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
+      <link>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</link>
       <pubDate>Sun, 13 Mar 2016 15:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
+      <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
       <description>
 
 &lt;h2 id=&#34;说明:face623dedab27120a5b251ee433661e&#34;&gt;说明&lt;/h2&gt;
@@ -495,13 +743,13 @@ spec:       # required
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</title>
-      <link>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Wed, 30 Dec 2015 19:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
-&lt;h1 id=&#34;目录:b041d08cd2cacb464d298a81037e9efc&#34;&gt;目录&lt;/h1&gt;
+&lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -520,11 +768,11 @@ spec:       # required
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h1 id=&#34;introduction:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Introduction&lt;/h1&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Create a Kubernetes Cluster on VMware ESXi with CoreOS.&lt;/p&gt;
 
-&lt;h1 id=&#34;prerequisites:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Prerequisites&lt;/h1&gt;
+&lt;h1 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;VMware ESXi
@@ -538,7 +786,7 @@ spec:       # required
 &lt;li&gt;Attention: This requires at least CoreOS version 695.0.0, which includes etcd2.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;coreos-on-vmware:b041d08cd2cacb464d298a81037e9efc&#34;&gt;CoreOS on VMware&lt;/h1&gt;
+&lt;h1 id=&#34;coreos-on-vmware&#34;&gt;CoreOS on VMware&lt;/h1&gt;
 
 &lt;p&gt;Based on official documentation : &lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vmware.html&#34;&gt;https://coreos.com/os/docs/latest/booting-on-vmware.html&lt;/a&gt;&lt;/p&gt;
 
@@ -562,7 +810,7 @@ confirm the settings then click &amp;quot;Finish&amp;quot;
 
 &lt;p&gt;Now you can create -at least- 2 servers based on this template, do this task but don&amp;rsquo;t start it yet.&lt;/p&gt;
 
-&lt;h1 id=&#34;cloud-config-for-master-node:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Cloud-Config for master node&lt;/h1&gt;
+&lt;h1 id=&#34;cloud-config-for-master-node&#34;&gt;Cloud-Config for master node&lt;/h1&gt;
 
 &lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
 
@@ -623,7 +871,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-master.iso master/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;cloud-config-for-minion-node:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Cloud-Config for minion node&lt;/h1&gt;
+&lt;h1 id=&#34;cloud-config-for-minion-node&#34;&gt;Cloud-Config for minion node&lt;/h1&gt;
 
 &lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
 
@@ -662,7 +910,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-minion.iso minion/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;start-the-cluster:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Start the cluster&lt;/h1&gt;
+&lt;h1 id=&#34;start-the-cluster&#34;&gt;Start the cluster&lt;/h1&gt;
 
 &lt;p&gt;On firt VM, mount the config-master.iso with VM properties (CD/DVD reader and &amp;laquo;Datastore ISO file&amp;raquo;), browse to &amp;laquo;&lt;path to datastore&gt;/cloud-config/&amp;laquo;. Don&amp;rsquo;t foget to set &amp;laquo;Connect on Start up&amp;raquo;.&lt;/p&gt;
 
@@ -687,7 +935,7 @@ sudo systemctl enable &amp;lt;service-name&amp;gt;  #Ensure service can boot fro
 sudo systemctl status &amp;lt;service-name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;check:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Check&lt;/h1&gt;
+&lt;h1 id=&#34;check&#34;&gt;Check&lt;/h1&gt;
 
 &lt;p&gt;Check your cluster heatlh : &lt;a href=&#34;http://10.0.0.1:8080/static/app/#/dashboard/&#34;&gt;http://10.0.0.1:8080/static/app/#/dashboard/&lt;/a&gt;&lt;/p&gt;
 
@@ -699,7 +947,7 @@ fleetctl list-machines
 journalctl -f
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;enjoy:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Enjoy&lt;/h1&gt;
+&lt;h1 id=&#34;enjoy&#34;&gt;Enjoy&lt;/h1&gt;
 
 &lt;p&gt;You may download the kubernetes client tool:&lt;code&gt;kubectl&lt;/code&gt;.Use it manage your cluster.&lt;/p&gt;
 
@@ -722,7 +970,7 @@ kubectl get rc
 &lt;pre&gt;&lt;code&gt;kubectl get svc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;reference:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Reference&lt;/h1&gt;&lt;/li&gt;
+&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/xavierbaude/VMware-coreos-multi-nodes-Kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
@@ -736,7 +984,7 @@ kubectl get rc
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dockone.io/article/604&#34;&gt;CoreOS集成Kubernetes核心组件Kubelet&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;appendix:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
+&lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;The &lt;a href=&#34;https://gist.github.com/anonymous/553e448c0f8ce9a23120&#34;&gt;source&lt;/a&gt; of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
@@ -747,13 +995,13 @@ kubectl get rc
     
     <item>
       <title>Docker集群系列之－ESXi5.5上搭建CoreOS集群-01</title>
-      <link>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
+      <link>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</link>
       <pubDate>Tue, 15 Dec 2015 18:10:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
+      <guid>http://wixb50.github.io/2015/12/15/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BAcoreos%E9%9B%86%E7%BE%A4-01/</guid>
       <description>
 
-&lt;h2 id=&#34;目录:8a4718f7d5df59499af8fd92000810ea&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -780,19 +1028,19 @@ kubectl get rc
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;前言-null-link:8a4718f7d5df59499af8fd92000810ea&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;前言-null-link&#34;&gt;&lt;a href=&#34;chrome://not-a-link&#34;&gt;前言&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;因为大多数环境都是适配于大公司的云平台，但是也是有折中办法的。CoreOS是一个基于Linux 内核的轻量级操作系统，为了计算机集群的基础设施建设而生，专注于自动化，轻松部署，安全，可靠，规模化。作为一个操作系统，CoreOS 提供了在应用容器内部署应用所需要的基础功能环境以及一系列用于服务发现和配置共享的内建工具。而ESXi专为运行虚拟机、最大限度降低配置要求和简化部署而设计。所以我觉得使用ESXi当作IaaS架构，运行CoreOS集群，这样是可行的。话不多少，开始把。&lt;/p&gt;
 
-&lt;h2 id=&#34;前置条件:8a4718f7d5df59499af8fd92000810ea&#34;&gt;前置条件&lt;/h2&gt;
+&lt;h2 id=&#34;前置条件&#34;&gt;前置条件&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;安装ESXi机器一台：怎么装自己应该知道把，如果因为驱动原因还需要自己定制安装ISO，见Google。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;安装coreos虚拟机:8a4718f7d5df59499af8fd92000810ea&#34;&gt;安装CoreOS虚拟机&lt;/h2&gt;
+&lt;h2 id=&#34;安装coreos虚拟机&#34;&gt;安装CoreOS虚拟机&lt;/h2&gt;
 
-&lt;h3 id=&#34;choosing-a-channel:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Choosing a Channel&lt;/h3&gt;
+&lt;h3 id=&#34;choosing-a-channel&#34;&gt;Choosing a Channel&lt;/h3&gt;
 
 &lt;p&gt;CoreOS is released into alpha, beta, and stable channels. Releases to each channel serve as a release-candidate for the next channel. For example, a bug-free alpha release is promoted bit-for-bit to the beta channel.&lt;/p&gt;
 
@@ -807,7 +1055,7 @@ kubectl get rc
 &lt;pre&gt;&lt;code&gt;curl -LO http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vmware_ova.ova
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;deploying-with-vmware-vsphere-client-5-5:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/h3&gt;
+&lt;h3 id=&#34;deploying-with-vmware-vsphere-client-5-5&#34;&gt;Deploying with VMware vSphere Client 5.5&lt;/h3&gt;
 
 &lt;p&gt;Use the vSphere Client to deploy the VM as follows:&lt;/p&gt;
 
@@ -826,7 +1074,7 @@ kubectl get rc
 
 &lt;p&gt;Before powering it on, you will have to create a cloud-config.&lt;/p&gt;
 
-&lt;h2 id=&#34;cloud-config:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Cloud-Config&lt;/h2&gt;
+&lt;h2 id=&#34;cloud-config&#34;&gt;Cloud-Config&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;是CoreOS内比较重要的概念，可以理解为一种配置CoreOS的方式：&lt;/p&gt;
 
@@ -887,7 +1135,7 @@ manage_etc_hosts: localhost
 
 &lt;p&gt;Cloud-Config配置信息验证地址&lt;a href=&#34;https://coreos.com/validate/&#34;&gt;https://coreos.com/validate/&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;需要说明的-discovery:8a4718f7d5df59499af8fd92000810ea&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;需要说明的-discovery&#34;&gt;需要说明的&lt;code&gt;discovery&lt;/code&gt;&lt;/h3&gt;
 
 &lt;p&gt;　　因为要搭建集群，需要用到服务发现，配置集群的服务发现有两种方式：一种是Static方式，第二种就是Discovery方式了。其中个人不推荐第一种方式，因为每加入一台主机就需要手动配置etcd节点，非常不方便。&lt;br /&gt;
 　　第二种Discovery方式是使用远程的服务器辅助服务发现，只需要配置好Discovery的URl就可以自动把新加入的服务器加入集群。其中iscovery服务器可以使用官网提供的，也可以自己搭建(我还没搭建过，这里不介绍了)。&lt;/p&gt;
@@ -964,7 +1212,7 @@ rm -r /tmp/new-drive
 
 &lt;p&gt;NOTE:如果发现ip不对，可查看配置文件，Maybe重启一下也可以解决哟。&lt;/p&gt;
 
-&lt;h2 id=&#34;logging-in:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Logging in&lt;/h2&gt;
+&lt;h2 id=&#34;logging-in&#34;&gt;Logging in&lt;/h2&gt;
 
 &lt;p&gt;可以查看ESXi控制台CoreOS的IP，但是静态的自己已经知道了。&lt;/p&gt;
 
@@ -992,7 +1240,7 @@ rm -r /tmp/new-drive
 &lt;pre&gt;&lt;code&gt;sudo /usr/bin/coreos-cloudinit --from-file /media/configdrive/openstack/latest/user_data
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;adding-new-machines:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Adding New Machines&lt;/h2&gt;
+&lt;h2 id=&#34;adding-new-machines&#34;&gt;Adding New Machines&lt;/h2&gt;
 
 &lt;p&gt;按照前面所说的，如果需要把其他CoreOS加入集群，只需要把Discovery URL改成原来集群地址即可自动加入了，是不是很方便呀。&lt;/p&gt;
 
@@ -1006,11 +1254,11 @@ rm -r /tmp/new-drive
 &lt;pre&gt;&lt;code&gt;Environment=&amp;quot;ETCD_DISCOVERY=https://discovery.etcd.io/575302f03f4fb2db82e81ea2abca55e9&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusion:8a4718f7d5df59499af8fd92000810ea&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Your basic CoreOS cluster is set up, and now you can move on to testing with it!&lt;/p&gt;
 
-&lt;h2 id=&#34;一些有用的coreos命令:8a4718f7d5df59499af8fd92000810ea&#34;&gt;一些有用的CoreOS命令&lt;/h2&gt;
+&lt;h2 id=&#34;一些有用的coreos命令&#34;&gt;一些有用的CoreOS命令&lt;/h2&gt;
 
 &lt;p&gt;查看当前集群所有machines&lt;/p&gt;
 
@@ -1029,7 +1277,7 @@ systemctl -l status docker
 &lt;pre&gt;&lt;code&gt;journalctl -u etcd2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;参考资料:8a4718f7d5df59499af8fd92000810ea&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS官网&lt;/a&gt;&lt;/li&gt;
@@ -1043,13 +1291,13 @@ systemctl -l status docker
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.coding.me/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:9623c25974239aae48309dcafd31d278&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -1072,9 +1320,9 @@ systemctl -l status docker
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;normal-commander&#34;&gt;normal commander&lt;/h2&gt;
+&lt;h2 id=&#34;normal-commander:9623c25974239aae48309dcafd31d278&#34;&gt;normal commander&lt;/h2&gt;
 
-&lt;h3 id=&#34;docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
+&lt;h3 id=&#34;docker-使用代理连接-docker-hub:9623c25974239aae48309dcafd31d278&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
 
 &lt;p&gt;如果你的宿主操作系统是 linux 那方法就很简单了，直接通过命令来启动服务即可。&lt;/p&gt;
 
@@ -1086,7 +1334,7 @@ systemctl -l status docker
 &lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker pull node
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/h3&gt;
+&lt;h3 id=&#34;存出或者载入镜像:9623c25974239aae48309dcafd31d278&#34;&gt;存出或者载入镜像&lt;/h3&gt;
 
 &lt;p&gt;存出镜像&lt;/p&gt;
 
@@ -1100,26 +1348,26 @@ systemctl -l status docker
 sudo docker --input ubuntu_14.04.tar
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/h2&gt;
+&lt;h2 id=&#34;批量操作docker-commander:9623c25974239aae48309dcafd31d278&#34;&gt;批量操作docker commander.&lt;/h2&gt;
 
 &lt;p&gt;NOTE: &lt;code&gt;sudo&lt;/code&gt;maybe.&lt;/p&gt;
 
-&lt;h4 id=&#34;stop-all-containers&#34;&gt;Stop all containers.&lt;/h4&gt;
+&lt;h4 id=&#34;stop-all-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Stop all containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker stop $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-stopped-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-untagged-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all untagged images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep &amp;quot;^&amp;lt;none&amp;gt;&amp;quot; | awk &amp;quot;{print $3}&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-images&#34;&gt;Remove all images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep \ | awk &#39;{print $3}&#39;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -1128,10 +1376,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
 &lt;h3 id=&#34;方法一-安装命令:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法一：安装命令&lt;/h3&gt;

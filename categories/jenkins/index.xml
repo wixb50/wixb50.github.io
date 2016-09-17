@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jenkins on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/jenkins/</link>
+    <link>http://wixb50.github.io/categories/jenkins/</link>
     <description>Recent content in Jenkins on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Thu, 05 Nov 2015 13:26:17 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Jenkins教程-简单ssh构建</title>
-      <link>http://wixb50.coding.me/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
+      <link>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</link>
       <pubDate>Thu, 05 Nov 2015 13:26:17 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
+      <guid>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
       <description>
 
 &lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>docker1.12 集群实践方案 &middot; Wixb</title>
+
+  
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="简述docker1.12最新集群整一套实践方案">
+  <meta name="keywords" content="docker">
+  <link rel="author" href="http://plus.google.com/wixb50">
+</head>
+<body class="theme-base-0c">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="/avatar.jpg"
+             alt="gravatar" title="Wixb">
+      
+      <h1>Wixb</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
+      
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/wixb50"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+    <p><script id='flattr'>
+      (function(id){
+        var s = document.getElementById(id);
+        var f = document.createElement('iframe');
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
+        f.title = 'Flattr';
+        f.height = 20;
+        f.width = 110;
+        f.style.borderWidth = 0;
+        s.parentNode.insertBefore(f, s);
+      })('flattr');
+    </script></p>
+    
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=0&height=32"></iframe>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>docker1.12 集群实践方案</h1>
+    <span class="post-date">Sep 17, 2016 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://wixb50.github.io/categories/docker">docker</a><a class="label" href="http://wixb50.github.io/categories/cloud">cloud</a>
+    </span>
+    
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+<ul>
+<li><a href="#前言"><a href="#">前言</a></a></li>
+<li><a href="#docker私有仓库">docker私有仓库</a></li>
+<li><a href="#docker-swarm">Docker swarm</a>
+
+<ul>
+<li><a href="#docker-service">docker service</a></li>
+</ul></li>
+<li><a href="#add-on">add on</a>
+
+<ul>
+<li><a href="#consulregistrator服务注册">consul、registrator服务注册</a></li>
+<li><a href="#graylog-日志收集">graylog 日志收集</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul>
+
+<!-- /TOC -->
+
+<h1 id="前言:a2fc1d5a9ac95ddb7941c4817733157b"><a href="#">前言</a></h1>
+
+<p>Docker 1.12将原先独立的项目<code>docker swarm</code>已经集成进自带的<code>docker engine</code>，并为集群方案提供了整一套的跨主机集群、灵活调度、高可用性的方案，同时引入service的概念，增加了服务创建的简易性、灵活性，还拥有服务注册、服务发现、服务自动负载均衡等特性。</p>
+
+<p>在本docker集群方案中，先介绍私有仓库的概念，作为集群服务部署的基础；然后利用docker提供的官方的集群方案swarm搭建集群；最后补充一些其他方案满足整集群的监控，日志收集等方面。</p>
+
+<h1 id="docker私有仓库:a2fc1d5a9ac95ddb7941c4817733157b">docker私有仓库</h1>
+
+<p>仓库（Repository）是集中存放镜像文件的场所。仓库分为公开仓库（Public）和私有仓库（Private）两种形式。</p>
+
+<p>最大的公开仓库是 Docker Hub，存放了数量庞大的镜像供用户下载。</p>
+
+<p>当需要加快service的更新速度的时候，就需要在局域网内拥有自建的私有仓库，当用户创建了自己的镜像之后就可以使用 push 命令将它上传到私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。</p>
+
+<h1 id="docker-swarm:a2fc1d5a9ac95ddb7941c4817733157b">Docker swarm</h1>
+
+<p>在docker1.12版本中不再试独立的项目，而集成在docker engine中，对于创建和管理集群都是非常方便的。</p>
+
+<p>初始化集群master节点</p>
+
+<pre><code>$ docker swarm init
+Swarm initialized: current node (0khsh2muxte9lkh584btlhgkv) is now a manager.
+
+To add a worker to this swarm, run the following command:
+    docker swarm join \
+    --token SWMTKN-1-3re5jcwzt0yjx5h5gtxgaspgib0gxrs75peyiwufbk9bzr4nmh-f496phvvqbtekc21lulndjnfy \
+    192.168.65.2:2377
+
+To add a manager to this swarm, run the following command:
+    docker swarm join \
+    --token SWMTKN-1-3re5jcwzt0yjx5h5gtxgaspgib0gxrs75peyiwufbk9bzr4nmh-5beo6o66ep6p9yhqh7m2f0h8y \
+    192.168.65.2:2377
+</code></pre>
+
+<p>然后在同局域网中worker节点执行上述提供的加入集群命令即可。</p>
+
+<blockquote>
+<p>docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；多个manager之间会自动raft一个作为master中心；所以为了保证集群的高可用性，可创建多几个manager节点。</p>
+</blockquote>
+
+<h2 id="docker-service:a2fc1d5a9ac95ddb7941c4817733157b">docker service</h2>
+
+<p>docker将所有部署的应用都抽象为service，在新建集群之后需要在集群中部署服务，这时候就要利用service命令了。</p>
+
+<ul>
+<li><p>创建service</p>
+
+<pre><code>$ docker service create --name gateway --publish 80:80 --replicas 2 nginx:latest
+</code></pre>
+
+<p>1.在创建service之后，master会自动下发任务给集群节点，并生成指定数量的服务容器replicas；2.同时由于swarm采用的是overlay(跨主机网络)，在swarm内部会自动将该服务name注册到内部的注册中心；3.如该服务是提供给内部系统调用的话，只需要访问其service name即可自动转发到相应服务，这样就避免了难记又易变得ip地址。4.并且由于service是可能部署多个replicas的，所以swarm也能达到一定的负载均衡的作用。5.我们就只需要对提供给外部网络访问的服务暴露指定的端口<code>--publish 80:80</code>就可以了。</p></li>
+
+<li><p>scale service数量</p>
+
+<pre><code>docker service scale gateway=2
+</code></pre></li>
+
+<li><p>service滚动更新</p></li>
+</ul>
+
+<p>当我们代码有更新需要重新部署的时候，重新构建镜像push到仓库(不同tag版本命名)</p>
+
+<pre><code>$ docker service update --image new-image-name gateway
+</code></pre>
+
+<p>service更新的时候如果image不一样，则service会自动根据新的image拉取镜像，进行滚动更新。</p>
+
+<ul>
+<li>删除service
+<code>
+$ docker service rm gateway
+</code></li>
+</ul>
+
+<h1 id="add-on:a2fc1d5a9ac95ddb7941c4817733157b">add on</h1>
+
+<h2 id="consul-registrator服务注册:a2fc1d5a9ac95ddb7941c4817733157b">consul、registrator服务注册</h2>
+
+<p>由于swarm内部的服务注册和发现机制是内部的，不对外开放的，而且不是通过service启动的容器，swarm是发现不了的，所以为了监控整个集群的所有容器，我们可以自己搭建一套。</p>
+
+<ul>
+<li>consul注册中心</li>
+</ul>
+
+<p>consul用户保存集群中注册的所有容器，提供一个信息存储中心，只需要搭建一个即可(也可部署集群)</p>
+
+<pre><code>docker run -d -h node \
+   --name=consul \
+   -p 8500:8500 \
+   -p 8600:53/udp \
+   progrium/consul:latest \
+   -server \
+   -bootstrap \
+   -advertise $DOCKER_IP \
+   -log-level debug
+</code></pre>
+
+<p>通过浏览器能够访问$DOCKER_IP:8500，你将在控制面板上看到Consul中已经注册的所有服务。</p>
+
+<ul>
+<li>registrator注册组件</li>
+</ul>
+
+<p>该组件Registrator配置好相应的环境变量并将这个容器注册到Consul上。它会监控本机的docker进程，如果容器开启会自动注册到consul，关闭则自动移除。所以需要在集群的每台主机上配置安装下。</p>
+
+<pre><code>docker run -d \
+   --name=registrator \
+   --net=host \
+   -v /var/run/docker.sock:/tmp/docker.sock \
+   gliderlabs/registrator:latest \
+   consul://$DOCKER_IP:8500
+</code></pre>
+
+<h2 id="graylog-日志收集:a2fc1d5a9ac95ddb7941c4817733157b">graylog 日志收集</h2>
+
+<p>由于服务都是集群部署，上线之后直接使用<code>docker logs</code>命令查看容器日志是不合理的，同时问题排查也相当困难。</p>
+
+<p>所以搭建一个统一的日志收集器用以收集容器所有日志。</p>
+
+<pre><code>$ docker run -d --name graylog -p 9000:9000 -p 12201:12201/udp graylog2/allinone:latest
+// 在需要收集日志的容器或者service启动命令中加入(docker官方推荐)
+--log-driver=gelf --log-opt gelf-address=udp://192.168.0.42:12201
+</code></pre>
+
+<p>这样对于直接<code>stdout</code>的日志将都会被发送到graylog中。至于graylog有什么强大功能就需要自己去发掘了。</p>
+
+<h1 id="参考:a2fc1d5a9ac95ddb7941c4817733157b">参考</h1>
+
+<ul>
+<li><a href="http://dockone.io/article/272">http://dockone.io/article/272</a></li>
+</ul>
+
+<p>集群项目
+   * Docker compose、Docker machine、Docker swarm
+   * Kubernetes</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "wixb";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "wixb";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+

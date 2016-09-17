@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/os/</link>
+    <link>http://wixb50.github.io/categories/os/</link>
     <description>Recent content in Os on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Wed, 01 Jun 2016 10:07:33 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/os/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>CentOS常用命令集合</title>
-      <link>http://wixb50.coding.me/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Wed, 01 Jun 2016 10:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;centos添加及删除用户&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
@@ -45,13 +45,13 @@ userdel -f test # 删除用户及用户组
     
     <item>
       <title>ubuntu常见故障</title>
-      <link>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
+      <link>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</link>
       <pubDate>Thu, 17 Dec 2015 13:50:50 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
+      <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -68,7 +68,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
+&lt;h2 id=&#34;ssh错误-permission-denied-publickey:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;登录远程主机，将/etc/ssh/sshd_config文件中的&lt;code&gt;PasswordAuthentication no&lt;/code&gt; 改为&lt;code&gt;PasswordAuthentication yes&lt;/code&gt;。&lt;br /&gt;&lt;/li&gt;
@@ -78,7 +78,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
 
-&lt;h2 id=&#34;unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/h2&gt;
+&lt;h2 id=&#34;unity菜单栏消失:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;unity菜单栏消失&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;安装&lt;code&gt;ccsm&lt;/code&gt;，终端打开&lt;code&gt;ccsm&lt;/code&gt;；&lt;/li&gt;
@@ -89,7 +89,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;原因：compiz设置错误。&lt;/p&gt;
 
-&lt;h2 id=&#34;google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/h2&gt;
+&lt;h2 id=&#34;google-chrome更新出错:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;google chrome更新出错&lt;/h2&gt;
 
 &lt;p&gt;1.Setup key with:&lt;/p&gt;
 
@@ -108,7 +108,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;参考方案: &lt;a href=&#34;http://www.ubuntuupdates.org/ppa/google_chrome&#34;&gt;3rd Party Repository: Google Chrome&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
+&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
 
 &lt;p&gt;virtual memory exhausted: Cannot allocate memory 问题：&lt;/p&gt;
 
@@ -121,7 +121,7 @@ Enable swap on boot:
 $ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
+&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
 
 &lt;p&gt;现在假设原来的项目的remote设置为git@domain.com:Projects/p1.git，将服务器SSH默认端口修改为3022后，导致push出错。&lt;/p&gt;
 
@@ -142,7 +142,7 @@ port 3022
 # ctrl+D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
+&lt;h2 id=&#34;linux-wps不能使用中文输入法:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
 
 &lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：&lt;/p&gt;
 
@@ -150,14 +150,14 @@ port 3022
 export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;清理ubuntu连接过的服务器记录&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
+&lt;h2 id=&#34;清理ubuntu连接过的服务器记录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
 
 &lt;p&gt;保存目录为nautilus中，直接清空配置文件&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;rm ~/.config/nautilus/servers
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ubuntu与windows双系统时间不同步&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
+&lt;h2 id=&#34;ubuntu与windows双系统时间不同步:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;之所以 Windows 与 Ubuntu 双系统之间有时间差，是因为这两个系统使用了不同的方式来识别硬件时钟（Hardware Clock）。Ubuntu 将硬件时钟当作 UTC 时间，而 Windows 将硬件时钟当作本地时间（ Local time）。由于时间的处理方式不同，Windows 不管重启多少次都识别 Local time，时间都不会改变。而当我们从 Ubuntu 重启到 Windows 时，硬件时钟已经被 Ubuntu 认为 UTC 方式，而 Windows 再将其强制转换成 Local time，这就造成了时间差。&lt;/p&gt;
@@ -172,10 +172,10 @@ export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
     
     <item>
       <title>ubuntu更改源设置</title>
-      <link>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Tue, 08 Dec 2015 16:43:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/12/08/ubuntu%E6%9B%B4%E6%94%B9%E6%BA%90%E8%AE%BE%E7%BD%AE/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;首先备份源列表：&lt;/li&gt;
 &lt;/ul&gt;
@@ -249,10 +249,10 @@ deb-src http://mirrors.oschina.net/ubuntu/ trusty-updates main restricted univer
     
     <item>
       <title>ubuntu搭建远程桌面服务器</title>
-      <link>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 06 Dec 2015 17:27:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://wixb50.github.io/2015/12/06/ubuntu%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;p&gt;1、安装xrdp和vnc4server&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install xrdp
@@ -288,10 +288,10 @@ sudo service xrdp restart
     
     <item>
       <title>ubuntu常用命令集合</title>
-      <link>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <link>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 07 Nov 2015 22:07:33 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <guid>http://wixb50.github.io/2015/11/07/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
 &lt;h2 id=&#34;目录:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;目录&lt;/h2&gt;
@@ -700,10 +700,10 @@ Nmap 默认发送一个arp的ping数据包，来探测目标主机在1-10000范�
     
     <item>
       <title>ubuntu系统变量配置</title>
-      <link>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 03 Nov 2015 13:40:25 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/ubuntu%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;pre&gt;&lt;code&gt;Ubuntu Linux系统环境变量配置文件：   
 /etc/profile : 在登录时,操作系统定制用户环境时使用的第一个文件 ,此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。 
 
