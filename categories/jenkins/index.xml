@@ -20,31 +20,31 @@
       <guid>http://wixb50.github.io/2015/11/05/jenkins%E6%95%99%E7%A8%8B-%E7%AE%80%E5%8D%95ssh%E6%9E%84%E5%BB%BA/</guid>
       <description>
 
-&lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;
+&lt;h1 id=&#34;jenkins教程之-简单远程执行ssh构建:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;Jenkins教程之——简单远程执行ssh构建&lt;/h1&gt;
 
 &lt;hr /&gt;
 
 &lt;p&gt;Jenkins CI is the leading open-source continuous integration server.&lt;/p&gt;
 
-&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
+&lt;h2 id=&#34;说明:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;说明&lt;/h2&gt;
 
 &lt;hr /&gt;
 
 &lt;p&gt;此教程中jenkins只充当于一个中间件的作用，并且所有的构建和部署都在&lt;strong&gt;远端服务器&lt;/strong&gt;完成。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;h2 id=&#34;安装:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;安装&lt;/h2&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;jenkins安装&#34;&gt;jenkins安装&lt;/h3&gt;
+&lt;h3 id=&#34;jenkins安装:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;jenkins安装&lt;/h3&gt;
 
 &lt;p&gt;这个自行google去，教程很简单，只要把war包下载执行即可，本文是基于dokcer的jenkins镜像安装的。&lt;/p&gt;
 
-&lt;h3 id=&#34;gitlab安装&#34;&gt;gitlab安装&lt;/h3&gt;
+&lt;h3 id=&#34;gitlab安装:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;gitlab安装&lt;/h3&gt;
 
 &lt;p&gt;见&lt;a href=&#34;https://gitlab.com/&#34;&gt;gitlab官网&lt;/a&gt;，或者可以直接使用gitlab托管源码。&lt;/p&gt;
 
-&lt;h2 id=&#34;jenkins配置&#34;&gt;jenkins配置&lt;/h2&gt;
+&lt;h2 id=&#34;jenkins配置:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;jenkins配置&lt;/h2&gt;
 
 &lt;hr /&gt;
 
@@ -64,7 +64,7 @@
 
 &lt;p&gt;&lt;strong&gt;提示：&lt;/strong&gt;输入的脚本要自己在远端跑一下，能完整跑通才行，注意为远程服务器git配置号user和name，以及sshKey，这样就不要输入密码pull了。&lt;/p&gt;
 
-&lt;h2 id=&#34;auth&#34;&gt;Auth&lt;/h2&gt;
+&lt;h2 id=&#34;auth:4aeb05bfebe45bb70e989b19a8d235b0&#34;&gt;Auth&lt;/h2&gt;
 
 &lt;hr /&gt;
 

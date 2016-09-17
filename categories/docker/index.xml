@@ -41,13 +41,13 @@
 
 &lt;!-- /TOC --&gt;
 
-&lt;h1 id=&#34;前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&#34;前言:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
 
 &lt;p&gt;Docker 1.12将原先独立的项目&lt;code&gt;docker swarm&lt;/code&gt;已经集成进自带的&lt;code&gt;docker engine&lt;/code&gt;，并为集群方案提供了整一套的跨主机集群、灵活调度、高可用性的方案，同时引入service的概念，增加了服务创建的简易性、灵活性，还拥有服务注册、服务发现、服务自动负载均衡等特性。&lt;/p&gt;
 
 &lt;p&gt;在本docker集群方案中，先介绍私有仓库的概念，作为集群服务部署的基础；然后利用docker提供的官方的集群方案swarm搭建集群；最后补充一些其他方案满足整集群的监控，日志收集等方面。&lt;/p&gt;
 
-&lt;h1 id=&#34;docker私有仓库&#34;&gt;docker私有仓库&lt;/h1&gt;
+&lt;h1 id=&#34;docker私有仓库:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;docker私有仓库&lt;/h1&gt;
 
 &lt;p&gt;仓库（Repository）是集中存放镜像文件的场所。仓库分为公开仓库（Public）和私有仓库（Private）两种形式。&lt;/p&gt;
 
@@ -55,7 +55,7 @@
 
 &lt;p&gt;当需要加快service的更新速度的时候，就需要在局域网内拥有自建的私有仓库，当用户创建了自己的镜像之后就可以使用 push 命令将它上传到私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。&lt;/p&gt;
 
-&lt;h1 id=&#34;docker-swarm&#34;&gt;Docker swarm&lt;/h1&gt;
+&lt;h1 id=&#34;docker-swarm:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;Docker swarm&lt;/h1&gt;
 
 &lt;p&gt;在docker1.12版本中不再试独立的项目，而集成在docker engine中，对于创建和管理集群都是非常方便的。&lt;/p&gt;
 
@@ -81,7 +81,7 @@ To add a manager to this swarm, run the following command:
 &lt;p&gt;docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；所以为了保证集群的高可用性，可创建多几个manager节点。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;docker-service&#34;&gt;docker service&lt;/h2&gt;
+&lt;h2 id=&#34;docker-service:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;docker service&lt;/h2&gt;
 
 &lt;p&gt;docker将所有部署的应用都抽象为service，在新建集群之后需要在集群中部署服务，这时候就要利用service命令了。&lt;/p&gt;
 
@@ -117,9 +117,9 @@ $ docker service rm gateway
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;add-on&#34;&gt;add on&lt;/h1&gt;
+&lt;h1 id=&#34;add-on:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;add on&lt;/h1&gt;
 
-&lt;h2 id=&#34;consul-registrator服务注册&#34;&gt;consul、registrator服务注册&lt;/h2&gt;
+&lt;h2 id=&#34;consul-registrator服务注册:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;consul、registrator服务注册&lt;/h2&gt;
 
 &lt;p&gt;由于swarm内部的服务注册和发现机制是内部的，不对外开放的，而且不是通过service启动的容器，swarm是发现不了的，所以为了监控整个集群的所有容器，我们可以自己搭建一套。&lt;/p&gt;
 
@@ -156,7 +156,7 @@ $ docker service rm gateway
    consul://$DOCKER_IP:8500
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;graylog-日志收集&#34;&gt;graylog 日志收集&lt;/h2&gt;
+&lt;h2 id=&#34;graylog-日志收集:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;graylog 日志收集&lt;/h2&gt;
 
 &lt;p&gt;由于服务都是集群部署，上线之后直接使用&lt;code&gt;docker logs&lt;/code&gt;命令查看容器日志是不合理的，同时问题排查也相当困难。&lt;/p&gt;
 
@@ -169,7 +169,7 @@ $ docker service rm gateway
 
 &lt;p&gt;这样对于直接&lt;code&gt;stdout&lt;/code&gt;的日志将都会被发送到graylog中。至于graylog有什么强大功能就需要自己去发掘了。&lt;/p&gt;
 
-&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;h1 id=&#34;参考:a2fc1d5a9ac95ddb7941c4817733157b&#34;&gt;参考&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://dockone.io/article/272&#34;&gt;http://dockone.io/article/272&lt;/a&gt;&lt;/li&gt;
@@ -222,7 +222,7 @@ $ docker service rm gateway
 
 &lt;!-- /TOC --&gt;
 
-&lt;h1 id=&#34;前言:11cc16163169598471edee7a60af0f73&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;&lt;a href=&#34;#&#34;&gt;前言&lt;/a&gt;&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;虚拟化&lt;/strong&gt;，是指通过虚拟化技术将一台计算机虚拟为多台逻辑计算机。在一台计算机上同时运行多个逻辑计算机，每个逻辑计算机可运行不同的操作系统，并且应用程序都可以在相互独立的空间内运行而互不影响，从而显著提高计算机的工作效率。&lt;/p&gt;
 
@@ -234,7 +234,7 @@ $ docker service rm gateway
 
 &lt;p&gt;&lt;strong&gt;Docker影响&lt;/strong&gt; Docker成为最火热，甚至最具颠覆性的技术之一。相对于传统的云服务提供商(Iaas,Paas,Saas)，提出了一种全新的Caas(容器即服务)，国内比较领先的有DaoCloud、时速云等。Docker提出了“Build once，Run anywhere。&lt;/p&gt;
 
-&lt;h1 id=&#34;基本概念:11cc16163169598471edee7a60af0f73&#34;&gt;基本概念&lt;/h1&gt;
+&lt;h1 id=&#34;基本概念&#34;&gt;基本概念&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://www.otokaze.cn/wp-content/uploads/2016/09/docker_vs_vm.png&#34; alt=&#34;原理图&#34; /&gt;&lt;/p&gt;
 
@@ -248,7 +248,7 @@ $ docker service rm gateway
 
 &lt;p&gt;理解了这三个概念，就理解了 Docker 的整个生命周期。&lt;/p&gt;
 
-&lt;h2 id=&#34;镜像:11cc16163169598471edee7a60af0f73&#34;&gt;镜像&lt;/h2&gt;
+&lt;h2 id=&#34;镜像&#34;&gt;镜像&lt;/h2&gt;
 
 &lt;p&gt;Docker 镜像（Image）就是一个只读的模板，相当于操作系统(OS)安装的Ghost。&lt;/p&gt;
 
@@ -258,7 +258,7 @@ $ docker service rm gateway
 
 &lt;p&gt;Docker 提供了一个很简单的机制来创建镜像或者更新现有的镜像，用户甚至可以直接从其他人那里下载一个已经做好的镜像来直接使用。&lt;/p&gt;
 
-&lt;h2 id=&#34;容器:11cc16163169598471edee7a60af0f73&#34;&gt;容器&lt;/h2&gt;
+&lt;h2 id=&#34;容器&#34;&gt;容器&lt;/h2&gt;
 
 &lt;p&gt;Docker 利用容器（Container）来运行应用。&lt;/p&gt;
 
@@ -266,7 +266,7 @@ $ docker service rm gateway
 
 &lt;p&gt;可以把容器看做是一个简易版的 Linux 环境（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。&lt;/p&gt;
 
-&lt;h2 id=&#34;仓库:11cc16163169598471edee7a60af0f73&#34;&gt;仓库&lt;/h2&gt;
+&lt;h2 id=&#34;仓库&#34;&gt;仓库&lt;/h2&gt;
 
 &lt;p&gt;仓库（Repository）是集中存放镜像文件的场所。&lt;/p&gt;
 
@@ -280,7 +280,7 @@ $ docker service rm gateway
 
 &lt;p&gt;*注：Docker 仓库的概念跟 Git 类似，注册服务器可以理解为 GitHub 这样的托管服务。&lt;/p&gt;
 
-&lt;h2 id=&#34;安装:11cc16163169598471edee7a60af0f73&#34;&gt;安装&lt;/h2&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
 
 &lt;p&gt;Docker 目前只能安装在 64 位平台上，并且要求内核版本不低于 3.10，实际上内核越新越好，过低的内核版本容易造成功能的不稳定。&lt;/p&gt;
 
@@ -289,9 +289,9 @@ $ docker service rm gateway
 &lt;pre&gt;&lt;code&gt;curl -sSL https://get.docker.com/ | sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;常用命令:11cc16163169598471edee7a60af0f73&#34;&gt;常用命令&lt;/h1&gt;
+&lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
 
-&lt;h2 id=&#34;镜像命令:11cc16163169598471edee7a60af0f73&#34;&gt;镜像命令&lt;/h2&gt;
+&lt;h2 id=&#34;镜像命令&#34;&gt;镜像命令&lt;/h2&gt;
 
 &lt;p&gt;获取镜像&lt;/p&gt;
 
@@ -311,7 +311,7 @@ $ docker service rm gateway
 &lt;pre&gt;&lt;code&gt;$ sudo docker rmi training/sinatra
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;容器命令:11cc16163169598471edee7a60af0f73&#34;&gt;容器命令&lt;/h2&gt;
+&lt;h2 id=&#34;容器命令&#34;&gt;容器命令&lt;/h2&gt;
 
 &lt;p&gt;基于一个images，新建并启动一个容器&lt;/p&gt;
 
@@ -349,13 +349,13 @@ Hello world
 
 &lt;p&gt;使用 hostPort:containerPort 格式本地的 5000 端口映射到容器的 5000 端口.&lt;/p&gt;
 
-&lt;h1 id=&#34;docker进阶:11cc16163169598471edee7a60af0f73&#34;&gt;Docker进阶&lt;/h1&gt;
+&lt;h1 id=&#34;docker进阶&#34;&gt;Docker进阶&lt;/h1&gt;
 
-&lt;h2 id=&#34;数据卷:11cc16163169598471edee7a60af0f73&#34;&gt;数据卷&lt;/h2&gt;
+&lt;h2 id=&#34;数据卷&#34;&gt;数据卷&lt;/h2&gt;
 
 &lt;p&gt;用于Docker 内部以及容器之间管理数据共享与存储。&lt;/p&gt;
 
-&lt;h3 id=&#34;主机容器数据共享:11cc16163169598471edee7a60af0f73&#34;&gt;主机容器数据共享&lt;/h3&gt;
+&lt;h3 id=&#34;主机容器数据共享&#34;&gt;主机容器数据共享&lt;/h3&gt;
 
 &lt;p&gt;挂载一个主机目录作为数据卷,使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去&lt;/p&gt;
 
@@ -364,7 +364,7 @@ Hello world
 
 &lt;p&gt;之后对容器相应的目录更改便直接反映在主机中了。&lt;/p&gt;
 
-&lt;h3 id=&#34;数据卷容器:11cc16163169598471edee7a60af0f73&#34;&gt;数据卷容器&lt;/h3&gt;
+&lt;h3 id=&#34;数据卷容器&#34;&gt;数据卷容器&lt;/h3&gt;
 
 &lt;p&gt;数据卷容器，其实就是一个正常的容器，专门用来提供数据卷供其它容器挂载的。&lt;/p&gt;
 
@@ -378,7 +378,7 @@ Hello world
 &lt;pre&gt;&lt;code&gt;$ sudo docker run -d --volumes-from dbdata --name db1 training/postgres
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;dockerfile:11cc16163169598471edee7a60af0f73&#34;&gt;Dockerfile&lt;/h2&gt;
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
 
 &lt;p&gt;docker 采用分层存储驱动，使用 Dockerfile 可以允许用户创建自定义的镜像。&lt;/p&gt;
 
@@ -415,11 +415,11 @@ CMD /usr/sbin/nginx
       <guid>http://wixb50.github.io/2016/03/13/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Bkubernetes%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</guid>
       <description>
 
-&lt;h2 id=&#34;说明:face623dedab27120a5b251ee433661e&#34;&gt;说明&lt;/h2&gt;
+&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
 
 &lt;p&gt;主要对kubernetes用户需要定义的Pod,RC和Service的配置文件进行详细说明。&lt;/p&gt;
 
-&lt;h2 id=&#34;pod定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;Pod定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;pod定义文件详解&#34;&gt;Pod定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;Pod定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -511,7 +511,7 @@ spec:       # required
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&#34;rc定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;RC定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;rc定义文件详解&#34;&gt;RC定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;RC(ReplicationController)定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -530,7 +530,7 @@ spec:       # required
   template: object      # required
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;service定义文件详解:face623dedab27120a5b251ee433661e&#34;&gt;Service定义文件详解&lt;/h2&gt;
+&lt;h2 id=&#34;service定义文件详解&#34;&gt;Service定义文件详解&lt;/h2&gt;
 
 &lt;p&gt;Service定义文件模板(yaml格式)如下：&lt;/p&gt;
 
@@ -729,7 +729,7 @@ spec:       # required
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&#34;附录:face623dedab27120a5b251ee433661e&#34;&gt;附录&lt;/h2&gt;
+&lt;h2 id=&#34;附录&#34;&gt;附录&lt;/h2&gt;
 
 &lt;p&gt;根据yaml创建：&lt;/p&gt;
 
@@ -751,7 +751,7 @@ spec:       # required
       <guid>http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>
 
-&lt;h1 id=&#34;目录&#34;&gt;目录&lt;/h1&gt;
+&lt;h1 id=&#34;目录:b041d08cd2cacb464d298a81037e9efc&#34;&gt;目录&lt;/h1&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -770,11 +770,11 @@ spec:       # required
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;h1 id=&#34;introduction:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Create a Kubernetes Cluster on VMware ESXi with CoreOS.&lt;/p&gt;
 
-&lt;h1 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h1&gt;
+&lt;h1 id=&#34;prerequisites:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Prerequisites&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;VMware ESXi
@@ -788,7 +788,7 @@ spec:       # required
 &lt;li&gt;Attention: This requires at least CoreOS version 695.0.0, which includes etcd2.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;coreos-on-vmware&#34;&gt;CoreOS on VMware&lt;/h1&gt;
+&lt;h1 id=&#34;coreos-on-vmware:b041d08cd2cacb464d298a81037e9efc&#34;&gt;CoreOS on VMware&lt;/h1&gt;
 
 &lt;p&gt;Based on official documentation : &lt;a href=&#34;https://coreos.com/os/docs/latest/booting-on-vmware.html&#34;&gt;https://coreos.com/os/docs/latest/booting-on-vmware.html&lt;/a&gt;&lt;/p&gt;
 
@@ -812,7 +812,7 @@ confirm the settings then click &amp;quot;Finish&amp;quot;
 
 &lt;p&gt;Now you can create -at least- 2 servers based on this template, do this task but don&amp;rsquo;t start it yet.&lt;/p&gt;
 
-&lt;h1 id=&#34;cloud-config-for-master-node&#34;&gt;Cloud-Config for master node&lt;/h1&gt;
+&lt;h1 id=&#34;cloud-config-for-master-node:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Cloud-Config for master node&lt;/h1&gt;
 
 &lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
 
@@ -873,7 +873,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-master.iso master/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;cloud-config-for-minion-node&#34;&gt;Cloud-Config for minion node&lt;/h1&gt;
+&lt;h1 id=&#34;cloud-config-for-minion-node:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Cloud-Config for minion node&lt;/h1&gt;
 
 &lt;p&gt;On the VMware datastore, create a directory and initialize config, example :&lt;/p&gt;
 
@@ -912,7 +912,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-minion.iso minion/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;start-the-cluster&#34;&gt;Start the cluster&lt;/h1&gt;
+&lt;h1 id=&#34;start-the-cluster:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Start the cluster&lt;/h1&gt;
 
 &lt;p&gt;On firt VM, mount the config-master.iso with VM properties (CD/DVD reader and &amp;laquo;Datastore ISO file&amp;raquo;), browse to &amp;laquo;&lt;path to datastore&gt;/cloud-config/&amp;laquo;. Don&amp;rsquo;t foget to set &amp;laquo;Connect on Start up&amp;raquo;.&lt;/p&gt;
 
@@ -937,7 +937,7 @@ sudo systemctl enable &amp;lt;service-name&amp;gt;  #Ensure service can boot fro
 sudo systemctl status &amp;lt;service-name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;check&#34;&gt;Check&lt;/h1&gt;
+&lt;h1 id=&#34;check:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Check&lt;/h1&gt;
 
 &lt;p&gt;Check your cluster heatlh : &lt;a href=&#34;http://10.0.0.1:8080/static/app/#/dashboard/&#34;&gt;http://10.0.0.1:8080/static/app/#/dashboard/&lt;/a&gt;&lt;/p&gt;
 
@@ -949,7 +949,7 @@ fleetctl list-machines
 journalctl -f
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;enjoy&#34;&gt;Enjoy&lt;/h1&gt;
+&lt;h1 id=&#34;enjoy:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Enjoy&lt;/h1&gt;
 
 &lt;p&gt;You may download the kubernetes client tool:&lt;code&gt;kubectl&lt;/code&gt;.Use it manage your cluster.&lt;/p&gt;
 
@@ -972,7 +972,7 @@ kubectl get rc
 &lt;pre&gt;&lt;code&gt;kubectl get svc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;&lt;/li&gt;
+&lt;h1 id=&#34;reference:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Reference&lt;/h1&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/xavierbaude/VMware-coreos-multi-nodes-Kubernetes&#34;&gt;VMware-coreos-multi-nodes-Kubernetes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
@@ -986,7 +986,7 @@ kubectl get rc
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dockone.io/article/604&#34;&gt;CoreOS集成Kubernetes核心组件Kubelet&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
+&lt;h1 id=&#34;appendix:b041d08cd2cacb464d298a81037e9efc&#34;&gt;Appendix&lt;/h1&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;The &lt;a href=&#34;https://gist.github.com/anonymous/553e448c0f8ce9a23120&#34;&gt;source&lt;/a&gt; of &lt;code&gt;master.yaml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 

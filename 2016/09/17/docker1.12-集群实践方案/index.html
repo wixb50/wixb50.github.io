@@ -116,13 +116,13 @@
 
 <!-- /TOC -->
 
-<h1 id="前言"><a href="#">前言</a></h1>
+<h1 id="前言:a2fc1d5a9ac95ddb7941c4817733157b"><a href="#">前言</a></h1>
 
 <p>Docker 1.12将原先独立的项目<code>docker swarm</code>已经集成进自带的<code>docker engine</code>，并为集群方案提供了整一套的跨主机集群、灵活调度、高可用性的方案，同时引入service的概念，增加了服务创建的简易性、灵活性，还拥有服务注册、服务发现、服务自动负载均衡等特性。</p>
 
 <p>在本docker集群方案中，先介绍私有仓库的概念，作为集群服务部署的基础；然后利用docker提供的官方的集群方案swarm搭建集群；最后补充一些其他方案满足整集群的监控，日志收集等方面。</p>
 
-<h1 id="docker私有仓库">docker私有仓库</h1>
+<h1 id="docker私有仓库:a2fc1d5a9ac95ddb7941c4817733157b">docker私有仓库</h1>
 
 <p>仓库（Repository）是集中存放镜像文件的场所。仓库分为公开仓库（Public）和私有仓库（Private）两种形式。</p>
 
@@ -130,7 +130,7 @@
 
 <p>当需要加快service的更新速度的时候，就需要在局域网内拥有自建的私有仓库，当用户创建了自己的镜像之后就可以使用 push 命令将它上传到私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了。</p>
 
-<h1 id="docker-swarm">Docker swarm</h1>
+<h1 id="docker-swarm:a2fc1d5a9ac95ddb7941c4817733157b">Docker swarm</h1>
 
 <p>在docker1.12版本中不再试独立的项目，而集成在docker engine中，对于创建和管理集群都是非常方便的。</p>
 
@@ -156,7 +156,7 @@ To add a manager to this swarm, run the following command:
 <p>docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；所以为了保证集群的高可用性，可创建多几个manager节点。</p>
 </blockquote>
 
-<h2 id="docker-service">docker service</h2>
+<h2 id="docker-service:a2fc1d5a9ac95ddb7941c4817733157b">docker service</h2>
 
 <p>docker将所有部署的应用都抽象为service，在新建集群之后需要在集群中部署服务，这时候就要利用service命令了。</p>
 
@@ -192,9 +192,9 @@ $ docker service rm gateway
 </code></li>
 </ul>
 
-<h1 id="add-on">add on</h1>
+<h1 id="add-on:a2fc1d5a9ac95ddb7941c4817733157b">add on</h1>
 
-<h2 id="consul-registrator服务注册">consul、registrator服务注册</h2>
+<h2 id="consul-registrator服务注册:a2fc1d5a9ac95ddb7941c4817733157b">consul、registrator服务注册</h2>
 
 <p>由于swarm内部的服务注册和发现机制是内部的，不对外开放的，而且不是通过service启动的容器，swarm是发现不了的，所以为了监控整个集群的所有容器，我们可以自己搭建一套。</p>
 
@@ -231,7 +231,7 @@ $ docker service rm gateway
    consul://$DOCKER_IP:8500
 </code></pre>
 
-<h2 id="graylog-日志收集">graylog 日志收集</h2>
+<h2 id="graylog-日志收集:a2fc1d5a9ac95ddb7941c4817733157b">graylog 日志收集</h2>
 
 <p>由于服务都是集群部署，上线之后直接使用<code>docker logs</code>命令查看容器日志是不合理的，同时问题排查也相当困难。</p>
 
@@ -244,7 +244,7 @@ $ docker service rm gateway
 
 <p>这样对于直接<code>stdout</code>的日志将都会被发送到graylog中。至于graylog有什么强大功能就需要自己去发掘了。</p>
 
-<h1 id="参考">参考</h1>
+<h1 id="参考:a2fc1d5a9ac95ddb7941c4817733157b">参考</h1>
 
 <ul>
 <li><a href="http://dockone.io/article/272">http://dockone.io/article/272</a></li>

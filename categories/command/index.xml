@@ -20,7 +20,7 @@
       <guid>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;centos添加及删除用户&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
+&lt;h2 id=&#34;centos添加及删除用户:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;adduser int # 新增用户
 passwd int # 设置或者修改密码

@@ -20,27 +20,27 @@
       <guid>http://wixb50.github.io/2016/05/14/npm%E5%91%BD%E4%BB%A4%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</guid>
       <description>
 
-&lt;h1 id=&#34;修改npm源为淘宝npm源的三种方法&#34;&gt;修改npm源为淘宝npm源的三种方法&lt;/h1&gt;
+&lt;h1 id=&#34;修改npm源为淘宝npm源的三种方法:2781525c49d5dc2211f1ef54b5f22423&#34;&gt;修改npm源为淘宝npm源的三种方法&lt;/h1&gt;
 
 &lt;p&gt;镜像地址：&lt;a href=&#34;https://npm.taobao.org/&#34;&gt;淘宝 NPM 镜像&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;通过config命令&#34;&gt;通过config命令&lt;/h2&gt;
+&lt;h2 id=&#34;通过config命令:2781525c49d5dc2211f1ef54b5f22423&#34;&gt;通过config命令&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;npm config set registry https://registry.npm.taobao.org 
 npm info underscore （如果上面配置正确这个命令会有字符串response）
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;命令行指定&#34;&gt;命令行指定&lt;/h2&gt;
+&lt;h2 id=&#34;命令行指定:2781525c49d5dc2211f1ef54b5f22423&#34;&gt;命令行指定&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;npm --registry https://registry.npm.taobao.org info underscore 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;编辑-npmrc-加入下面内容&#34;&gt;编辑 ~/.npmrc 加入下面内容&lt;/h2&gt;
+&lt;h2 id=&#34;编辑-npmrc-加入下面内容:2781525c49d5dc2211f1ef54b5f22423&#34;&gt;编辑 ~/.npmrc 加入下面内容&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;registry = https://registry.npm.taobao.org
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;tutorial&#34;&gt;tutorial&lt;/h1&gt;
+&lt;h1 id=&#34;tutorial:2781525c49d5dc2211f1ef54b5f22423&#34;&gt;tutorial&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://javascript.ruanyifeng.com/nodejs/npm.html&#34;&gt;npm模块管理器&lt;/a&gt;&lt;/li&gt;
@@ -56,11 +56,11 @@ npm info underscore （如果上面配置正确这个命令会有字符串respon
       <guid>http://wixb50.github.io/2015/12/06/nodejs-linux%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</guid>
       <description>
 
-&lt;h2 id=&#34;nvm安装:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;nvm安装&lt;/h2&gt;
+&lt;h2 id=&#34;nvm安装&#34;&gt;nvm安装&lt;/h2&gt;
 
 &lt;p&gt;nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。&lt;/p&gt;
 
-&lt;h3 id=&#34;一-卸载已安装到全局的-node-npm:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;一、卸载已安装到全局的 node/npm&lt;/h3&gt;
+&lt;h3 id=&#34;一-卸载已安装到全局的-node-npm&#34;&gt;一、卸载已安装到全局的 node/npm&lt;/h3&gt;
 
 &lt;p&gt;如果之前是在官网下载的 node 安装包，运行后会自动安装在全局目录，其中&lt;/p&gt;
 
@@ -75,14 +75,14 @@ sudo rm /usr/local/bin/node #删除 node
 cd  /usr/local/bin &amp;amp;&amp;amp; ls -l | grep &amp;quot;../lib/node_modules/&amp;quot; | awk &#39;{print $9}&#39;| xargs rm #删除全局 node 模块注册的软链
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;二-安装-nvm:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;二、安装 nvm&lt;/h3&gt;
+&lt;h3 id=&#34;二-安装-nvm&#34;&gt;二、安装 nvm&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash  #具体最新版见github
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;安装完成后请重新打开终端环境， oh-my-zsh 也是一样。&lt;/p&gt;
 
-&lt;h3 id=&#34;三-安装切换各版本-node-npm:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;三、安装切换各版本 node/npm&lt;/h3&gt;
+&lt;h3 id=&#34;三-安装切换各版本-node-npm&#34;&gt;三、安装切换各版本 node/npm&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;nvm install stable #安装最新稳定版 node，现在是 5.0.0
 nvm install 4.2.2 #安装 4.2.2 版本
@@ -97,7 +97,7 @@ npm install -g react-native-cli #安装 react-native-cli 模块至全局目录�
 nvm alias default 0.12.7 #设置默认 node 版本为 0.12.7
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;四-使用-nvmrc-文件配置项目所使用的-node-版本:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;四、使用 .nvmrc 文件配置项目所使用的 node 版本&lt;/h3&gt;
+&lt;h3 id=&#34;四-使用-nvmrc-文件配置项目所使用的-node-版本&#34;&gt;四、使用 .nvmrc 文件配置项目所使用的 node 版本&lt;/h3&gt;
 
 &lt;p&gt;如果你的默认 node 版本（通过 nvm alias 命令设置的）与项目所需的版本不同，则可在项目根目录或其任意父级目录中创建 .nvmrc 文件，在文件中指定使用的 node 版本号，例如：&lt;/p&gt;
 
@@ -107,15 +107,15 @@ nvm use #无需指定版本号，会自动使用 .nvmrc 文件中配置的版本
 node -v #查看 node 是否切换为对应版本
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;ps:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;Ps&lt;/h3&gt;
+&lt;h3 id=&#34;ps&#34;&gt;Ps&lt;/h3&gt;
 
 &lt;p&gt;&lt;small&gt;类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本，
 因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ，
 当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。&lt;/small&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;node-js-编译安装-不推荐:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;Node.js 编译安装(不推荐)&lt;/h2&gt;
+&lt;h2 id=&#34;node-js-编译安装-不推荐&#34;&gt;Node.js 编译安装(不推荐)&lt;/h2&gt;
 
-&lt;h3 id=&#34;安装-源码下载:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;安装、源码下载&lt;/h3&gt;
+&lt;h3 id=&#34;安装-源码下载&#34;&gt;安装、源码下载&lt;/h3&gt;
 
 &lt;p&gt;下载最新版本node的源代码：&lt;a href=&#34;https://nodejs.org/en/download/&#34;&gt;下载&lt;/a&gt;&lt;/p&gt;
 
@@ -137,7 +137,7 @@ node -v #查看 node 是否切换为对应版本
 &lt;p&gt;查看安装：&lt;em&gt;(显示版本号)&lt;/em&gt;&lt;br /&gt;
 &lt;code&gt;node -v&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;卸载:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;卸载&lt;/h3&gt;
+&lt;h3 id=&#34;卸载&#34;&gt;卸载&lt;/h3&gt;
 
 &lt;p&gt;保留编译完成的源码包，或者自己再重新编译生成个&lt;/p&gt;
 
@@ -150,11 +150,11 @@ node -v #查看 node 是否切换为对应版本
 &lt;p&gt;同时删除configure和make产生的临时文件&lt;br /&gt;
 &lt;code&gt;make distclean&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;升级node版本:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;升级Node版本&lt;/h3&gt;
+&lt;h3 id=&#34;升级node版本&#34;&gt;升级Node版本&lt;/h3&gt;
 
 &lt;p&gt;直接下载源码重新编译，安装。（覆盖了旧的版本）&lt;/p&gt;
 
-&lt;h2 id=&#34;ps-1:b74528ef5e2d3ab7fee48fbb54ec789e&#34;&gt;Ps&lt;/h2&gt;
+&lt;h2 id=&#34;ps-1&#34;&gt;Ps&lt;/h2&gt;
 
 &lt;p&gt;&lt;small&gt;也同样适用与其他linux平台编译安装软件。&lt;/small&gt;&lt;/p&gt;
 </description>

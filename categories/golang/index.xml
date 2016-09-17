@@ -22,7 +22,7 @@
 
 &lt;p&gt;需要导入的包&lt;code&gt;&amp;quot;io/ioutil&amp;quot;&lt;/code&gt;、&lt;code&gt;&amp;quot;net/http&amp;quot;&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;get请求&#34;&gt;get请求&lt;/h3&gt;
+&lt;h3 id=&#34;get请求:8be3289f715ca15b5df00442c3fba4ac&#34;&gt;get请求&lt;/h3&gt;
 
 &lt;p&gt;get请求可以直接http.Get方法&lt;/p&gt;
 
@@ -42,7 +42,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;post请求&#34;&gt;post请求&lt;/h3&gt;
+&lt;h3 id=&#34;post请求:8be3289f715ca15b5df00442c3fba4ac&#34;&gt;post请求&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;使用http.Post方式&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
@@ -87,7 +87,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;复杂的请求&#34;&gt;复杂的请求&lt;/h3&gt;
+&lt;h3 id=&#34;复杂的请求:8be3289f715ca15b5df00442c3fba4ac&#34;&gt;复杂的请求&lt;/h3&gt;
 
 &lt;p&gt;有时需要在请求的时候设置头参数、cookie之类的数据，就可以使用http.Do方法。&lt;/p&gt;
 
@@ -117,7 +117,7 @@
 
 &lt;p&gt;同上面的post请求，必须要设定Content-Type为application/x-www-form-urlencoded，post参数才可正常传递.&lt;/p&gt;
 
-&lt;h3 id=&#34;head请求&#34;&gt;Head请求&lt;/h3&gt;
+&lt;h3 id=&#34;head请求:8be3289f715ca15b5df00442c3fba4ac&#34;&gt;Head请求&lt;/h3&gt;
 
 &lt;p&gt;发起head请求可以直接使用http client的head方法。&lt;/p&gt;
 </description>

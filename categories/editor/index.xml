@@ -32,7 +32,7 @@
       <guid>http://wixb50.github.io/2015/11/03/sublime-text-3%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
-&lt;h2 id=&#34;目录:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -54,7 +54,7 @@
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;sublime-text-3编辑器插件:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;Sublime Text 3编辑器插件&lt;/h2&gt;
+&lt;h2 id=&#34;sublime-text-3编辑器插件&#34;&gt;Sublime Text 3编辑器插件&lt;/h2&gt;
 
 &lt;p&gt;1.HTML代码格式化插件&lt;code&gt;Tag&lt;/code&gt;;&lt;/p&gt;
 
@@ -101,16 +101,16 @@
 
 &lt;p&gt;12.&lt;a href=&#34;https://javatar.readthedocs.org/&#34;&gt;Javatar&lt;/a&gt;,Java IDE插件&lt;/p&gt;
 
-&lt;h2 id=&#34;sublime-text-3安装package-control:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;sublime text 3安装Package Control&lt;/h2&gt;
+&lt;h2 id=&#34;sublime-text-3安装package-control&#34;&gt;sublime text 3安装Package Control&lt;/h2&gt;
 
-&lt;h3 id=&#34;简单安装方法:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;简单安装方法&lt;/h3&gt;
+&lt;h3 id=&#34;简单安装方法&#34;&gt;简单安装方法&lt;/h3&gt;
 
 &lt;p&gt;The simplest method of installation is through the Sublime Text console. The console is accessed via the&lt;code&gt;ctrl+&lt;/code&gt; shortcut or the&lt;code&gt;View &amp;gt; Show Console&lt;/code&gt;menu. Once open, paste the appropriate Python code for your version of Sublime Text into the console.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;import urllib.request,os,hashlib; h = &#39;2915d1851351e5ee549c20394736b442&#39; + &#39;8bc59f460fa1548d1514676163dafc88&#39;; pf = &#39;Package Control.sublime-package&#39;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &#39;http://packagecontrol.io/&#39; + pf.replace(&#39; &#39;, &#39;%20&#39;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&#39;Error validating download (got %s instead of %s), please try manual install&#39; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &#39;wb&#39; ).write(by)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;常规安装方法:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;常规安装方法&lt;/h3&gt;
+&lt;h3 id=&#34;常规安装方法&#34;&gt;常规安装方法&lt;/h3&gt;
 
 &lt;p&gt;If for some reason the console installation instructions do not work for you (such as having a proxy on your network), perform the following steps to manually install &lt;a href=&#34;https://packagecontrol.io/Package%20Control.sublime-package&#34;&gt;Package Control&lt;/a&gt;:&lt;/p&gt;
 
@@ -122,7 +122,7 @@
 
 &lt;p&gt;结束&lt;/p&gt;
 
-&lt;h2 id=&#34;sublime-text-2-3-输入法修复-ubuntu-debian:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;Sublime Text 2/3 输入法修复[Ubuntu(Debian)]&lt;/h2&gt;
+&lt;h2 id=&#34;sublime-text-2-3-输入法修复-ubuntu-debian&#34;&gt;Sublime Text 2/3 输入法修复[Ubuntu(Debian)]&lt;/h2&gt;
 
 &lt;p&gt;主要目的:&lt;/p&gt;
 
@@ -132,7 +132,7 @@
 &lt;li&gt;修复 Sublime Text 2/3&amp;rsquo;s 在 Ubuntu(Debian) 系统下的无法输入中文输入法的问题&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;使用方法:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;使用方法&lt;/h3&gt;
+&lt;h3 id=&#34;使用方法&#34;&gt;使用方法&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;更新并升级系统为最新(较新的系统会解决很多可能出现的问题)&lt;/li&gt;
@@ -161,7 +161,7 @@
 &lt;li&gt;&lt;p&gt;补充，&lt;a href=&#34;https://github.com/lyfeyaj/sublime-text-imfix/issues/10&#34;&gt;修正只能在终端中打开才能输入中文问题&lt;/a&gt;。就可以放心的玩耍了。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;卸载已安装的插件:c3b8514c823bc550824898dff7b0b9a8&#34;&gt;卸载已安装的插件&lt;/h2&gt;
+&lt;h2 id=&#34;卸载已安装的插件&#34;&gt;卸载已安装的插件&lt;/h2&gt;
 
 &lt;p&gt;如果是通过package control安装的, 快捷键Cmd + shift + p打开面板搜索Package Control: Remove Package然后选择需要卸载的插件.&lt;/p&gt;
 </description>

@@ -20,7 +20,7 @@
       <guid>http://wixb50.github.io/2016/06/01/centos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
       <description>
 
-&lt;h2 id=&#34;centos添加及删除用户&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
+&lt;h2 id=&#34;centos添加及删除用户:d42ac4d339ba837eb9ffd5b3e48c2f6d&#34;&gt;CentOS添加及删除用户&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;adduser int # 新增用户
 passwd int # 设置或者修改密码
@@ -51,7 +51,7 @@ userdel -f test # 删除用户及用户组
       <guid>http://wixb50.github.io/2015/12/17/ubuntu%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/</guid>
       <description>
 
-&lt;h2 id=&#34;目录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -68,7 +68,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;ssh错误-permission-denied-publickey:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
+&lt;h2 id=&#34;ssh错误-permission-denied-publickey&#34;&gt;ssh错误: permission denied (publickey)&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;登录远程主机，将/etc/ssh/sshd_config文件中的&lt;code&gt;PasswordAuthentication no&lt;/code&gt; 改为&lt;code&gt;PasswordAuthentication yes&lt;/code&gt;。&lt;br /&gt;&lt;/li&gt;
@@ -78,7 +78,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;原因：scp是基于ssh的拷贝服务，ssh在没有密钥登录的情况下，禁用了密码登录，故出现如上错误&lt;/p&gt;
 
-&lt;h2 id=&#34;unity菜单栏消失:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;unity菜单栏消失&lt;/h2&gt;
+&lt;h2 id=&#34;unity菜单栏消失&#34;&gt;unity菜单栏消失&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;安装&lt;code&gt;ccsm&lt;/code&gt;，终端打开&lt;code&gt;ccsm&lt;/code&gt;；&lt;/li&gt;
@@ -89,7 +89,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;原因：compiz设置错误。&lt;/p&gt;
 
-&lt;h2 id=&#34;google-chrome更新出错:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;google chrome更新出错&lt;/h2&gt;
+&lt;h2 id=&#34;google-chrome更新出错&#34;&gt;google chrome更新出错&lt;/h2&gt;
 
 &lt;p&gt;1.Setup key with:&lt;/p&gt;
 
@@ -108,7 +108,7 @@ userdel -f test # 删除用户及用户组
 
 &lt;p&gt;参考方案: &lt;a href=&#34;http://www.ubuntuupdates.org/ppa/google_chrome&#34;&gt;3rd Party Repository: Google Chrome&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
+&lt;h2 id=&#34;云服务器内存耗尽-打开虚拟内存&#34;&gt;云服务器内存耗尽，打开虚拟内存&lt;/h2&gt;
 
 &lt;p&gt;virtual memory exhausted: Cannot allocate memory 问题：&lt;/p&gt;
 
@@ -121,7 +121,7 @@ Enable swap on boot:
 $ echo &amp;quot;/swap swap swap sw 0 0&amp;quot; &amp;gt;&amp;gt; /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
+&lt;h2 id=&#34;修改了ssh默认端口之后-如何配置git&#34;&gt;修改了SSH默认端口之后，如何配置git&lt;/h2&gt;
 
 &lt;p&gt;现在假设原来的项目的remote设置为git@domain.com:Projects/p1.git，将服务器SSH默认端口修改为3022后，导致push出错。&lt;/p&gt;
 
@@ -142,7 +142,7 @@ port 3022
 # ctrl+D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux-wps不能使用中文输入法:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
+&lt;h2 id=&#34;linux-wps不能使用中文输入法&#34;&gt;Linux WPS不能使用中文输入法&lt;/h2&gt;
 
 &lt;p&gt;因为环境变量的问题无法使用，直接修改在/usr/bin目录下的wps、wpp、et三个文件，在文件的开头加上下面的代码：&lt;/p&gt;
 
@@ -150,14 +150,14 @@ port 3022
 export QT_IM_MODULE=&amp;quot;fcitx&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;清理ubuntu连接过的服务器记录:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
+&lt;h2 id=&#34;清理ubuntu连接过的服务器记录&#34;&gt;清理ubuntu连接过的服务器记录&lt;/h2&gt;
 
 &lt;p&gt;保存目录为nautilus中，直接清空配置文件&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;rm ~/.config/nautilus/servers
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;ubuntu与windows双系统时间不同步:881b3e9f38deefcc7d28a0a0e3b6c85a&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
+&lt;h2 id=&#34;ubuntu与windows双系统时间不同步&#34;&gt;Ubuntu与Windows双系统时间不同步&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;之所以 Windows 与 Ubuntu 双系统之间有时间差，是因为这两个系统使用了不同的方式来识别硬件时钟（Hardware Clock）。Ubuntu 将硬件时钟当作 UTC 时间，而 Windows 将硬件时钟当作本地时间（ Local time）。由于时间的处理方式不同，Windows 不管重启多少次都识别 Local time，时间都不会改变。而当我们从 Ubuntu 重启到 Windows 时，硬件时钟已经被 Ubuntu 认为 UTC 方式，而 Windows 再将其强制转换成 Local time，这就造成了时间差。&lt;/p&gt;
