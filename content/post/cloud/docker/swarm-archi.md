@@ -55,7 +55,7 @@ To add a manager to this swarm, run the following command:
 ```
 然后在同局域网中worker节点执行上述提供的加入集群命令即可。
 
-> docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；多个manager之间会自动raft一个作为master中心；所以为了保证集群的高可用性，可创建多几个manager节点。
+> docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；所以为了保证集群的高可用性，可创建多几个manager节点。
 
 ## docker service
 
@@ -71,6 +71,7 @@ $ docker service create --name gateway --publish 80:80 --replicas 2 nginx:latest
 ```
 docker service scale gateway=2
 ```
+同时如果由于异常容器退出的话，swarm自带的 **安全检查** 会删除原来的失败的容器，并重新启动一个新的，保证服务的replicas数量。
 
 + service滚动更新
 
