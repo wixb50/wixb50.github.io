@@ -10,18 +10,18 @@
   <title>aria2 rpc &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=0&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,10 +88,10 @@
 <div class="content container">
   <div class="post">
     <h1>aria2 rpc</h1>
-    <span class="post-date">Dec 23, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.coding.me/2015/12/23/aria2-rpc/#disqus_thread">Comments</a>
+    <span class="post-date">Dec 23, 2015 &middot; 2 minute read &middot; <a href="http://wixb50.github.io/2015/12/23/aria2-rpc/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/linux">linux</a><a class="label" href="http://wixb50.coding.me/categories/software">software</a>
+    <a class="label" href="http://wixb50.github.io/categories/linux">linux</a><a class="label" href="http://wixb50.github.io/categories/software">software</a>
     </span>
     
 
@@ -108,7 +108,7 @@
 
 <!-- /MarkdownTOC -->
 
-<h2 id="前言-null-link:96794f524cfa0e9a6b2c98d6759fee66"><a href="chrome://not-a-link">前言</a></h2>
+<h2 id="前言-null-link"><a href="chrome://not-a-link">前言</a></h2>
 
 <p><a href="http://aria2.sourceforge.net/">Aria2</a> 是一个轻量级多协议和多源命令行下载实用工具。它支持 HTTP / HTTPS, FTP, SFTP, bt 和 Metalink。通过内置 Aria2 可以操作 json - rpc 和 xml - rpc。对，Aria2 没有 GUI 图形界面，只有粗糙的命令行界面！但这也正是 Aria2 之轻快好省所在。</p>
 
@@ -116,7 +116,7 @@
 <li>官方下载链接：<a href="http://sourceforge.net/projects/aria2/files/stable/">http://sourceforge.net/projects/aria2/files/stable/</a></li>
 </ul>
 
-<h2 id="初步部署-aria2-简易版:96794f524cfa0e9a6b2c98d6759fee66">初步部署 Aria2 简易版</h2>
+<h2 id="初步部署-aria2-简易版">初步部署 Aria2 简易版</h2>
 
 <p><strong>1. 安装aria</strong>
 终端输入安装</p>
@@ -193,7 +193,7 @@ kill_process
 
 <p>简易版的 Aria2 至此就部署完毕，你可以在 Web 控制前段方便地添加下载链接/bt种子了。</p>
 
-<h2 id="进阶-aria2:96794f524cfa0e9a6b2c98d6759fee66">进阶 Aria2</h2>
+<h2 id="进阶-aria2">进阶 Aria2</h2>
 
 <p><strong>1. 配置文件 aria2.conf 详解</strong></p>
 
@@ -235,9 +235,9 @@ kill_process
 <li>Chrome Extension: <a href="https://chrome.google.com/webstore/detail/%E6%B7%BB%E5%8A%A0%E5%88%B0aria2/nimeojfecmndgolmlmjghjmbpdkhhogl">添加到 aria2</a> <a href="http://git.oschina.net/yky/CDHelper">Chrome Download Helper</a></li>
 </ul>
 
-<h2 id="end:96794f524cfa0e9a6b2c98d6759fee66">End</h2>
+<h2 id="end">End</h2>
 
-<h2 id="参考:96794f524cfa0e9a6b2c98d6759fee66">参考</h2>
+<h2 id="参考">参考</h2>
 
 <ul>
 <li><a href="https://gist.github.com/aa65535/5e956c4eb4f451ddec29">https://gist.github.com/aa65535/5e956c4eb4f451ddec29</a></li>
@@ -273,7 +273,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

@@ -10,18 +10,18 @@
   <title>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=0&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,14 +88,14 @@
 <div class="content container">
   <div class="post">
     <h1>Docker集群系列之－ESXi5.5上搭建基于CoreOS的kubernetes集群</h1>
-    <span class="post-date">Dec 30, 2015 &middot; 4 minute read &middot; <a href="http://wixb50.coding.me/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/#disqus_thread">Comments</a>
+    <span class="post-date">Dec 30, 2015 &middot; 4 minute read &middot; <a href="http://wixb50.github.io/2015/12/30/docker%E9%9B%86%E7%BE%A4%E7%B3%BB%E5%88%97%E4%B9%8Besxi5.5%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ecoreos%E7%9A%84kubernetes%E9%9B%86%E7%BE%A4/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/coreos">coreos</a><a class="label" href="http://wixb50.coding.me/categories/kubernetes">kubernetes</a><a class="label" href="http://wixb50.coding.me/categories/docker">docker</a>
+    <a class="label" href="http://wixb50.github.io/categories/coreos">coreos</a><a class="label" href="http://wixb50.github.io/categories/kubernetes">kubernetes</a><a class="label" href="http://wixb50.github.io/categories/docker">docker</a>
     </span>
     
 
-<h1 id="目录:b041d08cd2cacb464d298a81037e9efc">目录</h1>
+<h1 id="目录">目录</h1>
 
 <!-- MarkdownTOC -->
 
@@ -114,11 +114,11 @@
 
 <!-- /MarkdownTOC -->
 
-<h1 id="introduction:b041d08cd2cacb464d298a81037e9efc">Introduction</h1>
+<h1 id="introduction">Introduction</h1>
 
 <p>Create a Kubernetes Cluster on VMware ESXi with CoreOS.</p>
 
-<h1 id="prerequisites:b041d08cd2cacb464d298a81037e9efc">Prerequisites</h1>
+<h1 id="prerequisites">Prerequisites</h1>
 
 <ul>
 <li>VMware ESXi
@@ -132,7 +132,7 @@
 <li>Attention: This requires at least CoreOS version 695.0.0, which includes etcd2.</li>
 </ul>
 
-<h1 id="coreos-on-vmware:b041d08cd2cacb464d298a81037e9efc">CoreOS on VMware</h1>
+<h1 id="coreos-on-vmware">CoreOS on VMware</h1>
 
 <p>Based on official documentation : <a href="https://coreos.com/os/docs/latest/booting-on-vmware.html">https://coreos.com/os/docs/latest/booting-on-vmware.html</a></p>
 
@@ -156,7 +156,7 @@ confirm the settings then click &quot;Finish&quot;
 
 <p>Now you can create -at least- 2 servers based on this template, do this task but don&rsquo;t start it yet.</p>
 
-<h1 id="cloud-config-for-master-node:b041d08cd2cacb464d298a81037e9efc">Cloud-Config for master node</h1>
+<h1 id="cloud-config-for-master-node">Cloud-Config for master node</h1>
 
 <p>On the VMware datastore, create a directory and initialize config, example :</p>
 
@@ -217,7 +217,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-master.iso master/
 </code></pre>
 
-<h1 id="cloud-config-for-minion-node:b041d08cd2cacb464d298a81037e9efc">Cloud-Config for minion node</h1>
+<h1 id="cloud-config-for-minion-node">Cloud-Config for minion node</h1>
 
 <p>On the VMware datastore, create a directory and initialize config, example :</p>
 
@@ -256,7 +256,7 @@ Replace `https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/li
 mkisofs -R -V config-2 -o config-minion.iso minion/
 </code></pre>
 
-<h1 id="start-the-cluster:b041d08cd2cacb464d298a81037e9efc">Start the cluster</h1>
+<h1 id="start-the-cluster">Start the cluster</h1>
 
 <p>On firt VM, mount the config-master.iso with VM properties (CD/DVD reader and &laquo;Datastore ISO file&raquo;), browse to &laquo;<path to datastore>/cloud-config/&laquo;. Don&rsquo;t foget to set &laquo;Connect on Start up&raquo;.</p>
 
@@ -281,7 +281,7 @@ sudo systemctl enable &lt;service-name&gt;  #Ensure service can boot from the st
 sudo systemctl status &lt;service-name&gt;
 </code></pre>
 
-<h1 id="check:b041d08cd2cacb464d298a81037e9efc">Check</h1>
+<h1 id="check">Check</h1>
 
 <p>Check your cluster heatlh : <a href="http://10.0.0.1:8080/static/app/#/dashboard/">http://10.0.0.1:8080/static/app/#/dashboard/</a></p>
 
@@ -293,7 +293,7 @@ fleetctl list-machines
 journalctl -f
 </code></pre>
 
-<h1 id="enjoy:b041d08cd2cacb464d298a81037e9efc">Enjoy</h1>
+<h1 id="enjoy">Enjoy</h1>
 
 <p>You may download the kubernetes client tool:<code>kubectl</code>.Use it manage your cluster.</p>
 
@@ -316,7 +316,7 @@ kubectl get rc
 <pre><code>kubectl get svc
 </code></pre>
 
-<h1 id="reference:b041d08cd2cacb464d298a81037e9efc">Reference</h1></li>
+<h1 id="reference">Reference</h1></li>
 
 <li><p><a href="https://github.com/xavierbaude/VMware-coreos-multi-nodes-Kubernetes">VMware-coreos-multi-nodes-Kubernetes</a></p></li>
 
@@ -330,7 +330,7 @@ kubectl get rc
 
 <li><p><a href="http://dockone.io/article/604">CoreOS集成Kubernetes核心组件Kubelet</a></p>
 
-<h1 id="appendix:b041d08cd2cacb464d298a81037e9efc">Appendix</h1></li>
+<h1 id="appendix">Appendix</h1></li>
 
 <li><p>The <a href="https://gist.github.com/anonymous/553e448c0f8ce9a23120">source</a> of <code>master.yaml</code></p></li>
 
@@ -365,7 +365,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

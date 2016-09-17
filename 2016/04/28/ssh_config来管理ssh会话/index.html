@@ -10,18 +10,18 @@
   <title>ssh_config来管理ssh会话 &middot; Wixb</title>
 
   
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/hyde-x.css">
-  <link rel="stylesheet" href="http://wixb50.coding.me/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://wixb50.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.coding.me/touch-icon-144-precomposed.png">
-  <link href="http://wixb50.coding.me/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wixb50.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wixb50.github.io/favicon.png" rel="icon">
 
   
   
@@ -45,9 +45,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wixb50.coding.me/">Home</a></li>
+      <li class="sidebar-nav-item"><a href="http://wixb50.github.io/">Home</a></li>
       
-      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.coding.me/categories/cloud/">Cloud</a></li>
+      <li class="sidebar-nav-item"><i class='fa fa-cloud'></i><a href="http://wixb50.github.io/categories/cloud/">Cloud</a></li>
       
     </ul>
 
@@ -70,7 +70,7 @@
       (function(id){
         var s = document.getElementById(id);
         var f = document.createElement('iframe');
-        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.coding.me\/&title=Wixb blog';
+        f.src = '//api.flattr.com/button/view/?uid=&button=compact&url=http:\/\/wixb50.github.io\/&title=Wixb blog';
         f.title = 'Flattr';
         f.height = 20;
         f.width = 110;
@@ -80,7 +80,7 @@
     </script></p>
     
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=234 height=52 src="http://music.163.com/outchain/player?type=2&id=400875065&auto=0&height=32"></iframe>
-    <p>Copyright &copy; 2016 <a href="http://wixb50.coding.me/license/">License</a></p>
+    <p>Copyright &copy; 2016 <a href="http://wixb50.github.io/license/">License</a></p>
   </div>
 </div>
 
@@ -88,14 +88,14 @@
 <div class="content container">
   <div class="post">
     <h1>ssh_config来管理ssh会话</h1>
-    <span class="post-date">Apr 28, 2016 &middot; 1 minute read &middot; <a href="http://wixb50.coding.me/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/#disqus_thread">Comments</a>
+    <span class="post-date">Apr 28, 2016 &middot; 1 minute read &middot; <a href="http://wixb50.github.io/2016/04/28/ssh_config%E6%9D%A5%E7%AE%A1%E7%90%86ssh%E4%BC%9A%E8%AF%9D/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://wixb50.coding.me/categories/linux">linux</a>
+    <a class="label" href="http://wixb50.github.io/categories/linux">linux</a>
     </span>
     
 
-<h2 id="简介">简介</h2>
+<h2 id="简介:0984e7ebd3dce43c74ff94df48f1ae75">简介</h2>
 
 <p>通常利用 ssh 连接远程服务器，一般都要输入以下类型命令：</p>
 
@@ -106,7 +106,7 @@
 
 <p>一般，有一种解决方案是，采用第三方的manager工具，比如：putty、PAC manager，但是对于喜欢在终端玩耍的孩纸就不喜欢这个了。</p>
 
-<h2 id="ssh-config方案">ssh_config方案</h2>
+<h2 id="ssh-config方案:0984e7ebd3dce43c74ff94df48f1ae75">ssh_config方案</h2>
 
 <p>还好，ssh提供一种优雅灵活的方案，就是利用ssh的用户配置文件config管理ssh会话。ssh的用户配置文件放在用户<code>~/.ssh/config</code>目录中，不存在则新建一个。配置语法如下：</p>
 
@@ -122,7 +122,7 @@
 <pre><code>ssh 别名
 </code></pre>
 
-<h2 id="ps">Ps</h2>
+<h2 id="ps:0984e7ebd3dce43c74ff94df48f1ae75">Ps</h2>
 
 <p>如果需要实现无密码登录主机的，请在自行google配置。</p>
 
@@ -154,7 +154,7 @@ var disqus_shortname = "wixb";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://wixb50.coding.me/js/highlight.pack.js"></script>
+<script src="http://wixb50.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>

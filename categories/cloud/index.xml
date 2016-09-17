@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cloud on Wixb blog</title>
-    <link>http://wixb50.coding.me/categories/cloud/</link>
+    <link>http://wixb50.github.io/categories/cloud/</link>
     <description>Recent content in Cloud on Wixb blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>wixb50@gmail.com (Wixb)</webMaster>
     <copyright>(c) 2015 wixb.All rights reserved.</copyright>
     <lastBuildDate>Sat, 17 Sep 2016 10:38:38 +0800</lastBuildDate>
-    <atom:link href="http://wixb50.coding.me/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wixb50.github.io/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>docker1.12 集群实践方案</title>
-      <link>http://wixb50.coding.me/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</link>
+      <link>http://wixb50.github.io/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</link>
       <pubDate>Sat, 17 Sep 2016 10:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</guid>
+      <guid>http://wixb50.github.io/2016/09/17/docker1.12-%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5%E6%96%B9%E6%A1%88/</guid>
       <description>
 
 &lt;!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 --&gt;
@@ -78,7 +78,7 @@ To add a manager to this swarm, run the following command:
 &lt;p&gt;然后在同局域网中worker节点执行上述提供的加入集群命令即可。&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；多个manager之间会自动raft一个作为master中心；所以为了保证集群的高可用性，可创建多几个manager节点。&lt;/p&gt;
+&lt;p&gt;docker swarm集群最小只需一个master节点即可，同时也可以多个manager、多个worker节点；所以为了保证集群的高可用性，可创建多几个manager节点。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&#34;docker-service&#34;&gt;docker service&lt;/h2&gt;
@@ -96,7 +96,9 @@ To add a manager to this swarm, run the following command:
 &lt;li&gt;&lt;p&gt;scale service数量&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;docker service scale gateway=2
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同时如果由于异常容器退出的话，swarm自带的 &lt;strong&gt;安全检查&lt;/strong&gt; 会删除原来的失败的容器，并重新启动一个新的，保证服务的replicas数量。&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;service滚动更新&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -181,10 +183,10 @@ $ docker service rm gateway
     
     <item>
       <title>docker入门</title>
-      <link>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
+      <link>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</link>
       <pubDate>Fri, 17 Jun 2016 19:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
+      <guid>http://wixb50.github.io/2016/06/17/docker%E5%85%A5%E9%97%A8/</guid>
       <description>
 
 &lt;!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 --&gt;
@@ -407,13 +409,13 @@ CMD /usr/sbin/nginx
     
     <item>
       <title>Docker Operation</title>
-      <link>http://wixb50.coding.me/2015/12/11/docker-operation/</link>
+      <link>http://wixb50.github.io/2015/12/11/docker-operation/</link>
       <pubDate>Fri, 11 Dec 2015 18:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/12/11/docker-operation/</guid>
+      <guid>http://wixb50.github.io/2015/12/11/docker-operation/</guid>
       <description>
 
-&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;h2 id=&#34;目录:9623c25974239aae48309dcafd31d278&#34;&gt;目录&lt;/h2&gt;
 
 &lt;!-- MarkdownTOC --&gt;
 
@@ -436,9 +438,9 @@ CMD /usr/sbin/nginx
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&#34;normal-commander&#34;&gt;normal commander&lt;/h2&gt;
+&lt;h2 id=&#34;normal-commander:9623c25974239aae48309dcafd31d278&#34;&gt;normal commander&lt;/h2&gt;
 
-&lt;h3 id=&#34;docker-使用代理连接-docker-hub&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
+&lt;h3 id=&#34;docker-使用代理连接-docker-hub:9623c25974239aae48309dcafd31d278&#34;&gt;Docker 使用代理连接 Docker Hub&lt;/h3&gt;
 
 &lt;p&gt;如果你的宿主操作系统是 linux 那方法就很简单了，直接通过命令来启动服务即可。&lt;/p&gt;
 
@@ -450,7 +452,7 @@ CMD /usr/sbin/nginx
 &lt;pre&gt;&lt;code&gt;sudo HTTP_PROXY=10.125.156.21:8118 docker pull node
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;存出或者载入镜像&#34;&gt;存出或者载入镜像&lt;/h3&gt;
+&lt;h3 id=&#34;存出或者载入镜像:9623c25974239aae48309dcafd31d278&#34;&gt;存出或者载入镜像&lt;/h3&gt;
 
 &lt;p&gt;存出镜像&lt;/p&gt;
 
@@ -464,26 +466,26 @@ CMD /usr/sbin/nginx
 sudo docker --input ubuntu_14.04.tar
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;批量操作docker-commander&#34;&gt;批量操作docker commander.&lt;/h2&gt;
+&lt;h2 id=&#34;批量操作docker-commander:9623c25974239aae48309dcafd31d278&#34;&gt;批量操作docker commander.&lt;/h2&gt;
 
 &lt;p&gt;NOTE: &lt;code&gt;sudo&lt;/code&gt;maybe.&lt;/p&gt;
 
-&lt;h4 id=&#34;stop-all-containers&#34;&gt;Stop all containers.&lt;/h4&gt;
+&lt;h4 id=&#34;stop-all-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Stop all containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker stop $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-stopped-containers&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-stopped-containers:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all stopped containers.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rm $(docker ps -a -q)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-untagged-images&#34;&gt;Remove all untagged images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-untagged-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all untagged images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep &amp;quot;^&amp;lt;none&amp;gt;&amp;quot; | awk &amp;quot;{print $3}&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remove-all-images&#34;&gt;Remove all images&lt;/h4&gt;
+&lt;h4 id=&#34;remove-all-images:9623c25974239aae48309dcafd31d278&#34;&gt;Remove all images&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;docker rmi $(docker images | grep \ | awk &#39;{print $3}&#39;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -492,10 +494,10 @@ sudo docker --input ubuntu_14.04.tar
     
     <item>
       <title>etcd安装</title>
-      <link>http://wixb50.coding.me/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
+      <link>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 03 Nov 2015 16:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/etcd%E5%AE%89%E8%A3%85/</guid>
       <description>
 
 &lt;p&gt;##目录
@@ -512,7 +514,7 @@ sudo docker --input ubuntu_14.04.tar
 &lt;p&gt;etcd 基于 Go 语言实现，因此，用户可以从 项目主页 下载源代码自行编译，也可以下载编译好的二进制文件，甚至直接使用制作好的 Docker 镜像文件来体验。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;二进制文件方式下载:e9fd0bb186316c495358cb17e25d8651&#34;&gt;二进制文件方式下载&lt;/h3&gt;
+&lt;h3 id=&#34;二进制文件方式下载&#34;&gt;二进制文件方式下载&lt;/h3&gt;
 
 &lt;p&gt;编译好的二进制文件都在 github.com/coreos/etcd/releases 页面，用户可以选择需要的版本，或通过下载工具下载。&lt;/p&gt;
 
@@ -577,7 +579,7 @@ hello world
 {&amp;quot;action&amp;quot;:&amp;quot;get&amp;quot;,&amp;quot;node&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;/testkey&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;hello world&amp;quot;,&amp;quot;modifiedIndex&amp;quot;:3,&amp;quot;createdIndex&amp;quot;:3}}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;docker-镜像方式下载:e9fd0bb186316c495358cb17e25d8651&#34;&gt;Docker 镜像方式下载&lt;/h3&gt;
+&lt;h3 id=&#34;docker-镜像方式下载&#34;&gt;Docker 镜像方式下载&lt;/h3&gt;
 
 &lt;p&gt;镜像名称为 quay.io/coreos/etcd:v2.0.0_rc.1，可以通过下面的命令启动 etcd 服务监听到 4001 端口。&lt;br /&gt;
 &lt;code&gt;$ sudo docker run -p 4001:4001 -v /etc/ssl/certs/:/etc/ssl/certs/ quay.io/coreos/etcd:v2.0.0_rc.1&lt;/code&gt;&lt;/p&gt;
@@ -586,10 +588,10 @@ hello world
     
     <item>
       <title>Vagrant建立快照</title>
-      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</link>
       <pubDate>Tue, 03 Nov 2015 12:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%BB%BA%E7%AB%8B%E5%BF%AB%E7%85%A7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;使用Vagrant的快照功能可以很方便快速的创建当前虚拟机的一个临时备份状态，在进行重要操作时可以先创建一个快照以便在操作失误后快速恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -636,10 +638,10 @@ For help on any individual command run `vagrant snapshot &amp;lt;command&amp;gt;
     
     <item>
       <title>Vagrant常用命令</title>
-      <link>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 03 Nov 2015 11:45:55 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://wixb50.github.io/2015/11/03/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant常用命令:7846872d314dab4b0ed8e0de546c9a09&#34;&gt;Vagrant常用命令&lt;/h2&gt;
@@ -915,13 +917,13 @@ vagrant@db:~$
     
     <item>
       <title>docker安装与配置</title>
-      <link>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 02 Nov 2015 21:38:38 +0800</pubDate>
       <author>wixb50@gmail.com (Wixb)</author>
-      <guid>http://wixb50.coding.me/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://wixb50.github.io/2015/11/02/docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>
 
-&lt;h3 id=&#34;方法一-安装命令&#34;&gt;方法一：安装命令&lt;/h3&gt;
+&lt;h3 id=&#34;方法一-安装命令:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法一：安装命令&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo apt-get install apt-transport-https
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
@@ -930,14 +932,14 @@ sudo apt-get update
 sudo apt-get install lxc-docker
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;方法二-安装命令-推荐&#34;&gt;方法二：安装命令(推荐)&lt;/h3&gt;
+&lt;h3 id=&#34;方法二-安装命令-推荐:a3a6e387cbc471e9a108d854770f0455&#34;&gt;方法二：安装命令(推荐)&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;curl -sSL https://get.docker.com/ | sh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;完&lt;/p&gt;
 
-&lt;h3 id=&#34;docker资料收集&#34;&gt;Docker资料收集&lt;/h3&gt;
+&lt;h3 id=&#34;docker资料收集:a3a6e387cbc471e9a108d854770f0455&#34;&gt;Docker资料收集&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@gargar454/deploy-a-mesos-cluster-with-7-commands-using-docker-57951e020586#.74cyoyjp5&#34;&gt;Deploy a Mesos Cluster with 7 Commands Using Docker&lt;/a&gt;&lt;/li&gt;
